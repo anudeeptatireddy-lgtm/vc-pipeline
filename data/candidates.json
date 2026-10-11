@@ -1,28 +1,29 @@
 [
   {
-    "name": "YourNest Venture Capital",
-    "score": 42.4,
-    "website": "https://yournest.in",
-    "hq": "India",
+    "name": "BEENEXT",
+    "score": 41.5,
+    "website": "https://www.beenext.com",
+    "hq": "Singapore",
     "investorType": "seed_fund",
-    "partner": "Girish Shivani",
+    "partner": null,
     "indiaEvidence": "India deal in corpus",
     "deals": [
       {
-        "company": "CargoFL",
-        "sells": "logistics technology platform to optimize freight and supply chain operations",
-        "to": "shippers and transporters",
+        "company": "CREST",
+        "sells": "Automated inventory planning software",
+        "to": "D2C and retail businesses",
         "country": "India",
-        "stage": "seed",
-        "amount": "Rs 6.75 crore",
-        "date": "2026-06-24",
+        "stage": "pre-seed",
+        "amount": "$3.1 million",
+        "date": "2026-06-20",
         "urls": [
-          "https://vctavern.com/cargofl-secures-rs-6-75-cr-in-seed-funding-round-led-by-yournest-venture-capital/"
+          "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-15-june-20-12056007"
         ],
         "leads": [
-          "YourNest Venture Capital"
+          "BEENEXT"
         ],
         "others": [],
+        "via": "roundup",
         "role": "led"
       }
     ],
@@ -30,220 +31,8 @@
     "reasons": []
   },
   {
-    "name": "Picus Capital",
-    "score": 42.4,
-    "website": "https://www.picuscap.com",
-    "hq": "Germany",
-    "investorType": "multi_stage",
-    "partner": null,
-    "indiaEvidence": "https://www.picuscap.com/team/",
-    "deals": [
-      {
-        "company": "Compri",
-        "sells": "AI-powered procurement software for industrial companies",
-        "to": "industrial companies",
-        "country": "Italy",
-        "stage": "seed",
-        "amount": "\u20ac3.2 million",
-        "date": "2026-06-24",
-        "urls": [
-          "https://seedtable.com/companies/compri/funding-rounds/seed-2026-06",
-          "https://dealroom.co/news/135833-compri-raises-3-2m-seed-to-build-ai-powered-procurement-teams/"
-        ],
-        "leads": [
-          "Picus Capital"
-        ],
-        "others": [
-          "Shapers",
-          "Italian Founders Fund",
-          "DFF Ventures"
-        ],
-        "role": "led"
-      }
-    ],
-    "qualifies": true,
-    "reasons": []
-  },
-  {
-    "name": "Chiratae Ventures",
-    "score": 40.6,
-    "website": "https://www.chiratae.com",
-    "hq": "India",
-    "investorType": "multi_stage",
-    "partner": "TC Meenakshisundaram",
-    "indiaEvidence": "India deal in corpus",
-    "deals": [
-      {
-        "company": "ContraVault AI",
-        "sells": "AI-powered procurement intelligence and tender bidding software",
-        "to": "businesses across construction, energy, power, defence and aerospace",
-        "country": "India",
-        "stage": "seed-extension",
-        "amount": "$3.1 Mn",
-        "date": "2026-06-16",
-        "urls": [
-          "https://inc42.com/buzz/exclusive-ai-startup-contravault-raises-3-1-mn-to-expand-in-the-us/",
-          "https://startupbydoc.com/contravault-ai-raises-3-1-million-to-transform-procurement-intelligence/"
-        ],
-        "leads": [
-          "Chiratae Ventures"
-        ],
-        "others": [
-          "Titan Capital Winners Fund"
-        ],
-        "role": "led"
-      }
-    ],
-    "qualifies": true,
-    "reasons": []
-  },
-  {
-    "name": "Turbostart",
-    "score": 25.3,
-    "website": "https://turbostart.co",
-    "hq": "India",
-    "investorType": "seed_fund",
-    "partner": null,
-    "indiaEvidence": "India deal in corpus",
-    "deals": [
-      {
-        "company": "Lawyered",
-        "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
-        "to": "vehicle owners, drivers, and fleet operators",
-        "country": "India",
-        "stage": "seed-extension",
-        "amount": "$2.5 million",
-        "date": "2026-04-21",
-        "urls": [
-          "https://entrepreneur.economictimes.indiatimes.com/amp/news/funding/lawyered-secures-25-million-pre-series-a-funding-to-revolutionize-legal-solutions-for-indias-mobility-sector/130410540"
-        ],
-        "leads": [
-          "Rainmatter by Zerodha",
-          "Turbostart"
-        ],
-        "others": [
-          "Finvolve"
-        ],
-        "role": "co-led"
-      }
-    ],
-    "qualifies": true,
-    "reasons": []
-  },
-  {
-    "name": "Wavemaker Partners",
-    "score": 23.7,
-    "website": "https://wavemaker.vc",
-    "hq": "Singapore",
-    "investorType": "multi_stage",
-    "partner": null,
-    "indiaEvidence": "India deal in corpus",
-    "deals": [
-      {
-        "company": "Confluxe",
-        "sells": "Platform providing market entry strategy, digital commerce, merchandising, and supply chain operations",
-        "to": "international fashion and lifestyle brands",
-        "country": "India",
-        "stage": "pre-seed",
-        "amount": "$1.6 million",
-        "date": "2026-03-11",
-        "urls": [
-          "https://yourstory.com/2026/03/former-myntra-hm-executives-launch-retail-tech-platform-confluxe-16-mln-pre-seed-funding",
-          "https://entrepreneur.economictimes.indiatimes.com/news/funding/confluxe-secures-16-million-in-pre-seed-funding-from-wavemaker-partners-and-kriscore-capital/129501041"
-        ],
-        "leads": [
-          "Wavemaker Partners"
-        ],
-        "others": [
-          "Kriscore Capital"
-        ],
-        "role": "led"
-      }
-    ],
-    "qualifies": true,
-    "reasons": []
-  },
-  {
-    "name": "Pentathlon Ventures",
-    "score": 21.9,
-    "website": "https://pentathlon.vc",
-    "hq": "India",
-    "investorType": "seed_fund",
-    "partner": "Madhukar Bhatia",
-    "indiaEvidence": "India deal in corpus",
-    "deals": [
-      {
-        "company": "SuperProcure",
-        "sells": "Unified TMS and freight lifecycle management software",
-        "to": "enterprises",
-        "country": "India",
-        "stage": "pre-seed",
-        "amount": "\u20b9140 Million",
-        "date": "2026-02-25",
-        "urls": [
-          "https://app.fundz.net/fundings/superprocure-funding-round-85ffce"
-        ],
-        "leads": [
-          "Pentathlon Ventures"
-        ],
-        "others": [
-          "IndiaMART",
-          "Caret Capital"
-        ],
-        "role": "led"
-      }
-    ],
-    "qualifies": true,
-    "reasons": []
-  },
-  {
-    "name": "100Unicorns",
-    "score": 16,
-    "website": "https://100unicorns.in",
-    "hq": "India",
-    "investorType": "accelerator",
-    "partner": null,
-    "indiaEvidence": "India deal in corpus",
-    "deals": [
-      {
-        "company": "1Buy.AI",
-        "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
-        "to": "enterprises and electronics players",
-        "country": "India",
-        "stage": "seed",
-        "amount": "INR 32.5 Cr ($3.5 Mn)",
-        "date": "2026-01-29",
-        "urls": [
-          "https://inc42.com/buzz/1buy-ai-nets-inr-33-cr-to-help-enterprises-procure-electronics-components/",
-          "https://india.entrepreneur.com/news-and-trends/procurement-platform-1buyai-secures-inr-325-cr-seed/502280",
-          "https://www.businesswire.com/news/home/20260129944622/en/Serial-Entrepreneurs-Behind-Multiple-Unicorns-Raise-%243.9M-to-Build-AI-Operating-System-for-Electronics-Procurement",
-          "https://startuptalky.com/news/midas-touch-founders-raise-rs-32-5-cr-for-their-ai-first-startup-1buy-ai-seed-round-led-by-100-unicorns/",
-          "https://www.entrepreneurindia.com/blog/en/news/procurement-platform-1buyai-secures-inr-325-cr-seed-funding.59027",
-          "https://pulse2.com/1buy-ai-3-9-million-seed-funding-closed-to-build-ai-operating-system-for-electronics-procurement/",
-          "https://globalindianalpha.com/1buy-ai-raises-rs-32-5-cr-in-seed-round-led-by-100unicorns/",
-          "https://www.cxodigitalpulse.com/1buy-ai-secures-rs-32-5-crore-seed-funding-led-by-100unicorns/",
-          "https://scoopearth.com/1buy-ai-secured-32-5-crore-in-a-seed-funding-round-led-by-100unicorns/",
-          "https://briefglance.com/articles/unicorn-builders-raise-39m-for-1buyais-procurement-platform"
-        ],
-        "leads": [
-          "100 Unicorns",
-          "100Unicorns"
-        ],
-        "others": [
-          "Gruhas",
-          "FJ Labs",
-          "Ashish Kacholia"
-        ],
-        "role": "co-led"
-      }
-    ],
-    "qualifies": true,
-    "reasons": [],
-    "note": "website verified by direct fetch on retry (isFirmSite true); Gemini lookup had missed it"
-  },
-  {
-    "name": "Emerge Venture Partners LLP",
-    "score": 102.5,
+    "name": "Emerge Capital",
+    "score": 102.4,
     "website": "https://emergecapital.vc",
     "hq": "United Kingdom",
     "investorType": "seed_fund",
@@ -251,6 +40,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "5U AI",
         "sells": "AI digital workers handling administrative freight workflows inside existing systems",
         "to": "European freight forwarders and carriers",
@@ -284,6 +74,7 @@
         "role": "led"
       },
       {
+        "via": "web",
         "company": "sufrei",
         "sells": "Agentic AI digital workforce platform automating freight forwarding operations",
         "to": "European freight forwarding teams and carriers",
@@ -316,12 +107,13 @@
     "indiaEvidence": "India deal in corpus",
     "deals": [
       {
+        "via": "web",
         "company": "QuikApp",
         "sells": "Logistics technology platform for tracking, automated dispatch, security, and fleet analytics",
         "to": "Enterprise customers across FMCG, e-commerce, and 3PL",
         "country": "India",
         "stage": "seed",
-        "amount": "\u20b950 lakh",
+        "amount": "₹50 lakh",
         "date": "2026-10-01",
         "urls": [
           "https://bipsiq.com/quikapp-raises-%e2%82%b950-lakh-in-seed-funding-led-by-vehra-ventures/",
@@ -345,16 +137,17 @@
     "website": "https://pluspartners.vc",
     "hq": "Spain",
     "investorType": "seed_fund",
-    "partner": "Enrique Linares",
+    "partner": null,
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Tenoro",
         "sells": "AI agent platform automating supply chain management and operations",
         "to": "Retail, distribution, and manufacturing businesses",
         "country": "Spain",
         "stage": "seed",
-        "amount": "\u20ac1.7M",
+        "amount": "€1.7M",
         "date": "2026-09-30",
         "urls": [
           "https://inforcapital.com/news/tenoro-raises-17-million-for-its-ai-agent-for-supply-chains/"
@@ -376,7 +169,7 @@
   },
   {
     "name": "Corazon Capital",
-    "score": 67.7,
+    "score": 67.6,
     "website": "https://www.corazon.com",
     "hq": "United States",
     "investorType": "seed_fund",
@@ -384,6 +177,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Gaia Dynamics",
         "sells": "AI platform for trade compliance, tariff calculation, and customs audits",
         "to": "importers, customs brokers, and trade teams",
@@ -421,6 +215,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "RSA Cross-Border",
         "sells": "software-first solution and AI tooling for cross-border logistics",
         "to": "freight forwarders, consolidators, and 3PLs",
@@ -441,6 +236,7 @@
         "role": "led"
       },
       {
+        "via": "web",
         "company": "RSA XB",
         "sells": "software platform for cross-border e-commerce logistics",
         "to": "freight forwarders, consolidators and third-party logistics providers",
@@ -466,14 +262,15 @@
   },
   {
     "name": "UP.Partners",
-    "score": 65.1,
+    "score": 65,
     "website": "https://up.partners",
     "hq": "United States",
-    "investorType": "multi_stage",
+    "investorType": "seed_fund",
     "partner": "Will Urban",
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Overroute",
         "sells": "AI-driven freight execution software for routing and load consolidation",
         "to": "Large freight carriers and transportation operators",
@@ -502,7 +299,7 @@
   },
   {
     "name": "Alchemist Accelerator",
-    "score": 64.4,
+    "score": 64.3,
     "website": "https://www.alchemistaccelerator.com",
     "hq": "United States",
     "investorType": "accelerator",
@@ -510,6 +307,7 @@
     "indiaEvidence": "https://www.alchemistaccelerator.com/portfolio",
     "deals": [
       {
+        "via": "web",
         "company": "Kimaru AI",
         "sells": "AI-powered decision intelligence platform for supply chain operations",
         "to": "enterprises managing inventory, pricing, and logistics",
@@ -533,21 +331,22 @@
     ]
   },
   {
-    "name": "High-Tech Gr\u00fcnderfonds Management GmbH",
-    "score": 64.3,
-    "website": null,
+    "name": "High-Tech Gründerfonds",
+    "score": 64.2,
+    "website": "https://www.htgf.de",
     "hq": "Germany",
     "investorType": "seed_fund",
-    "partner": null,
+    "partner": "Markus Kückelhaus",
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Finches",
         "sells": "Risk-monitoring platform spotting agricultural supply risks",
         "to": "manufacturers purchasing agricultural raw materials",
         "country": "Germany",
         "stage": "pre-seed",
-        "amount": "\u20ac2M",
+        "amount": "€2M",
         "date": "2026-10-06",
         "urls": [
           "https://pomegra.io/startups/finches-raises-2m-pre-seed-to-flag-food-supply-risks-early-2026-10-06",
@@ -555,7 +354,7 @@
           "https://credx.media/articles/finches-funding-2m-presseed-crop-failure-supply-chain-ai"
         ],
         "leads": [
-          "High-Tech Gr\u00fcnderfonds",
+          "High-Tech Gründerfonds",
           "Vanagon Ventures"
         ],
         "others": [
@@ -567,13 +366,12 @@
     ],
     "qualifies": false,
     "reasons": [
-      "no verified website",
       "not India-accessible (no India deal or verifiable India mandate)"
     ]
   },
   {
     "name": "Vanagon Ventures",
-    "score": 64.3,
+    "score": 64.2,
     "website": "https://www.vanagon.vc",
     "hq": "Germany",
     "investorType": "seed_fund",
@@ -581,12 +379,13 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Finches",
         "sells": "Risk-monitoring platform spotting agricultural supply risks",
         "to": "manufacturers purchasing agricultural raw materials",
         "country": "Germany",
         "stage": "pre-seed",
-        "amount": "\u20ac2M",
+        "amount": "€2M",
         "date": "2026-10-06",
         "urls": [
           "https://pomegra.io/startups/finches-raises-2m-pre-seed-to-flag-food-supply-risks-early-2026-10-06",
@@ -594,7 +393,7 @@
           "https://credx.media/articles/finches-funding-2m-presseed-crop-failure-supply-chain-ai"
         ],
         "leads": [
-          "High-Tech Gr\u00fcnderfonds",
+          "High-Tech Gründerfonds",
           "Vanagon Ventures"
         ],
         "others": [
@@ -610,65 +409,16 @@
     ]
   },
   {
-    "name": "Base10 Partners Management, LLC",
+    "name": "Base10 Partners",
     "score": 61.8,
-    "website": null,
+    "website": "https://base10.vc",
     "hq": "United States",
     "investorType": "multi_stage",
     "partner": "Adeyemi Ajao",
     "indiaEvidence": "https://economictimes.indiatimes.com/tech/funding/saas-labs-lands-17-million-in-funding-from-base-10-partners-eight-roads-ventures/articleshow/87089024.cms",
     "deals": [
       {
-        "company": "Destro AI Inc.",
-        "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
-        "to": "enterprise warehouse operators",
-        "country": "United States",
-        "stage": "seed",
-        "amount": "$8 million",
-        "date": "2026-09-29",
-        "urls": [
-          "https://aventure.vc/news/2026-09-30-destro-ai-raises-8m-to-coordinate-mixed-robot-fleets-in-enterprise-warehouses",
-          "https://www.vcaonline.com/news/2026092902/destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind/",
-          "https://theaiinsider.tech/2026/09/30/destro-ai-raises-8m-in-seed-funding-to-coordinate-warehouse-robot-fleets/",
-          "https://www.bonfirevc.com/news/why-we-invested-in-destro-ai",
-          "https://unshackledvc.substack.com/p/he-built-robots-out-of-scrap-metal",
-          "https://autonainews.com/how-to-coordinate-warehouse-robot-fleets-with-destro-ais-8m-platform/",
-          "https://ground.news/article/destro-ai-raises-8-million-to-coordinate-mixed-warehouse-robot-fleets",
-          "https://bipsiq.com/destro-ai-raises-8-million-in-seed-funding-led-by-base10-partners-and-bonfire-ventures/",
-          "https://devcuration.com/articles/company-spotlight-destroai-com",
-          "https://www.warehousearc.com/destro-ai-warehouse-robotics-shared-intelligence/",
-          "http://money.mymotherlode.com/clarkebroadcasting.mymotherlode/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
-          "https://digestai.news/story/destro-raises-8m-seed-to-link-robots-and-humans-in-logistics",
-          "https://digg.com/tech/33cdp5o1",
-          "https://hannibal.marketminute.com/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
-          "https://digitalmarketreports.com/news/93152/destro-emerges-from-stealth-with-8-million-to-coordinate-warehouse-robots-and-workers/",
-          "https://vcup.date/2026/10/01/base10-and-bonfire-co-lead-destro-ais-8-million-seed-for-a-robot-agnostic-brain-for-warehouses/"
-        ],
-        "leads": [
-          "Base10 Partners Management",
-          "Bonfire V",
-          "Bonfire Ventures"
-        ],
-        "others": [],
-        "role": "co-led"
-      }
-    ],
-    "qualifies": false,
-    "reasons": [
-      "no verified website",
-      "not India-accessible (no India deal or verifiable India mandate)"
-    ]
-  },
-  {
-    "name": "Bonfire Ventures",
-    "score": 61.8,
-    "website": "https://www.bonfirevc.com",
-    "hq": "United States",
-    "investorType": "seed_fund",
-    "partner": "Jennifer Richard",
-    "indiaEvidence": null,
-    "deals": [
-      {
+        "via": "web",
         "company": "Destro AI Inc.",
         "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
         "to": "enterprise warehouse operators",
@@ -718,6 +468,57 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
+        "company": "Destro AI Inc.",
+        "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
+        "to": "enterprise warehouse operators",
+        "country": "United States",
+        "stage": "seed",
+        "amount": "$8 million",
+        "date": "2026-09-29",
+        "urls": [
+          "https://aventure.vc/news/2026-09-30-destro-ai-raises-8m-to-coordinate-mixed-robot-fleets-in-enterprise-warehouses",
+          "https://www.vcaonline.com/news/2026092902/destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind/",
+          "https://theaiinsider.tech/2026/09/30/destro-ai-raises-8m-in-seed-funding-to-coordinate-warehouse-robot-fleets/",
+          "https://www.bonfirevc.com/news/why-we-invested-in-destro-ai",
+          "https://unshackledvc.substack.com/p/he-built-robots-out-of-scrap-metal",
+          "https://autonainews.com/how-to-coordinate-warehouse-robot-fleets-with-destro-ais-8m-platform/",
+          "https://ground.news/article/destro-ai-raises-8-million-to-coordinate-mixed-warehouse-robot-fleets",
+          "https://bipsiq.com/destro-ai-raises-8-million-in-seed-funding-led-by-base10-partners-and-bonfire-ventures/",
+          "https://devcuration.com/articles/company-spotlight-destroai-com",
+          "https://www.warehousearc.com/destro-ai-warehouse-robotics-shared-intelligence/",
+          "http://money.mymotherlode.com/clarkebroadcasting.mymotherlode/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+          "https://digestai.news/story/destro-raises-8m-seed-to-link-robots-and-humans-in-logistics",
+          "https://digg.com/tech/33cdp5o1",
+          "https://hannibal.marketminute.com/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+          "https://digitalmarketreports.com/news/93152/destro-emerges-from-stealth-with-8-million-to-coordinate-warehouse-robots-and-workers/",
+          "https://vcup.date/2026/10/01/base10-and-bonfire-co-lead-destro-ais-8-million-seed-for-a-robot-agnostic-brain-for-warehouses/"
+        ],
+        "leads": [
+          "Base10 Partners Management",
+          "Bonfire V",
+          "Bonfire Ventures"
+        ],
+        "others": [],
+        "role": "co-led"
+      }
+    ],
+    "qualifies": false,
+    "reasons": [
+      "not India-accessible (no India deal or verifiable India mandate)"
+    ]
+  },
+  {
+    "name": "Bonfire Ventures",
+    "score": 61.8,
+    "website": "https://www.bonfirevc.com",
+    "hq": "United States",
+    "investorType": "seed_fund",
+    "partner": "Jennifer Richard",
+    "indiaEvidence": null,
+    "deals": [
+      {
+        "via": "web",
         "company": "Destro AI Inc.",
         "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
         "to": "enterprise warehouse operators",
@@ -768,6 +569,7 @@
     "indiaEvidence": "India deal in corpus",
     "deals": [
       {
+        "via": "web",
         "company": "FreightFox",
         "sells": "Transportation management system and control tower platform",
         "to": "Large manufacturing enterprises",
@@ -805,12 +607,13 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "FRYTE Mobility",
         "sells": "software coordination layer connecting fleet management systems with charge point operators",
         "to": "eTruck logistics fleets and charge point operators",
         "country": "Germany",
         "stage": "seed",
-        "amount": "\u20ac3.5 million",
+        "amount": "€3.5 million",
         "date": "2026-09-09",
         "urls": [
           "https://proyarn.app/en/deals/fryte-mobility",
@@ -845,12 +648,13 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "FRYTE Mobility",
         "sells": "software coordination layer connecting fleet management systems with charge point operators",
         "to": "eTruck logistics fleets and charge point operators",
         "country": "Germany",
         "stage": "seed",
-        "amount": "\u20ac3.5 million",
+        "amount": "€3.5 million",
         "date": "2026-09-09",
         "urls": [
           "https://proyarn.app/en/deals/fryte-mobility",
@@ -885,6 +689,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Haladir",
         "sells": "operational decision-making software for logistics and supply chain organizations",
         "to": "logistics and supply chain organizations",
@@ -914,14 +719,15 @@
   },
   {
     "name": "Parceiro Ventures",
-    "score": 53,
+    "score": 52.9,
     "website": "https://parceiroventures.com",
     "hq": "United States",
     "investorType": "seed_fund",
-    "partner": null,
+    "partner": "Paul Anderson",
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Einship",
         "sells": "AI native platform combining market intelligence with operational management",
         "to": "importers and exporters",
@@ -957,6 +763,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Intropy",
         "sells": "AI-native operating system for spare parts inventory, purchasing, and pricing decisions",
         "to": "Spare parts distributors",
@@ -984,7 +791,7 @@
   },
   {
     "name": "Field Ventures",
-    "score": 51,
+    "score": 50.9,
     "website": "https://www.fieldvc.com",
     "hq": "United States",
     "investorType": "seed_fund",
@@ -992,6 +799,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Freight Hero",
         "sells": "AI-powered back-office operations management combining AI agents with human operational support",
         "to": "freight brokers",
@@ -1029,6 +837,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Nexcade",
         "sells": "AI agents that automate back-office operations for freight forwarding",
         "to": "freight forwarders",
@@ -1056,8 +865,8 @@
     ]
   },
   {
-    "name": "IW Capital",
-    "score": 45.9,
+    "name": "IW Capital Limited",
+    "score": 45.8,
     "website": "https://iwcapital.co.uk",
     "hq": "United Kingdom",
     "investorType": "multi_stage",
@@ -1065,12 +874,13 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Gonini",
         "sells": "Fulfilment operating system connecting sellers to a fulfilment network",
         "to": "Direct-to-consumer brands and ecommerce sellers",
         "country": "unknown",
         "stage": "seed",
-        "amount": "\u00a33.3m",
+        "amount": "£3.3m",
         "date": "2026-07-08",
         "urls": [
           "https://www.startupmag.co.uk/funding/gonini-2026-seed-funding/"
@@ -1094,9 +904,10 @@
     "hq": "United States",
     "investorType": "seed_fund",
     "partner": "Mo Koyfman",
-    "indiaEvidence": null,
+    "indiaEvidence": "https://economictimes.indiatimes.com/tech/funding/billing-startup-zenskar-raises-3-5-million-in-funding-led-by-bessemer/articleshow/94634283.cms",
     "deals": [
       {
+        "via": "web",
         "company": "Octup",
         "sells": "AI-powered operating system for 3PL fulfillment operations",
         "to": "third-party logistics providers",
@@ -1134,6 +945,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Octup",
         "sells": "AI-powered operating system for 3PL fulfillment operations",
         "to": "third-party logistics providers",
@@ -1171,6 +983,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Arqh",
         "sells": "Agentic optimization engine automating and re-planning daily dispatch and logistics operations",
         "to": "logistics companies and dispatchers",
@@ -1205,12 +1018,13 @@
     "indiaEvidence": "https://www.speedinvest.com/portfolio/open",
     "deals": [
       {
+        "via": "web",
         "company": "Kyrok",
         "sells": "AI operating system for supply chain management in pharma and chemicals",
         "to": "pharmaceutical and chemical SMEs",
         "country": "Germany",
         "stage": "pre-seed",
-        "amount": "\u20ac3.1 million",
+        "amount": "€3.1 million",
         "date": "2026-06-23",
         "urls": [
           "https://kyrok.com/en/press/2026/06/kyrok-announces-3-1m-seed-round-ai-operating-system-pharma-chemical-smes"
@@ -1221,7 +1035,7 @@
         "others": [
           "Arve Capital",
           "Dr. Marcell Vollmer",
-          "Dr Andr\u00e9 Heeg",
+          "Dr André Heeg",
           "Dr Stephan Rohr",
           "Jonas Beisswenger",
           "Tobias Kemkes",
@@ -1247,6 +1061,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Cargoz",
         "sells": "digital freight forwarding and cargo management platform",
         "to": "shippers and carriers",
@@ -1279,6 +1094,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Fincart",
         "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
         "to": "e-commerce merchants",
@@ -1319,10 +1135,11 @@
     "website": "https://apyventures.com",
     "hq": "Turkey",
     "investorType": "seed_fund",
-    "partner": "Mustafa Ke\u00e7eli",
+    "partner": "Mustafa Keçeli",
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Nuvolog",
         "sells": "Modular platform managing end-to-end logistics operations from a single dashboard",
         "to": "Manufacturers, exporters, and e-commerce companies",
@@ -1339,7 +1156,7 @@
         "others": [
           "THY GSYF",
           "Start-Up GSYF",
-          "Fuat Pamuk\u00e7u",
+          "Fuat Pamukçu",
           "Ahmet Arslan"
         ],
         "role": "led"
@@ -1352,14 +1169,15 @@
   },
   {
     "name": "Sitara Capital",
-    "score": 33.4,
+    "score": 33.3,
     "website": "https://sitaracap.com",
     "hq": "Singapore",
     "investorType": "multi_stage",
     "partner": null,
-    "indiaEvidence": "https://economictimes.indiatimes.com/tech/funding/rivvun-ai-raises-7-55-million-led-by-sitara-capital-3one4-capital/articleshow/131637089.cms",
+    "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Rivvun AI",
         "sells": "Autonomous AI execution layer recovering leaked revenue and procurement spend",
         "to": "Fortune 1000 enterprises",
@@ -1371,7 +1189,8 @@
           "https://startuppoint.in/rivvun-ai-secures-7-55-million-to-build/",
           "https://fundingtimes.in/former-icertis-executives-startup-rivvun-ai-raises-7-55-million-in-seed-funding/",
           "https://newsx.io/2026/06/11/former-icertis-executives-startup-rivvun-ai-raises-7-55-mn-in-seed-funding/",
-          "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/"
+          "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/",
+          "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-8-june-13-12033344"
         ],
         "leads": [
           "Sitara Capital",
@@ -1388,7 +1207,7 @@
   },
   {
     "name": "SHARE Investment Co.",
-    "score": 32.8,
+    "score": 32.7,
     "website": null,
     "hq": "Saudi Arabia",
     "investorType": "cvc_strategic",
@@ -1396,6 +1215,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Viero",
         "sells": "Platform to unify fleet operations and vehicle payments",
         "to": "fleet operators",
@@ -1425,6 +1245,7 @@
         "role": "co-led"
       },
       {
+        "via": "web",
         "company": "Viero",
         "sells": "Platform to unify fleet operations and vehicle payments",
         "to": "fleet operators",
@@ -1471,6 +1292,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Corvera",
         "sells": "Agentic AI supply chain management platform automating back-office operational workflows",
         "to": "Consumer packaged goods brands",
@@ -1509,12 +1331,13 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Opereit",
         "sells": "AI-driven platform for logistics management and supply chain automation",
         "to": "Businesses across e-commerce, manufacturing, and other industries",
         "country": "Spain",
         "stage": "seed",
-        "amount": "\u20ac2.2M",
+        "amount": "€2.2M",
         "date": "2026-06-03",
         "urls": [
           "https://inforcapital.com/news/opereit-capta-22-millones-de-euros-para-automatizar-la-gesti%C3%B3n-log%C3%ADstica-con-inteligencia-artificial/",
@@ -1547,16 +1370,17 @@
     "website": "https://yellow.vc",
     "hq": "Spain",
     "investorType": "seed_fund",
-    "partner": "Oscar Pierre",
+    "partner": null,
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Opereit",
         "sells": "AI-driven platform for logistics management and supply chain automation",
         "to": "Businesses across e-commerce, manufacturing, and other industries",
         "country": "Spain",
         "stage": "seed",
-        "amount": "\u20ac2.2M",
+        "amount": "€2.2M",
         "date": "2026-06-03",
         "urls": [
           "https://inforcapital.com/news/opereit-capta-22-millones-de-euros-para-automatizar-la-gesti%C3%B3n-log%C3%ADstica-con-inteligencia-artificial/",
@@ -1585,14 +1409,15 @@
   },
   {
     "name": "Backed VC",
-    "score": 32,
+    "score": 31.9,
     "website": "https://www.backed.vc",
     "hq": "United Kingdom",
     "investorType": "seed_fund",
     "partner": null,
-    "indiaEvidence": "https://www.scopely.com/en/news/scopely-invests-in-building-the-largest-blockchain-guild-in-india-joining-indiggs-financing-round",
+    "indiaEvidence": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFCIw36aeMZhbdZJ6RpRHx44slh4CZH2cbVTRoggabfAhKKbKl-hUQhtTFiDbBtMB3rfJMP7kPH43SUiVBIVofBtaJPnr8v3WLdmUnw5ylJUzZV2B5MqEkv8sPeJvvPZjHwQRwqwzfFeD6MDtRdG1WAWi37eSViTAMnsQZ0_SLL7ym8N6On9aQBz0Ks2RwhCs--mWtVP4hdpo7tNQwLJZXdvR5bK6h_40FGa8M_fAGdzPBUjWLv6QFp",
     "deals": [
       {
+        "via": "web",
         "company": "GingerControl",
         "sells": "AI software automating global trade compliance and customs workflows",
         "to": "importers, customs brokers, manufacturers, and trade professionals",
@@ -1628,6 +1453,7 @@
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Implentio",
         "sells": "AI-powered shipper-side reconciliation platform for logistics invoices",
         "to": "ecommerce brands",
@@ -1658,10 +1484,11 @@
     "website": "https://www.lasolasvc.com",
     "hq": "United States",
     "investorType": "seed_fund",
-    "partner": "Nate Vasel",
+    "partner": "Dean Hatton",
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "BITE Data",
         "sells": "AI-native SaaS platform automating global trade compliance workflows",
         "to": "companies navigating import and export regulations",
@@ -1692,11 +1519,12 @@
     "score": 25.4,
     "website": "https://www.innovationendeavors.com",
     "hq": "United States",
-    "investorType": "multi_stage",
+    "investorType": "seed_fund",
     "partner": "Harpinder Singh",
     "indiaEvidence": null,
     "deals": [
       {
+        "via": "web",
         "company": "Conduit",
         "sells": "dock and yard management system",
         "to": "warehouses",
@@ -1733,6 +1561,7 @@
     "indiaEvidence": "India deal in corpus",
     "deals": [
       {
+        "via": "web",
         "company": "Lawyered",
         "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
         "to": "vehicle owners, drivers, and fleet operators",
@@ -1759,6 +1588,45 @@
     ]
   },
   {
+    "name": "RDY Ventures",
+    "score": 22.9,
+    "website": "https://rdy.vc",
+    "hq": "Belgium",
+    "investorType": "seed_fund",
+    "partner": null,
+    "indiaEvidence": null,
+    "deals": [
+      {
+        "via": "web",
+        "company": "Vectrix",
+        "sells": "AI pre-TMS software automating manual transport order entry",
+        "to": "logistics and transport operators",
+        "country": "Belgium",
+        "stage": "seed",
+        "amount": "€1.15 million",
+        "date": "2026-03-05",
+        "urls": [
+          "https://www.eu-startups.com/2026/03/antwerp-based-vectrix-raises-e1-15-million-to-build-the-automation-layer-for-transport-operations/",
+          "https://tech.eu/2026/03/05/belgian-logistics-startup-vectrix-raises-eur115m-seed-funding/",
+          "https://pulse2.com/vectrix-e1-15-million-raised-for-ai-transport-order-automation-platform/"
+        ],
+        "leads": [
+          "RDY Ventures"
+        ],
+        "others": [
+          "Seeder Fund",
+          "PMV",
+          "Prequel Ventures"
+        ],
+        "role": "led"
+      }
+    ],
+    "qualifies": false,
+    "reasons": [
+      "not India-accessible (no India deal or verifiable India mandate)"
+    ]
+  },
+  {
     "name": "100Unicorns",
     "score": 16,
     "website": null,
@@ -1768,6 +1636,7 @@
     "indiaEvidence": "India deal in corpus",
     "deals": [
       {
+        "via": "web",
         "company": "1Buy.AI",
         "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
         "to": "enterprises and electronics players",
@@ -1801,7 +1670,7 @@
     ],
     "qualifies": false,
     "reasons": [
-      "duplicate of 100Unicorns"
+      "no verified website"
     ]
   }
 ]

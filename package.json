@@ -21,7 +21,8 @@
     "swap:undo": "tsx --env-file=.env.local scripts/apply-swap.ts --undo",
     "export:list": "tsx --env-file=.env.local scripts/export-list.ts",
     "ui:check": "tsx scripts/ui-checks.ts",
-    "proofs": "tsx --env-file=.env.local scripts/proofs.ts"
+    "proofs": "tsx --env-file=.env.local scripts/proofs.ts",
+    "roundup-lookup": "tsx --env-file=.env.local scripts/roundup-lookup.ts"
   },
   "engines": {
     "node": "22.x"

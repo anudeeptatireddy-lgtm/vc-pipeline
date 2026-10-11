@@ -1,0 +1,84 @@
+{
+  "round": 2,
+  "createdAt": "2026-10-11T17:33:33.568639Z",
+  "rule": "n = min(rows failing the hard filters or flagged, qualifying candidates, 15); failed re-checks go first, lowest score first",
+  "out": [
+    {
+      "key": "vc54",
+      "firm": "Turbostart",
+      "reason": "failed re-check: round is \"pre-Series A\", not pre-seed/seed (evidence: https://entrepreneur.economictimes.indiatimes.com/amp/news/funding/lawyered-secures-25-million-pre-series-a-funding-to-revolutionize-legal-solutions-for-indias-mobility-sector/130410540)"
+    }
+  ],
+  "notSwappedOutButFlagged": [
+    {
+      "key": "vc53",
+      "firm": "Chiratae Ventures",
+      "reason": "failed re-check: round is \"pre-Series A\", not pre-seed/seed (evidence: https://inc42.com/buzz/exclusive-ai-startup-contravault-raises-3-1-mn-to-expand-in-the-us/)"
+    }
+  ],
+  "in": [
+    {
+      "name": "BEENEXT",
+      "score": 41.5,
+      "website": "https://www.beenext.com",
+      "hq": "Singapore",
+      "investorType": "seed_fund",
+      "partner": null,
+      "indiaEvidence": "India deal in corpus",
+      "deals": [
+        {
+          "company": "CREST",
+          "sells": "Automated inventory planning software",
+          "to": "D2C and retail businesses",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "$3.1 million",
+          "date": "2026-06-20",
+          "urls": [
+            "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-15-june-20-12056007"
+          ],
+          "leads": [
+            "BEENEXT"
+          ],
+          "others": [],
+          "via": "roundup",
+          "role": "led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": []
+    }
+  ],
+  "quietKept": [
+    {
+      "key": "vc13",
+      "firm": "Orios Venture Partners",
+      "why": "Real logistics investor (latest: Xindus 2026-08-04; NowPurchase 2026-04-02) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc04",
+      "firm": "Mela Ventures",
+      "why": "Real logistics investor (latest: Tessol 2025-10-27) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc05",
+      "firm": "NB Ventures",
+      "why": "Real logistics investor (latest: Edgistify 2026-01-12) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc15",
+      "firm": "Nexus Venture Partners",
+      "why": "Real logistics investor (latest: Freehand 2026-07-29) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc14",
+      "firm": "Z47 (Matrix Partners India)",
+      "why": "Real logistics investor (latest: Wootzwork 2026-02-26) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc42",
+      "firm": "Inflection Point Ventures",
+      "why": "Real logistics investor (latest: DAAKit 2026-04-09; OORJAA 2026-08-27) but no B2B-logistics signal in the last 30 days"
+    }
+  ]
+}

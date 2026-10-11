@@ -1,8 +1,13 @@
 {
-  "generatedAt": "2026-10-11T14:41:43.444Z",
+  "generatedAt": "2026-10-11T17:29:00.541Z",
   "windowDays": 365,
+  "sources": [
+    "web search (Exa)",
+    "Inc42 + Entrackr weekly roundups"
+  ],
   "deals": [
     {
+      "via": "web",
       "company": "Zinit",
       "sells": "AI-native sourcing and procurement platform",
       "to": "Enterprises and businesses",
@@ -29,6 +34,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Cavela",
       "sells": "AI agents that automate supplier sourcing and negotiation",
       "to": "brands, small and midsize companies",
@@ -48,6 +54,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Hexalog",
       "sells": "AI-driven orchestration layer for cross-border logistics",
       "to": "supply chain participants operating across borders",
@@ -80,6 +87,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "ContraVault AI",
       "sells": "AI-powered procurement intelligence and tender bidding software",
       "to": "businesses across construction, energy, power, defence and aerospace",
@@ -99,6 +107,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "OneARVO",
       "sells": "tamper-proof and copy-proof supply chain labelling system",
       "to": "brands in pharmaceuticals, automotive aftermarket, and industrial manufacturing",
@@ -117,6 +126,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Constems-AI",
       "sells": "retail and supply chain automation platform using vision AI",
       "to": "consumer brands and CPG companies",
@@ -140,6 +150,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Confluxe",
       "sells": "Platform providing market entry strategy, digital commerce, merchandising, and supply chain operations",
       "to": "international fashion and lifestyle brands",
@@ -159,6 +170,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "1Buy.AI",
       "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
       "to": "enterprises and electronics players",
@@ -189,6 +201,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Reneonix",
       "sells": "AI-led circular materials platform for glass recycling, processing, and traceability",
       "to": "brands and manufacturers",
@@ -210,6 +223,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Digicust",
       "sells": "AI-driven customs automation platform",
       "to": "logistics providers, customs brokers, and exporters",
@@ -229,6 +243,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Another",
       "sells": "Software to manage, track, and sell off-channel or excess retail inventory",
       "to": "Retail brands and businesses",
@@ -246,6 +261,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Lawyered",
       "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
       "to": "vehicle owners, drivers, and fleet operators",
@@ -265,6 +281,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "RSA Cross-Border",
       "sells": "software-first solution and AI tooling for cross-border logistics",
       "to": "freight forwarders, consolidators, and 3PLs",
@@ -284,6 +301,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Mentium",
       "sells": "no-code AI agents for logistics workflows",
       "to": "freight brokerages",
@@ -307,6 +325,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Spot Ship",
       "sells": "AI-powered software for ship chartering workflows",
       "to": "brokers, charterers, owners and operators",
@@ -327,6 +346,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "MeltPlan",
       "sells": "AI-driven logistics transformation",
       "to": "",
@@ -343,6 +363,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "CargoFL",
       "sells": "logistics technology platform to optimize freight and supply chain operations",
       "to": "shippers and transporters",
@@ -359,6 +380,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "QuikApp",
       "sells": "Logistics technology platform for tracking, automated dispatch, security, and fleet analytics",
       "to": "Enterprise customers across FMCG, e-commerce, and 3PL",
@@ -376,6 +398,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "RSA XB",
       "sells": "software platform for cross-border e-commerce logistics",
       "to": "freight forwarders, consolidators and third-party logistics providers",
@@ -393,6 +416,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "FreightFox",
       "sells": "Transportation management system and control tower platform",
       "to": "Large manufacturing enterprises",
@@ -414,6 +438,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Einship",
       "sells": "AI native platform combining market intelligence with operational management",
       "to": "importers and exporters",
@@ -433,6 +458,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Procure AI",
       "sells": "procurement automation software",
       "to": "enterprises",
@@ -456,6 +482,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "SuperProcure",
       "sells": "Unified TMS and freight lifecycle management software",
       "to": "enterprises",
@@ -475,6 +502,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Implentio",
       "sells": "AI-powered shipper-side reconciliation platform for logistics invoices",
       "to": "ecommerce brands",
@@ -493,6 +521,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Rivvun AI",
       "sells": "Autonomous AI execution layer recovering leaked revenue and procurement spend",
       "to": "Fortune 1000 enterprises",
@@ -504,7 +533,8 @@
         "https://startuppoint.in/rivvun-ai-secures-7-55-million-to-build/",
         "https://fundingtimes.in/former-icertis-executives-startup-rivvun-ai-raises-7-55-million-in-seed-funding/",
         "https://newsx.io/2026/06/11/former-icertis-executives-startup-rivvun-ai-raises-7-55-mn-in-seed-funding/",
-        "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/"
+        "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/",
+        "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-8-june-13-12033344"
       ],
       "leads": [
         "Sitara Capital",
@@ -513,6 +543,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Compri",
       "sells": "AI-powered procurement software for industrial companies",
       "to": "industrial companies",
@@ -534,6 +565,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Jampack AI",
       "sells": "agentic platform automating wholesale operations and supply chain processes",
       "to": "CPG brands",
@@ -557,6 +589,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Vectrix",
       "sells": "AI pre-TMS software automating manual transport order entry",
       "to": "logistics and transport operators",
@@ -579,6 +612,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Velix",
       "sells": "AI-powered financial operations and invoice reconciliation platform",
       "to": "third-party logistics providers",
@@ -602,6 +636,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "FreightSuite",
       "sells": "TMS software for the freight market",
       "to": "freight and logistics companies",
@@ -623,6 +658,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Pinch AI",
       "sells": "AI pricing engine and tools for freight and transportation rates",
       "to": "shippers, carriers, and brokers",
@@ -640,6 +676,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Anchr",
       "sells": "AI-native operating system automating ERP workflows and supply chain operations",
       "to": "food distributors",
@@ -667,6 +704,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "5U AI",
       "sells": "AI digital workers handling administrative freight workflows inside existing systems",
       "to": "European freight forwarders and carriers",
@@ -699,6 +737,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Freight Hero",
       "sells": "AI-powered back-office operations management combining AI agents with human operational support",
       "to": "freight brokers",
@@ -720,6 +759,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Pull Logic",
       "sells": "AI-powered availability intelligence platform for supply chain inventory and replenishment",
       "to": "manufacturers, distributors, and retailers",
@@ -744,6 +784,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Certivo",
       "sells": "AI-native compliance system of record for global supply chains",
       "to": "manufacturing and construction enterprises",
@@ -762,6 +803,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Overroute",
       "sells": "AI-driven freight execution software for routing and load consolidation",
       "to": "Large freight carriers and transportation operators",
@@ -782,6 +824,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Intropy",
       "sells": "AI-native operating system for spare parts inventory, purchasing, and pricing decisions",
       "to": "Spare parts distributors",
@@ -801,6 +844,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Corvera",
       "sells": "Agentic AI supply chain management platform automating back-office operational workflows",
       "to": "Consumer packaged goods brands",
@@ -823,6 +867,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Nuvolog",
       "sells": "Modular platform managing end-to-end logistics operations from a single dashboard",
       "to": "Manufacturers, exporters, and e-commerce companies",
@@ -844,6 +889,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Tenoro",
       "sells": "AI agent platform automating supply chain management and operations",
       "to": "Retail, distribution, and manufacturing businesses",
@@ -863,6 +909,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Opereit",
       "sells": "AI-driven platform for logistics management and supply chain automation",
       "to": "Businesses across e-commerce, manufacturing, and other industries",
@@ -889,6 +936,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Finches",
       "sells": "Risk-monitoring platform spotting agricultural supply risks",
       "to": "manufacturers purchasing agricultural raw materials",
@@ -911,6 +959,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Kyrok",
       "sells": "AI operating system for supply chain management in pharma and chemicals",
       "to": "pharmaceutical and chemical SMEs",
@@ -937,6 +986,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Logistica OS",
       "sells": "AI agents to automate repetitive workflows in supply chain operations",
       "to": "Supply chain and logistics companies",
@@ -963,6 +1013,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Conduit",
       "sells": "dock and yard management system",
       "to": "warehouses",
@@ -983,6 +1034,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Viero",
       "sells": "Platform to unify fleet operations and vehicle payments",
       "to": "fleet operators",
@@ -1011,6 +1063,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Destro AI Inc.",
       "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
       "to": "enterprise warehouse operators",
@@ -1044,6 +1097,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Haladir",
       "sells": "operational decision-making software for logistics and supply chain organizations",
       "to": "logistics and supply chain organizations",
@@ -1065,6 +1119,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Gonini",
       "sells": "Fulfilment operating system connecting sellers to a fulfilment network",
       "to": "Direct-to-consumer brands and ecommerce sellers",
@@ -1081,6 +1136,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "sufrei",
       "sells": "Agentic AI digital workforce platform automating freight forwarding operations",
       "to": "European freight forwarding teams and carriers",
@@ -1097,6 +1153,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "FRYTE Mobility",
       "sells": "software coordination layer connecting fleet management systems with charge point operators",
       "to": "eTruck logistics fleets and charge point operators",
@@ -1121,6 +1178,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Arqh",
       "sells": "Agentic optimization engine automating and re-planning daily dispatch and logistics operations",
       "to": "logistics companies and dispatchers",
@@ -1139,6 +1197,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Nexcade",
       "sells": "AI agents that automate back-office operations for freight forwarding",
       "to": "freight forwarders",
@@ -1159,6 +1218,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Amari AI",
       "sells": "AI agents automating customs paperwork and monitoring trade rules",
       "to": "Customs brokers",
@@ -1177,6 +1237,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Octup",
       "sells": "AI-powered operating system for 3PL fulfillment operations",
       "to": "third-party logistics providers",
@@ -1198,6 +1259,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "CoRun.ai",
       "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
       "to": "fleet carriers and operators",
@@ -1216,6 +1278,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "BITE Data",
       "sells": "AI-native SaaS platform automating global trade compliance workflows",
       "to": "companies navigating import and export regulations",
@@ -1235,6 +1298,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "GingerControl",
       "sells": "AI software automating global trade compliance and customs workflows",
       "to": "importers, customs brokers, manufacturers, and trade professionals",
@@ -1254,6 +1318,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "DiversiFi",
       "sells": "AI billing and profitability software for logistics providers",
       "to": "third-party logistics providers",
@@ -1272,6 +1337,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Gaia Dynamics",
       "sells": "AI platform for trade compliance, tariff calculation, and customs audits",
       "to": "importers, customs brokers, and trade teams",
@@ -1293,6 +1359,7 @@
       ]
     },
     {
+      "via": "web",
       "company": "Kimaru AI",
       "sells": "AI-powered decision intelligence platform for supply chain operations",
       "to": "enterprises managing inventory, pricing, and logistics",
@@ -1309,6 +1376,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Cargoz",
       "sells": "digital freight forwarding and cargo management platform",
       "to": "shippers and carriers",
@@ -1325,6 +1393,7 @@
       "others": []
     },
     {
+      "via": "web",
       "company": "Fincart",
       "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
       "to": "e-commerce merchants",
@@ -1351,14 +1420,32 @@
         "Hi2 Global",
         "Kalahari Venture Labs"
       ]
+    },
+    {
+      "company": "CREST",
+      "sells": "Automated inventory planning software",
+      "to": "D2C and retail businesses",
+      "country": "India",
+      "stage": "pre-seed",
+      "amount": "$3.1 million",
+      "date": "2026-06-20",
+      "urls": [
+        "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-15-june-20-12056007"
+      ],
+      "leads": [
+        "BEENEXT"
+      ],
+      "others": [],
+      "via": "roundup"
     }
   ],
   "investors": [
     {
       "name": "Emerge Capital",
-      "score": 102.5,
+      "score": 102.4,
       "deals": [
         {
+          "via": "web",
           "company": "5U AI",
           "sells": "AI digital workers handling administrative freight workflows inside existing systems",
           "to": "European freight forwarders and carriers",
@@ -1392,6 +1479,7 @@
           "role": "led"
         },
         {
+          "via": "web",
           "company": "sufrei",
           "sells": "Agentic AI digital workforce platform automating freight forwarding operations",
           "to": "European freight forwarding teams and carriers",
@@ -1418,6 +1506,7 @@
       "score": 73.5,
       "deals": [
         {
+          "via": "web",
           "company": "QuikApp",
           "sells": "Logistics technology platform for tracking, automated dispatch, security, and fleet analytics",
           "to": "Enterprise customers across FMCG, e-commerce, and 3PL",
@@ -1445,6 +1534,7 @@
       "score": 73.1,
       "deals": [
         {
+          "via": "web",
           "company": "Tenoro",
           "sells": "AI agent platform automating supply chain management and operations",
           "to": "Retail, distribution, and manufacturing businesses",
@@ -1471,9 +1561,10 @@
     },
     {
       "name": "Corazon Capital",
-      "score": 67.7,
+      "score": 67.6,
       "deals": [
         {
+          "via": "web",
           "company": "Gaia Dynamics",
           "sells": "AI platform for trade compliance, tariff calculation, and customs audits",
           "to": "importers, customs brokers, and trade teams",
@@ -1505,6 +1596,7 @@
       "score": 65.5,
       "deals": [
         {
+          "via": "web",
           "company": "RSA Cross-Border",
           "sells": "software-first solution and AI tooling for cross-border logistics",
           "to": "freight forwarders, consolidators, and 3PLs",
@@ -1525,6 +1617,7 @@
           "role": "led"
         },
         {
+          "via": "web",
           "company": "RSA XB",
           "sells": "software platform for cross-border e-commerce logistics",
           "to": "freight forwarders, consolidators and third-party logistics providers",
@@ -1549,9 +1642,10 @@
     },
     {
       "name": "UP.Partners",
-      "score": 65.1,
+      "score": 65,
       "deals": [
         {
+          "via": "web",
           "company": "Overroute",
           "sells": "AI-driven freight execution software for routing and load consolidation",
           "to": "Large freight carriers and transportation operators",
@@ -1579,9 +1673,10 @@
     },
     {
       "name": "Alchemist Accelerator",
-      "score": 64.4,
+      "score": 64.3,
       "deals": [
         {
+          "via": "web",
           "company": "Kimaru AI",
           "sells": "AI-powered decision intelligence platform for supply chain operations",
           "to": "enterprises managing inventory, pricing, and logistics",
@@ -1605,9 +1700,10 @@
     },
     {
       "name": "High-Tech Gründerfonds",
-      "score": 64.3,
+      "score": 64.2,
       "deals": [
         {
+          "via": "web",
           "company": "Finches",
           "sells": "Risk-monitoring platform spotting agricultural supply risks",
           "to": "manufacturers purchasing agricultural raw materials",
@@ -1637,9 +1733,10 @@
     },
     {
       "name": "Vanagon Ventures",
-      "score": 64.3,
+      "score": 64.2,
       "deals": [
         {
+          "via": "web",
           "company": "Finches",
           "sells": "Risk-monitoring platform spotting agricultural supply risks",
           "to": "manufacturers purchasing agricultural raw materials",
@@ -1672,6 +1769,7 @@
       "score": 64,
       "deals": [
         {
+          "via": "web",
           "company": "Cavela",
           "sells": "AI agents that automate supplier sourcing and negotiation",
           "to": "brands, small and midsize companies",
@@ -1692,6 +1790,7 @@
           "role": "co-led"
         },
         {
+          "via": "web",
           "company": "Haladir",
           "sells": "operational decision-making software for logistics and supply chain organizations",
           "to": "logistics and supply chain organizations",
@@ -1723,6 +1822,7 @@
       "score": 61.8,
       "deals": [
         {
+          "via": "web",
           "company": "Destro AI Inc.",
           "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
           "to": "enterprise warehouse operators",
@@ -1766,6 +1866,7 @@
       "score": 61.8,
       "deals": [
         {
+          "via": "web",
           "company": "Destro AI Inc.",
           "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
           "to": "enterprise warehouse operators",
@@ -1809,6 +1910,7 @@
       "score": 61.8,
       "deals": [
         {
+          "via": "web",
           "company": "Destro AI Inc.",
           "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
           "to": "enterprise warehouse operators",
@@ -1852,6 +1954,7 @@
       "score": 55.4,
       "deals": [
         {
+          "via": "web",
           "company": "FreightFox",
           "sells": "Transportation management system and control tower platform",
           "to": "Large manufacturing enterprises",
@@ -1883,6 +1986,7 @@
       "score": 55.3,
       "deals": [
         {
+          "via": "web",
           "company": "FRYTE Mobility",
           "sells": "software coordination layer connecting fleet management systems with charge point operators",
           "to": "eTruck logistics fleets and charge point operators",
@@ -1917,6 +2021,7 @@
       "score": 55.3,
       "deals": [
         {
+          "via": "web",
           "company": "FRYTE Mobility",
           "sells": "software coordination layer connecting fleet management systems with charge point operators",
           "to": "eTruck logistics fleets and charge point operators",
@@ -1951,6 +2056,7 @@
       "score": 53.2,
       "deals": [
         {
+          "via": "web",
           "company": "Haladir",
           "sells": "operational decision-making software for logistics and supply chain organizations",
           "to": "logistics and supply chain organizations",
@@ -1979,9 +2085,10 @@
     },
     {
       "name": "Parceiro Ventures",
-      "score": 53,
+      "score": 52.9,
       "deals": [
         {
+          "via": "web",
           "company": "Einship",
           "sells": "AI native platform combining market intelligence with operational management",
           "to": "importers and exporters",
@@ -2011,6 +2118,7 @@
       "score": 51.8,
       "deals": [
         {
+          "via": "web",
           "company": "Intropy",
           "sells": "AI-native operating system for spare parts inventory, purchasing, and pricing decisions",
           "to": "Spare parts distributors",
@@ -2037,9 +2145,10 @@
     },
     {
       "name": "Field Ventures",
-      "score": 51,
+      "score": 50.9,
       "deals": [
         {
+          "via": "web",
           "company": "Freight Hero",
           "sells": "AI-powered back-office operations management combining AI agents with human operational support",
           "to": "freight brokers",
@@ -2071,6 +2180,7 @@
       "score": 47.1,
       "deals": [
         {
+          "via": "web",
           "company": "Nexcade",
           "sells": "AI agents that automate back-office operations for freight forwarding",
           "to": "freight forwarders",
@@ -2098,9 +2208,10 @@
     },
     {
       "name": "IW Capital",
-      "score": 45.9,
+      "score": 45.8,
       "deals": [
         {
+          "via": "web",
           "company": "Gonini",
           "sells": "Fulfilment operating system connecting sellers to a fulfilment network",
           "to": "Direct-to-consumer brands and ecommerce sellers",
@@ -2127,6 +2238,7 @@
       "score": 44,
       "deals": [
         {
+          "via": "web",
           "company": "Octup",
           "sells": "AI-powered operating system for 3PL fulfillment operations",
           "to": "third-party logistics providers",
@@ -2158,6 +2270,7 @@
       "score": 44,
       "deals": [
         {
+          "via": "web",
           "company": "Octup",
           "sells": "AI-powered operating system for 3PL fulfillment operations",
           "to": "third-party logistics providers",
@@ -2189,6 +2302,7 @@
       "score": 43.4,
       "deals": [
         {
+          "via": "web",
           "company": "Arqh",
           "sells": "Agentic optimization engine automating and re-planning daily dispatch and logistics operations",
           "to": "logistics companies and dispatchers",
@@ -2217,6 +2331,7 @@
       "score": 42.4,
       "deals": [
         {
+          "via": "web",
           "company": "CargoFL",
           "sells": "logistics technology platform to optimize freight and supply chain operations",
           "to": "shippers and transporters",
@@ -2236,13 +2351,14 @@
       ],
       "kind": "fund",
       "india": true,
-      "onList": null
+      "onList": "YourNest Venture Capital"
     },
     {
       "name": "Picus Capital",
       "score": 42.4,
       "deals": [
         {
+          "via": "web",
           "company": "Compri",
           "sells": "AI-powered procurement software for industrial companies",
           "to": "industrial companies",
@@ -2267,13 +2383,14 @@
       ],
       "kind": "fund",
       "india": false,
-      "onList": null
+      "onList": "Picus Capital"
     },
     {
       "name": "Speedinvest",
       "score": 42.2,
       "deals": [
         {
+          "via": "web",
           "company": "Kyrok",
           "sells": "AI operating system for supply chain management in pharma and chemicals",
           "to": "pharmaceutical and chemical SMEs",
@@ -2306,10 +2423,38 @@
       "onList": null
     },
     {
+      "name": "BEENEXT",
+      "score": 41.5,
+      "deals": [
+        {
+          "company": "CREST",
+          "sells": "Automated inventory planning software",
+          "to": "D2C and retail businesses",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "$3.1 million",
+          "date": "2026-06-20",
+          "urls": [
+            "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-15-june-20-12056007"
+          ],
+          "leads": [
+            "BEENEXT"
+          ],
+          "others": [],
+          "via": "roundup",
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
       "name": "Inflection Point Ventures",
       "score": 40.9,
       "deals": [
         {
+          "via": "web",
           "company": "OneARVO",
           "sells": "tamper-proof and copy-proof supply chain labelling system",
           "to": "brands in pharmaceuticals, automotive aftermarket, and industrial manufacturing",
@@ -2329,6 +2474,7 @@
           "role": "led"
         },
         {
+          "via": "web",
           "company": "Reneonix",
           "sells": "AI-led circular materials platform for glass recycling, processing, and traceability",
           "to": "brands and manufacturers",
@@ -2360,6 +2506,7 @@
       "score": 40.6,
       "deals": [
         {
+          "via": "web",
           "company": "ContraVault AI",
           "sells": "AI-powered procurement intelligence and tender bidding software",
           "to": "businesses across construction, energy, power, defence and aerospace",
@@ -2382,13 +2529,14 @@
       ],
       "kind": "fund",
       "india": true,
-      "onList": null
+      "onList": "Chiratae Ventures"
     },
     {
       "name": "Nama Ventures",
       "score": 38.4,
       "deals": [
         {
+          "via": "web",
           "company": "Cargoz",
           "sells": "digital freight forwarding and cargo management platform",
           "to": "shippers and carriers",
@@ -2415,6 +2563,7 @@
       "score": 37.5,
       "deals": [
         {
+          "via": "web",
           "company": "Fincart",
           "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
           "to": "e-commerce merchants",
@@ -2453,6 +2602,7 @@
       "score": 37.5,
       "deals": [
         {
+          "via": "web",
           "company": "Fincart",
           "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
           "to": "e-commerce merchants",
@@ -2491,6 +2641,7 @@
       "score": 37.5,
       "deals": [
         {
+          "via": "web",
           "company": "Fincart",
           "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
           "to": "e-commerce merchants",
@@ -2529,6 +2680,7 @@
       "score": 37.5,
       "deals": [
         {
+          "via": "web",
           "company": "Fincart",
           "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
           "to": "e-commerce merchants",
@@ -2567,6 +2719,7 @@
       "score": 35.3,
       "deals": [
         {
+          "via": "web",
           "company": "Nuvolog",
           "sells": "Modular platform managing end-to-end logistics operations from a single dashboard",
           "to": "Manufacturers, exporters, and e-commerce companies",
@@ -2595,9 +2748,10 @@
     },
     {
       "name": "Sitara Capital",
-      "score": 33.4,
+      "score": 33.3,
       "deals": [
         {
+          "via": "web",
           "company": "Rivvun AI",
           "sells": "Autonomous AI execution layer recovering leaked revenue and procurement spend",
           "to": "Fortune 1000 enterprises",
@@ -2609,7 +2763,8 @@
             "https://startuppoint.in/rivvun-ai-secures-7-55-million-to-build/",
             "https://fundingtimes.in/former-icertis-executives-startup-rivvun-ai-raises-7-55-million-in-seed-funding/",
             "https://newsx.io/2026/06/11/former-icertis-executives-startup-rivvun-ai-raises-7-55-mn-in-seed-funding/",
-            "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/"
+            "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/",
+            "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-8-june-13-12033344"
           ],
           "leads": [
             "Sitara Capital",
@@ -2625,9 +2780,10 @@
     },
     {
       "name": "3one4 Capital",
-      "score": 33.4,
+      "score": 33.3,
       "deals": [
         {
+          "via": "web",
           "company": "Rivvun AI",
           "sells": "Autonomous AI execution layer recovering leaked revenue and procurement spend",
           "to": "Fortune 1000 enterprises",
@@ -2639,7 +2795,8 @@
             "https://startuppoint.in/rivvun-ai-secures-7-55-million-to-build/",
             "https://fundingtimes.in/former-icertis-executives-startup-rivvun-ai-raises-7-55-million-in-seed-funding/",
             "https://newsx.io/2026/06/11/former-icertis-executives-startup-rivvun-ai-raises-7-55-mn-in-seed-funding/",
-            "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/"
+            "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/",
+            "https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-8-june-13-12033344"
           ],
           "leads": [
             "Sitara Capital",
@@ -2655,9 +2812,10 @@
     },
     {
       "name": "SHARE Investment",
-      "score": 32.8,
+      "score": 32.7,
       "deals": [
         {
+          "via": "web",
           "company": "Viero",
           "sells": "Platform to unify fleet operations and vehicle payments",
           "to": "fleet operators",
@@ -2687,6 +2845,7 @@
           "role": "co-led"
         },
         {
+          "via": "web",
           "company": "Viero",
           "sells": "Platform to unify fleet operations and vehicle payments",
           "to": "fleet operators",
@@ -2725,6 +2884,7 @@
       "score": 32.1,
       "deals": [
         {
+          "via": "web",
           "company": "Corvera",
           "sells": "Agentic AI supply chain management platform automating back-office operational workflows",
           "to": "Consumer packaged goods brands",
@@ -2757,6 +2917,7 @@
       "score": 32.1,
       "deals": [
         {
+          "via": "web",
           "company": "Opereit",
           "sells": "AI-driven platform for logistics management and supply chain automation",
           "to": "Businesses across e-commerce, manufacturing, and other industries",
@@ -2793,6 +2954,7 @@
       "score": 32.1,
       "deals": [
         {
+          "via": "web",
           "company": "Opereit",
           "sells": "AI-driven platform for logistics management and supply chain automation",
           "to": "Businesses across e-commerce, manufacturing, and other industries",
@@ -2826,9 +2988,10 @@
     },
     {
       "name": "Backed VC",
-      "score": 32,
+      "score": 31.9,
       "deals": [
         {
+          "via": "web",
           "company": "GingerControl",
           "sells": "AI software automating global trade compliance and customs workflows",
           "to": "importers, customs brokers, manufacturers, and trade professionals",
@@ -2858,6 +3021,7 @@
       "score": 30.7,
       "deals": [
         {
+          "via": "web",
           "company": "Implentio",
           "sells": "AI-powered shipper-side reconciliation platform for logistics invoices",
           "to": "ecommerce brands",
@@ -2886,6 +3050,7 @@
       "score": 26,
       "deals": [
         {
+          "via": "web",
           "company": "BITE Data",
           "sells": "AI-native SaaS platform automating global trade compliance workflows",
           "to": "companies navigating import and export regulations",
@@ -2915,6 +3080,7 @@
       "score": 25.4,
       "deals": [
         {
+          "via": "web",
           "company": "Conduit",
           "sells": "dock and yard management system",
           "to": "warehouses",
@@ -2945,6 +3111,7 @@
       "score": 25.3,
       "deals": [
         {
+          "via": "web",
           "company": "Lawyered",
           "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
           "to": "vehicle owners, drivers, and fleet operators",
@@ -2974,6 +3141,7 @@
       "score": 25.3,
       "deals": [
         {
+          "via": "web",
           "company": "Lawyered",
           "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
           "to": "vehicle owners, drivers, and fleet operators",
@@ -2996,13 +3164,14 @@
       ],
       "kind": "fund",
       "india": true,
-      "onList": null
+      "onList": "Turbostart"
     },
     {
       "name": "Wavemaker Partners",
       "score": 23.7,
       "deals": [
         {
+          "via": "web",
           "company": "Confluxe",
           "sells": "Platform providing market entry strategy, digital commerce, merchandising, and supply chain operations",
           "to": "international fashion and lifestyle brands",
@@ -3025,13 +3194,14 @@
       ],
       "kind": "fund",
       "india": true,
-      "onList": null
+      "onList": "Wavemaker Partners"
     },
     {
       "name": "RDY Ventures",
       "score": 22.9,
       "deals": [
         {
+          "via": "web",
           "company": "Vectrix",
           "sells": "AI pre-TMS software automating manual transport order entry",
           "to": "logistics and transport operators",
@@ -3064,6 +3234,7 @@
       "score": 22,
       "deals": [
         {
+          "via": "web",
           "company": "MeltPlan",
           "sells": "AI-driven logistics transformation",
           "to": "",
@@ -3090,6 +3261,7 @@
       "score": 21.9,
       "deals": [
         {
+          "via": "web",
           "company": "SuperProcure",
           "sells": "Unified TMS and freight lifecycle management software",
           "to": "enterprises",
@@ -3112,13 +3284,14 @@
       ],
       "kind": "fund",
       "india": true,
-      "onList": null
+      "onList": "Pentathlon Ventures"
     },
     {
       "name": "Maveron",
       "score": 21.8,
       "deals": [
         {
+          "via": "web",
           "company": "Jampack AI",
           "sells": "agentic platform automating wholesale operations and supply chain processes",
           "to": "CPG brands",
@@ -3149,9 +3322,10 @@
     },
     {
       "name": "Suffolk Technologies",
-      "score": 21,
+      "score": 20.9,
       "deals": [
         {
+          "via": "web",
           "company": "Certivo",
           "sells": "AI-native compliance system of record for global supply chains",
           "to": "manufacturing and construction enterprises",
@@ -3180,6 +3354,7 @@
       "score": 20.1,
       "deals": [
         {
+          "via": "web",
           "company": "Constems-AI",
           "sells": "retail and supply chain automation platform using vision AI",
           "to": "consumer brands and CPG companies",
@@ -3213,6 +3388,7 @@
       "score": 20.1,
       "deals": [
         {
+          "via": "web",
           "company": "Constems-AI",
           "sells": "retail and supply chain automation platform using vision AI",
           "to": "consumer brands and CPG companies",
@@ -3246,6 +3422,7 @@
       "score": 20,
       "deals": [
         {
+          "via": "web",
           "company": "Anchr",
           "sells": "AI-native operating system automating ERP workflows and supply chain operations",
           "to": "food distributors",
@@ -3283,6 +3460,7 @@
       "score": 20,
       "deals": [
         {
+          "via": "web",
           "company": "Anchr",
           "sells": "AI-native operating system automating ERP workflows and supply chain operations",
           "to": "food distributors",
@@ -3320,6 +3498,7 @@
       "score": 20,
       "deals": [
         {
+          "via": "web",
           "company": "Anchr",
           "sells": "AI-native operating system automating ERP workflows and supply chain operations",
           "to": "food distributors",
@@ -3357,6 +3536,7 @@
       "score": 20,
       "deals": [
         {
+          "via": "web",
           "company": "Anchr",
           "sells": "AI-native operating system automating ERP workflows and supply chain operations",
           "to": "food distributors",
@@ -3394,6 +3574,7 @@
       "score": 20,
       "deals": [
         {
+          "via": "web",
           "company": "Anchr",
           "sells": "AI-native operating system automating ERP workflows and supply chain operations",
           "to": "food distributors",
@@ -3431,6 +3612,7 @@
       "score": 19.4,
       "deals": [
         {
+          "via": "web",
           "company": "Velix",
           "sells": "AI-powered financial operations and invoice reconciliation platform",
           "to": "third-party logistics providers",
@@ -3464,6 +3646,7 @@
       "score": 18.1,
       "deals": [
         {
+          "via": "web",
           "company": "Pull Logic",
           "sells": "AI-powered availability intelligence platform for supply chain inventory and replenishment",
           "to": "manufacturers, distributors, and retailers",
@@ -3498,6 +3681,7 @@
       "score": 18,
       "deals": [
         {
+          "via": "web",
           "company": "Amari AI",
           "sells": "AI agents automating customs paperwork and monitoring trade rules",
           "to": "Customs brokers",
@@ -3526,6 +3710,7 @@
       "score": 18,
       "deals": [
         {
+          "via": "web",
           "company": "Amari AI",
           "sells": "AI agents automating customs paperwork and monitoring trade rules",
           "to": "Customs brokers",
@@ -3554,6 +3739,7 @@
       "score": 17.3,
       "deals": [
         {
+          "via": "web",
           "company": "Spot Ship",
           "sells": "AI-powered software for ship chartering workflows",
           "to": "brokers, charterers, owners and operators",
@@ -3581,9 +3767,10 @@
     },
     {
       "name": "ENRISSION INDIA CAPITAL",
-      "score": 17.2,
+      "score": 17.1,
       "deals": [
         {
+          "via": "web",
           "company": "Hexalog",
           "sells": "AI-driven orchestration layer for cross-border logistics",
           "to": "supply chain participants operating across borders",
@@ -3626,6 +3813,7 @@
       "score": 16.4,
       "deals": [
         {
+          "via": "web",
           "company": "Viero",
           "sells": "Platform to unify fleet operations and vehicle payments",
           "to": "fleet operators",
@@ -3664,6 +3852,7 @@
       "score": 16.4,
       "deals": [
         {
+          "via": "web",
           "company": "Viero",
           "sells": "Platform to unify fleet operations and vehicle payments",
           "to": "fleet operators",
@@ -3702,6 +3891,7 @@
       "score": 16,
       "deals": [
         {
+          "via": "web",
           "company": "1Buy.AI",
           "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
           "to": "enterprises and electronics players",
@@ -3742,6 +3932,7 @@
       "score": 16,
       "deals": [
         {
+          "via": "web",
           "company": "1Buy.AI",
           "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
           "to": "enterprises and electronics players",
@@ -3775,13 +3966,14 @@
       ],
       "kind": "fund",
       "india": true,
-      "onList": null
+      "onList": "100Unicorns"
     },
     {
       "name": "Anthemis FIL",
       "score": 15.2,
       "deals": [
         {
+          "via": "web",
           "company": "Another",
           "sells": "Software to manage, track, and sell off-channel or excess retail inventory",
           "to": "Retail brands and businesses",
@@ -3809,6 +4001,7 @@
       "score": 15.2,
       "deals": [
         {
+          "via": "web",
           "company": "Another",
           "sells": "Software to manage, track, and sell off-channel or excess retail inventory",
           "to": "Retail brands and businesses",
@@ -3836,6 +4029,7 @@
       "score": 15.2,
       "deals": [
         {
+          "via": "web",
           "company": "DiversiFi",
           "sells": "AI billing and profitability software for logistics providers",
           "to": "third-party logistics providers",
@@ -3864,6 +4058,7 @@
       "score": 15.2,
       "deals": [
         {
+          "via": "web",
           "company": "DiversiFi",
           "sells": "AI billing and profitability software for logistics providers",
           "to": "third-party logistics providers",
@@ -3892,6 +4087,7 @@
       "score": 15.2,
       "deals": [
         {
+          "via": "web",
           "company": "DiversiFi",
           "sells": "AI billing and profitability software for logistics providers",
           "to": "third-party logistics providers",
@@ -3920,6 +4116,7 @@
       "score": 14.9,
       "deals": [
         {
+          "via": "web",
           "company": "Digicust",
           "sells": "AI-driven customs automation platform",
           "to": "logistics providers, customs brokers, and exporters",
@@ -3949,6 +4146,7 @@
       "score": 14.9,
       "deals": [
         {
+          "via": "web",
           "company": "Pinch AI",
           "sells": "AI pricing engine and tools for freight and transportation rates",
           "to": "shippers, carriers, and brokers",
@@ -3976,6 +4174,7 @@
       "score": 14.9,
       "deals": [
         {
+          "via": "web",
           "company": "Pinch AI",
           "sells": "AI pricing engine and tools for freight and transportation rates",
           "to": "shippers, carriers, and brokers",
@@ -4003,6 +4202,7 @@
       "score": 13.8,
       "deals": [
         {
+          "via": "web",
           "company": "FreightSuite",
           "sells": "TMS software for the freight market",
           "to": "freight and logistics companies",
@@ -4034,6 +4234,7 @@
       "score": 13.2,
       "deals": [
         {
+          "via": "web",
           "company": "Procure AI",
           "sells": "procurement automation software",
           "to": "enterprises",
@@ -4067,6 +4268,7 @@
       "score": 13.1,
       "deals": [
         {
+          "via": "web",
           "company": "Zinit",
           "sells": "AI-native sourcing and procurement platform",
           "to": "Enterprises and businesses",
@@ -4103,6 +4305,7 @@
       "score": 12.8,
       "deals": [
         {
+          "via": "web",
           "company": "Logistica OS",
           "sells": "AI agents to automate repetitive workflows in supply chain operations",
           "to": "Supply chain and logistics companies",
@@ -4139,6 +4342,7 @@
       "score": 10.8,
       "deals": [
         {
+          "via": "web",
           "company": "Cavela",
           "sells": "AI agents that automate supplier sourcing and negotiation",
           "to": "brands, small and midsize companies",
@@ -4168,6 +4372,7 @@
       "score": 10.4,
       "deals": [
         {
+          "via": "web",
           "company": "CoRun.ai",
           "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
           "to": "fleet carriers and operators",
@@ -4196,6 +4401,7 @@
       "score": 10.4,
       "deals": [
         {
+          "via": "web",
           "company": "CoRun.ai",
           "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
           "to": "fleet carriers and operators",
@@ -4224,6 +4430,7 @@
       "score": 10.4,
       "deals": [
         {
+          "via": "web",
           "company": "CoRun.ai",
           "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
           "to": "fleet carriers and operators",
@@ -4252,6 +4459,7 @@
       "score": 10.3,
       "deals": [
         {
+          "via": "web",
           "company": "Mentium",
           "sells": "no-code AI agents for logistics workflows",
           "to": "freight brokerages",

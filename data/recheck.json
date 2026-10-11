@@ -1,0 +1,89 @@
+{
+  "vc57": {
+    "firm": "100Unicorns",
+    "pass": true,
+    "reasons": [],
+    "evidence": "https://inc42.com/buzz/1buy-ai-nets-inr-33-cr-to-help-enterprises-procure-electronics-components/",
+    "check": {
+      "round_as_stated": "seed",
+      "is_pre_seed_or_seed": true,
+      "fund_led_or_co_led": true,
+      "company_country": "India",
+      "quote": "1Buy.AI has secured INR 32.5 Cr in a seed funding round led by 100 Unicorns"
+    }
+  },
+  "vc53": {
+    "firm": "Chiratae Ventures",
+    "pass": false,
+    "reasons": [
+      "round is \"pre-Series A\", not pre-seed/seed"
+    ],
+    "evidence": "https://inc42.com/buzz/exclusive-ai-startup-contravault-raises-3-1-mn-to-expand-in-the-us/",
+    "check": {
+      "round_as_stated": "pre-Series A",
+      "is_pre_seed_or_seed": false,
+      "fund_led_or_co_led": true,
+      "company_country": "India",
+      "quote": "The pre-Series A funding round led by Chiratae Ventures, with participation from existing backer Titan Capital"
+    }
+  },
+  "vc56": {
+    "firm": "Pentathlon Ventures",
+    "pass": true,
+    "reasons": [],
+    "evidence": "https://app.fundz.net/fundings/superprocure-funding-round-85ffce",
+    "check": {
+      "round_as_stated": "Pre Seed",
+      "is_pre_seed_or_seed": true,
+      "fund_led_or_co_led": true,
+      "company_country": "India",
+      "quote": "SuperProcure raises ₹140 Million Pre Seed round (February 2026)"
+    }
+  },
+  "vc52": {
+    "firm": "Picus Capital",
+    "pass": true,
+    "reasons": [
+      "all evidence pages block bots: kept, not failed"
+    ],
+    "evidence": "https://seedtable.com/companies/compri/funding-rounds/seed-2026-06",
+    "check": null
+  },
+  "vc54": {
+    "firm": "Turbostart",
+    "pass": false,
+    "reasons": [
+      "round is \"pre-Series A\", not pre-seed/seed"
+    ],
+    "evidence": "https://entrepreneur.economictimes.indiatimes.com/amp/news/funding/lawyered-secures-25-million-pre-series-a-funding-to-revolutionize-legal-solutions-for-indias-mobility-sector/130410540",
+    "check": {
+      "round_as_stated": "pre-Series A",
+      "is_pre_seed_or_seed": false,
+      "fund_led_or_co_led": true,
+      "company_country": "India",
+      "quote": "Lawyered has raised $2.5 million in a pre-Series A funding round co-led by Rainmatter by Zerodha and Turbostart"
+    }
+  },
+  "vc55": {
+    "firm": "Wavemaker Partners",
+    "pass": true,
+    "reasons": [
+      "all evidence pages block bots: kept, not failed"
+    ],
+    "evidence": "https://yourstory.com/2026/03/former-myntra-hm-executives-launch-retail-tech-platform-confluxe-16-mln-pre-seed-funding",
+    "check": null
+  },
+  "vc51": {
+    "firm": "YourNest Venture Capital",
+    "pass": true,
+    "reasons": [],
+    "evidence": "https://vctavern.com/cargofl-secures-rs-6-75-cr-in-seed-funding-round-led-by-yournest-venture-capital/",
+    "check": {
+      "round_as_stated": "seed",
+      "is_pre_seed_or_seed": true,
+      "fund_led_or_co_led": true,
+      "company_country": "India",
+      "quote": "CargoFL, a rising logistics technology startup, has successfully raised Rs 6.75 crore in a seed funding round led by YourNest Venture Capital."
+    }
+  }
+}

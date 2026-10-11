@@ -15,6 +15,7 @@ import { geminiJson, geminiUsage } from "../lib/gemini";
 import { mapLimit, politeFetch } from "../lib/http";
 import { logisticsRelevance } from "../lib/score";
 import { canonical as canonicalCompany } from "../lib/portfolio";
+import { canon, rankInvestors, type Deal } from "../lib/rubric";
 import { vcAliases } from "../lib/sources/batch-feeds";
 import { CUSTOMER_TYPES, OFFERING_TYPES, ROUND_STAGES, SECTOR_FITS } from "../lib/types";
 
@@ -68,22 +69,7 @@ const Round = z.object({
 const Extract = z.object({ rounds: z.array(Round) });
 
 const SEED = new Set(["pre-seed", "seed", "seed-extension"]);
-const SUFFIX = /\b(ventures?|venture partners|capital|partners|fund|funds|vc|llp|llc|pvt|ltd|inc|advisors|management|investments?|the|group|india)\b/g;
-export const canon = (n: string) =>
-  n.toLowerCase().replace(/\(.*?\)/g, " ").replace(/&/g, " and ").replace(SUFFIX, " ").replace(/[^a-z0-9]+/g, " ").trim();
 
-interface Deal {
-  company: string;
-  sells: string;
-  to: string;
-  country: string;
-  stage: string;
-  amount: string;
-  date: string;
-  urls: string[];
-  leads: string[];
-  others: string[];
-}
 
 async function main() {
   // 1. Collect articles. Each query runs over date slices (India: quarters,
@@ -165,26 +151,8 @@ ${body}`,
   console.log(`qualifying deals: ${deals.size}; dropped ${JSON.stringify(dropped)}`);
 
   // 4. Rank investors by the rubric (led / co-led qualifying deals only).
-  const existing = (await loadAllVcs()).flatMap((v) => vcAliases(v).map((a) => ({ alias: canon(a), firm: v.firm, archived: v.archived })));
-  const inv = new Map<string, { name: string; score: number; deals: (Deal & { role: string })[]; kind: string; india: boolean; onList: string | null }>();
-  for (const d of deals.values()) {
-    const ageDays = (Date.now() - Date.parse(d.date)) / 86_400_000;
-    for (const lead of d.leads) {
-      const key = canon(lead);
-      if (!key) continue;
-      const role = d.leads.length > 1 ? "co-led" : "led";
-      const value = 40 * 1.5 * 1.3 * (role === "led" ? 1 : 0.85) * Math.exp(-ageDays / 180);
-      const cur = inv.get(key) ?? {
-        name: lead, score: 0, deals: [], kind: kinds.get(key) ?? "unknown", india: false,
-        onList: existing.find((e) => e.alias === key || e.alias.startsWith(`${key} `) || key.startsWith(`${e.alias} `))?.firm ?? null,
-      };
-      cur.score += value;
-      cur.deals.push({ ...d, role });
-      cur.india ||= /india/i.test(d.country);
-      inv.set(key, cur);
-    }
-  }
-  const ranked = [...inv.values()].sort((a, b) => b.score - a.score).map((c) => ({ ...c, score: Number(c.score.toFixed(1)) }));
+  const existing = (await loadAllVcs()).flatMap((v) => vcAliases(v).map((a) => ({ alias: canon(a), firm: v.firm })));
+  const ranked = rankInvestors([...deals.values()].map((d) => ({ ...d, via: "web" })), kinds, existing);
   writeFileSync("data/reverse-lookup.json", JSON.stringify({ generatedAt: new Date().toISOString(), windowDays: DAYS, deals: [...deals.values()], investors: ranked }, null, 2) + "\n");
 
   console.log("\nTOP INVESTORS (rubric score | kind | India deal | on list | qualifying led deals)");
