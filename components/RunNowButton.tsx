@@ -24,7 +24,7 @@ export function RunNowButton({ running }: { running: boolean }) {
 
   if (running) {
     return (
-      <button type="button" className="btn run-now" disabled>
+      <button type="button" className="btn primary run-now" disabled>
         A run is in progress
       </button>
     );
@@ -35,21 +35,16 @@ export function RunNowButton({ running }: { running: boolean }) {
       setResult(null);
       const r = await runNow();
       setResult(r);
-      if (r.ok) {
-        router.refresh();
-        setTimeout(() => {
-          for (const id of r.changedIds) document.getElementById(`row-${id}`)?.classList.add("flash");
-        }, 600);
-      }
+      if (r.ok) router.refresh();
     });
 
   const failed = result?.ok ? new Set(result.failedSources.map((s) => SOURCE_KEYS[s] ?? s)) : new Set<string>();
 
   return (
     <>
-      <button type="button" className="btn run-now" onClick={() => dialog.current?.showModal()}>
+      <button type="button" className="btn primary run-now" aria-label="Run now" onClick={() => dialog.current?.showModal()}>
         <RefreshCw size={14} aria-hidden />
-        Run now
+        <span className="lbl">Run now</span>
       </button>
       <dialog ref={dialog} aria-labelledby="run-h">
         <h2 id="run-h">Run now</h2>
@@ -61,10 +56,10 @@ export function RunNowButton({ running }: { running: boolean }) {
             }}
           >
             <p style={{ margin: "8px 0 0" }}>Checks all 50 investors for new public activity. Takes about 4 minutes.</p>
-            {result && !result.ok && <p className="meta" role="alert">{result.message}</p>}
+            {result && !result.ok && <p className="small" role="alert">{result.message}</p>}
             <div style={{ display: "flex", gap: 8, marginTop: 12, justifyContent: "flex-end" }}>
               <button type="button" className="btn" onClick={() => dialog.current?.close()}>Cancel</button>
-              <button type="submit" className="btn btn-primary">Run now</button>
+              <button type="submit" className="btn primary">Run now</button>
             </div>
           </form>
         )}

@@ -1,32 +1,30 @@
 // Proof the data is live: run history with per-source counts and errors.
 import Link from "next/link";
-import { DemoButton } from "@/components/DemoTour";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { TopBar } from "@/components/triage/TopBar";
 import { istStamp } from "@/lib/format";
-import { getRuns, runState } from "@/lib/queries";
+import { getRuns, getTriage, runState } from "@/lib/queries";
+import { statusPill } from "@/lib/status";
 
 export const dynamic = "force-dynamic";
 
 export default async function RunsPage() {
-  const runs = await getRuns();
+  const [runs, t] = await Promise.all([getRuns(), getTriage()]);
   return (
-    <div className="shell">
-      <header className="status">
-        <Link className="back" href="/">Back to this week</Link>
-        <div className="status-actions">
-          <DemoButton />
-          <ThemeToggle />
-        </div>
-      </header>
-      <main>
-        <h1 className="headline display" style={{ margin: "0 0 16px" }}>Run history</h1>
+    <div className="app">
+      <TopBar items={t.rows.map((r) => ({ id: r.id, firm: r.firm, partner: r.partnerName, lane: r.lane }))} pill={statusPill(t)} running={t.runState === "running"} />
+      <main className="page" id="main">
+        <p style={{ margin: "0 0 16px" }}>
+          <Link className="back-link" href="/">Back to this week</Link>
+        </p>
+        <h1 className="view-title">Run history</h1>
+        <p className="note">Every check the pipeline ran: scheduled (Monday and Thursday, 8:00 IST), Run now, or a script. Each source that didn&apos;t answer is listed under errors; the rest of the run still finishes.</p>
         {runs.length === 0 ? (
-          <p className="meta">No runs yet.</p>
+          <p className="muted">No runs yet.</p>
         ) : (
-          <div className="table-wrap" tabIndex={0} role="region" aria-label="Run history table">
+          <div className="tbl-wrap" tabIndex={0} role="region" aria-label="Run history table">
             <table>
               <thead>
-                <tr><th>Started</th><th>Trigger</th><th>Result</th><th>Investors</th><th>New signals</th><th>Per source</th><th>Errors</th></tr>
+                <tr><th scope="col">Started</th><th scope="col">Trigger</th><th scope="col">Result</th><th scope="col">Investors</th><th scope="col">New signals</th><th scope="col">Per source</th><th scope="col">Errors</th></tr>
               </thead>
               <tbody>
                 {runs.map((r) => {

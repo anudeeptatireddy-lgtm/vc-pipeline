@@ -1,13 +1,14 @@
 "use client";
 // Guided demo: walks a viewer through finding a relevant investor, from the
-// weekly answer to the drafted message. It highlights real elements on the
+// weekly answer to the drafted message, then the other views. It highlights real elements on the
 // live pages and performs the clicks itself (shown with a ripple). Started by
 // DemoButton via the "start-demo" event; mounted once in app/layout.tsx.
+import { PlayCircle } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { restoreTheme, snapshotTheme, type ThemeSnapshot } from "./ThemeToggle";
 
-type Page = "home" | "vc" | "runs";
+type Page = "home" | "runs";
 
 interface Step {
   page: Page;
@@ -22,108 +23,100 @@ interface Step {
 
 const STEPS: Step[] = [
   {
-    page: "home", target: ".status",
+    page: "home", target: ".bar-in",
     title: "Live data, twice a week",
-    body: "Every Monday and Thursday at 08:00 IST the app checks 50 investors across news, web search, LinkedIn, podcasts, YouTube, SEC filings and the firms' own sites. This line says when it last ran.",
+    body: "Every Monday and Thursday at 08:00 IST the app checks 50 investors across news, web search, LinkedIn, podcasts, YouTube, SEC filings and the firms' own sites. The pill says how many sources answered and when.",
   },
   {
     page: "home", target: "h1.headline",
     title: "The answer comes first",
-    body: "How many investors are worth a message this week. Everything below explains why.",
+    body: "How many investors are worth a first message today. Only a score of 60 or more, with a confirmed fit, counts. Everything else is explained below it.",
   },
   {
-    page: "home", target: ".strip",
+    page: "home", target: ".yard-wrap",
     title: "Your whole list at a glance",
-    body: "One square per investor. Amber: reach out now. Blue: you're waiting on a reply and they have news. Grey: quiet this month. Clicking a square jumps to that investor; watch.",
-    clickOnNext: ".strip .sq-reach_out",
+    body: "One square per investor. Amber: message today. Blue: you're waiting on a reply and they have news. Grey: maybe. Dark: parked. Hover for a name, click to open it, and use the chips to filter the list.",
   },
   {
-    page: "home", target: ".row.top",
-    title: "Your best lead this week",
-    body: "Ranked by score: what the firm did in the last 30 days, how close it is to B2B logistics software at seed, and how recent it is. The chip on the right says how fresh the news is.",
+    page: "home", target: ".queue",
+    title: "Work through the queue",
+    body: "Message today first, then follow-ups, then maybes. Parked investors stay folded away. Press j and k to move through it. Let's open the first one.",
+    clickOnNext: ".queue .qi",
   },
   {
-    page: "home", target: ".row.top .tape",
+    page: "home", target: ".ws .why",
+    title: "Why now",
+    body: "The dated public signal behind the rank: for a deal, the company, round, size and their role; for an essay or talk, what and when. The last line says why it sits in this lane.",
+  },
+  {
+    page: "home", target: ".ws .fit",
+    title: "Does it fit you?",
+    body: "Seed, B2B, logistics, software. A filled dot matches, half means partly or not stated, hollow means it doesn't. A row can only ask for a message when B2B and logistics are confirmed.",
+  },
+  {
+    page: "home", target: ".ws .tape",
     title: "30 days in one line",
-    body: "Each bar is a day, today on the right. Tall bars are days with public activity; the coloured ones are from the last 10 days.",
+    body: "Each bar is a day, today on the right. Tall bars are days with public activity; amber ones are from the last week.",
   },
   {
-    page: "home", target: ".row.top .fit",
-    title: "Why it fits",
-    body: "How the news matches the company raising: B2B customers, logistics, software, seed stage.",
-  },
-  {
-    page: "home", target: ".row.top .row-foot a.chip-src",
+    page: "home", target: ".ws .ev",
     title: "Every claim has a source",
-    body: "Click a chip to open the article it came from. Nothing is shown without a working link and a date in the last 30 days.",
+    body: "Each item links to where it was published, with its date and link checked. When two separate sources report the same thing, it says so.",
   },
   {
-    page: "home", target: ".row.top .action .btn",
+    page: "home", target: ".ws .say",
     title: "A first line, ready to send",
-    body: "Copies an opening line built from this signal, to paste into an email or a LinkedIn message.",
+    body: "An opening line (or a nudge line if you're waiting) written from the evidence. Copy it with the button or press c.",
   },
   {
-    page: "home", target: "section:has(#nudge-h)",
-    title: "Investors you're waiting on",
-    body: "You've contacted them and they have news since. The nudge line gives you a reason to follow up.",
-  },
-  {
-    page: "home", target: ".rail-panels",
-    title: "What changed, and who to add",
-    body: "What moved since the last run, and active investors who aren't on the list yet, each with evidence.",
-  },
-  {
-    page: "home", target: "section:has(#parked-h)",
-    title: "Parked, for now",
-    body: "Nothing relevant this month, so no need to spend time here. They move up as soon as they're active again.",
-    clickOnArrive: "section:has(#parked-h) .btn[aria-expanded='false']",
-  },
-  {
-    page: "home", target: ".row.top",
-    title: "Open an investor",
-    body: "Click anywhere on a box to see the full story. Let's open your best lead.",
-    clickOnNext: ".row.top .firm",
-  },
-  {
-    page: "vc", target: "h1.headline",
-    title: "Why this investor, now",
-    body: "The investor's page opens with the summary and the same 30-day tape.",
-  },
-  {
-    page: "vc", target: ".timeline li",
-    title: "Every signal, with proof",
-    body: "What happened, when, the quote from the source and how it fits. Click the box to open the source.",
-  },
-  {
-    page: "vc", target: "section:has(#contact-h)",
+    page: "home", target: ".ws .contacts",
     title: "Who to contact",
     body: "People from the firm's own team page, ordered by who decides: decision-maker, partner, principal, associate. LinkedIn, X and email appear only where the firm publishes them.",
   },
   {
-    page: "vc", target: "section:has(#contact-h) .list .panel",
+    page: "home", target: ".ws .contacts .draft",
     title: "A message written for this person",
     body: "An email, a LinkedIn note under 300 characters, and a follow-up when you're waiting. Each uses the person's role and the firm's latest signal. Copy it, or open it in your email app. Nothing is sent for you.",
-    clickOnArrive: "section:has(#contact-h):not(:has(.list .panel)) .btn.action[aria-expanded='false']",
+    clickOnArrive: ".ws .contacts:not(:has(.draft)) .drafts-btn",
   },
   {
-    page: "vc", target: ".rail",
-    title: "The firm, and your notes",
-    body: "Does it lead seed rounds, is logistics in its thesis, typical cheque. Your status and notes sit alongside; the app never changes them.",
+    page: "home", target: ".ws .lock",
+    title: "Your notes stay yours",
+    body: "Your status, notes and contact history, next to the firm's profile and how the score works. The app never edits them.",
   },
   {
-    page: "vc", target: "section:has(#score-h)",
-    title: "How the score works",
-    body: "The maths behind the rank, signal by signal, so you can check it.",
+    page: "home", target: ".board",
+    title: "Board",
+    body: "The same investors as columns, one per lane. Click any tile to open it.",
+    clickOnArrive: ".tab[data-view='board'][aria-selected='false']",
   },
   {
-    page: "runs", target: ".table-wrap",
+    page: "home", target: ".tbl-wrap",
+    title: "Table",
+    body: "All 50 in one table. Sort by any column and filter by name.",
+    clickOnArrive: ".tab[data-view='table'][aria-selected='false']",
+  },
+  {
+    page: "home", target: ".disc",
+    title: "Discover",
+    body: "Investors who aren't on your list but backed B2B logistics software at seed this year, ranked by the same rubric as your list, with their evidence.",
+    clickOnArrive: ".tab[data-view='discover'][aria-selected='false']",
+  },
+  {
+    page: "home", target: ".search-btn",
+    title: "Find anyone fast",
+    body: "Press / or Cmd+K to search by firm or partner from any page.",
+    clickOnArrive: ".tab[data-view='focus'][aria-selected='false']",
+  },
+  {
+    page: "runs", target: ".tbl-wrap",
     title: "Proof the data is live",
     body: "Every run: when it ran, how long it took, what each source found, and any errors.",
   },
   {
     page: "home", target: ".theme-toggle",
     title: "Light or dark",
-    body: "Switch themes any time. The demo switches it now and puts it back at the end.",
+    body: "Dark follows your system setting. Switch any time; the demo switches it now and puts it back at the end.",
     clickOnArrive: ".theme-toggle",
   },
   {
@@ -133,8 +126,8 @@ const STEPS: Step[] = [
   },
 ];
 
-const PAGE_PATH: Record<Page, (vc: string | null) => string> = { home: () => "/", vc: (vc) => vc ?? "/", runs: () => "/runs" };
-const onPage = (page: Page, path: string) => (page === "home" ? path === "/" : page === "runs" ? path === "/runs" : path.startsWith("/vc/"));
+const PAGE_PATH: Record<Page, string> = { home: "/", runs: "/runs" };
+const onPage = (page: Page, path: string) => (page === "home" ? path === "/" : path === "/runs");
 
 /** First matching element that is actually displayed. */
 function find(sel: string): HTMLElement | null {
@@ -159,7 +152,7 @@ interface Box {
   r: DOMRect;
   columnRight: number;
 }
-const measure = (el: HTMLElement): Box => ({ r: el.getBoundingClientRect(), columnRight: el.closest(".main")?.getBoundingClientRect().right ?? 0 });
+const measure = (el: HTMLElement): Box => ({ r: el.getBoundingClientRect(), columnRight: el.closest(".queue, .band > div:first-child")?.getBoundingClientRect().right ?? 0 });
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -169,7 +162,6 @@ export function DemoTour() {
   const rect = box?.r ?? null;
   const [busy, setBusy] = useState(false);
   const target = useRef<HTMLElement | null>(null);
-  const vcPath = useRef<string | null>(null);
   const startTheme = useRef<ThemeSnapshot | null>(null);
   const dir = useRef<1 | -1>(1);
   const nextBtn = useRef<HTMLButtonElement>(null);
@@ -187,7 +179,6 @@ export function DemoTour() {
   useEffect(() => {
     const start = () => {
       startTheme.current = snapshotTheme();
-      vcPath.current = null;
       dir.current = 1;
       setStep(0);
     };
@@ -200,7 +191,7 @@ export function DemoTour() {
     if (step === null) return;
     const s = STEPS[step]!;
     if (!onPage(s.page, pathname)) {
-      router.push(PAGE_PATH[s.page](vcPath.current));
+      router.push(PAGE_PATH[s.page]);
       return; // re-runs when pathname changes
     }
     let cancelled = false;
@@ -229,10 +220,9 @@ export function DemoTour() {
         return;
       }
       target.current = el;
-      const r = el.getBoundingClientRect();
-      const mobile = window.innerWidth < 640;
-      const top = r.height > window.innerHeight * 0.6 || mobile ? window.scrollY + r.top - 72 : window.scrollY + r.top - (window.innerHeight - r.height) / 2;
-      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      const tall = el.getBoundingClientRect().height > window.innerHeight * 0.6 || window.innerWidth < 640;
+      el.style.scrollMarginTop = "84px";
+      el.scrollIntoView({ block: tall ? "start" : "center", behavior: "smooth" });
       setBox(measure(el));
     })();
     return () => {
@@ -248,17 +238,18 @@ export function DemoTour() {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => target.current?.isConnected && setBox(measure(target.current)));
     };
+    // The workspace scrolls on its own; listen to every scroll, not just the window's.
     const ro = new ResizeObserver(update);
     const watch = setInterval(() => {
       if (target.current) ro.observe(target.current);
     }, 300);
-    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("scroll", update, { passive: true, capture: true });
     window.addEventListener("resize", update);
     return () => {
       cancelAnimationFrame(raf);
       clearInterval(watch);
       ro.disconnect();
-      window.removeEventListener("scroll", update);
+      window.removeEventListener("scroll", update, { capture: true });
       window.removeEventListener("resize", update);
     };
   }, [step]);
@@ -274,7 +265,6 @@ export function DemoTour() {
       if (d === 1 && s.clickOnNext) {
         const c = find(s.clickOnNext);
         if (c) {
-          if (c instanceof HTMLAnchorElement && c.pathname.startsWith("/vc/")) vcPath.current = c.pathname;
           ripple(c);
           await wait(450);
           target.current = null;
@@ -286,10 +276,6 @@ export function DemoTour() {
       if (STEPS[n]!.page !== s.page) {
         target.current = null;
         setBox(null);
-      }
-      if (!vcPath.current) {
-        const a = document.querySelector<HTMLAnchorElement>(".row.top .firm");
-        if (a) vcPath.current = a.pathname;
       }
       setStep(n);
     },
@@ -350,11 +336,11 @@ export function DemoTour() {
         />
       )}
       <div className="tour-card" role="dialog" aria-modal="false" aria-labelledby="tour-title" aria-describedby="tour-body" style={cardStyle}>
-        <p className="meta" style={{ margin: 0 }} aria-live="polite">
+        <p className="small" aria-live="polite">
           Demo · step {step + 1} of {STEPS.length}
         </p>
-        <h2 id="tour-title" className="display" style={{ margin: "4px 0 6px", fontSize: 19, lineHeight: "24px" }}>{s.title}</h2>
-        <p id="tour-body" style={{ margin: 0, fontSize: 15, lineHeight: "22px" }}>{loading && !rect ? "Loading…" : s.body}</p>
+        <h2 id="tour-title">{s.title}</h2>
+        <p id="tour-body">{loading && !rect ? "Loading…" : s.body}</p>
         <div className="tour-progress" aria-hidden>
           <span style={{ width: `${((step + 1) / STEPS.length) * 100}%` }} />
         </div>
@@ -362,7 +348,7 @@ export function DemoTour() {
           <button type="button" className="btn btn-quiet" onClick={end}>End demo</button>
           <span style={{ flex: 1 }} />
           {step > 0 && <button type="button" className="btn" onClick={() => void go(-1)} disabled={loading}>Back</button>}
-          <button ref={nextBtn} type="button" className="btn btn-primary" onClick={() => void go(1)} disabled={loading}>
+          <button ref={nextBtn} type="button" className="btn primary" onClick={() => void go(1)} disabled={loading}>
             {step === STEPS.length - 1 ? "Finish" : STEPS[step]!.clickOnNext ? "Click it" : "Next"}
           </button>
         </div>
@@ -373,8 +359,9 @@ export function DemoTour() {
 
 export function DemoButton() {
   return (
-    <button type="button" className="btn demo-btn" onClick={() => window.dispatchEvent(new Event("start-demo"))}>
-      Demo
+    <button type="button" className="btn demo-btn" aria-label="Demo: a guided tour of the dashboard" onClick={() => window.dispatchEvent(new Event("start-demo"))}>
+      <PlayCircle size={15} aria-hidden />
+      <span className="lbl">Demo</span>
     </button>
   );
 }
