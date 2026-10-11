@@ -103,6 +103,12 @@ export async function runPipeline(opts: RunOptions): Promise<RunSummary> {
       skippedForTime: skipped,
       perSource,
       newSignals: results.reduce((a, r) => a + r.newSignals, 0),
+      // Per-VC diagnostics (compact) for debugging coverage.
+      vcs: results.map((r) => ({
+        vcId: r.vcId, raw: r.rawItems, rawBySource: r.perSource, model: r.modelSignals, stored: r.newSignals,
+        rejected: r.rejected, score: r.score, action: r.action, diag: r.diag,
+        errors: r.errors.map((e) => `${e.source ?? ""}: ${e.message.slice(0, 120)}`),
+      })),
       exa: { calls: exaUsage.calls - exa0.calls, dollars: Number((exaUsage.dollars - exa0.dollars).toFixed(4)) },
       gemini: {
         calls: geminiUsage.calls - gem0.calls,

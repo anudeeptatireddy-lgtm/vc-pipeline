@@ -14,7 +14,8 @@
     "run-one": "tsx --env-file=.env.local scripts/run-one.ts",
     "check:manual": "tsx --env-file=.env.local scripts/check-manual-columns.ts",
     "keepalive": "tsx --env-file=.env.local scripts/keepalive.ts",
-    "db:migrate": "tsx --env-file=.env.local scripts/migrate.ts"
+    "db:migrate": "tsx --env-file=.env.local scripts/migrate.ts",
+    "diagnose": "tsx --env-file=.env.local scripts/diagnose.ts"
   },
   "engines": {
     "node": "22.x"

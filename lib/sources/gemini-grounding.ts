@@ -35,13 +35,17 @@ export const Extraction = z.object({
 
 const LOGISTICS = /logistic|freight|supply.?chain|shipp|carrier|3pl|warehouse|fleet|truck|cargo|trucking|last.?mile|ftl|ltl|tms|wms|procure|customs|forwarder|fulfil/i;
 
-/** Cheap pre-filter: keep items that name the VC or touch logistics; cap the prompt size. */
+// Sources fetched specifically for this VC (its own blog, channel, filings):
+// always sent, because their items rarely repeat the firm's name.
+const FIRST_PARTY = new Set(["firm-rss", "youtube", "podcast-index", "sec-form-d"]);
+
+/** Cheap pre-filter: keep first-party items and items that name the VC or touch logistics; cap the prompt size. */
 export function preFilter(items: RawItem[], vc: Vc, max = 25): RawItem[] {
   const firmWord = vc.firm.replace(/\(.*?\)/g, "").split(/\s+/)[0]!.toLowerCase();
   const surname = vc.partner_name?.split(/\s+/).pop()?.toLowerCase();
   const score = (i: RawItem) => {
     const t = `${i.title} ${i.snippet ?? ""}`.toLowerCase();
-    return (t.includes(firmWord) ? 2 : 0) + (surname && t.includes(surname) ? 2 : 0) + (LOGISTICS.test(t) ? 1 : 0);
+    return (FIRST_PARTY.has(i.source) ? 3 : 0) + (t.includes(firmWord) ? 2 : 0) + (surname && t.includes(surname) ? 2 : 0) + (LOGISTICS.test(t) ? 1 : 0);
   };
   return items
     .map((i) => ({ i, s: score(i) }))
@@ -93,6 +97,9 @@ TASK
                   devices; asset_heavy = owns fleets/warehouses; marketplace/services/fintech
                   as named; not_applicable for essays/podcasts/events without a company
    round_stage: the stage of the deal mentioned; "not-a-deal" for essays, talks, posts
+   signal_type "investment" means THIS firm put new money into a company. Selling shares, exits,
+   IPO preparation, secondary sales and news about a portfolio company that doesn't involve the
+   firm acting are "other", with round_stage "not-a-deal".
    An essay or talk about B2B logistics software counts as sector_fit=fit,
    customer_type=b2b, offering_type=software.
 4. Copy a short evidence quote from the source.

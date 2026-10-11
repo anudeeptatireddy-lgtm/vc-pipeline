@@ -123,22 +123,39 @@ const SIGNAL_COLS = [
   "corroborated_by", "opening_line", "nudge_line", "signal_value",
 ] as const;
 
-/** Upsert on (vc_id, source_url) so re-runs don't duplicate evidence. */
+/**
+ * Insert new signals; a URL already stored for this VC is left as it is.
+ * The first verified classification sticks: Gemini 3 has no temperature
+ * control, so re-classifying the same page each run made scores swing
+ * (e.g. 64 → 41 on identical evidence).
+ */
 export async function insertSignals(rows: SignalRow[]): Promise<void> {
   if (rows.length === 0) return;
   const cols = SIGNAL_COLS.join(", ");
-  const updates = SIGNAL_COLS.filter((c) => c !== "vc_id" && c !== "source_url").map((c) => `${c} = excluded.${c}`).join(", ");
   const payload = rows.map((r) => Object.fromEntries(SIGNAL_COLS.map((c) => [c, r[c]])));
   try {
     await q(
       `insert into signals (${cols})
        select ${cols} from jsonb_populate_recordset(null::signals, $1::jsonb)
-       on conflict (vc_id, source_url) do update set ${updates}`,
+       on conflict (vc_id, source_url) do nothing`,
       [JSON.stringify(payload)],
     );
   } catch (e) {
     throw new Error(`insertSignals: ${(e as Error).message}`);
   }
+}
+
+/** Persist §8.2 triangulation results on stored signals (corroboration and confidence only). */
+export async function updateCorroboration(
+  rows: { vc_id: string; source_url: string; corroborated_by: string | null; confidence: number; signal_value: number }[],
+): Promise<void> {
+  if (rows.length === 0) return;
+  await q(
+    `update signals s set corroborated_by = x.corroborated_by, confidence = x.confidence, signal_value = x.signal_value
+     from jsonb_to_recordset($1::jsonb) as x(vc_id uuid, source_url text, corroborated_by text, confidence numeric, signal_value numeric)
+     where s.vc_id = x.vc_id and s.source_url = x.source_url`,
+    [JSON.stringify(rows)],
+  );
 }
 
 /** All stored signals for a VC published on or after `since` (YYYY-MM-DD). */

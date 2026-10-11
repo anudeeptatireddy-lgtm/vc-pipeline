@@ -2,7 +2,7 @@
 // Every source call is isolated (CLAUDE.md rule 6): a failure is recorded and
 // the VC still gets scored from whatever else is available.
 import {
-  insertSignals, loadRecentSignals, recordScoreHistory, writeVcSignals,
+  insertSignals, loadRecentSignals, recordScoreHistory, updateCorroboration, writeVcSignals,
   type RunError, type SignalRow, type VcProfile,
 } from "./db";
 import { firmFit, followUpScore, logisticsRelevance, recommendedAction, signalSummary, signalValue } from "./score";
@@ -28,6 +28,16 @@ export interface VcRunResult {
   errors: RunError[];
   perSource: Record<string, number>;
   timings: Record<string, number>;
+  diag: VcDiagnostics;
+}
+
+/** Step-0 diagnostics: where items came from and where they were lost. Changes no behaviour. */
+export interface VcDiagnostics {
+  modelBySource: Record<string, number>; // Gemini signals, attributed to the source whose URL they matched
+  verifiedBySource: Record<string, number>; // stored this run, after verification + dedupe
+  rejectedBySource: Record<string, Record<string, number>>;
+  geminiFailed: boolean;
+  window: { total: number; onThesis: number; latest: string | null; bestOnThesisValue: number };
 }
 
 const words = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
@@ -57,6 +67,11 @@ export async function processVc(opts: {
   const errors: RunError[] = [];
   const perSource: Record<string, number> = {};
   const rejected: Record<string, number> = {};
+  const diag: VcDiagnostics = {
+    modelBySource: {}, verifiedBySource: {}, rejectedBySource: {}, geminiFailed: false,
+    window: { total: 0, onThesis: 0, latest: null, bestOnThesisValue: 0 },
+  };
+  const bump = (o: Record<string, number>, k: string) => (o[k] = (o[k] ?? 0) + 1);
 
   const timings: Record<string, number> = {};
   const t0 = Date.now();
@@ -105,6 +120,7 @@ export async function processVc(opts: {
     if (!out.is_same_person_or_firm && out.signals.length) rejected["namesake"] = out.signals.length;
   } catch (e) {
     errors.push({ vcId: vc.id, source: "gemini-grounding", message: (e as Error).message.slice(0, 300) });
+    diag.geminiFailed = true;
   }
   perSource["gemini-grounding"] = modelSignals.length;
   timings.gemini = Date.now() - t0 - timings.sources;
@@ -129,9 +145,12 @@ export async function processVc(opts: {
       { firm: vc.firm, partnerName: vc.partner_name },
       today,
     ).catch((e): { reject: string } => ({ reject: `verify error: ${(e as Error).message.slice(0, 80)}` }));
+    const srcName = rawItem?.source ?? "gemini-grounding";
+    bump(diag.modelBySource, srcName);
     if ("reject" in v) {
       const key = v.reject.replace(/\s*\(.*\)$/, "");
       rejected[key] = (rejected[key] ?? 0) + 1;
+      bump((diag.rejectedBySource[srcName] ??= {}), key);
       return;
     }
     const relevance = logisticsRelevance(m.sector_fit, m.customer_type, m.offering_type);
@@ -194,10 +213,23 @@ export async function processVc(opts: {
   // §8.2 corroboration; persist what changed so the dashboard shows it.
   const changed = triangulate(window, portfolio);
   if (changed.length) {
-    await insertSignals(changed.map((s) => ({ ...s, signal_value: Number(signalValue(s, today).toFixed(3)) }))).catch((e) =>
+    await updateCorroboration(
+      changed.map((s) => ({
+        vc_id: s.vc_id, source_url: s.source_url, corroborated_by: s.corroborated_by, confidence: s.confidence,
+        signal_value: Number(signalValue(s, today).toFixed(3)),
+      })),
+    ).catch((e) =>
       errors.push({ vcId: vc.id, source: "db", message: (e as Error).message.slice(0, 300) }),
     );
   }
+  for (const f of fresh) bump(diag.verifiedBySource, f.source_name);
+  const onThesis = window.filter((s) => s.logistics_relevance === "direct" || s.logistics_relevance === "thematic");
+  diag.window = {
+    total: window.length,
+    onThesis: onThesis.length,
+    latest: window.length ? window.map((s) => s.published_date).sort().at(-1)! : null,
+    bestOnThesisValue: Number(Math.max(0, ...onThesis.map((s) => signalValue(s, today))).toFixed(1)),
+  };
   const score = followUpScore(window, firmFit(profile), today);
   const action = recommendedAction(score, vc.status, vc.last_contact_date, today);
   const summary = signalSummary(window, today);
@@ -211,6 +243,6 @@ export async function processVc(opts: {
   timings.total = Date.now() - t0;
   return {
     vcId: vc.id, firm: vc.firm, rawItems: raw.length, modelSignals: modelSignals.length, newSignals: fresh.length,
-    rejected, score, action, summary, errors, perSource, timings,
+    rejected, score, action, summary, errors, perSource, timings, diag,
   };
 }

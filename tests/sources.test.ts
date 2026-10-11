@@ -104,11 +104,15 @@ describe("exa source", () => {
   it("maps results into RawItems with tiers", async () => {
     vi.resetModules();
     vi.doMock("@/lib/exa", () => ({
-      exaSearch: vi.fn(async () => [{ url: "https://dynamo.vc/blog/a", title: "A", text: "t", publishedDate: "2026-10-01" }]),
+      exaSearch: vi.fn(async () => [
+        { url: "https://dynamo.vc/blog/a", title: "A", text: "t", publishedDate: "2026-10-01" },
+        { url: "https://directory.example/dynamo", title: "Dynamo profile", text: "t", publishedDate: null }, // undated: dropped
+        { url: "https://old.example/x", title: "Old", text: "t", publishedDate: "2026-06-01" }, // before window: dropped
+      ]),
     }));
     const { exaSource } = await import("@/lib/sources/exa");
     const items = await exaSource.fetchForVc!(vc({ firm: "Dynamo Ventures", partner_name: "Santosh Sankar", website: "https://dynamo.vc" }), since);
-    expect(items).toHaveLength(3); // one per query
+    expect(items).toHaveLength(4); // one dated in-window item per query (3 general + 1 news-site search)
     expect(items[0]).toMatchObject({ url: "https://dynamo.vc/blog/a", source: "exa", sourceTier: "B", publishedAt: "2026-10-01" });
     vi.doUnmock("@/lib/exa");
   });
@@ -122,5 +126,17 @@ describe("youtube uploads", () => {
       { snippet: { title: "Old", description: "d", publishedAt: "2026-01-01T00:00:00Z", channelTitle: "Dynamo", resourceId: { videoId: "v0" } } },
     ] }, since);
     expect(items.map((i) => i.url)).toEqual(["https://www.youtube.com/watch?v=v1"]);
+  });
+});
+
+describe("gemini pre-filter", () => {
+  it("always sends first-party items even when they don't name the firm", async () => {
+    const { preFilter } = await import("@/lib/sources/gemini-grounding");
+    const v = vc({ firm: "Dynamo Ventures", partner_name: "Santosh Sankar" });
+    const items = [
+      { url: "https://dynamo.substack.com/p/1", title: "Weekly dispatch", source: "firm-rss", sourceTier: "B" as const },
+      { url: "https://x.example/1", title: "Unrelated cooking news", source: "exa", sourceTier: "C" as const },
+    ];
+    expect(preFilter(items, v).map((i) => i.url)).toEqual(["https://dynamo.substack.com/p/1"]);
   });
 });
