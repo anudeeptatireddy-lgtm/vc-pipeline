@@ -15,7 +15,7 @@ export default async function RunsPage() {
         {runs.length === 0 ? (
           <p className="meta">No runs yet.</p>
         ) : (
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0} role="region" aria-label="Run history table">
             <table>
               <thead>
                 <tr><th>Started</th><th>Trigger</th><th>Result</th><th>Investors</th><th>New signals</th><th>Per source</th><th>Errors</th></tr>

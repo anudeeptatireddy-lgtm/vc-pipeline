@@ -183,6 +183,32 @@ export interface SignalFeedRow {
   corroborated_by: string | null;
 }
 
+export interface ContactRow {
+  id: number;
+  name: string;
+  title: string | null;
+  poc_level: "decision_maker" | "partner" | "principal" | "associate" | "other";
+  focus: string | null;
+  bio: string | null;
+  relevant: boolean;
+  rank: number;
+  linkedin_url: string | null;
+  x_url: string | null;
+  email: string | null;
+  email_source_url: string | null;
+  source_url: string;
+  messages: { kind: "email" | "linkedin_note" | "follow_up"; subject: string | null; body: string }[];
+}
+
+export interface ChannelRow {
+  pitch_url: string | null;
+  emails: string[];
+  email_sources: string[];
+  x_url: string | null;
+  contact_url: string | null;
+  email_hidden_from_bots: boolean;
+}
+
 export interface VcDetail {
   vc: {
     id: string; name: string; firm: string; partner_name: string | null; priority: string | null; region: string | null;
@@ -192,16 +218,29 @@ export interface VcDetail {
     typical_check: string | null; geo_focus: string | null; signals_30d: number;
   };
   signals: SignalFeedRow[];
+  contacts: ContactRow[];
+  channels: ChannelRow | null;
 }
 
 export async function getVcDetail(id: string): Promise<VcDetail | null> {
   if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
-  const [vc, feed] = await Promise.all([
+  const [vc, feed, contacts, messages, channels] = await Promise.all([
     q<VcDetail["vc"]>("select * from v_dashboard_vcs where id = $1", [id]),
     q<SignalFeedRow>("select * from v_signal_feed where vc_id = $1 order by published_date desc limit 50", [id]),
+    q<Omit<ContactRow, "messages">>("select * from vc_contacts where vc_id = $1 order by rank", [id]),
+    q<{ contact_id: number; kind: ContactRow["messages"][number]["kind"]; subject: string | null; body: string }>(
+      "select contact_id, kind, subject, body from vc_messages where vc_id = $1 order by kind",
+      [id],
+    ),
+    q<ChannelRow>("select pitch_url, emails, email_sources, x_url, contact_url, email_hidden_from_bots from vc_channels where vc_id = $1", [id]),
   ]);
   if (!vc[0]) return null;
-  return { vc: vc[0], signals: feed };
+  return {
+    vc: vc[0],
+    signals: feed,
+    contacts: contacts.map((c) => ({ ...c, messages: messages.filter((m) => m.contact_id === c.id).map(({ kind, subject, body }) => ({ kind, subject, body })) })),
+    channels: channels[0] ?? null,
+  };
 }
 
 export async function getRuns(limit = 30): Promise<RunRow[]> {

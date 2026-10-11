@@ -19,6 +19,9 @@
     },
     "app/api/run-now/route.ts": {
       "maxDuration": 300
+    },
+    "app/api/keepalive/route.ts": {
+      "maxDuration": 300
     }
   }
 }

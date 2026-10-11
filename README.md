@@ -9,6 +9,15 @@ Twice a week, this app checks 50 VCs on a founder's list for public activity in 
 - **Every stored signal has a resolved URL and a publish date within 30 days,** both checked in code (`lib/verify.ts`), never taken from the model.
 - **What's real and what's demo:** the investors, their websites and partners, every signal, link, date, score and recommendation are **real, live data** refreshed on each run. Only Vikram's *own* columns (his status, notes and contact history with each VC) are `[DEMO]` sample values, because Vikram is a fictional founder (`docs/assumptions.md` A3).
 
+## Who to contact and what to send
+
+Each VC's page (`/vc/[id]`) has a **Who to contact** section, refreshed by the daily cron:
+
+- **People** from the firm's own team page: title, point-of-contact level (decision-maker → associate), stated focus, LinkedIn/X links, and an email **only if the firm publishes it**. Names are accepted only if they appear on the fetched page.
+- **Firm routes:** pitch form, published firm emails (own domain only), contact page. Emails hidden from bots (e.g. Cloudflare protection) are not decoded; the page is linked instead.
+- **Drafted messages** for the top two contacts (email, LinkedIn note under 300 characters, and a follow-up if Vikram is waiting): written by Gemini from the person's role/focus, the firm's best dated signal and `data/founder.json`, then checked in code (no exclamation marks or flattery, length limits, `[placeholders]` kept). Nothing is sent automatically: Copy, or **Open in email** to send from your own mail app.
+- Fill in `data/founder.json` (`[Company]`, `[traction]`) and the drafts pick it up on the next refresh (`npm run contacts`).
+
 ## How it works
 
 ```
@@ -22,7 +31,8 @@ Vercel Cron (Mon & Thu 08:00 IST) or Run now → /api/run-pipeline
   → lib/triangulate.ts (§8.2) → lib/score.ts (§4.3–§8.4)
   → signals + update_vc_signals() + vc_score_history   (Neon Postgres)
 Dashboard (read-only, SQL views) → /, /vc/[id], /runs
-Vercel Cron daily → /api/keepalive (one Neon query)
+Vercel Cron daily → /api/keepalive (one Neon query, then re-draft messages whose signal changed
+  and re-check contacts not refreshed in 30 days, inside the 300 s limit)
 ```
 
 Deployed on Vercel (region `cle1`, next to Neon in AWS us-east-2); every push to `main` deploys. Components Map: [`docs/components-map.md`](docs/components-map.md) and [`docs/components-map.png`](docs/components-map.png).
@@ -56,6 +66,8 @@ npm run dev                  # dashboard on http://localhost:3000
 | `npm run reverse-lookup` | Discover active B2B logistics seed investors (12 months) |
 | `npm run swap:apply` / `npm run swap:undo` | Apply or undo the rubric swap in `data/swap-plan.json` (see `docs/swap-log.md`) |
 | `npm run export:list` | `data/vc-list-export.xlsx` (active + archived) |
+| `npm run contacts [-- vc01 …]` | Find who to contact + draft messages (1 Tavily search per firm at most) |
+| `npm run roundup-lookup` | Discovery from a year of Inc42/Entrackr weekly funding roundups |
 | `npm run db:migrate` · `npm run keepalive` | Neon migrations · keep-alive ping |
 
 ## Decisions that differ from the docs

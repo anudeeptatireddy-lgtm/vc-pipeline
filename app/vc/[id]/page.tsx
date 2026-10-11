@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { fitText } from "@/components/FitLine";
 import { FreshnessChip } from "@/components/FreshnessChip";
 import { SignalTape } from "@/components/SignalTape";
+import { WhoToContact } from "@/components/WhoToContact";
 import { YoursChip } from "@/components/YoursChip";
 import { daysSince, sourceLabel } from "@/lib/format";
 import { getVcDetail } from "@/lib/queries";
@@ -28,7 +29,7 @@ export default async function VcPage({ params }: { params: Promise<{ id: string 
   const { id } = await params;
   const d = await getVcDetail(id);
   if (!d) notFound();
-  const { vc, signals } = d;
+  const { vc, signals, contacts, channels } = d;
   const today = new Date();
   const window = signals.filter((s) => daysAgo(s.published_date, today) <= 30);
   const fit = firmFit(
@@ -82,6 +83,8 @@ export default async function VcPage({ params }: { params: Promise<{ id: string 
           )}
         </section>
 
+        <WhoToContact contacts={contacts} channels={channels} />
+
         <section className="section panel" aria-labelledby="firm-h">
           <h2 id="firm-h">The firm</h2>
           <dl className="kv">
@@ -114,7 +117,7 @@ export default async function VcPage({ params }: { params: Promise<{ id: string 
             ({fit.toFixed(2)}). Capped at 45 when nothing in the last 30 days is about B2B logistics.
           </p>
           {ranked.length > 0 && (
-            <div className="table-wrap">
+            <div className="table-wrap" tabIndex={0} role="region" aria-label="Score breakdown table">
               <table>
                 <thead>
                   <tr><th>Signal</th><th>Type</th><th>Fit</th><th>Stage</th><th>Recency</th><th>Value</th></tr>
