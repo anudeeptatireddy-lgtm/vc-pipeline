@@ -42,7 +42,7 @@ https://vc-pipeline-lovat.vercel.app → HTTP 200. Headline: _Five investors are
 
 ## R4. GitHub repository
 
-https://github.com/anudeeptatireddy-lgtm/vc-pipeline (commits after every build-plan phase: `git log --oneline`). **Currently private**: make it public or add the graders before submitting.
+https://github.com/anudeeptatireddy-lgtm/vc-pipeline (commits after every build-plan phase: `git log --oneline`). Public.
 ```
 3d15b3a Circuit breaker, Gemini items-only fallback, Components Map, UI checks
 fb04ef9 Cut Exa to fallback-only; Neon only; no-passcode Run now; fixes

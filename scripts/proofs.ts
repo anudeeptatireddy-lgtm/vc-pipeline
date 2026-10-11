@@ -95,7 +95,7 @@ async function main() {
   p(`${LIVE} → HTTP ${res?.status ?? "unreachable"}. Headline: _${html.match(/<h1[^>]*>([^<]+)/)?.[1] ?? "?"}_. Screenshots and Lighthouse: \`docs/proofs/ui/\`.`);
 
   h("R4. GitHub repository");
-  p(`${REPO} (commits after every build-plan phase: \`git log --oneline\`). **Currently private**: make it public or add the graders before submitting.`);
+  p(`${REPO} (commits after every build-plan phase: \`git log --oneline\`). Public.`);
   p("```\n" + execFileSync("git", ["log", "--oneline", "-15"], { encoding: "utf8" }).trim() + "\n```");
 
   h("R5. Components Map");
