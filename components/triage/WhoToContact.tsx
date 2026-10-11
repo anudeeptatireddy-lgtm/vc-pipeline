@@ -42,7 +42,8 @@ function CopyButton({ text, label, done }: { text: string; label: string; done: 
 const mailto = (to: string, subject: string | null, body: string) =>
   `mailto:${to}?subject=${encodeURIComponent(subject ?? "")}&body=${encodeURIComponent(body)}`;
 
-export function WhoToContact({ vcId }: { vcId: string }) {
+export function WhoToContact({ vcId, level = 3 }: { vcId: string; level?: 2 | 3 }) {
+  const H = level === 2 ? "h2" : "h3";
   const [state, setState] = useState<{ id: string; data: Data | null; failed: boolean }>(() => ({ id: vcId, data: cache.get(vcId) ?? null, failed: false }));
   const [open, setOpen] = useState<number | null>(null);
   const current = state.id === vcId ? state : { id: vcId, data: cache.get(vcId) ?? null, failed: false };
@@ -66,7 +67,7 @@ export function WhoToContact({ vcId }: { vcId: string }) {
   if (!data) {
     return (
       <div className="sec" aria-labelledby={`contact-h-${vcId}`}>
-        <h3 id={`contact-h-${vcId}`}>Who to contact</h3>
+        <H id={`contact-h-${vcId}`}>Who to contact</H>
         <p className="small" role="status">{current.failed ? "Couldn't load the team. Open the full page to try again." : "Loading the team…"}</p>
       </div>
     );
@@ -77,7 +78,7 @@ export function WhoToContact({ vcId }: { vcId: string }) {
 
   return (
     <div className="sec contacts" aria-labelledby={`contact-h-${vcId}`}>
-      <h3 id={`contact-h-${vcId}`}>Who to contact</h3>
+      <H id={`contact-h-${vcId}`}>Who to contact</H>
       {channels && (channels.pitch_url || channels.emails.length > 0 || channels.contact_url) && (
         <p className="small" style={{ margin: "0 0 10px" }}>
           Firm routes:{" "}

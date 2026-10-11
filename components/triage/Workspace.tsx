@@ -77,6 +77,8 @@ export const Workspace = forwardRef<HTMLButtonElement, { row: TriageRow; onBack?
   const cls = LANE_SHORT[r.lane];
   const lead = r.lead;
   const [copied, setCopied] = useState(false);
+  // Section headings sit one level under the name: h3 in the Focus panel, h2 on the full page.
+  const Sub = pageMode ? "h2" : "h3";
 
   return (
     <div className="ws-in" data-vc={r.id}>
@@ -85,7 +87,7 @@ export const Workspace = forwardRef<HTMLButtonElement, { row: TriageRow; onBack?
           Back to list
         </button>
       )}
-      <h2 className="name" id="ws-title">{r.firm}</h2>
+      {pageMode ? <h1 className="name" id="ws-title">{r.firm}</h1> : <h2 className="name" id="ws-title">{r.firm}</h2>}
       <p className="who">{[r.partnerName, r.region].filter(Boolean).join(" · ") || " "}</p>
       <span className="status-chip">
         <Lock size={13} aria-hidden /> {yoursText(r)}
@@ -120,7 +122,7 @@ export const Workspace = forwardRef<HTMLButtonElement, { row: TriageRow; onBack?
 
           {r.tags && (
             <div className="sec">
-              <h3>Does it fit you?</h3>
+              <Sub>Does it fit you?</Sub>
               <div className="fit">
                 {(Object.keys(TAG_LABELS) as (keyof typeof TAG_LABELS)[]).map((k) => (
                   <span key={k} className={`tag ${r.tags![k]}`}>
@@ -138,13 +140,13 @@ export const Workspace = forwardRef<HTMLButtonElement, { row: TriageRow; onBack?
       )}
 
       <div className="sec">
-        <h3>Activity in the last 30 days</h3>
+        <Sub>Activity in the last 30 days</Sub>
         <Tape days={r.tape} />
       </div>
 
       {lead && r.evidence.length > 0 && (
         <div className="sec">
-          <h3>Evidence</h3>
+          <Sub>Evidence</Sub>
           {lead.confirmed && (
             <div className="two">
               <Check size={15} aria-hidden /> Confirmed by 2 sources
@@ -166,7 +168,7 @@ export const Workspace = forwardRef<HTMLButtonElement, { row: TriageRow; onBack?
 
       {lead && r.lane !== "parked" && (
         <div className="sec">
-          <h3>What to say</h3>
+          <Sub>What to say</Sub>
           <div className="say">
             {lead.line ? (
               <>
@@ -194,10 +196,10 @@ export const Workspace = forwardRef<HTMLButtonElement, { row: TriageRow; onBack?
         </div>
       )}
 
-      <WhoToContact vcId={r.id} />
+      <WhoToContact vcId={r.id} level={pageMode ? 2 : 3} />
 
       <div className="sec">
-        <h3>The firm</h3>
+        <Sub>The firm</Sub>
         <dl className="prof">
           <div><dt>Seed behaviour</dt><dd>{plain(r.profile.doesSeed)}</dd></div>
           <div><dt>Typical cheque</dt><dd>{r.profile.cheque ?? "Not stated"}</dd></div>
@@ -227,7 +229,7 @@ export const Workspace = forwardRef<HTMLButtonElement, { row: TriageRow; onBack?
       </div>
 
       <div className="sec">
-        <h3>Your notes</h3>
+        <Sub>Your notes</Sub>
         <div className="lock">
           <Lock size={18} aria-hidden />
           <div>

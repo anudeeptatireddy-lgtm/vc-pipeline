@@ -309,10 +309,10 @@ function Discover({ items }: { items: Suggestion[] }) {
           {items.map((d) => (
             <article key={d.id} className="disc-i">
               <div>
-                <h3>
+                <h2 className="disc-h">
                   {d.firm}
                   {d.rubricScore != null && d.rubricScore >= 70 && <span className="band-tag">Strong match</span>}
-                </h3>
+                </h2>
                 <p>{d.summary ?? d.reason}</p>
                 {d.caveat && <p className="muted">{d.caveat}</p>}
               </div>

@@ -22,7 +22,7 @@ export function InvestorPage({ row, signals, items, pill, running }: { row: Tria
           <Workspace row={row} pageMode onToast={(m) => { setToast(m); setTimeout(() => setToast(null), 1800); }} />
           <div className="ws-in" style={{ paddingTop: 0 }}>
             <div className="sec">
-              <h3 id="all-h">Every signal on record ({signals.length})</h3>
+              <h2 id="all-h">Every signal on record ({signals.length})</h2>
               {signals.length === 0 ? (
                 <p className="muted">No public activity found yet.</p>
               ) : (

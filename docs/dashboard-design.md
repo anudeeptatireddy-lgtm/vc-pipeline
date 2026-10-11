@@ -25,126 +25,81 @@ The page must answer 1 and 2 within five seconds of loading, with no scrolling a
 7. **Mobile first.** Design at 390 px wide, then enhance.
 8. **Plain words.** User-facing text never shows column names (`follow_up_score`), enum values or jargon. Use the copy in §8.
 
-## 3. Layout
+## 3. Layout (triage, October 2026)
 
-### 3.1 Reading order (desktop ≥ 1200 px: main column + right rail)
+Replaces the single-column "reach out list" layout. The clickable prototype it was matched to is the claude.ai artifact "Pipeline: layout prototype"; this section describes what was built with real data.
+
+### 3.1 Structure
 
 ```
-┌────────────────────────────────────────────────────────────────────┐
-│ ● Live data. Updated Thu 8:02 IST. Next run Mon 8:00.   [Run now] │  StatusBar
-│                                                                    │
-│ Seven investors are worth a message this week          ┌─────────┐ │  Headline
-│ Four more are waiting on a reply and have news to use. │ Since   │ │
-│ ■■■■■■■■■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□    │ Monday  │ │  PipelineStrip   | ChangesPanel
-│ Reach out 7   Nudge 4   Parked 39                      │ ...     │ │
-│                                                        └─────────┘ │
-│ Reach out this week                                    ┌─────────┐ │
-│ ┌────────────────────────────────────────────────────┐ │ Not on  │ │
-│ │ 1  Kestrel Ventures  Mara Osei        [6 days ago] │ │ your    │ │  TopPickRow     | SuggestedPanel
-│ │    Led the seed round in Routely, ...              │ │ list yet│ │
-│ │    ▁▁▁▁█▁▁▁█▁▁▁...   (30-day tape)                 │ └─────────┘ │
-│ │    [Inc42↗] [Blog↗] [Confirmed by 2 sources]       │             │
-│ │    Fits: B2B, logistics, software, seed            │             │
-│ │                          [Copy opening line]       │             │
-│ ├────────────────────────────────────────────────────┤             │
-│ │ 2  Harbor Seed ...  one-line reason        [See evidence]          │  CompactRow
-│ │ 3  ...                                                 │         │
-│ │ Show 4 more                                            │         │
-│ └────────────────────────────────────────────────────┘             │
-│ Waiting on a reply, with something new to say                      │  NudgeList
-│ ...                                                                │
-│ 39 parked. No strong signal this month.            [Show]         │  ParkedList (collapsed)
-│ That's everything for this week. Next update Mon 8:00 IST.         │  EndNote
-└────────────────────────────────────────────────────────────────────┘
+┌ Pipeline  Focus Board Table Discover ····· ● Checked 9 of 10 sources. Updated Mon 8:02 IST  [Search /] [Demo] [◐] [Run now] ┐  TopBar (sticky)
+│                                                                                                                         │
+│ No one needs a first message today.                                              ▦▦▦▦▦▦▦▦▦▦                             │  Briefing band:
+│ One investor you're waiting on has news ... Eight more are worth a look.          ▦▦▦▦▦▦▦▦▦▦  yard map, 10 columns,      │  headline, subline,
+│ ● Since Sunday: 68 new signals. Prime Venture Partners moved up 13 points.        ...         sorted by lane            │  since-last-run line
+│                                                                                  [Message today 0][Follow up 1][Maybe 8][Parked 41]  legend chips filter
+│                                                                                                                         │
+│ Message today 0            │ ┌ Workspace (sticky) ───────────────────────────────────────────────┐                     │  Focus view
+│ Waiting on a reply ... 1   │ │ Firm · partner · region   [Yours: waiting for 35 days] [Follow up] │                     │
+│  ▌Primary Venture ... 6d   │ │ Why now: sentence + deal facts (company, round, size, role, date) │                     │
+│ Maybe, if you have time 8  │ │ Does it fit you? ● Seed ● B2B ● Logistics ◐ Software              │                     │
+│  ▌8VC ...                  │ │ Activity in the last 30 days (tape)                               │                     │
+│ Parked 41 [Show]           │ │ Evidence (date and link checked) · Confirmed by 2 sources         │                     │
+│                            │ │ What to say [Copy opening line c]                                 │                     │
+│                            │ │ Who to contact: people, POC level, LinkedIn/X/email, drafts       │                     │
+│                            │ │ The firm · How the score works · Your notes (locked, read-only)   │                     │
+└────────────────────────────┴─┴───────────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-- Main column: `max-width: 760px`, left-aligned, not centered, so the eye has one strong left edge.
-- Right rail: `width: 280px`, sticky at `top: 24px`, holds `ChangesPanel` then `SuggestedPanel`.
-- Below 1200 px: single column; the rail panels move below `NudgeList` and above `ParkedList`.
-- Below 640 px: rows go full-bleed (no side borders), action buttons become full width, the tape appears only on the top pick.
+- **Lanes** (`lib/triage.ts`, unit-tested): *Message today* = score ≥ 60, not already waiting, fit confirmed (B2B and logistics filled, no hollow seed or software tag). *Waiting on a reply, with something new to say* = Vikram is waiting, the pipeline says nudge, fit confirmed. *Maybe, if you have time* = score 30–59, or a higher score whose fit isn't confirmed, or a recent contact (Hold). *Parked* = everything else; collapsed.
+- **Headline** counts only *Message today*. The subline mentions follow-ups and maybes.
+- **Yard map**: one square per active investor, 10 columns, ordered by lane then score. Amber, blue, grey, dark, with container ridges; follow-up squares carry a notch and parked squares are flat, so lane is not color alone. Click selects, hover or focus shows the name, arrow keys move (one tab stop). Legend chips filter the queue, Board and Table.
+- **Board**: four columns by lane (parked capped at 8 with a pointer to Table). **Table**: all 50, sortable (firm, lane, score, status, last signal), filter by name. **Discover**: `suggested_vcs` with the rubric score (`lib/rubric.ts`), deal count, founder-facing summary and caveat, evidence links.
+- `/vc/[id]` is the same workspace at full width plus every signal on record. `/runs` is the run history. Both use the same top bar.
+- **Keyboard**: `j`/`k` move through the queue, `c` copies the line, `/` or Cmd+K opens search, Esc closes the sheet or search.
+- **Phone (≤ 1000 px)**: the band stacks, the workspace opens as a full-screen sheet with a Back button (focus moves to it; Esc or Back returns to the list). At ≤ 640 px the tabs wrap under the bar, Demo and Run now become icon buttons with labels for screen readers, and the status pill moves under the bar.
 
 ### 3.2 Where each output goes
 
-| Output | Location | Why |
-|---|---|---|
-| Shortlist count and names | Headline + first rows, top left | First place the eye lands; answers "who" |
-| Why-now sentence | First text line of every row, largest body size | People act on a story, not a number |
-| Freshness ("6 days ago") | Chip, top right of the row | Says how fast to move |
-| 30-day signal tape | Under the sentence (top pick and nudges; compact rows get it small) | Heating up vs dead at a glance |
-| Evidence links, confirmation | Directly under the tape | Proof before trust |
-| Recommended action | The button label | The verb is where the eye ends |
-| Score | Detail page only; it drives sort order | A visible "73" invites arguing instead of acting |
-| Vikram's status and last contact | Small lock chip on the row | Marks his data as separate from system data |
-| Changes since last run | Right rail (desktop) or below nudges | Answers "what's different?" without competing |
-| Suggested investors | Right rail under changes | Discovery, secondary |
-| Quiet list | Last, collapsed | Reported, out of the way |
-| Run status, Run now | Top bar, small | Builds trust, not the point of the page |
+| Output | Location |
+|---|---|
+| Who to contact this week | Headline + *Message today* lane |
+| Why now | Workspace "Why now" box: the lead signal's sentence and deal facts |
+| Fit | Four tags: filled, half, hollow, each with a text label |
+| Freshness | Queue item age ("Fresh · 4d" when ≤ 7 days) and the 30-day tape |
+| Evidence | Lead signal plus items about the same company, deduplicated by link and site; the rest under "Other activity this month" |
+| What to say | Opening or nudge line with Copy; per-person email, LinkedIn note and follow-up drafts under Who to contact |
+| Score | Inside "How the score works" (collapsed) and the Table; never the headline |
+| Vikram's data | Lock chip and the locked "Your notes" panel; never edited |
+| Run status | Status pill (links to `/runs`); calm wording |
 
 ## 4. Components
 
-Extends the list in `docs/components-map.md` §3.3. Names are file names in `components/`.
-
-| Component | Behavior |
-|---|---|
-| `StatusBar` | Green dot + "Live data. Updated {time}. Next run {time}." plus `RunNowButton`. If the last run failed: amber dot, "Last run didn't finish. Showing data from {time}." |
-| `Headline` | One sentence from §8. Count words ≤ nine are spelled out ("Seven"), ten and above use digits. |
-| `PipelineStrip` | 50 squares (11 px, 3 px gap), colored by bucket, ordered Reach out, Nudge, Parked. Legend below with counts. Each square has an accessible name (`"Kestrel Ventures, reach out"`); click scrolls to and highlights the row (parked squares expand the parked list). |
-| `RankedRow` | Two variants. `top` (rank 1): tinted background, full layout from §3.1. `compact` (rank 2+): rank, firm, one-line reason, small tape, one button. Rows list the first 3; "Show N more" expands the rest in place. |
-| `SignalTape` | 30 cells, oldest left, today right. Props: `daysAgo: number[]`, `size: 'sm' \| 'md'`, `tone: 'act' \| 'nudge'`. Empty day: 8 px tall, slate-100. Signal day: 16 px tall; ≤10 days old uses the tone color with a 1 px ink outline at 35% alpha; older uses slate-400. Has `role="img"` and `aria-label="Signals on N of the last 30 days; most recent X days ago"`. |
-| `FreshnessChip` | "6 days ago", "today", "yesterday". Tone follows age: ≤ 7 days amber tint, 8–14 neutral, > 14 slate. |
-| `SourceChips` | Up to three outlined chips (source name + external-link icon, `rel="noopener noreferrer"`, `target="_blank"`). Overflow becomes "+N more" that links to the detail page. |
-| `ConfirmationBadge` | Teal tint "Confirmed by 2 sources" when `corroborated`; slate "Unconfirmed, check the source" for tier D with no corroboration; nothing for tier A/B. |
-| `FitLine` | Text only. Lists axes that pass: "Fits: B2B, logistics, software, seed". If a signal is adjacent, name the gap: "Partial fit: consumer logistics". |
-| `YoursChip` | Lock icon + "Yours: yet to reach out" or "Yours: waiting since 16 days". Neutral grey. Appears wherever Vikram's data appears. |
-| `CopyLineButton` | Copies `openingLine` (reach-out rows) or `nudgeLine` (nudge rows) to the clipboard, shows a toast "Opening line copied" / "Nudge line copied". If the line is missing, the button reads "See evidence" and goes to the detail page. No database write. |
-| `NudgeList` | Same row anatomy as `compact`, plus the `YoursChip`. Shows 3, "Show N more". |
-| `ChangesPanel` | One short paragraph (copy in §8). Names are links to rows. |
-| `SuggestedPanel` | Up to 3 rows from `suggested_vcs`: firm, reason, evidence link. Heading "Not on your list yet". |
-| `ParkedList` | Collapsed by default. Expanded rows are single-line: firm, last known signal date, "Quiet" tag. Never red. |
-| `EndNote` | "That's everything for this week. Next update {time}." |
-| `RunNowButton` | Opens a small dialog for the demo passcode, then runs the pipeline. Progress is a checklist of sources with a spinner or check per line, not a bare spinner. Single-run lock (§9). |
-
-`/vc/[id]` (detail page) keeps the structure from `components-map.md` §3.2, with this order: headline reason, `SignalTimeline`, `FirmProfileCard`, then Vikram's notes and contact history (read-only, `[DEMO]` prefix), then the score and its breakdown (type, relevance, stage, recency) for anyone who wants the arithmetic.
+`components/triage/`: `TopBar` (tabs, pill, search modal, Demo, theme, Run now), `Briefing` (headline, since line, yard map, legend), `Triage` (state, Focus queue, Board, Table, Discover, keyboard), `Workspace` (one investor), `WhoToContact` (people and drafts, fetched from `/api/vc/[id]/contacts` when an investor opens), `InvestorPage` (`/vc/[id]`), `labels.ts` (copy). Shared: `RunNowButton` (no passcode; single-run lock and 3-hour cooldown), `ThemeToggle`, `DemoTour` (19-step guided tour).
 
 ## 5. Visual system
 
-Tokens go in `app/globals.css` as CSS variables. Light theme only in v1; names are semantic so a dark theme can be added later.
+Tokens are CSS variables in `app/globals.css`. Dark follows the system setting by default; the toggle stores a choice and an inline script in `app/layout.tsx` applies it before paint (no flash).
 
-```css
-:root {
-  --fog: #EEF1F3;          /* page background */
-  --paper: #FFFFFF;        /* row surface */
-  --ink: #17243A;          /* text, outlines */
-  --ink-2: #4A5666;        /* secondary text */
-  --amber: #F2A900;        /* act now (fills only) */
-  --amber-100: #FDEFC3;  --amber-ink: #6B4A00;
-  --blue: #3B6FB6;         /* nudge */
-  --blue-100: #E3EDF8;   --blue-ink: #1F4A82;
-  --teal: #1F7A70;         /* verified */
-  --teal-100: #DDF1EE;   --teal-ink: #14594F;
-  --slate: #8A96A6;        /* parked, empty tape cells */
-  --slate-100: #E4E8EC;  --slate-ink: #4A5666;
-  --line: rgba(23, 36, 58, 0.14);
-  --radius-sm: 6px;  --radius-md: 12px;
-}
-```
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `--bg` | #EDF0F3 | #0C131B | page (also on `<html>`) |
+| `--surface` / `--surface2` | #FFFFFF / #F4F6F9 | #121B26 / #182333 | panels, hovers |
+| `--line` | #D3DAE3 | #243346 | borders |
+| `--ink` / `--ink2` | #15202E / #4B596B | #E8EDF3 / #9EAEC1 | text |
+| `--amber`, `--amber-ink`, `--amber-tint` | #F2A900, #6E4A00, #FDEFC3 | #F2A900, #F7C453, amber 14% | Message today |
+| `--blue`, `--blue-ink`, `--blue-tint` | #3B6FB6, #1F4A82, #DCE8F7 | #6FA3EA, #A9C6EE, blue 17% | Follow up |
+| `--teal`, `--teal-ink` | #1F7A70, #14594F | #4CC2B0, #8FD9CE | checked, confirmed, fit |
+| `--maybe`, `--park` | #7F8EA3, #C3CCD8 | #70819B, #2B3A4E | Maybe, Parked |
 
-- **Amber is the only loud color.** Use it for the top-pick tint, the freshness chip on recent signals, hot tape cells, and the Reach out squares. Do not use amber for buttons or decoration.
-- **Never use red** anywhere for quiet or low-score investors. Red is reserved for genuine errors (failed run), in text only.
-- **Text on tinted backgrounds** uses the matching `-ink` color, not black or grey.
-- **Fonts** via `next/font/google`: *Barlow Semi Condensed* (500) for the headline, firm names and numbers; *Atkinson Hyperlegible Next* (400, 500; fall back to *Atkinson Hyperlegible* if unavailable) for everything else. Two weights only. Sentence case everywhere; no all-caps labels, no tracked-out eyebrows.
-- **Type scale:** headline 28/34 (mobile 24/30), firm name 17/24, reason sentence 16/24, chips and meta 13/18, minimum anywhere 12.
-- **Line length:** reason sentences max 70 characters wide (`max-width: 62ch`).
-- **Spacing:** 4 px base; row padding 16 px (top pick) / 12 px 16 px (compact); 24 px between sections.
-- **Structure:** lists are bordered rows in one rounded container (`1px solid var(--line)`, `--radius-md`, overflow hidden), not separate cards. No shadows, no gradients.
-- **Icons:** one outline icon set (Lucide). Used for external link, copy, lock, refresh, chevron.
-- **One memorable thing:** the `SignalTape`. Keep everything else quiet.
+- Fonts: *Barlow Semi Condensed* (headings, firm names, numbers) and *Atkinson Hyperlegible Next* (body), via `next/font`.
+- Text on tints uses the matching `-ink` color. WCAG AA in both themes (axe-core: 0 violations on every view at 390 and 1440, light and dark).
+- Red only for genuine errors, in text.
 
 ### Motion
 
-- On first load only, tape cells fade in left to right (about 250 ms total).
-- After Run now, rows that changed get a 2 s amber-tint highlight that fades out.
-- Everything else is static. Respect `prefers-reduced-motion` (no animation at all).
+- One orchestrated load animation: the yard map squares drop in (about 0.5 s, staggered). Nothing else animates on load.
+- `prefers-reduced-motion`: no animation at all.
 
 ## 6. Data contracts (migration additions)
 
@@ -310,12 +265,12 @@ Sentence case, contractions, active voice, no terminal punctuation on labels and
 
 ## 11. Do not
 
-- No gradients, glows, shadows, glassmorphism, or illustrations of robots/sparkles. No "AI-powered" badges.
+- No glows, glassmorphism, or illustrations of robots/sparkles. No "AI-powered" badges. (The container ridges on the map and logo are the only texture.)
 - No all-caps labels, no tracked-out eyebrows, no `→` appended to buttons, no emoji.
 - No big-number stat tiles as the hero. The headline is a sentence.
-- No identical rounded cards for every block. Use bordered rows in one container.
-- No numbered markers except the rank on reach-out rows (that is a real ranking).
+- No numbered markers except the rank in *Message today* (a real ranking).
 - No raw field names, enum values or scores as headline content.
+- No placeholder data: every investor, signal, person and suggestion comes from the views and tables.
 - No auto-playing or looping animation.
 - No writes to the database from any dashboard code.
 
