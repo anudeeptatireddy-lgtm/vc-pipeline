@@ -64,16 +64,16 @@ Work top to bottom. Don't start a phase until the previous phase's acceptance cr
 **Accept:** full run finishes < 280 s on Vercel; a forced failure in one source still completes the run; the manual-columns test passes.
 
 ## Phase 7 — Dashboard (spec: `docs/dashboard-design.md`, system context: `docs/components-map.md` §3)
-- [ ] `lib/types.ts`: `recommended_action` constants and bucket mapping (§3.4), shared with `score.ts`
-- [ ] `lib/queries.ts`: read-only queries over the views; no write helpers imported anywhere under `app/` or `components/`
-- [ ] Tokens, fonts and base layout from `dashboard-design.md` §3 and §5; develop against `fixtures/dashboard.sample.json` first (§12)
-- [ ] `/` page: `StatusBar`, `Headline`, `PipelineStrip`, `RankedRow` (top + compact), `SignalTape`, `FreshnessChip`, `SourceChips`, `ConfirmationBadge`, `FitLine`, `YoursChip`, `CopyLineButton`, `NudgeList`, `ChangesPanel`, `SuggestedPanel`, `ParkedList`, `EndNote`
-- [ ] `/vc/[id]` page: `SignalTimeline`, `FirmProfileCard`, Vikram's notes and contact history shown read-only
-- [ ] `/runs` page: run history with per-source counts and errors
-- [ ] `RunNowButton` + `runNow` server action guarded by `DEMO_PASSCODE`; single-run lock
-- [ ] `EmptyState` and failed-run fallback that keeps showing the last good data
-- [ ] All strings from the copy deck (§8); responsive at 390 and 1440; accessibility rules (§10)
-- [ ] Run the acceptance checklist in `dashboard-design.md` §13 (Playwright screenshots, axe-core, Lighthouse)
+- [x] `lib/types.ts`: `recommended_action` constants and bucket mapping (§3.4), shared with `score.ts`
+- [x] `lib/queries.ts`: read-only queries over the views; no write helpers imported anywhere under `app/` or `components/`
+- [x] Tokens, fonts and base layout from `dashboard-design.md` §3 and §5; develop against `fixtures/dashboard.sample.json` first (§12)
+- [x] `/` page: `StatusBar`, `Headline`, `PipelineStrip`, `RankedRow` (top + compact), `SignalTape`, `FreshnessChip`, `SourceChips`, `ConfirmationBadge`, `FitLine`, `YoursChip`, `CopyLineButton`, `NudgeList`, `ChangesPanel`, `SuggestedPanel`, `ParkedList`, `EndNote`
+- [x] `/vc/[id]` page: `SignalTimeline`, `FirmProfileCard`, Vikram's notes and contact history shown read-only
+- [x] `/runs` page: run history with per-source counts and errors
+- [x] `RunNowButton` + `runNow` server action guarded by `DEMO_PASSCODE`; single-run lock
+- [x] `EmptyState` and failed-run fallback that keeps showing the last good data
+- [x] All strings from the copy deck (§8); responsive at 390 and 1440; accessibility rules (§10)
+- [ ] Run the acceptance checklist in `dashboard-design.md` §13 (done: browser screenshots at 390 and 1440, axe-core 0 violations on all 3 pages, write-call grep test; not done: Lighthouse, Playwright)
 
 **Accept:** deployed URL shows live data from the latest run; every "reach out" row has at least one working source link; stopping the pipeline mid-run still leaves a usable dashboard; no `app/` or `components/` file writes to the database.
 

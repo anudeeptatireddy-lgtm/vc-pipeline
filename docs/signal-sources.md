@@ -617,6 +617,8 @@ flowchart TD
 
 ## DB. Database schema, column ownership, and the protected RPC
 
+> **As built:** the applied SQL is in `supabase/migrations/` and differs from the block below in four places found by running the acceptance test: `pipeline_writer` also needs SELECT on the system columns it coalesces; RLS policies for `pipeline_writer` on `vcs` (otherwise the RPC updates 0 rows silently); CREATE on `public` is granted only during the ownership transfer; views use `security_invoker` and are revoked from anon/authenticated. A later migration adds `seed_key`, `website`, `partner_confidence` and extends `update_vc_identifiers`.
+
 Put this in `supabase/migrations/`. The function runs as a dedicated role that has **column-level UPDATE rights only on the four signal columns**, so even a bug in app code cannot overwrite Vikram's notes.
 
 ```sql

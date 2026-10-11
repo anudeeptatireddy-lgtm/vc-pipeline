@@ -30,6 +30,12 @@ describe("manual columns guard", () => {
     expect(offenders).toEqual([]);
   });
 
+  it("dashboard code has no write calls (dashboard-design.md §13)", () => {
+    const ui = ["app", "components"].flatMap(files).filter((f) => !f.startsWith(join("app", "api")) && !f.endsWith("actions.ts"));
+    const offenders = ui.filter((f) => /\.(insert|update|upsert|delete|rpc)\(/.test(readFileSync(f, "utf8")));
+    expect(offenders).toEqual([]);
+  });
+
   it("app/ and components/ never import write helpers", () => {
     const ui = ["app", "components"].flatMap(files).filter((f) => !f.startsWith(join("app", "api")));
     const offenders = ui.filter((f) => /from\s+["'](@\/lib\/db|\.\.?\/.*lib\/db)["']/.test(readFileSync(f, "utf8")));
