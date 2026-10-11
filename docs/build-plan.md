@@ -11,12 +11,12 @@ Work top to bottom. Don't start a phase until the previous phase's acceptance cr
 **Accept:** `npm run build`, `npm run typecheck`, `npm test` all pass on an empty test.
 
 ## Phase 1 — Database (§DB)
-- [ ] Migration with `vcs`, `signals`, `portfolio_snapshots`, `pipeline_runs`, `suggested_vcs`
-- [ ] `pipeline_writer` role, column grants, `update_vc_signals` RPC
-- [ ] `update_vc_identifiers` RPC (same pattern) for seeding
-- [ ] Dashboard read-model migration from `docs/dashboard-design.md` §6 (`opening_line`, `nudge_line`, `signal_value`, `vc_score_history`, views `v_top_signal`, `v_vc_sources`, `v_signal_tape`, `v_score_changes`)
-- [ ] Read-model migration from `docs/components-map.md` §3.6: extra `vcs` columns, `signals.corroborated_by`, RLS on all tables, views `v_dashboard_vcs`, `v_signal_feed`, `v_last_run`
-- [ ] `lib/db.ts`: typed helpers; `writeVcSignals()` is the ONLY function that writes to `vcs`
+- [x] Migration with `vcs`, `signals`, `portfolio_snapshots`, `pipeline_runs`, `suggested_vcs`
+- [x] `pipeline_writer` role, column grants, `update_vc_signals` RPC
+- [x] `update_vc_identifiers` RPC (same pattern) for seeding
+- [x] Dashboard read-model migration from `docs/dashboard-design.md` §6 (`opening_line`, `nudge_line`, `signal_value`, `vc_score_history`, views `v_top_signal`, `v_vc_sources`, `v_signal_tape`, `v_score_changes`)
+- [x] Read-model migration from `docs/components-map.md` §3.6: extra `vcs` columns, `signals.corroborated_by`, RLS on all tables, views `v_dashboard_vcs`, `v_signal_feed`, `v_last_run`
+- [x] `lib/db.ts`: typed helpers; `writeVcSignals()` is the ONLY function that writes to `vcs`
 
 **Accept:** both SQL acceptance tests in §DB behave as described (role update → permission denied).
 

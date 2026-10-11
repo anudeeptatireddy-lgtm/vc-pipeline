@@ -109,7 +109,8 @@ export const RECOMMENDED_ACTIONS = {
 } as const;
 export type RecommendedAction = (typeof RECOMMENDED_ACTIONS)[keyof typeof RECOMMENDED_ACTIONS];
 
-export type Bucket = "reach_out" | "nudge" | "parked" | "quiet";
+// docs/dashboard-design.md §6: Hold and Quiet both land in "parked".
+export type Bucket = "reach_out" | "nudge" | "parked";
 
 export const ACTION_BUCKET: Record<RecommendedAction, Bucket> = {
   [RECOMMENDED_ACTIONS.reachOut]: "reach_out",
@@ -117,5 +118,5 @@ export const ACTION_BUCKET: Record<RecommendedAction, Bucket> = {
   [RECOMMENDED_ACTIONS.nudge]: "nudge",
   [RECOMMENDED_ACTIONS.nudgeLower]: "nudge",
   [RECOMMENDED_ACTIONS.hold]: "parked",
-  [RECOMMENDED_ACTIONS.quiet]: "quiet",
+  [RECOMMENDED_ACTIONS.quiet]: "parked",
 };
