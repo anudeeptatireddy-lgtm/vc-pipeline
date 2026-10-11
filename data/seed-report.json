@@ -1,120 +1,18 @@
 [
   {
-    "key": "vc51",
-    "firm": "YourNest Venture Capital",
-    "website": "https://yournest.in",
-    "partner": "Girish Shivani",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [],
-    "notes": [
-      "partner confidence low"
-    ],
-    "errors": []
-  },
-  {
-    "key": "vc52",
-    "firm": "Picus Capital",
-    "website": "https://www.picuscap.com",
-    "partner": "Florian Reichert",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [],
-    "notes": [
-      "partner confidence low"
-    ],
-    "errors": []
-  },
-  {
-    "key": "vc53",
-    "firm": "Chiratae Ventures",
-    "website": "https://www.chiratae.com",
-    "partner": "TC Meenakshisundaram",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "rss_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [],
-    "notes": [
-      "partner confidence low"
-    ],
-    "errors": []
-  },
-  {
-    "key": "vc54",
-    "firm": "Turbostart",
-    "website": "https://turbostart.co",
-    "partner": "Rajagopal Koushik",
+    "key": "vc58",
+    "firm": "BEENEXT",
+    "website": "https://www.beenext.com",
+    "partner": "Dirk Van Quaquebeke",
     "partnerConfidence": "high",
     "identifiers": [
       "linkedin_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc55",
-    "firm": "Wavemaker Partners",
-    "website": "https://wavemaker.vc",
-    "partner": "Paul Santos",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
       "rss_url",
       "portfolio_url",
       "team_url"
     ],
     "reviewReasons": [],
-    "notes": [
-      "partner confidence low"
-    ],
-    "errors": []
-  },
-  {
-    "key": "vc56",
-    "firm": "Pentathlon Ventures",
-    "website": "https://pentathlon.vc",
-    "partner": "Madhukar Bhatia",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "rss_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [],
     "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc57",
-    "firm": "100Unicorns",
-    "website": "https://100unicorns.in",
-    "partner": "Dr Apoorva Ranjan Sharma",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url"
-    ],
-    "reviewReasons": [],
-    "notes": [
-      "partner confidence low"
-    ],
     "errors": []
   }
 ]

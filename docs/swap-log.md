@@ -8,7 +8,7 @@ Rubric-driven swap, applied without an approval gate per the owner's rules. Noth
 npm run swap:undo
 ```
 
-That un-archives the rows below, archives the swapped-in rows, and restores `data/vc-seed-list.csv` from the git tag `pre-swap`. (The Neon backup branch `pre-swap-backup` was deleted at the owner's request once the swap was accepted.)
+That un-archives the round-1 rows below and archives the round-1 swap-ins, in the database and `data/vc-seed-list.csv` (other rounds untouched). (The Neon backup branch `pre-swap-backup` was deleted at the owner's request once the swap was accepted.)
 
 ## The rubric used
 
@@ -104,3 +104,43 @@ These had no logistics investment found in a 12-month check, but there were no m
 - `data/swap-out-check.json`: 12-month logistics activity per listed fund
 - `data/swap-plan.json`: the exact swap applied
 - `data/vc-list-export.xlsx`: active and archived lists
+
+---
+
+# Round 2 (11 Oct 2026): weekly-roundup discovery
+
+## What was searched
+
+A year of Indian weekly funding roundups: Inc42 "Indian Startup Funding … This Week" and Entrackr "Funding and acquisitions this week" (72 articles via Tavily, no Exa). YourStory was skipped because it blocks bots (403). Every logistics-sector round they list was extracted by Gemini from the article text and put through the **same fit test and rubric** (`lib/rubric.ts`, shared with round 1).
+
+**Result:** 66 logistics-sector rounds in a year; only 2 were B2B logistics *software* at seed (54 were B2C, hardware, fleet-owning or services; 10 weren't seed). One was new: **BEENEXT** led CREST's pre-seed (Jun 2026). This is strong evidence that India produces few fund-led B2B logistics software seed rounds, and that the list now holds most of the funds that lead them.
+
+## Re-check of round-1 swap-ins (`data/recheck.json`)
+
+| Fund | Result | Evidence quote |
+|---|---|---|
+| YourNest Venture Capital | passes | CargoFL, a rising logistics technology startup, has successfully raised Rs 6.75 crore in a seed funding round led by YourNest Venture Capital. |
+| Picus Capital | kept (unverifiable: all evidence pages block bots: kept, not failed) |  |
+| Chiratae Ventures | FAILS: round is "pre-Series A", not pre-seed/seed | The pre-Series A funding round led by Chiratae Ventures, with participation from existing backer Titan Capital |
+| Turbostart | FAILS: round is "pre-Series A", not pre-seed/seed | Lawyered has raised $2.5 million in a pre-Series A funding round co-led by Rainmatter by Zerodha and Turbostart |
+| Wavemaker Partners | kept (unverifiable: all evidence pages block bots: kept, not failed) |  |
+| Pentathlon Ventures | passes | SuperProcure raises ₹140 Million Pre Seed round (February 2026) |
+| 100Unicorns | passes | 1Buy.AI has secured INR 32.5 Cr in a seed funding round led by 100 Unicorns |
+
+## Rows out (archived) and in
+
+| Out | Reason | In | Rubric score | Deal |
+|---|---|---|---|---|
+| Turbostart | failed re-check: round is "pre-Series A", not pre-seed/seed | BEENEXT ([site](https://www.beenext.com)) | 41.5 | led pre-seed in CREST (2026-06-20) [link](https://entrackr.com/report/weekly-funding-report-weekly-funding-report/funding-and-acquisitions-in-indian-startups-this-week-june-15-june-20-12056007) |
+
+**Chiratae Ventures** also failed the re-check (ContraVault's round was pre-Series A) but stays: there was no second qualifying replacement, and the rule is to swap fewer rather than lower the bar. It remains an active Indian fund that led a logistics software round this year.
+
+**Still kept for lack of replacements:** the 17 funds flagged "no logistics activity found in 12 months" (round 1). With the roundup sweep done, there are no further India-accessible qualifying candidates; they stay until new deals appear.
+
+## Undo round 2 only
+
+```bash
+npm run swap:undo -- --plan=data/swap-plan-2.json
+```
+
+Round 1 undo: `npm run swap:undo` (uses `data/swap-plan.json`). Git tags `pre-swap` and `pre-swap-2` mark the list before each round.
