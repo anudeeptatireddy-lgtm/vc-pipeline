@@ -55,8 +55,10 @@ export async function processVc(opts: {
   // 1. Collect raw items, one source at a time, each isolated.
   const raw: RawItem[] = [...(opts.batchItems ?? [])];
   for (const b of opts.batchItems ?? []) perSource[b.source] = (perSource[b.source] ?? 0) + 1;
-  for (const src of sources) {
+  const ordered = [...sources.filter((s) => !s.fallbackOnly), ...sources.filter((s) => s.fallbackOnly)];
+  for (const src of ordered) {
     if (!src.fetchForVc || !src.enabled(vc)) continue;
+    if (src.fallbackOnly && raw.length > 0) continue;
     try {
       const items = await src.fetchForVc(vc, since);
       perSource[src.name] = (perSource[src.name] ?? 0) + items.length;

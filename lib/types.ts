@@ -55,6 +55,7 @@ export interface SignalSource {
   enabled: (vc: Vc) => boolean;
   fetchForVc?: (vc: Vc, since: Date) => Promise<RawItem[]>;
   fetchBatch?: (since: Date) => Promise<RawItem[]>; // once per run, matched to VCs after
+  fallbackOnly?: boolean; // only called when every other source returned nothing for the VC
 }
 
 // Enums from docs/signal-sources.md §7.1

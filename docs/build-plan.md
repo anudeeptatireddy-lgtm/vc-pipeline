@@ -30,22 +30,22 @@ Work top to bottom. Don't start a phase until the previous phase's acceptance cr
 **Accept:** 50 rows; ≥30 have at least two identifiers; script is idempotent.
 
 ## Phase 3 — Vertical slice for ONE VC
-- [ ] `lib/sources/google-news-rss.ts` (§1.2)
-- [ ] `lib/gemini.ts` + `lib/sources/gemini-grounding.ts` with googleSearch + urlContext + JSON schema (§1.1, §7)
-- [ ] `lib/verify.ts`: resolve redirects, date precedence (page meta → RSS pubDate → LinkedIn ID decode → model), 30-day cutoff, dedupe (§7.3)
-- [ ] `lib/score.ts`: derive relevance from §4.0 axes (§4.3), stage multiplier (§4.4), firm fit (§4.5), §8.3 score with the off-thesis cap, §8.4 action table
-- [ ] Unit tests for the §4.0 examples table (TMS seed → direct; robotics Series A → adjacent; consumer delivery seed → adjacent; e-bike Series C → unrelated)
-- [ ] Insert into `signals` (with `signal_value`, `opening_line`, `nudge_line`), then `writeVcSignals()` and `recordScoreHistory()`
+- [x] ~~`lib/sources/google-news-rss.ts` (§1.2)~~ not built: news.google.com/robots.txt disallows `/rss/search` for all bots (CLAUDE.md rule 4). News coverage comes from Gemini grounding + Exa instead.
+- [x] `lib/gemini.ts` + `lib/sources/gemini-grounding.ts` with googleSearch + urlContext + JSON schema (§1.1, §7)
+- [x] `lib/verify.ts`: resolve redirects, date precedence (page meta → RSS pubDate → LinkedIn ID decode → model), 30-day cutoff, dedupe (§7.3)
+- [x] `lib/score.ts`: derive relevance from §4.0 axes (§4.3), stage multiplier (§4.4), firm fit (§4.5), §8.3 score with the off-thesis cap, §8.4 action table
+- [x] Unit tests for the §4.0 examples table (TMS seed → direct; robotics Series A → adjacent; consumer delivery seed → adjacent; e-bike Series C → unrelated)
+- [x] Insert into `signals` (with `signal_value`, `opening_line`, `nudge_line`), then `writeVcSignals()` and `recordScoreHistory()`
 
 **Accept:** running the slice for one VC writes ≥1 verified signal with a real URL (or a correct "quiet" result), and the four columns update.
 
 ## Phase 4 — Core sources (v1)
-- [ ] Exa (§1.3) · Tavily fallback (§1.4)
-- [ ] Firm/Substack/Medium RSS (§2.2) · trade-media RSS (§1.10)
-- [ ] Podcast Index (§1.8) · YouTube channel RSS + capped search (§1.9)
-- [ ] India funding RSS: Inc42 + YourStory, batch then match investor names (§3)
-- [ ] SEC Form D with `SEC_USER_AGENT` (§5.1)
-- [ ] LinkedIn via search index + `lib/linkedin-date.ts` (§1.6)
+- [x] Exa (§1.3) · Tavily fallback (§1.4)
+- [x] Firm/Substack/Medium RSS (§2.2) · trade-media RSS (§1.10: Supply Chain Dive, The Loadstar, ET Infra, JOC; FreightWaves feed is stale since 2022)
+- [x] Podcast Index (§1.8, needs `PODCASTINDEX_API_SECRET`) · YouTube via Data API uploads playlist + capped search (§1.9; channel RSS is robots-disallowed)
+- [x] India funding RSS: Inc42 + YourStory, batch then match investor names (§3)
+- [x] SEC Form D with `SEC_USER_AGENT` (§5.1; off until it holds a real contact email)
+- [x] LinkedIn via search index + `lib/linkedin-date.ts` (§1.6)
 
 **Accept:** each source has a fixture-based unit test; a full run over 5 VCs completes with per-source counts logged in `pipeline_runs.usage`.
 
