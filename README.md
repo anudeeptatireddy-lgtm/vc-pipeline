@@ -9,6 +9,10 @@ Twice a week, this app checks 50 VCs on a founder's list for public activity in 
 - **Every stored signal has a resolved URL and a publish date within 30 days,** both checked in code (`lib/verify.ts`), never taken from the model.
 - **What's real and what's demo:** the investors, their websites and partners, every signal, link, date, score and recommendation are **real, live data** refreshed on each run. Only Vikram's *own* columns (his status, notes and contact history with each VC) are `[DEMO]` sample values, because Vikram is a fictional founder (`docs/assumptions.md` A3).
 
+## Demo and theme
+
+The **Demo** button (top right on every page) walks a viewer through finding a relevant investor in 21 steps: the weekly answer, the signal behind the top lead, its sources, opening an investor, who to contact and the drafted message, the score, and the run history. It highlights the real page and does the clicks itself; Esc or **End demo** stops it. The moon/sun button switches light and dark (it follows the system setting until clicked).
+
 ## Who to contact and what to send
 
 Each VC's page (`/vc/[id]`) has a **Who to contact** section, refreshed by the daily cron:

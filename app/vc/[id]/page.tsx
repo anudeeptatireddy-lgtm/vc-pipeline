@@ -3,6 +3,8 @@
 // Vikram's notes in the right rail on wide screens (below everything on narrow ones).
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { DemoButton } from "@/components/DemoTour";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { notFound } from "next/navigation";
 import { fitText } from "@/components/FitLine";
 import { FreshnessChip } from "@/components/FreshnessChip";
@@ -44,10 +46,16 @@ export default async function VcPage({ params }: { params: Promise<{ id: string 
 
   return (
     <div className="shell">
+      <header className="status">
+        <Link className="back" href="/">Back to this week</Link>
+        <div className="status-actions">
+          <DemoButton />
+          <ThemeToggle />
+        </div>
+      </header>
       <div className="grid">
         <main className="main">
-          <Link className="back" href="/">Back to this week</Link>
-          <h1 className="headline display" style={{ marginTop: 12 }}>{vc.firm}</h1>
+          <h1 className="headline display">{vc.firm}</h1>
           <p className="subline">
             {[vc.partner_name, vc.region].filter(Boolean).join(" · ")}
           </p>

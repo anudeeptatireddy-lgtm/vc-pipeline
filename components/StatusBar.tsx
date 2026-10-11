@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { istStamp, nextRun, shortStamp } from "@/lib/format";
 import type { RunRow, RunState } from "@/lib/queries";
+import { DemoButton } from "./DemoTour";
 import { RunNowButton } from "./RunNowButton";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function StatusBar({ state, lastGood, latest }: { state: RunState; lastGood: RunRow | null; latest: RunRow | null }) {
   const next = shortStamp(nextRun());
@@ -30,7 +32,11 @@ export function StatusBar({ state, lastGood, latest }: { state: RunState; lastGo
           </>
         )}
       </p>
-      <RunNowButton running={state === "running"} />
+      <div className="status-actions">
+        <DemoButton />
+        <ThemeToggle />
+        <RunNowButton running={state === "running"} />
+      </div>
     </header>
   );
 }

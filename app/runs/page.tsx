@@ -1,5 +1,7 @@
 // Proof the data is live: run history with per-source counts and errors.
 import Link from "next/link";
+import { DemoButton } from "@/components/DemoTour";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { istStamp } from "@/lib/format";
 import { getRuns, runState } from "@/lib/queries";
 
@@ -9,9 +11,15 @@ export default async function RunsPage() {
   const runs = await getRuns();
   return (
     <div className="shell">
-      <main>
+      <header className="status">
         <Link className="back" href="/">Back to this week</Link>
-        <h1 className="headline display" style={{ margin: "12px 0 16px" }}>Run history</h1>
+        <div className="status-actions">
+          <DemoButton />
+          <ThemeToggle />
+        </div>
+      </header>
+      <main>
+        <h1 className="headline display" style={{ margin: "0 0 16px" }}>Run history</h1>
         {runs.length === 0 ? (
           <p className="meta">No runs yet.</p>
         ) : (

@@ -24,7 +24,7 @@ export function RunNowButton({ running }: { running: boolean }) {
 
   if (running) {
     return (
-      <button type="button" className="btn" disabled>
+      <button type="button" className="btn run-now" disabled>
         A run is in progress
       </button>
     );
@@ -47,7 +47,7 @@ export function RunNowButton({ running }: { running: boolean }) {
 
   return (
     <>
-      <button type="button" className="btn" onClick={() => dialog.current?.showModal()}>
+      <button type="button" className="btn run-now" onClick={() => dialog.current?.showModal()}>
         <RefreshCw size={14} aria-hidden />
         Run now
       </button>
