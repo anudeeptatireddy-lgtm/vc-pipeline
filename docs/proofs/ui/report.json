@@ -1,0 +1,66 @@
+{
+  "url": "https://vc-pipeline-lovat.vercel.app",
+  "at": "2026-10-11T16:13:08.508Z",
+  "aboveTheFold_mobile-390x844": {
+    "headline": true,
+    "strip": true,
+    "topRow": true
+  },
+  "horizontalScroll_mobile-390x844": false,
+  "aboveTheFold_desktop-1440x900": {
+    "headline": true,
+    "strip": true,
+    "topRow": true
+  },
+  "horizontalScroll_desktop-1440x900": false,
+  "axe_home": {
+    "all": [],
+    "seriousOrCritical": []
+  },
+  "axe_vc": {
+    "all": [],
+    "seriousOrCritical": []
+  },
+  "axe_runs": {
+    "all": [],
+    "seriousOrCritical": []
+  },
+  "sourceLinks": [
+    {
+      "firm": "Blume Ventures",
+      "href": "https://blume.vc/commentaries/how-procol-took-procurement-from-whatsapp-to-ai-agents",
+      "status": 200
+    },
+    {
+      "firm": "Dynamo Ventures",
+      "href": "https://dynamo.substack.com/p/dynamo-dispatch-20260928",
+      "status": 200
+    },
+    {
+      "firm": "Fuel Ventures",
+      "href": "https://www.soapbox.vc/feed/doris-labs-pre-seed",
+      "status": 200
+    },
+    {
+      "firm": "Primary Venture Partners",
+      "href": "https://www.trysignalbase.com/news/funding/lantern-secures-7m-seed-funding",
+      "status": 200
+    },
+    {
+      "firm": "8VC",
+      "href": "https://www.axios.com/2026/10/08/gallatin-seriesa-8vc-contested-logistics-army",
+      "status": 403
+    },
+    {
+      "firm": "Elevation Capital",
+      "href": "https://www.youtube.com/watch?v=IY-nNDeyW6E",
+      "status": 200
+    }
+  ],
+  "reducedMotionAnimation": "none",
+  "lighthouse": {
+    "performance": 99,
+    "accessibility": 96,
+    "best-practices": 96
+  }
+}

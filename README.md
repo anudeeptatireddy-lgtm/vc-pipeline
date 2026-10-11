@@ -1,29 +1,33 @@
 # VC Pipeline Intelligence
 
-Twice a week, this app checks 50 VCs on a founder's list for public activity in the last 30 days, scores how worth contacting each one is **this week**, and writes the result into Postgres on Neon (Supabase is kept, unused, as a fallback). The founder (Vikram) is raising a seed round for a B2B logistics SaaS in Bengaluru, so relevance is judged through a strict fit lens: B2B customers + logistics sector + software + pre-seed/seed.
+Twice a week, this app checks 50 VCs on a founder's list for public activity in the last 30 days, scores how worth contacting each one is **this week**, and writes the result into Postgres on **Neon**. The founder (Vikram) is raising a seed round for a B2B logistics SaaS in Bengaluru, so relevance is judged through a strict fit lens: B2B customers + logistics sector + software + pre-seed/seed.
+
+**Live:** https://vc-pipeline-lovat.vercel.app · **Proofs for each grading requirement:** [`docs/proofs/README.md`](docs/proofs/README.md)
 
 - **Runtime AI is Gemini only** (`@google/genai`, `GEMINI_MODEL`). Claude Code was used as a development tool; no Anthropic or OpenAI SDK ships in the app (`docs/assumptions.md` A1, enforced by an ESLint rule).
-- **Vikram's columns are never written by the pipeline.** The app connects as `vc_runtime`, which has no UPDATE or DELETE on `vcs`. All changes go through `update_vc_signals` / `update_vc_identifiers`, `security definer` functions owned by a role with column-level UPDATE on the system columns only. Verified by `npm run check:manual` and the acceptance SQL (direct UPDATE/DELETE as the app → permission denied).
+- **Vikram's columns are never written by the pipeline.** The app connects as `vc_runtime`, which has no UPDATE or DELETE on `vcs`. All changes go through `update_vc_signals` / `update_vc_identifiers`, `security definer` functions owned by a role with column-level UPDATE on system columns only. Verified by `npm run check:manual` and the permission checks in the proofs.
 - **Every stored signal has a resolved URL and a publish date within 30 days,** both checked in code (`lib/verify.ts`), never taken from the model.
-- **Demo data:** Vikram's status, notes and contact history are sample values prefixed `[DEMO]` (`docs/assumptions.md` A3). VC names, firms, identifiers and all signals are real and live.
+- **What's real and what's demo:** the investors, their websites and partners, every signal, link, date, score and recommendation are **real, live data** refreshed on each run. Only Vikram's *own* columns (his status, notes and contact history with each VC) are `[DEMO]` sample values, because Vikram is a fictional founder (`docs/assumptions.md` A3).
 
 ## How it works
 
 ```
-Vercel Cron (Mon & Thu 08:00 IST) → /api/run-pipeline (CRON_SECRET)
-  → batch feeds once (Inc42, YourStory, Supply Chain Dive, The Loadstar, ET Infra, JOC)
-  → per VC, 25 in parallel: firm RSS · Exa · LinkedIn via search index · Podcast Index · YouTube Data API · SEC Form D · (Tavily fallback)
-  → Gemini 3.7 Flash with Google Search + URL context + JSON schema (classify + find more)
+Vercel Cron (Mon & Thu 08:00 IST) or Run now → /api/run-pipeline
+  → batch feeds once (Inc42, YourStory, trade press)
+  → per VC, 25 in parallel: Bing News RSS · Tavily web search (Exa only as fallback) · LinkedIn via search index
+      · firm blog/Substack RSS · YouTube Data API · SEC Form D · Podcast Index
+  → Gemini 3.7 Flash: Google Search + URL context + JSON schema (items-only fallback on timeout)
   → lib/verify.ts: resolve redirects, page/RSS/LinkedIn-ID dates, 30-day window, entity match, dedupe
-  → portfolio page diff (2-run debounce) → tier-A signals
+  → classification majority vote (lib/classify.ts) · portfolio page diff (2-run debounce)
   → lib/triangulate.ts (§8.2) → lib/score.ts (§4.3–§8.4)
-  → signals table + update_vc_signals() + vc_score_history  (Neon Postgres)
+  → signals + update_vc_signals() + vc_score_history   (Neon Postgres)
 Dashboard (read-only, SQL views) → /, /vc/[id], /runs
+Vercel Cron daily → /api/keepalive (one Neon query)
 ```
 
-Deployed on Vercel (region `cle1`, next to the Neon project in AWS us-east-2). Every push to `main` deploys. A daily cron hits `/api/keepalive`, which queries Neon and the fallback Supabase project so neither sits idle.
+Deployed on Vercel (region `cle1`, next to Neon in AWS us-east-2); every push to `main` deploys. Components Map: [`docs/components-map.md`](docs/components-map.md) and [`docs/components-map.png`](docs/components-map.png).
 
-Components Map: [`docs/components-map.md`](docs/components-map.md) and [`docs/components-map.png`](docs/components-map.png).
+**Search cost:** Tavily's free tier (1,000 searches/month) does the web search, about 100 per full run, capped at 950/month in code. Exa is only used if Tavily fails or hits the cap, and then with small requests; Exa credits are kept for submission week. Bing News RSS, firm feeds and Gemini's Google Search are free.
 
 ## Setup
 
@@ -32,40 +36,42 @@ npm install
 cp .env.example .env.local   # fill in the keys
 neon link --project-id noisy-surf-05848493 --branch production -y   # pulls DATABASE_URL*
 npm run db:migrate           # schema + roles on Neon (create role vc_runtime first, see db/migrations/0002)
-npm run seed                 # insert + resolve the 50 VCs (idempotent)
+npm run seed                 # insert + resolve the VCs (idempotent)
 npm run profile              # firm-level fit per VC (Gemini)
 npm run run-one -- --all     # one full pipeline run, locally
 npm run dev                  # dashboard on http://localhost:3000
 ```
-
-Migrations live in `db/migrations/` (Neon). `supabase/migrations/` is the original Supabase schema, kept for the fallback project.
 
 ## Commands
 
 | Command | What it does |
 |---|---|
 | `npm run typecheck` / `npm test` / `npm run lint` / `npm run build` | Checks. Tests use saved fixtures, no live calls |
-| `npm run seed [-- --only=vc01,vc02] [-- --force]` | Seed and resolve identifiers |
-| `npm run profile [-- --only=…] [-- --force]` | Firm profiles (`vc_profiles`) |
 | `npm run run-one -- vc01 vc12` / `-- --all` | Pipeline run; `--break=<source>` forces a source to fail |
+| `npm run diagnose [-- <runId>]` | Per-source funnel and a per-VC "why not 60" table |
 | `npm run check:manual [-- vc01]` | Runs the pipeline and proves Vikram's columns are unchanged on all rows |
-| `npm run db:migrate` | Apply `db/migrations/*.sql` to Neon as the owner |
-| `npm run keepalive` | Ping Neon and the fallback Supabase project |
+| `npm run proofs` | Regenerates `docs/proofs/README.md` (R1–R12) |
+| `npm run ui:check -- <url>` | Screenshots, above-the-fold, axe-core, reduced motion, Lighthouse |
+| `npm run seed` / `npm run profile` | Seed/resolve identifiers; firm profiles |
+| `npm run reverse-lookup` | Discover active B2B logistics seed investors (12 months) |
+| `npm run swap:apply` / `npm run swap:undo` | Apply or undo the rubric swap in `data/swap-plan.json` (see `docs/swap-log.md`) |
+| `npm run export:list` | `data/vc-list-export.xlsx` (active + archived) |
+| `npm run db:migrate` · `npm run keepalive` | Neon migrations · keep-alive ping |
 
 ## Decisions that differ from the docs
 
 | Doc says | What was built | Why |
 |---|---|---|
-| Google News RSS (§1.2) | Not built | `news.google.com/robots.txt` disallows `/rss/search` for all bots (CLAUDE.md rule 4). Gemini grounding and Exa cover news |
-| YouTube channel RSS (§1.9) | Data API `playlistItems` (1 unit) + capped `search.list` | `youtube.com/robots.txt` disallows `/feeds/` |
-| FreightWaves / StrictlyVC feeds | Left out | Feeds last updated 2022 / 2020 |
-| §DB grants | Plus SELECT on system columns, RLS policies for `pipeline_writer`, `security_invoker` views | Without them the RPC silently updated 0 rows, or views exposed `personal_notes` to the anon key |
-| Supabase (CLAUDE.md, grading wording) | Neon Postgres; Supabase kept as an untouched fallback | Owner's choice (11 Oct 2026). Neon roles made via its API join `neon_superuser`, so the app role `vc_runtime` is created in SQL to keep the no-UPDATE-on-vcs guarantee |
-| Concurrency 6 | 25, Gemini capped at 110 s, no new VCs after 150 s | Grounded Gemini calls take ~55 s median; measured 214 s for 50 VCs |
+| Supabase | Neon Postgres only | Owner's decision (11 Oct 2026). Neon roles made via its API join `neon_superuser`, so the app role `vc_runtime` is created in SQL to keep the no-UPDATE-on-vcs guarantee |
+| Google News RSS (§1.2) | Bing News RSS | `news.google.com/robots.txt` disallows `/rss/search` for all bots (CLAUDE.md rule 4); Bing allows its news RSS |
+| Exa as the main search | Tavily first, Exa fallback only | Cost: Exa cost ~$1.70 per full run; Tavily's free tier covers the schedule |
+| YouTube channel RSS (§1.9) | Data API `playlistItems` + capped `search.list` | `youtube.com/robots.txt` disallows `/feeds/` |
+| `DEMO_PASSCODE` guards Run now | No passcode; single-run lock + 3-hour cooldown | The professor must be able to use it without a passcode |
+| §DB grants | Plus SELECT on system columns for `pipeline_writer` | `coalesce(new, old)` reads the current value |
+| Concurrency 6 | 25; Gemini grounded call capped at 90 s with a 40 s items-only fallback; no new VCs after 140 s | Grounded Gemini calls take ~55 s median; 50 VCs run in ~240 s |
 
-## Not done yet
+## Known limits
 
-- `DEMO_PASSCODE` isn't set in Vercel yet, so Run now refuses every passcode until it is.
-- `SEC_USER_AGENT` needs a real contact email before SEC lookups switch on; `PODCASTINDEX_API_SECRET` is empty, so podcasts are off.
-- Lighthouse scores and Playwright screenshots from the acceptance checklist; axe-core was run by hand (0 violations on `/`, `/vc/[id]`, `/runs`).
-- `suggested_vcs` (reverse lookup) is v2; the panel hides when empty.
+- 17 portfolio pages are JavaScript-only, bot-blocked or missing, so portfolio diffing covers 33 of 50 funds.
+- The YouTube Data API allows ~100 searches a day; heavy manual testing can use it up (it resets daily; the circuit breaker skips it for the rest of a run).
+- Podcast Index needs the API **secret** that matches the key; until it's set correctly the source is skipped.

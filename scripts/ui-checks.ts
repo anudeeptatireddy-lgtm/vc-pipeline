@@ -24,7 +24,16 @@ async function axe(page: Page) {
 
 async function main() {
   mkdirSync(OUT, { recursive: true });
-  const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+  const launched = await chromium.launch({ executablePath: CHROME, headless: true });
+  // tsx/esbuild wraps functions passed to page.evaluate with __name(); define it in every page.
+  const browser = {
+    newPage: async (opts: Parameters<typeof launched.newPage>[0]) => {
+      const p = await launched.newPage(opts);
+      await p.addInitScript({ content: "window.__name = (f) => f;" });
+      return p;
+    },
+    close: () => launched.close(),
+  };
   const report: Record<string, unknown> = { url: BASE, at: new Date().toISOString() };
 
   for (const [name, vp] of [["mobile-390x844", { width: 390, height: 844 }], ["desktop-1440x900", { width: 1440, height: 900 }]] as const) {
