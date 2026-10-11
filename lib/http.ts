@@ -73,13 +73,21 @@ async function robotsFor(origin: string): Promise<RobotsRules> {
   return p;
 }
 
+/** sec.gov requires a declared contact User-Agent (docs/signal-sources.md §5.1). */
+function userAgentFor(url: string): string {
+  try {
+    if (/(^|\.)sec\.gov$/.test(new URL(url).hostname) && process.env.SEC_USER_AGENT) return process.env.SEC_USER_AGENT;
+  } catch {}
+  return USER_AGENT;
+}
+
 async function rawFetch(url: string, timeoutMs: number, init: RequestInit = {}): Promise<FetchResult> {
   try {
     const res = await fetch(url, {
       ...init,
       redirect: "follow",
       signal: AbortSignal.timeout(timeoutMs),
-      headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", ...init.headers },
+      headers: { "User-Agent": userAgentFor(url), Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", ...init.headers },
     });
     const contentType = res.headers.get("content-type") ?? "";
     const text = /text|xml|json|html/.test(contentType) ? await res.text() : "";

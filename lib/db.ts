@@ -5,7 +5,13 @@
 import { q } from "./sql";
 import type { RecommendedAction, Vc, VerifiedSignal } from "./types";
 
+/** Active VCs only: archived rows are excluded from runs and the dashboard. */
 export async function loadVcs(): Promise<Vc[]> {
+  return q<Vc>("select * from vcs where not archived order by firm");
+}
+
+/** Every row, archived included (seeding, swaps, exports). */
+export async function loadAllVcs(): Promise<Vc[]> {
   return q<Vc>("select * from vcs order by firm");
 }
 
@@ -42,11 +48,14 @@ export interface VcIdentifiers {
   priority?: string;
   region?: string;
   needs_review?: boolean;
+  archived?: boolean;
+  archived_reason?: string;
 }
 
 const IDENTIFIER_KEYS: (keyof VcIdentifiers)[] = [
   "linkedin_url", "x_user_id", "bluesky_handle", "youtube_channel_id", "rss_url", "portfolio_url", "team_url",
   "sec_cik", "website", "partner_name", "partner_confidence", "priority", "region", "needs_review",
+  "archived", "archived_reason",
 ];
 
 /** Seeding only (scripts/seed-vcs.ts). Omitted fields keep their current value. */

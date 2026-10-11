@@ -11,7 +11,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import Parser from "rss-parser";
 import { z } from "zod";
-import { insertNewVcs, loadVcs, writeVcIdentifiers, type VcIdentifiers } from "../lib/db";
+import { insertNewVcs, loadAllVcs, writeVcIdentifiers, type VcIdentifiers } from "../lib/db";
 import { exaSearch, exaUsage, type ExaResult } from "../lib/exa";
 import { geminiJson, geminiUsage } from "../lib/gemini";
 import { mapLimit, politeFetch, USER_AGENT } from "../lib/http";
@@ -363,9 +363,10 @@ async function main() {
   );
   console.log(`Inserted ${inserted} new rows.`);
 
-  const vcs = new Map((await loadVcs()).map((v) => [v.seed_key, v]));
+  const vcs = new Map((await loadAllVcs()).map((v) => [v.seed_key, v]));
   for (const v of vcs.values()) if (v.seed_key) confidenceByKey.set(v.seed_key, v.partner_confidence);
   const todo = rows.filter((r) => {
+    if (r.archived === "yes") return false; // archived rows are kept but never re-resolved
     if (only && !only.includes(r.id)) return false;
     const vc = vcs.get(r.id);
     return force || !!only || !(vc?.website && vc.partner_name);
@@ -390,7 +391,7 @@ async function main() {
 
   writeFileSync("data/seed-report.json", JSON.stringify(reports, null, 2) + "\n");
 
-  const all = await loadVcs();
+  const all = (await loadAllVcs()).filter((v) => !v.archived);
   const idCount = (v: Vc) =>
     [v.linkedin_url, v.rss_url, v.portfolio_url, v.team_url, v.sec_cik, v.youtube_channel_id].filter(Boolean).length;
   console.log("\n--- Seed report (whole table) ---");

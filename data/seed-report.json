@@ -1,227 +1,26 @@
 [
   {
-    "key": "vc02",
-    "firm": "Schematic Ventures",
-    "website": "https://www.schematicventures.com",
-    "partner": "Julian Counihan",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "linkedin_url"
-    ],
-    "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc03",
-    "firm": "Primary Venture Partners",
-    "website": "https://www.primary.vc",
-    "partner": "Zach Fredericks",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc04",
-    "firm": "Mela Ventures",
-    "website": "https://melaventures.in",
-    "partner": "Krishnakumar Natarajan",
+    "key": "vc51",
+    "firm": "YourNest Venture Capital",
+    "website": "https://yournest.in",
+    "partner": "Girish Shivani",
     "partnerConfidence": "low",
     "identifiers": [
-      "linkedin_url",
       "portfolio_url",
       "team_url"
     ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
+    "reviewReasons": [],
     "notes": [
-      "site blocks our fetcher; verified from search index"
-    ],
-    "errors": []
-  },
-  {
-    "key": "vc05",
-    "firm": "NB Ventures",
-    "website": "https://nbventuresme.com",
-    "partner": "Neeleshwar Bhatnagar",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
       "partner confidence low"
     ],
-    "notes": [],
     "errors": []
   },
   {
-    "key": "vc06",
-    "firm": "Enrission India Capital",
-    "website": null,
-    "partner": "YUSUKE KAKIMOTO",
+    "key": "vc52",
+    "firm": "Picus Capital",
+    "website": "https://www.picuscap.com",
+    "partner": "Florian Reichert",
     "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url"
-    ],
-    "reviewReasons": [
-      "no verified website",
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc07",
-    "firm": "Navyug Global",
-    "website": "https://navyugglobal.com",
-    "partner": "Nikhil Chandan",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc08",
-    "firm": "LetsVenture",
-    "website": "https://lvxventures.com",
-    "partner": "Shanti Mohan",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "rss_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc09",
-    "firm": "Stride Ventures",
-    "website": "https://strideventures.global",
-    "partner": "Apoorva Sharma",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc11",
-    "firm": "Info Edge Ventures",
-    "website": "https://www.infoedge.in",
-    "partner": "Sanjeev Bikhchandani",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc12",
-    "firm": "Stellaris Venture Partners",
-    "website": "https://www.stellarisvp.com",
-    "partner": "Sayantan Sarkar",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc13",
-    "firm": "Orios Venture Partners",
-    "website": "https://oriosvp.com",
-    "partner": "Rehan Yar Khan",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc14",
-    "firm": "Z47 (Matrix Partners India)",
-    "website": "https://www.z47.com",
-    "partner": "Avnish Bajaj",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc15",
-    "firm": "Nexus Venture Partners",
-    "website": "https://www.nexusvp.com",
-    "partner": "Suvir Sujan",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc16",
-    "firm": "Ironspring Ventures",
-    "website": "https://ironspring.com",
-    "partner": "Natan Reddy",
-    "partnerConfidence": "high",
     "identifiers": [
       "linkedin_url",
       "rss_url",
@@ -229,560 +28,93 @@
       "team_url"
     ],
     "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc17",
-    "firm": "8VC",
-    "website": "https://8vc.com",
-    "partner": "Jake Medwell",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc18",
-    "firm": "Chicago Ventures",
-    "website": "https://www.chicagoventures.com",
-    "partner": "Stuart Larkins",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc19",
-    "firm": "Susa Ventures",
-    "website": "https://susaventures.com",
-    "partner": "Seth Berman",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url"
-    ],
-    "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc20",
-    "firm": "Overlay Capital",
-    "website": "https://overlaycapital.com",
-    "partner": "Chadd Evans",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc21",
-    "firm": "Mu Ventures",
-    "website": "https://www.muventures.com",
-    "partner": "Gary Benerofe",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc22",
-    "firm": "Tech Square Ventures",
-    "website": "https://techsquareventures.com",
-    "partner": "Blake Patton",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc23",
-    "firm": "Supply Change Capital",
-    "website": "https://supplychange.fund",
-    "partner": "Shayna Harris",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc24",
-    "firm": "Fuel Ventures",
-    "website": "https://www.fuel.ventures",
-    "partner": "Mark Pearson",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc25",
-    "firm": "Moving Capital",
-    "website": "https://movingcapital.co.za",
-    "partner": null,
-    "partnerConfidence": null,
-    "identifiers": [
-      "rss_url"
-    ],
-    "reviewReasons": [
-      "no verified partner"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc26",
-    "firm": "Navigate Ventures",
-    "website": "https://www.navigatevc.com",
-    "partner": "Ivan Nikkhoo",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc27",
-    "firm": "LDV Capital",
-    "website": "https://www.ldv.co",
-    "partner": null,
-    "partnerConfidence": null,
-    "identifiers": [
-      "portfolio_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "no verified partner"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc28",
-    "firm": "TMV",
-    "website": "https://www.tmv.vc",
-    "partner": "Marina Hadjipateras",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc29",
-    "firm": "Eclipse Ventures",
-    "website": "https://ventureequity.eclipse.vc",
-    "partner": "Lior Susan",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc30",
-    "firm": "Blume Ventures",
-    "website": "https://blume.vc",
-    "partner": "Sanjay Nath",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
     "notes": [
-      "site blocks our fetcher; verified from search index"
-    ],
-    "errors": []
-  },
-  {
-    "key": "vc31",
-    "firm": "Prime Venture Partners",
-    "website": "https://www.primevp.in",
-    "partner": "Amit Somani",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
       "partner confidence low"
     ],
-    "notes": [],
     "errors": []
   },
   {
-    "key": "vc32",
-    "firm": "3one4 Capital",
-    "website": "https://www.3one4capital.com",
-    "partner": "Pranav Pai",
+    "key": "vc53",
+    "firm": "Chiratae Ventures",
+    "website": "https://www.chiratae.com",
+    "partner": "TC Meenakshisundaram",
     "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc33",
-    "firm": "Kalaari Capital",
-    "website": "https://kalaari.com",
-    "partner": null,
-    "partnerConfidence": null,
     "identifiers": [
       "rss_url",
       "portfolio_url",
       "team_url",
       "youtube_channel_id"
     ],
-    "reviewReasons": [
-      "no verified partner"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc34",
-    "firm": "Venture Highway",
-    "website": null,
-    "partner": null,
-    "partnerConfidence": null,
-    "identifiers": [],
-    "reviewReasons": [
-      "no verified website",
-      "no verified partner"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc35",
-    "firm": "Titan Capital",
-    "website": "https://titancapital.vc",
-    "partner": "Rohit Bansal",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
+    "reviewReasons": [],
+    "notes": [
       "partner confidence low"
     ],
-    "notes": [],
     "errors": []
   },
   {
-    "key": "vc36",
-    "firm": "Better Capital",
-    "website": "https://www.bettercapital.vc",
-    "partner": "Vaibhav Domkundwar",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc37",
-    "firm": "Arali Ventures",
-    "website": "https://www.araliventures.in",
-    "partner": "Arun Raghavan",
+    "key": "vc54",
+    "firm": "Turbostart",
+    "website": "https://turbostart.co",
+    "partner": "Rajagopal Koushik",
     "partnerConfidence": "high",
+    "identifiers": [
+      "linkedin_url",
+      "portfolio_url",
+      "team_url",
+      "youtube_channel_id"
+    ],
+    "reviewReasons": [],
+    "notes": [],
+    "errors": []
+  },
+  {
+    "key": "vc55",
+    "firm": "Wavemaker Partners",
+    "website": "https://wavemaker.vc",
+    "partner": "Paul Santos",
+    "partnerConfidence": "low",
+    "identifiers": [
+      "linkedin_url",
+      "rss_url",
+      "portfolio_url",
+      "team_url"
+    ],
+    "reviewReasons": [],
+    "notes": [
+      "partner confidence low"
+    ],
+    "errors": []
+  },
+  {
+    "key": "vc56",
+    "firm": "Pentathlon Ventures",
+    "website": "https://pentathlon.vc",
+    "partner": "Madhukar Bhatia",
+    "partnerConfidence": "high",
+    "identifiers": [
+      "rss_url",
+      "portfolio_url",
+      "team_url",
+      "youtube_channel_id"
+    ],
+    "reviewReasons": [],
+    "notes": [],
+    "errors": []
+  },
+  {
+    "key": "vc57",
+    "firm": "100Unicorns",
+    "website": "https://100unicorns.in",
+    "partner": "Dr Apoorva Ranjan Sharma",
+    "partnerConfidence": "low",
     "identifiers": [
       "linkedin_url",
       "portfolio_url"
     ],
     "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc39",
-    "firm": "Lightspeed India",
-    "website": "https://lsvp.com",
-    "partner": "Bejul Somaia",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc40",
-    "firm": "Elevation Capital",
-    "website": "https://www.elevationcapital.com",
-    "partner": "Ravi Adusumalli",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc41",
-    "firm": "A91 Partners",
-    "website": "https://a91partners.com",
-    "partner": "Anooj Vikam",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc42",
-    "firm": "Inflection Point Ventures",
-    "website": "https://ipventures.in",
-    "partner": "Mike O'Malley",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc43",
-    "firm": "100X.VC",
-    "website": "https://www.100x.vc",
-    "partner": "Sanjay Mehta",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc44",
-    "firm": "Antler India",
-    "website": "https://www.antler.co",
-    "partner": "Nitin Sharma",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url",
-      "youtube_channel_id"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc45",
-    "firm": "India Quotient",
-    "website": null,
-    "partner": "Hemant Agarwal",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url"
-    ],
-    "reviewReasons": [
-      "no verified website",
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc46",
-    "firm": "pi Ventures",
-    "website": "https://www.piventures.in",
-    "partner": "Shubham Sandeep",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "linkedin_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc47",
-    "firm": "Speciale Invest",
-    "website": "https://www.specialeinvest.com",
-    "partner": null,
-    "partnerConfidence": null,
-    "identifiers": [
-      "rss_url",
-      "portfolio_url"
-    ],
-    "reviewReasons": [
-      "no verified partner"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc48",
-    "firm": "Ankur Capital",
-    "website": "https://www.ankurcapital.com",
-    "partner": "Krishnan Neelakantan",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url",
-      "rss_url",
-      "portfolio_url",
-      "team_url"
-    ],
-    "reviewReasons": [
-      "partner confidence low"
-    ],
-    "notes": [],
-    "errors": []
-  },
-  {
-    "key": "vc49",
-    "firm": "Prologis Ventures",
-    "website": "https://www.prologis.com",
-    "partner": "William O'Donnell",
-    "partnerConfidence": "high",
-    "identifiers": [
-      "linkedin_url",
-      "team_url"
-    ],
-    "reviewReasons": [],
     "notes": [
-      "site blocks our fetcher; verified from search index"
-    ],
-    "errors": []
-  },
-  {
-    "key": "vc50",
-    "firm": "Maersk Growth",
-    "website": null,
-    "partner": "Alex Smout",
-    "partnerConfidence": "low",
-    "identifiers": [
-      "linkedin_url"
-    ],
-    "reviewReasons": [
-      "no verified website",
       "partner confidence low"
     ],
-    "notes": [],
     "errors": []
   }
 ]

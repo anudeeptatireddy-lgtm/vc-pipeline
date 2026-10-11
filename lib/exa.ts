@@ -21,6 +21,7 @@ export interface ExaSearch {
   includeDomains?: string[];
   excludeDomains?: string[];
   startPublishedDate?: string;
+  endPublishedDate?: string;
   textChars?: number;
 }
 
@@ -63,6 +64,7 @@ async function exaSearchNow(s: ExaSearch): Promise<ExaResult[]> {
   if (s.includeDomains) body.includeDomains = s.includeDomains;
   if (s.excludeDomains) body.excludeDomains = s.excludeDomains;
   if (s.startPublishedDate) body.startPublishedDate = s.startPublishedDate;
+  if (s.endPublishedDate) body.endPublishedDate = s.endPublishedDate;
 
   const call = () =>
     fetch("https://api.exa.ai/search", {

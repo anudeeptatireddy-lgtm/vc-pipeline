@@ -78,7 +78,7 @@ describe("sec form d", () => {
       { _id: "0009999999-26-000001:primary_doc.xml", _source: { ciks: ["0009999999"], display_names: ["Dynamo Energy LLC"], file_date: "2026-10-03" } },
     ] } }, "Dynamo Ventures");
     expect(items).toHaveLength(1);
-    expect(items[0]).toMatchObject({ url: "https://www.sec.gov/Archives/edgar/data/1234567/000123456726000001/", sourceTier: "A", publishedAt: "2026-10-02" });
+    expect(items[0]).toMatchObject({ url: "https://www.sec.gov/Archives/edgar/data/1234567/000123456726000001/0001234567-26-000001-index.htm", sourceTier: "A", publishedAt: "2026-10-02" });
   });
 });
 

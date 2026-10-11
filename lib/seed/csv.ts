@@ -47,6 +47,8 @@ export interface SeedRow {
   evidence_source: string;
   website: string;
   website_verified: string;
+  archived?: string; // "yes" for rows swapped out (kept, not tracked)
+  archived_reason?: string;
 }
 
 export function toSeedRows(records: Record<string, string>[]): SeedRow[] {

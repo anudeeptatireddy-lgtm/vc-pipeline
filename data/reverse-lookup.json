@@ -1,0 +1,4284 @@
+{
+  "generatedAt": "2026-10-11T14:41:43.444Z",
+  "windowDays": 365,
+  "deals": [
+    {
+      "company": "Zinit",
+      "sells": "AI-native sourcing and procurement platform",
+      "to": "Enterprises and businesses",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "$8 million",
+      "date": "2025-11-25",
+      "urls": [
+        "https://yourstory.com/2025/11/zinit-raises-8m-as-it-scales-ai-driven-procurement-platform-in-india",
+        "https://www.entrepreneurindia.com/blog/en/news/ai-procurement-platform-zinit-secures-usd-8-mn-seed-funding.57957",
+        "https://india.entrepreneur.com/news-and-trends/ai-procurement-platform-zinit-secures-usd-8-mn-seed-funding/500093",
+        "https://www.indianstartuptimes.com/investment/ai-procurement-platform-zinit-raises-8m-seed-round-at-48m-valuation-led-by-altair-capital/",
+        "https://marketingmoves.in/startups/global-procurement-push-accelerates-after-zinit-seed-funding-led-by-altair-capital",
+        "https://techfundingnews.com/zinit-ai-procurement-funding-2025/",
+        "https://startupnews360.com/zinit-secures-8-million-to-reinvent-how-companies-buy-everything-big-bet-on-indias-digital-procurement-boom/",
+        "https://www.latamrepublic.com/zinit-raises-us-8m-in-a-seed-round-led-by-altair-capital-to-scale-ai-driven-b2b-procurement-in-brazil/",
+        "https://ceosofbharat.com/this-ai-startup-just-raised-8-million-to-disrupt-a-trillion-dollar-industry-and-its-next-big-move-targets-india/"
+      ],
+      "leads": [
+        "AltaIR Capital"
+      ],
+      "others": [
+        "DVC"
+      ]
+    },
+    {
+      "company": "Cavela",
+      "sells": "AI agents that automate supplier sourcing and negotiation",
+      "to": "brands, small and midsize companies",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "$6.6 million",
+      "date": "2025-11-19",
+      "urls": [
+        "https://techcrunch.com/2025/11/19/cavela-lands-6-6m-to-help-brands-beat-pre-tariff-manufacturing-costs/"
+      ],
+      "leads": [
+        "XYZ Venture Capital",
+        "Susa Ventures"
+      ],
+      "others": [
+        "Crossover Capital"
+      ]
+    },
+    {
+      "company": "Hexalog",
+      "sells": "AI-driven orchestration layer for cross-border logistics",
+      "to": "supply chain participants operating across borders",
+      "country": "India",
+      "stage": "seed",
+      "amount": "$4 million",
+      "date": "2026-01-12",
+      "urls": [
+        "https://entrackr.com/snippets/hexalog-bags-4-mn-in-seed-round-led-by-enrission-india-capital-10994708",
+        "https://inc42.com/buzz/hexalog-secures-4-mn-funding-to-digitise-cross-border-supply-chains/",
+        "https://stopdown.in/news/hexalog-funding-2026-01-12",
+        "https://entrepreneurnewsnetwork.com/2026/01/13/logistics-startup-hexalog-raises-4-million-in-seed-funding-to-scale-global-operations/",
+        "https://www.indianstartuptimes.com/investment/hexalog-raises-4-million-in-seed-funding-to-build-ai-led-orchestration-for-cross-border-logistics/",
+        "https://ascendants.in/funding-feed/hexalog-raises-4m/",
+        "https://startupsuccessstories.in/hexalog-secures-4-million-seed-funding-led-by-enrission-india-capital-to-advance-ai-powered-cross-border-supply-chains/",
+        "https://bharatfast.com/english/start-up/hexalog-raises-4-mn-to-digitise-cross-border-supply-chains-and-simplify-global-trade-for-indian-businesses/30893/"
+      ],
+      "leads": [
+        "ENRISSION INDIA CAPITAL"
+      ],
+      "others": [
+        "Mount Judi Ventures",
+        "Action Tesa Family Office",
+        "Rohan Bajaj's Syndicate",
+        "Nandan Growth Fund",
+        "Saurabh Deep Singla",
+        "Sumit Jalan",
+        "Amit Tyagi",
+        "Nitin Sethi"
+      ]
+    },
+    {
+      "company": "ContraVault AI",
+      "sells": "AI-powered procurement intelligence and tender bidding software",
+      "to": "businesses across construction, energy, power, defence and aerospace",
+      "country": "India",
+      "stage": "seed-extension",
+      "amount": "$3.1 Mn",
+      "date": "2026-06-16",
+      "urls": [
+        "https://inc42.com/buzz/exclusive-ai-startup-contravault-raises-3-1-mn-to-expand-in-the-us/",
+        "https://startupbydoc.com/contravault-ai-raises-3-1-million-to-transform-procurement-intelligence/"
+      ],
+      "leads": [
+        "Chiratae Ventures"
+      ],
+      "others": [
+        "Titan Capital Winners Fund"
+      ]
+    },
+    {
+      "company": "OneARVO",
+      "sells": "tamper-proof and copy-proof supply chain labelling system",
+      "to": "brands in pharmaceuticals, automotive aftermarket, and industrial manufacturing",
+      "country": "India",
+      "stage": "pre-seed",
+      "amount": "Rs 1.23 crore",
+      "date": "2026-01-29",
+      "urls": [
+        "https://entrackr.com/snippets/deep-tech-startup-onearvo-raises-pre-seed-round-led-by-ipv-11039524",
+        "https://b2b.economictimes.indiatimes.com/news/entrepreneur/onearvo-secures-123-million-in-pre-seed-funding-to-enhance-supply-chain-integrity-solutions/127775456",
+        "https://www.machineinsider.com/deep-tech-startup-onearvo-raises-%E2%82%B9-12-3-million-in-pre-seed-led-by-inflection-point-ventures/"
+      ],
+      "leads": [
+        "Inflection Point Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "Constems-AI",
+      "sells": "retail and supply chain automation platform using vision AI",
+      "to": "consumer brands and CPG companies",
+      "country": "unknown",
+      "stage": "seed-extension",
+      "amount": "$2 million",
+      "date": "2026-03-11",
+      "urls": [
+        "https://entrepreneur.economictimes.indiatimes.com/news/constems-ai-secures-2-million-in-pre-series-a-funding-to-revolutionize-retail-intelligence/129456779",
+        "https://inc42.com/buzz/constems-ai-raises-2-mn-to-scale-vision-ai-saas-platform/"
+      ],
+      "leads": [
+        "Finvolve",
+        "India Accelerator"
+      ],
+      "others": [
+        "Cognify",
+        "AIF",
+        "Inflection Point Ventures",
+        "IIM Lucknow Enterprise Incubation Centre"
+      ]
+    },
+    {
+      "company": "Confluxe",
+      "sells": "Platform providing market entry strategy, digital commerce, merchandising, and supply chain operations",
+      "to": "international fashion and lifestyle brands",
+      "country": "India",
+      "stage": "pre-seed",
+      "amount": "$1.6 million",
+      "date": "2026-03-11",
+      "urls": [
+        "https://yourstory.com/2026/03/former-myntra-hm-executives-launch-retail-tech-platform-confluxe-16-mln-pre-seed-funding",
+        "https://entrepreneur.economictimes.indiatimes.com/news/funding/confluxe-secures-16-million-in-pre-seed-funding-from-wavemaker-partners-and-kriscore-capital/129501041"
+      ],
+      "leads": [
+        "Wavemaker Partners"
+      ],
+      "others": [
+        "Kriscore Capital"
+      ]
+    },
+    {
+      "company": "1Buy.AI",
+      "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
+      "to": "enterprises and electronics players",
+      "country": "India",
+      "stage": "seed",
+      "amount": "INR 32.5 Cr ($3.5 Mn)",
+      "date": "2026-01-29",
+      "urls": [
+        "https://inc42.com/buzz/1buy-ai-nets-inr-33-cr-to-help-enterprises-procure-electronics-components/",
+        "https://india.entrepreneur.com/news-and-trends/procurement-platform-1buyai-secures-inr-325-cr-seed/502280",
+        "https://www.businesswire.com/news/home/20260129944622/en/Serial-Entrepreneurs-Behind-Multiple-Unicorns-Raise-%243.9M-to-Build-AI-Operating-System-for-Electronics-Procurement",
+        "https://startuptalky.com/news/midas-touch-founders-raise-rs-32-5-cr-for-their-ai-first-startup-1buy-ai-seed-round-led-by-100-unicorns/",
+        "https://www.entrepreneurindia.com/blog/en/news/procurement-platform-1buyai-secures-inr-325-cr-seed-funding.59027",
+        "https://pulse2.com/1buy-ai-3-9-million-seed-funding-closed-to-build-ai-operating-system-for-electronics-procurement/",
+        "https://globalindianalpha.com/1buy-ai-raises-rs-32-5-cr-in-seed-round-led-by-100unicorns/",
+        "https://www.cxodigitalpulse.com/1buy-ai-secures-rs-32-5-crore-seed-funding-led-by-100unicorns/",
+        "https://scoopearth.com/1buy-ai-secured-32-5-crore-in-a-seed-funding-round-led-by-100unicorns/",
+        "https://briefglance.com/articles/unicorn-builders-raise-39m-for-1buyais-procurement-platform"
+      ],
+      "leads": [
+        "100 Unicorns",
+        "100Unicorns"
+      ],
+      "others": [
+        "Gruhas",
+        "FJ Labs",
+        "Ashish Kacholia"
+      ]
+    },
+    {
+      "company": "Reneonix",
+      "sells": "AI-led circular materials platform for glass recycling, processing, and traceability",
+      "to": "brands and manufacturers",
+      "country": "India",
+      "stage": "pre-seed",
+      "amount": "₹1.7 crore",
+      "date": "2026-02-26",
+      "urls": [
+        "https://b2b.economictimes.indiatimes.com/news/entrepreneur/reneonix-raises-17-crore-pre-seed-funding-led-by-inflection-point-ventures-to-build-ai-driven-circular-materials-platform/128804162"
+      ],
+      "leads": [
+        "Inflection Point Ventures"
+      ],
+      "others": [
+        "Department of Science and Technology",
+        "NSRCEL at IIM Bangalore",
+        "SustainTN",
+        "ITEL Foundation"
+      ]
+    },
+    {
+      "company": "Digicust",
+      "sells": "AI-driven customs automation platform",
+      "to": "logistics providers, customs brokers, and exporters",
+      "country": "Austria",
+      "stage": "seed-extension",
+      "amount": "€2.3 million",
+      "date": "2025-12-18",
+      "urls": [
+        "https://seedtable.com/companies/digicust/funding-rounds/seed-2025-12"
+      ],
+      "leads": [
+        "Jet Investment"
+      ],
+      "others": [
+        "Look AI Ventures",
+        "Austria Wirtschaftsservice"
+      ]
+    },
+    {
+      "company": "Another",
+      "sells": "Software to manage, track, and sell off-channel or excess retail inventory",
+      "to": "Retail brands and businesses",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$2.5 million",
+      "date": "2026-01-20",
+      "urls": [
+        "https://techcrunch.com/2026/01/20/retail-startup-another-raises-a-2-5m-seed-to-help-sell-excess-inventory/"
+      ],
+      "leads": [
+        "Anthemis FIL",
+        "Westbound"
+      ],
+      "others": []
+    },
+    {
+      "company": "Lawyered",
+      "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
+      "to": "vehicle owners, drivers, and fleet operators",
+      "country": "India",
+      "stage": "seed-extension",
+      "amount": "$2.5 million",
+      "date": "2026-04-21",
+      "urls": [
+        "https://entrepreneur.economictimes.indiatimes.com/amp/news/funding/lawyered-secures-25-million-pre-series-a-funding-to-revolutionize-legal-solutions-for-indias-mobility-sector/130410540"
+      ],
+      "leads": [
+        "Rainmatter by Zerodha",
+        "Turbostart"
+      ],
+      "others": [
+        "Finvolve"
+      ]
+    },
+    {
+      "company": "RSA Cross-Border",
+      "sells": "software-first solution and AI tooling for cross-border logistics",
+      "to": "freight forwarders, consolidators, and 3PLs",
+      "country": "UAE",
+      "stage": "seed",
+      "amount": "$1.5M",
+      "date": "2026-05-05",
+      "urls": [
+        "https://www.rsaxb.com/press/seed-2026",
+        "https://www.thesaasnews.com/news/rsa-cross-border-raises-1-5m-seed-round/",
+        "https://www.zawya.com/en/press-release/companies-news/rsa-cross-border-spins-out-of-rsa-global-with-1.5mln-seed-led-by-21-ventures-341314",
+        "https://dubaistartupsdaily.com/article/dubai-logistics-startup-rsa-cross-border-lands-usd1-5m-seed-to-build-the-future-of-ecommerce"
+      ],
+      "leads": [
+        "21 Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "Mentium",
+      "sells": "no-code AI agents for logistics workflows",
+      "to": "freight brokerages",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$3.2 million",
+      "date": "2025-10-13",
+      "urls": [
+        "https://www.techcompanynews.com/mentium-raises-3-2m-in-seed-funding-round-led-by-lerer-hippeau/",
+        "https://www.nextinthenorth.com/p/austin-ai-startup-mentium-raises-3-2m-seed-round-with-participation-from-matchstick-ventures"
+      ],
+      "leads": [
+        "Lerer Hippeau"
+      ],
+      "others": [
+        "Matchstick Ventures",
+        "Tower Research Capital",
+        "Antler",
+        "MBA Ventures",
+        "Michael Witte"
+      ]
+    },
+    {
+      "company": "Spot Ship",
+      "sells": "AI-powered software for ship chartering workflows",
+      "to": "brokers, charterers, owners and operators",
+      "country": "unknown",
+      "stage": "pre-seed",
+      "amount": "£1m",
+      "date": "2026-01-14",
+      "urls": [
+        "https://www.startupmag.co.uk/funding/spot-ship-2026-pre-seed-funding/"
+      ],
+      "leads": [
+        "Ventures.eu"
+      ],
+      "others": [
+        "Tradeworks.vc",
+        "Herman Narula",
+        "Marcel Kind"
+      ]
+    },
+    {
+      "company": "MeltPlan",
+      "sells": "AI-driven logistics transformation",
+      "to": "",
+      "country": "",
+      "stage": "seed",
+      "amount": "$10 Mn",
+      "date": "2026-02-26",
+      "urls": [
+        "https://www.voiceofentrepreneur.com/meltplan-raises-10-mn-seed-round-led-by-bessemer-venture-partners-to-power-ai-driven-logistics-transformation/"
+      ],
+      "leads": [
+        "Bessemer Venture Partners"
+      ],
+      "others": []
+    },
+    {
+      "company": "CargoFL",
+      "sells": "logistics technology platform to optimize freight and supply chain operations",
+      "to": "shippers and transporters",
+      "country": "India",
+      "stage": "seed",
+      "amount": "Rs 6.75 crore",
+      "date": "2026-06-24",
+      "urls": [
+        "https://vctavern.com/cargofl-secures-rs-6-75-cr-in-seed-funding-round-led-by-yournest-venture-capital/"
+      ],
+      "leads": [
+        "YourNest Venture Capital"
+      ],
+      "others": []
+    },
+    {
+      "company": "QuikApp",
+      "sells": "Logistics technology platform for tracking, automated dispatch, security, and fleet analytics",
+      "to": "Enterprise customers across FMCG, e-commerce, and 3PL",
+      "country": "India",
+      "stage": "seed",
+      "amount": "₹50 lakh",
+      "date": "2026-10-01",
+      "urls": [
+        "https://bipsiq.com/quikapp-raises-%e2%82%b950-lakh-in-seed-funding-led-by-vehra-ventures/",
+        "https://www.finsmes.com/2026/10/quikapp-closes-seed-funding.html"
+      ],
+      "leads": [
+        "Vehra Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "RSA XB",
+      "sells": "software platform for cross-border e-commerce logistics",
+      "to": "freight forwarders, consolidators and third-party logistics providers",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "$1.5M",
+      "date": "2026-05-12",
+      "urls": [
+        "https://en.arageek.com/rsa-xb-raises-1-5m-to-simplify-cross-border-e-commerce-logistics",
+        "https://worldef.com/2026/05/19/rsa-xb-1-5m-seed-logistics/"
+      ],
+      "leads": [
+        "21 Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "FreightFox",
+      "sells": "Transportation management system and control tower platform",
+      "to": "Large manufacturing enterprises",
+      "country": "India",
+      "stage": "seed-extension",
+      "amount": "Rs 5 Crore",
+      "date": "2026-08-11",
+      "urls": [
+        "https://www.indianstartuptimes.com/investment/freightfox-raises-rs-5-crore-in-pre-series-a-round-to-expand-enterprise-and-global-operations/",
+        "https://scoopearth.com/freightfox-secured-5-crore-in-a-pre-series-a-funding-round-led-by-highleaf/"
+      ],
+      "leads": [
+        "HighLeaf"
+      ],
+      "others": [
+        "Vijender Yadav",
+        "Puru Gupta",
+        "Aeravti Ventures"
+      ]
+    },
+    {
+      "company": "Einship",
+      "sells": "AI native platform combining market intelligence with operational management",
+      "to": "importers and exporters",
+      "country": "Brazil",
+      "stage": "seed",
+      "amount": "$1M",
+      "date": "2026-08-03",
+      "urls": [
+        "https://technologytangle.com/2026/08/04/einship-raises-1m-seed-round-led-by-parceiro-ventures",
+        "https://www.isvworld.com/search/news/2202583",
+        "https://www.thesaasnews.com/news/einship-raises-1m-seed/",
+        "https://gentyrecruitment.io/news/einship-raises-us-1-million-seed-funding-brazil"
+      ],
+      "leads": [
+        "Parceiro Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "Procure AI",
+      "sells": "procurement automation software",
+      "to": "enterprises",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "$13 million",
+      "date": "2025-11-26",
+      "urls": [
+        "https://www.axios.com/pro/enterprise-software-deals/2025/11/26/procure-ai-supply-chain-procurement-seed",
+        "https://c4v.com/news/procure-ai-secures-13m-seed-funding-to-transform-procurement-through-ai-native-autonomous-agents/",
+        "https://siliconangle.com/2025/11/27/procure-ai-lands-13m-funding-automate-business-procurement-tasks/",
+        "https://futurycapital.vc/procure-ai-secures-13m-seed-funding-to-transform-procurement-through-ai-native-autonomous-agents/",
+        "https://www.uktech.news/ai/procure-ai-9-8m-seed-round-20251127",
+        "https://www.eu-startups.com/2025/11/amid-new-tariffs-and-volatile-delivery-timelines-procure-ai-lands-e11-million-to-help-enterprises-stabilise-procurement-and-supply-chains/",
+        "https://aicurator.io/procure-ai-funding/",
+        "https://theaiinsider.tech/2025/12/08/procure-ai-secures-13m-seed-round-to-scale-ai-native-procurement-automation-across-europe/"
+      ],
+      "leads": [
+        "Headline"
+      ],
+      "others": []
+    },
+    {
+      "company": "SuperProcure",
+      "sells": "Unified TMS and freight lifecycle management software",
+      "to": "enterprises",
+      "country": "India",
+      "stage": "pre-seed",
+      "amount": "₹140 Million",
+      "date": "2026-02-25",
+      "urls": [
+        "https://app.fundz.net/fundings/superprocure-funding-round-85ffce"
+      ],
+      "leads": [
+        "Pentathlon Ventures"
+      ],
+      "others": [
+        "IndiaMART",
+        "Caret Capital"
+      ]
+    },
+    {
+      "company": "Implentio",
+      "sells": "AI-powered shipper-side reconciliation platform for logistics invoices",
+      "to": "ecommerce brands",
+      "country": "unknown",
+      "stage": "seed-extension",
+      "amount": "$2M",
+      "date": "2026-04-27",
+      "urls": [
+        "https://muditavp.com/implentio-ai-powered-logistics-intelligence-for-ecommerce-brands-that-helps-recover-margin-and-enforce-accountability-across-third-party-logistics-3pls-and-carriers/"
+      ],
+      "leads": [
+        "Vertical Venture Partners"
+      ],
+      "others": [
+        "Mudita Venture Partners"
+      ]
+    },
+    {
+      "company": "Rivvun AI",
+      "sells": "Autonomous AI execution layer recovering leaked revenue and procurement spend",
+      "to": "Fortune 1000 enterprises",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$7.55 million",
+      "date": "2026-06-10",
+      "urls": [
+        "https://startuppoint.in/rivvun-ai-secures-7-55-million-to-build/",
+        "https://fundingtimes.in/former-icertis-executives-startup-rivvun-ai-raises-7-55-million-in-seed-funding/",
+        "https://newsx.io/2026/06/11/former-icertis-executives-startup-rivvun-ai-raises-7-55-mn-in-seed-funding/",
+        "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/"
+      ],
+      "leads": [
+        "Sitara Capital",
+        "3one4 Capital"
+      ],
+      "others": []
+    },
+    {
+      "company": "Compri",
+      "sells": "AI-powered procurement software for industrial companies",
+      "to": "industrial companies",
+      "country": "Italy",
+      "stage": "seed",
+      "amount": "€3.2 million",
+      "date": "2026-06-24",
+      "urls": [
+        "https://seedtable.com/companies/compri/funding-rounds/seed-2026-06",
+        "https://dealroom.co/news/135833-compri-raises-3-2m-seed-to-build-ai-powered-procurement-teams/"
+      ],
+      "leads": [
+        "Picus Capital"
+      ],
+      "others": [
+        "Shapers",
+        "Italian Founders Fund",
+        "DFF Ventures"
+      ]
+    },
+    {
+      "company": "Jampack AI",
+      "sells": "agentic platform automating wholesale operations and supply chain processes",
+      "to": "CPG brands",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$3.2M",
+      "date": "2026-02-24",
+      "urls": [
+        "https://www.nombase.com/newswire/2026/02/24/jampack-ai-raises-32m-seed-round-to-automate-wholesale-operations-for-cpg-brands",
+        "https://startuprise.io/jampack-ai-raises-3-2m-in-seed-funding/",
+        "https://www.prnewswire.com/news-releases/jampack-ai-raises-3-2m-seed-round-to-automate-wholesale-operations-for-cpg-brands-302695762.html",
+        "https://www.nosh.com/pr/2026/02/24/jampack-ai-raises-32m-seed-round-to-automate-wholesale-operations-for-cpg-brands",
+        "https://www.jampack.ai/blog/announcing-our-seed-round",
+        "https://maveronvc.substack.com/p/maveron-leads-32m-seed-round-in-jampack"
+      ],
+      "leads": [
+        "Maveron"
+      ],
+      "others": [
+        "Timber Grove Ventures"
+      ]
+    },
+    {
+      "company": "Vectrix",
+      "sells": "AI pre-TMS software automating manual transport order entry",
+      "to": "logistics and transport operators",
+      "country": "Belgium",
+      "stage": "seed",
+      "amount": "€1.15 million",
+      "date": "2026-03-05",
+      "urls": [
+        "https://www.eu-startups.com/2026/03/antwerp-based-vectrix-raises-e1-15-million-to-build-the-automation-layer-for-transport-operations/",
+        "https://tech.eu/2026/03/05/belgian-logistics-startup-vectrix-raises-eur115m-seed-funding/",
+        "https://pulse2.com/vectrix-e1-15-million-raised-for-ai-transport-order-automation-platform/"
+      ],
+      "leads": [
+        "RDY Ventures"
+      ],
+      "others": [
+        "Seeder Fund",
+        "PMV",
+        "Prequel Ventures"
+      ]
+    },
+    {
+      "company": "Velix",
+      "sells": "AI-powered financial operations and invoice reconciliation platform",
+      "to": "third-party logistics providers",
+      "country": "Canada",
+      "stage": "pre-seed",
+      "amount": "$2M",
+      "date": "2026-02-03",
+      "urls": [
+        "https://standupventures.substack.com/p/our-investment-in-velix-bringing-modern-finops-to-logistics-0dd002129066",
+        "https://medium.com/standup-ventures/our-investment-in-velix-bringing-modern-finops-to-logistics-0dd002129066",
+        "https://www.publicnow.com/view/AACE81D660FC718EC260B2630BBC305B55B90BFE",
+        "https://accelia.vc/en/news_post/velix-raises-2m-pre-seed-to-build-a-finops-platform-for-logistics/",
+        "https://accelia.vc/news_post/velix-raises-2m-pre-seed-to-build-a-finops-platform-for-logistics/"
+      ],
+      "leads": [
+        "Luge Capital"
+      ],
+      "others": [
+        "StandUp",
+        "Accelia Capital"
+      ]
+    },
+    {
+      "company": "FreightSuite",
+      "sells": "TMS software for the freight market",
+      "to": "freight and logistics companies",
+      "country": "unknown",
+      "stage": "seed-extension",
+      "amount": "$4.5M",
+      "date": "2025-12-04",
+      "urls": [
+        "https://startupintros.com/news/2025-12-04-freightsuite-pre-series-a"
+      ],
+      "leads": [
+        "mads jensen"
+      ],
+      "others": [
+        "Mark White",
+        "Ascension Ventures",
+        "redbus group",
+        "Venrex"
+      ]
+    },
+    {
+      "company": "Pinch AI",
+      "sells": "AI pricing engine and tools for freight and transportation rates",
+      "to": "shippers, carriers, and brokers",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "$5M",
+      "date": "2026-01-16",
+      "urls": [
+        "https://dailyza.com/pinch-ai-secures-5m-seed-round-to-reinvent-freight-pricing/"
+      ],
+      "leads": [
+        "Dynamo Ventures",
+        "Infinity Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "Anchr",
+      "sells": "AI-native operating system automating ERP workflows and supply chain operations",
+      "to": "food distributors",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$5.8M",
+      "date": "2026-03-10",
+      "urls": [
+        "https://www.finsmes.com/2026/03/anchr-raises-5-8m-in-seed-funding.html",
+        "https://siliconangle.com/2026/03/10/anchr-brings-ai-americas-food-supply-distribution-chain-5-8m-raise/",
+        "https://inforcapital.com/news/anchr-raises-58m-to-automate-americas-food-supply-chain-with-ai/"
+      ],
+      "leads": [
+        "a16z Speedrun",
+        "Anterra Capital",
+        "Offline Ventures",
+        "Long Journey Ventures",
+        "OpenAI"
+      ],
+      "others": [
+        "Anterra Capital",
+        "Offline Ventures",
+        "Long Journey Ventures",
+        "leadership from OpenAI"
+      ]
+    },
+    {
+      "company": "5U AI",
+      "sells": "AI digital workers handling administrative freight workflows inside existing systems",
+      "to": "European freight forwarders and carriers",
+      "country": "Germany",
+      "stage": "pre-seed",
+      "amount": "$3.2m",
+      "date": "2026-07-28",
+      "urls": [
+        "https://splash247.com/freight-automation-startup-5u-ai-lands-3-2m/",
+        "https://www.saasrise.com/deals/5u-ai-raises-32m-preseed-funding-led-by-emerge-capital-65c3573b-01aa-4e3f-b85d-70a6afe85c61",
+        "https://tech.eu/2026/07/28/5u-ai-lands-32m-pre-seed-for-ai-freight-workforce-platform/",
+        "https://www.startup.eu/investments/5u-ai-3-2-m-pre-seed-07-2026",
+        "https://techfundingnews.com/5u-ai-3-2m-pre-seed-freight-forwarding-ai-workers/",
+        "https://inforcapital.com/news/5u-ai-lands-32m-pre-seed-for-ai-freight-workforce-platform/",
+        "https://aibusinessweekly.net/p/5u-ai-3-2-million-freight-forwarding-agents",
+        "https://dealroom.co/news/141509-munichs-5u-ai-raises-3-2m-pre-seed-for-logistics-ai-workers/",
+        "https://startuprise.co.uk/logistics-ai-startup-5u-ai-raises-3-2m-pre-seed-funding/",
+        "https://technicalbeep.com/5u-ai-freight-forwarding-ai-workers/",
+        "https://noah-news.com/munich-startup-secures-32m-pre-seed-to-reshape-freight-forwarding-with-ai-worker/",
+        "https://noah-news.com/munich-startup-secures-32-million-to-automate-freight-forwarding-with-ai-workers/",
+        "https://proyarn.app/en/deals/5u-ai",
+        "https://tldrocket.com/story/5u-ai-lands-32m-pre-seed-for-ai-freight-workforce-platform",
+        "https://news.yrules.com/en/archives/27775",
+        "https://www.techtimes.com/articles/321849/20260728/freight-forwarding-ai-workers-munich-startup-raises-32m-backed-dhl-maersk-execs.htm",
+        "https://foundernews.eu/3-2-million-backs-ai-workers-that-capture-freight-decisions-not-just-automate-tasks/"
+      ],
+      "leads": [
+        "Emerge Capital"
+      ],
+      "others": []
+    },
+    {
+      "company": "Freight Hero",
+      "sells": "AI-powered back-office operations management combining AI agents with human operational support",
+      "to": "freight brokers",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$5M",
+      "date": "2026-07-27",
+      "urls": [
+        "https://www.finsmes.com/2026/07/freight-hero-raises-5m-in-seed-funding.html",
+        "https://www.thesaasnews.com/news/freight-hero-raises-5m-seed/"
+      ],
+      "leads": [
+        "Field Ventures"
+      ],
+      "others": [
+        "Flybridge Capital",
+        "Tip Top VC",
+        "Front Porch Venture Partners"
+      ]
+    },
+    {
+      "company": "Pull Logic",
+      "sells": "AI-powered availability intelligence platform for supply chain inventory and replenishment",
+      "to": "manufacturers, distributors, and retailers",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$3.3M",
+      "date": "2026-01-22",
+      "urls": [
+        "https://edisonreport.com/2026/01/22/pull-logic-raises-3-3m-to-build-a-new-availability-intelligence-category-for-enterprise-supply-chains/",
+        "https://www.smartsbusinesswire.com/article/885331660-pull-logic-raises-3-3m-to-launch-a-new-availability-intelligence-category-for-enterprise-supply-chains",
+        "https://www.hypepotamus.com/pull-logic-raises-3-3m-seed-atlanta-2026/"
+      ],
+      "leads": [
+        "New Build Venture Capital"
+      ],
+      "others": [
+        "Foster Ventures",
+        "Silicon Road Ventures",
+        "YANMAR VENTURES",
+        "DNX Ventures",
+        "IDEA"
+      ]
+    },
+    {
+      "company": "Certivo",
+      "sells": "AI-native compliance system of record for global supply chains",
+      "to": "manufacturing and construction enterprises",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$4M",
+      "date": "2026-02-17",
+      "urls": [
+        "https://techstartups.com/2026/02/17/certivo-raises-4m-seed-funding-to-bring-ai-native-compliance-automation-to-global-supply-chains/"
+      ],
+      "leads": [
+        "Suffolk Technologies"
+      ],
+      "others": [
+        "Pioneer Square Ventures"
+      ]
+    },
+    {
+      "company": "Overroute",
+      "sells": "AI-driven freight execution software for routing and load consolidation",
+      "to": "Large freight carriers and transportation operators",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$5.5 million",
+      "date": "2026-09-09",
+      "urls": [
+        "https://inforcapital.com/news/overroute-snares-55-million/"
+      ],
+      "leads": [
+        "UP.Partners"
+      ],
+      "others": [
+        "EIC Rose Rock",
+        "1834 Ventures",
+        "Tulane Ventures"
+      ]
+    },
+    {
+      "company": "Intropy",
+      "sells": "AI-native operating system for spare parts inventory, purchasing, and pricing decisions",
+      "to": "Spare parts distributors",
+      "country": "United Kingdom",
+      "stage": "seed",
+      "amount": "$11m",
+      "date": "2026-07-30",
+      "urls": [
+        "https://felixcapital.medium.com/transforming-the-billion-dollar-parts-industry-our-investment-in-intropy-69774e7ffd76",
+        "https://venturebeat.com/business/intropy-announces-11-million-in-funding-to-build-the-ai-native-operating-system-for-the-spare-parts-supply-chain",
+        "https://fundraiseinsider.com/blog/intropy-raises-11m-seed-for-ai-spare-parts-platform/",
+        "https://worknation.buzz/news/intropy-raises-11-million-seed-ai-spare-parts-supply-chain"
+      ],
+      "leads": [
+        "Felix Capital"
+      ],
+      "others": []
+    },
+    {
+      "company": "Corvera",
+      "sells": "Agentic AI supply chain management platform automating back-office operational workflows",
+      "to": "Consumer packaged goods brands",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$4.2M",
+      "date": "2026-05-05",
+      "urls": [
+        "https://tech.eu/2026/05/05/london-founded-corvera-raises-42m-to-bring-agentic-ai-to-cpg-supply-chains/",
+        "https://eu-hot-news.com/london-founded-corvera-raises-4-2m-to-bring-agentic-ai-to-cpg-supply-chains.html"
+      ],
+      "leads": [
+        "6 Degrees Capital"
+      ],
+      "others": [
+        "20VC",
+        "Rebel Fund",
+        "Duke Capital Partners",
+        "Multimodal Ventures"
+      ]
+    },
+    {
+      "company": "Nuvolog",
+      "sells": "Modular platform managing end-to-end logistics operations from a single dashboard",
+      "to": "Manufacturers, exporters, and e-commerce companies",
+      "country": "Turkey",
+      "stage": "seed",
+      "amount": "",
+      "date": "2026-05-22",
+      "urls": [
+        "https://dealroom.co/news/129357-nuvolog-raises-seed-round-led-by-apy-ventures-with-backing-from-turkish/"
+      ],
+      "leads": [
+        "APY Ventures"
+      ],
+      "others": [
+        "THY GSYF",
+        "Start-Up GSYF",
+        "Fuat Pamukçu",
+        "Ahmet Arslan"
+      ]
+    },
+    {
+      "company": "Tenoro",
+      "sells": "AI agent platform automating supply chain management and operations",
+      "to": "Retail, distribution, and manufacturing businesses",
+      "country": "Spain",
+      "stage": "seed",
+      "amount": "€1.7M",
+      "date": "2026-09-30",
+      "urls": [
+        "https://inforcapital.com/news/tenoro-raises-17-million-for-its-ai-agent-for-supply-chains/"
+      ],
+      "leads": [
+        "Plus Partners"
+      ],
+      "others": [
+        "Bynd",
+        "Soldiers Field"
+      ]
+    },
+    {
+      "company": "Opereit",
+      "sells": "AI-driven platform for logistics management and supply chain automation",
+      "to": "Businesses across e-commerce, manufacturing, and other industries",
+      "country": "Spain",
+      "stage": "seed",
+      "amount": "€2.2M",
+      "date": "2026-06-03",
+      "urls": [
+        "https://inforcapital.com/news/opereit-capta-22-millones-de-euros-para-automatizar-la-gesti%C3%B3n-log%C3%ADstica-con-inteligencia-artificial/",
+        "https://techfundingnews.com/barcelona-startup-opereit-raises-2-5m-to-tackle-logistics-trillion-euro-problem-with-ai-agents/",
+        "https://seedcamp.com/views/opereit-raises-2-5m-to-fix-logistics-e1-billion-blind-spot/"
+      ],
+      "leads": [
+        "Seedcamp",
+        "Yellow"
+      ],
+      "others": [
+        "Baobab Ventures",
+        "Kima Ventures",
+        "Enzo Ventures",
+        "Oprtrs",
+        "Oscar Pierre",
+        "Sacha Michaud"
+      ]
+    },
+    {
+      "company": "Finches",
+      "sells": "Risk-monitoring platform spotting agricultural supply risks",
+      "to": "manufacturers purchasing agricultural raw materials",
+      "country": "Germany",
+      "stage": "pre-seed",
+      "amount": "€2M",
+      "date": "2026-10-06",
+      "urls": [
+        "https://pomegra.io/startups/finches-raises-2m-pre-seed-to-flag-food-supply-risks-early-2026-10-06",
+        "https://startupreader.com/news/finches-raises-euro2m-to-flag-food-supply-risks-for-producers",
+        "https://credx.media/articles/finches-funding-2m-presseed-crop-failure-supply-chain-ai"
+      ],
+      "leads": [
+        "High-Tech Gründerfonds",
+        "Vanagon Ventures"
+      ],
+      "others": [
+        "Bayern Kapital",
+        "UnternehmerTUM Funding for Innovators"
+      ]
+    },
+    {
+      "company": "Kyrok",
+      "sells": "AI operating system for supply chain management in pharma and chemicals",
+      "to": "pharmaceutical and chemical SMEs",
+      "country": "Germany",
+      "stage": "pre-seed",
+      "amount": "€3.1 million",
+      "date": "2026-06-23",
+      "urls": [
+        "https://kyrok.com/en/press/2026/06/kyrok-announces-3-1m-seed-round-ai-operating-system-pharma-chemical-smes"
+      ],
+      "leads": [
+        "Speedinvest"
+      ],
+      "others": [
+        "Arve Capital",
+        "Dr. Marcell Vollmer",
+        "Dr André Heeg",
+        "Dr Stephan Rohr",
+        "Jonas Beisswenger",
+        "Tobias Kemkes",
+        "Lennard Schmidt",
+        "Rodrigo Martinez",
+        "HelloWorld"
+      ]
+    },
+    {
+      "company": "Logistica OS",
+      "sells": "AI agents to automate repetitive workflows in supply chain operations",
+      "to": "Supply chain and logistics companies",
+      "country": "Germany",
+      "stage": "pre-seed",
+      "amount": "€1.5 million",
+      "date": "2025-11-20",
+      "urls": [
+        "https://techfundingnews.com/ogistica-os-raises-1-5m-to-automate-european-logistics-ai/",
+        "https://vctavern.com/logistica-os-raises-e1-5m-pre-seed-to-automate-supply-chain-workflows-with-ai/"
+      ],
+      "leads": [
+        "NAP"
+      ],
+      "others": [
+        "Daphni",
+        "Javier de la Fuente",
+        "Nono Konopka",
+        "Daniel Khachab",
+        "Andrew Shaw",
+        "Jonas Meynert",
+        "Tony Kula",
+        "Hermann Ude"
+      ]
+    },
+    {
+      "company": "Conduit",
+      "sells": "dock and yard management system",
+      "to": "warehouses",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$6M",
+      "date": "2026-03-24",
+      "urls": [
+        "https://www.prnewswire.com/news-releases/conduit-raises-6m-to-build-the-ai-operating-system-for-dock-and-yard-operations-302723320.html",
+        "https://www.wfxg.com/online_features/press_releases/conduit-raises-6m-to-build-the-ai-operating-system-for-dock-and-yard-operations/article_3c6b5c8c-45ac-56ba-aa4f-975a4295598b.html",
+        "https://briefglance.com/articles/conduit-raises-6m-to-build-an-ai-operating-system-for-warehouse-yards"
+      ],
+      "leads": [
+        "Innovation Endeavors"
+      ],
+      "others": [
+        "Y Combinator"
+      ]
+    },
+    {
+      "company": "Viero",
+      "sells": "Platform to unify fleet operations and vehicle payments",
+      "to": "fleet operators",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "$1.2M",
+      "date": "2026-02-02",
+      "urls": [
+        "https://startupintros.com/news/2026-02-02-viero-seed",
+        "https://arabfounders.net/en/viero-raises-1-2m-seed-saudi-logistics/",
+        "https://menastartupdigest.com/saudis-viero-raises-1-2-million-seed-to-unify-fleet-management/",
+        "https://en.arageek.com/viero-secures-1-2m-to-propel-regional-logistics-expansion-in-mena",
+        "https://lucidityinsights.com/news/viero-secures-12m-seed",
+        "https://www.blocknewsint.com/articles/saudi-startup-viero-raises-1-2-m-to-integrate-fintech-into-mena-logistics"
+      ],
+      "leads": [
+        "SHARE Investment",
+        "Watheeq Capital",
+        "share ventures",
+        "Share Investment Co"
+      ],
+      "others": [
+        "Black Iris Angel Network",
+        "numu Angels Investment Community",
+        "lunment"
+      ]
+    },
+    {
+      "company": "Destro AI Inc.",
+      "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
+      "to": "enterprise warehouse operators",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$8 million",
+      "date": "2026-09-29",
+      "urls": [
+        "https://aventure.vc/news/2026-09-30-destro-ai-raises-8m-to-coordinate-mixed-robot-fleets-in-enterprise-warehouses",
+        "https://www.vcaonline.com/news/2026092902/destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind/",
+        "https://theaiinsider.tech/2026/09/30/destro-ai-raises-8m-in-seed-funding-to-coordinate-warehouse-robot-fleets/",
+        "https://www.bonfirevc.com/news/why-we-invested-in-destro-ai",
+        "https://unshackledvc.substack.com/p/he-built-robots-out-of-scrap-metal",
+        "https://autonainews.com/how-to-coordinate-warehouse-robot-fleets-with-destro-ais-8m-platform/",
+        "https://ground.news/article/destro-ai-raises-8-million-to-coordinate-mixed-warehouse-robot-fleets",
+        "https://bipsiq.com/destro-ai-raises-8-million-in-seed-funding-led-by-base10-partners-and-bonfire-ventures/",
+        "https://devcuration.com/articles/company-spotlight-destroai-com",
+        "https://www.warehousearc.com/destro-ai-warehouse-robotics-shared-intelligence/",
+        "http://money.mymotherlode.com/clarkebroadcasting.mymotherlode/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+        "https://digestai.news/story/destro-raises-8m-seed-to-link-robots-and-humans-in-logistics",
+        "https://digg.com/tech/33cdp5o1",
+        "https://hannibal.marketminute.com/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+        "https://digitalmarketreports.com/news/93152/destro-emerges-from-stealth-with-8-million-to-coordinate-warehouse-robots-and-workers/",
+        "https://vcup.date/2026/10/01/base10-and-bonfire-co-lead-destro-ais-8-million-seed-for-a-robot-agnostic-brain-for-warehouses/"
+      ],
+      "leads": [
+        "Base10 Partners Management",
+        "Bonfire V",
+        "Bonfire Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "Haladir",
+      "sells": "operational decision-making software for logistics and supply chain organizations",
+      "to": "logistics and supply chain organizations",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$4.3 million",
+      "date": "2026-09-02",
+      "urls": [
+        "https://vctavern.com/haladir-raises-4-3-million-seed-round-to-advance-ai-powered-operational-intelligence-for-logistics/"
+      ],
+      "leads": [
+        "BoxGroup",
+        "Susa Ventures"
+      ],
+      "others": [
+        "Sunflower Capital",
+        "Valkyrie Ventures",
+        "XPRESS Ventures"
+      ]
+    },
+    {
+      "company": "Gonini",
+      "sells": "Fulfilment operating system connecting sellers to a fulfilment network",
+      "to": "Direct-to-consumer brands and ecommerce sellers",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "£3.3m",
+      "date": "2026-07-08",
+      "urls": [
+        "https://www.startupmag.co.uk/funding/gonini-2026-seed-funding/"
+      ],
+      "leads": [
+        "IW Capital"
+      ],
+      "others": []
+    },
+    {
+      "company": "sufrei",
+      "sells": "Agentic AI digital workforce platform automating freight forwarding operations",
+      "to": "European freight forwarding teams and carriers",
+      "country": "Germany",
+      "stage": "pre-seed",
+      "amount": "US$3.2 million",
+      "date": "2026-07-28",
+      "urls": [
+        "https://sufrei.com/blog/5u-ai-raises-3-2m-pre-seed-funding"
+      ],
+      "leads": [
+        "Emerge Capital"
+      ],
+      "others": []
+    },
+    {
+      "company": "FRYTE Mobility",
+      "sells": "software coordination layer connecting fleet management systems with charge point operators",
+      "to": "eTruck logistics fleets and charge point operators",
+      "country": "Germany",
+      "stage": "seed",
+      "amount": "€3.5 million",
+      "date": "2026-09-09",
+      "urls": [
+        "https://proyarn.app/en/deals/fryte-mobility",
+        "https://graftandgrit.com/news/fryte-mobility-raises-million-scale/",
+        "https://tech.eu/2026/09/09/fryte-mobility-lands-eur35m-to-build-the-coordination-layer-for-etruck-charging/",
+        "https://logistra.de/en/news/fryte-mobility-raises-3-5-million-euros-e-truck-charging-platform-512797.html"
+      ],
+      "leads": [
+        "4impact capital",
+        "Rethink Ventures"
+      ],
+      "others": [
+        "Revent",
+        "F-LOG",
+        "accilium ventures"
+      ]
+    },
+    {
+      "company": "Arqh",
+      "sells": "Agentic optimization engine automating and re-planning daily dispatch and logistics operations",
+      "to": "logistics companies and dispatchers",
+      "country": "unknown",
+      "stage": "pre-seed",
+      "amount": "$3.8M",
+      "date": "2026-06-28",
+      "urls": [
+        "https://kkina.com/arqh-raises-3-8m-pre-seed-to-bring-ai-to-the-logistics-industry/"
+      ],
+      "leads": [
+        "Founderful"
+      ],
+      "others": [
+        "Merantix Capital"
+      ]
+    },
+    {
+      "company": "Nexcade",
+      "sells": "AI agents that automate back-office operations for freight forwarding",
+      "to": "freight forwarders",
+      "country": "United Kingdom",
+      "stage": "seed",
+      "amount": "$6M",
+      "date": "2026-07-13",
+      "urls": [
+        "https://www.theconveyor.co/p/nexcade-6m-seed-freight-forwarder-ai-agents",
+        "https://www.theconveyor.co/p/nexcade-seed-freight-forwarder-ai"
+      ],
+      "leads": [
+        "Project A Ventures"
+      ],
+      "others": [
+        "Connect Ventures",
+        "MMC Ventures"
+      ]
+    },
+    {
+      "company": "Amari AI",
+      "sells": "AI agents automating customs paperwork and monitoring trade rules",
+      "to": "Customs brokers",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "US$4.5 million",
+      "date": "2026-02-19",
+      "urls": [
+        "https://newsgab.com/former-big-tech-engineers-use-ai-navigate-trump-trade-chaos/",
+        "https://ubos.tech/news/ai-powered-customs-software-amari-ai-leads-trade-policy-automation-with-logistics-ai-agents/"
+      ],
+      "leads": [
+        "First Round Capital",
+        "Pear VC"
+      ],
+      "others": []
+    },
+    {
+      "company": "Octup",
+      "sells": "AI-powered operating system for 3PL fulfillment operations",
+      "to": "third-party logistics providers",
+      "country": "Israel",
+      "stage": "seed",
+      "amount": "$12 million",
+      "date": "2026-07-30",
+      "urls": [
+        "https://racklify.com/news/octup-raises-12m-build-ai-powered/"
+      ],
+      "leads": [
+        "Shine Capital",
+        "JAL Ventures"
+      ],
+      "others": [
+        "Stone Capital",
+        "Tal Ventures",
+        "HCS Capital"
+      ]
+    },
+    {
+      "company": "CoRun.ai",
+      "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
+      "to": "fleet carriers and operators",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$3.5 million",
+      "date": "2025-11-12",
+      "urls": [
+        "https://www.businesswire.com/news/home/20251112094813/en/German-Efficiency-Meets-Silicon-Valley-AI-CoRun.ai-Raises-%243.5-Million-to-Power-Intelligent-Profitable-Fleets"
+      ],
+      "leads": [
+        "Access Capital Management",
+        "Silicon Valley angel investors",
+        "logistics industry veterans"
+      ],
+      "others": []
+    },
+    {
+      "company": "BITE Data",
+      "sells": "AI-native SaaS platform automating global trade compliance workflows",
+      "to": "companies navigating import and export regulations",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$2.5 million",
+      "date": "2026-03-28",
+      "urls": [
+        "https://vctavern.com/bite-data-raises-2-5-million-series-seed-to-expand-ai-powered-global-trade-compliance-platform/"
+      ],
+      "leads": [
+        "Las Olas Venture Capital (LOVC)"
+      ],
+      "others": [
+        "New Dominion Angels",
+        "Blue Impact Venture Capital"
+      ]
+    },
+    {
+      "company": "GingerControl",
+      "sells": "AI software automating global trade compliance and customs workflows",
+      "to": "importers, customs brokers, manufacturers, and trade professionals",
+      "country": "",
+      "stage": "pre-seed",
+      "amount": "$2.1 million",
+      "date": "2026-05-04",
+      "urls": [
+        "https://vctavern.com/gingercontrol-raises-2-1-million-pre-seed-round-to-modernize-ai-powered-global-trade-compliance/",
+        "https://gingercontrol.com/news/gingercontrol-2-1m-pre-seed-raise"
+      ],
+      "leads": [
+        "Backed VC"
+      ],
+      "others": [
+        "Velocity Capital Advisors"
+      ]
+    },
+    {
+      "company": "DiversiFi",
+      "sells": "AI billing and profitability software for logistics providers",
+      "to": "third-party logistics providers",
+      "country": "unknown",
+      "stage": "seed",
+      "amount": "$8 million",
+      "date": "2026-01-20",
+      "urls": [
+        "https://www.diversifi.ai/blog/diversifi-secures-8m-to-stand-with-3pls-and-fix-one-of-the-most-broken-parts-of-logistics"
+      ],
+      "leads": [
+        "Sorenson Capital",
+        "Kickstart",
+        "Peterson Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "Gaia Dynamics",
+      "sells": "AI platform for trade compliance, tariff calculation, and customs audits",
+      "to": "importers, customs brokers, and trade teams",
+      "country": "United States",
+      "stage": "seed",
+      "amount": "$7 million",
+      "date": "2026-09-16",
+      "urls": [
+        "https://fundraiseinsider.com/blog/corazon-capital-leads-7m-seed-for-trade-compliance-ai-gaia/",
+        "https://www.prnewswire.com/news-releases/gaia-dynamics-raises-7m-to-expand-ai-platform-keeping-businesses-ahead-of-tariffs-and-trade-risk-302880240.html"
+      ],
+      "leads": [
+        "Corazon Capital"
+      ],
+      "others": [
+        "Lobby Capital",
+        "AI Fund",
+        "Zenda Capital"
+      ]
+    },
+    {
+      "company": "Kimaru AI",
+      "sells": "AI-powered decision intelligence platform for supply chain operations",
+      "to": "enterprises managing inventory, pricing, and logistics",
+      "country": "unknown",
+      "stage": "pre-seed",
+      "amount": "",
+      "date": "2026-09-07",
+      "urls": [
+        "https://vctavern.com/kimaru-ai-secures-pre-seed-funding-to-advance-ai-powered-supply-chain-decision-intelligence-platform/"
+      ],
+      "leads": [
+        "Alchemist Accelerator"
+      ],
+      "others": []
+    },
+    {
+      "company": "Cargoz",
+      "sells": "digital freight forwarding and cargo management platform",
+      "to": "shippers and carriers",
+      "country": "United Arab Emirates",
+      "stage": "seed",
+      "amount": "",
+      "date": "2026-06-06",
+      "urls": [
+        "https://inforcapital.com/news/uae-based-cargoz-secures-seed-funding-led-by-nama-ventures/"
+      ],
+      "leads": [
+        "Nama Ventures"
+      ],
+      "others": []
+    },
+    {
+      "company": "Fincart",
+      "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
+      "to": "e-commerce merchants",
+      "country": "Egypt",
+      "stage": "seed",
+      "amount": "$2.8 million",
+      "date": "2026-07-01",
+      "urls": [
+        "https://www.wamda.com/index.php/2026/07/fincart-lands-2-8-million-accelerate-regional-expansion",
+        "https://en.sharikatmubasher.com/news/article/21564516/egypts-fincart-raises-28mn-seed-round-backed-by-yango-ventures?companyNews=0",
+        "https://www.tekedia.com/egypts-fincart-secures-2-8-million-seed-funding-to-expand-ai-powered-e-commerce-platform-across-mea/",
+        "https://techinsider.africa/egypts-fincart-raises-2-8-million-to-expand-its-ai-powered-commerce-platform/"
+      ],
+      "leads": [
+        "Launch Africa",
+        "Antler MENAP",
+        "Yango Ventures",
+        "Antler"
+      ],
+      "others": [
+        "Yango Ventures",
+        "Five35 Ventures",
+        "Bluestream Capital",
+        "Hi2 Global",
+        "Kalahari Venture Labs"
+      ]
+    }
+  ],
+  "investors": [
+    {
+      "name": "Emerge Capital",
+      "score": 102.5,
+      "deals": [
+        {
+          "company": "5U AI",
+          "sells": "AI digital workers handling administrative freight workflows inside existing systems",
+          "to": "European freight forwarders and carriers",
+          "country": "Germany",
+          "stage": "pre-seed",
+          "amount": "$3.2m",
+          "date": "2026-07-28",
+          "urls": [
+            "https://splash247.com/freight-automation-startup-5u-ai-lands-3-2m/",
+            "https://www.saasrise.com/deals/5u-ai-raises-32m-preseed-funding-led-by-emerge-capital-65c3573b-01aa-4e3f-b85d-70a6afe85c61",
+            "https://tech.eu/2026/07/28/5u-ai-lands-32m-pre-seed-for-ai-freight-workforce-platform/",
+            "https://www.startup.eu/investments/5u-ai-3-2-m-pre-seed-07-2026",
+            "https://techfundingnews.com/5u-ai-3-2m-pre-seed-freight-forwarding-ai-workers/",
+            "https://inforcapital.com/news/5u-ai-lands-32m-pre-seed-for-ai-freight-workforce-platform/",
+            "https://aibusinessweekly.net/p/5u-ai-3-2-million-freight-forwarding-agents",
+            "https://dealroom.co/news/141509-munichs-5u-ai-raises-3-2m-pre-seed-for-logistics-ai-workers/",
+            "https://startuprise.co.uk/logistics-ai-startup-5u-ai-raises-3-2m-pre-seed-funding/",
+            "https://technicalbeep.com/5u-ai-freight-forwarding-ai-workers/",
+            "https://noah-news.com/munich-startup-secures-32m-pre-seed-to-reshape-freight-forwarding-with-ai-worker/",
+            "https://noah-news.com/munich-startup-secures-32-million-to-automate-freight-forwarding-with-ai-workers/",
+            "https://proyarn.app/en/deals/5u-ai",
+            "https://tldrocket.com/story/5u-ai-lands-32m-pre-seed-for-ai-freight-workforce-platform",
+            "https://news.yrules.com/en/archives/27775",
+            "https://www.techtimes.com/articles/321849/20260728/freight-forwarding-ai-workers-munich-startup-raises-32m-backed-dhl-maersk-execs.htm",
+            "https://foundernews.eu/3-2-million-backs-ai-workers-that-capture-freight-decisions-not-just-automate-tasks/"
+          ],
+          "leads": [
+            "Emerge Capital"
+          ],
+          "others": [],
+          "role": "led"
+        },
+        {
+          "company": "sufrei",
+          "sells": "Agentic AI digital workforce platform automating freight forwarding operations",
+          "to": "European freight forwarding teams and carriers",
+          "country": "Germany",
+          "stage": "pre-seed",
+          "amount": "US$3.2 million",
+          "date": "2026-07-28",
+          "urls": [
+            "https://sufrei.com/blog/5u-ai-raises-3-2m-pre-seed-funding"
+          ],
+          "leads": [
+            "Emerge Capital"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Vehra Ventures",
+      "score": 73.5,
+      "deals": [
+        {
+          "company": "QuikApp",
+          "sells": "Logistics technology platform for tracking, automated dispatch, security, and fleet analytics",
+          "to": "Enterprise customers across FMCG, e-commerce, and 3PL",
+          "country": "India",
+          "stage": "seed",
+          "amount": "₹50 lakh",
+          "date": "2026-10-01",
+          "urls": [
+            "https://bipsiq.com/quikapp-raises-%e2%82%b950-lakh-in-seed-funding-led-by-vehra-ventures/",
+            "https://www.finsmes.com/2026/10/quikapp-closes-seed-funding.html"
+          ],
+          "leads": [
+            "Vehra Ventures"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "Plus Partners",
+      "score": 73.1,
+      "deals": [
+        {
+          "company": "Tenoro",
+          "sells": "AI agent platform automating supply chain management and operations",
+          "to": "Retail, distribution, and manufacturing businesses",
+          "country": "Spain",
+          "stage": "seed",
+          "amount": "€1.7M",
+          "date": "2026-09-30",
+          "urls": [
+            "https://inforcapital.com/news/tenoro-raises-17-million-for-its-ai-agent-for-supply-chains/"
+          ],
+          "leads": [
+            "Plus Partners"
+          ],
+          "others": [
+            "Bynd",
+            "Soldiers Field"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Corazon Capital",
+      "score": 67.7,
+      "deals": [
+        {
+          "company": "Gaia Dynamics",
+          "sells": "AI platform for trade compliance, tariff calculation, and customs audits",
+          "to": "importers, customs brokers, and trade teams",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$7 million",
+          "date": "2026-09-16",
+          "urls": [
+            "https://fundraiseinsider.com/blog/corazon-capital-leads-7m-seed-for-trade-compliance-ai-gaia/",
+            "https://www.prnewswire.com/news-releases/gaia-dynamics-raises-7m-to-expand-ai-platform-keeping-businesses-ahead-of-tariffs-and-trade-risk-302880240.html"
+          ],
+          "leads": [
+            "Corazon Capital"
+          ],
+          "others": [
+            "Lobby Capital",
+            "AI Fund",
+            "Zenda Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "21 Ventures",
+      "score": 65.5,
+      "deals": [
+        {
+          "company": "RSA Cross-Border",
+          "sells": "software-first solution and AI tooling for cross-border logistics",
+          "to": "freight forwarders, consolidators, and 3PLs",
+          "country": "UAE",
+          "stage": "seed",
+          "amount": "$1.5M",
+          "date": "2026-05-05",
+          "urls": [
+            "https://www.rsaxb.com/press/seed-2026",
+            "https://www.thesaasnews.com/news/rsa-cross-border-raises-1-5m-seed-round/",
+            "https://www.zawya.com/en/press-release/companies-news/rsa-cross-border-spins-out-of-rsa-global-with-1.5mln-seed-led-by-21-ventures-341314",
+            "https://dubaistartupsdaily.com/article/dubai-logistics-startup-rsa-cross-border-lands-usd1-5m-seed-to-build-the-future-of-ecommerce"
+          ],
+          "leads": [
+            "21 Ventures"
+          ],
+          "others": [],
+          "role": "led"
+        },
+        {
+          "company": "RSA XB",
+          "sells": "software platform for cross-border e-commerce logistics",
+          "to": "freight forwarders, consolidators and third-party logistics providers",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$1.5M",
+          "date": "2026-05-12",
+          "urls": [
+            "https://en.arageek.com/rsa-xb-raises-1-5m-to-simplify-cross-border-e-commerce-logistics",
+            "https://worldef.com/2026/05/19/rsa-xb-1-5m-seed-logistics/"
+          ],
+          "leads": [
+            "21 Ventures"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "UP.Partners",
+      "score": 65.1,
+      "deals": [
+        {
+          "company": "Overroute",
+          "sells": "AI-driven freight execution software for routing and load consolidation",
+          "to": "Large freight carriers and transportation operators",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$5.5 million",
+          "date": "2026-09-09",
+          "urls": [
+            "https://inforcapital.com/news/overroute-snares-55-million/"
+          ],
+          "leads": [
+            "UP.Partners"
+          ],
+          "others": [
+            "EIC Rose Rock",
+            "1834 Ventures",
+            "Tulane Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Alchemist Accelerator",
+      "score": 64.4,
+      "deals": [
+        {
+          "company": "Kimaru AI",
+          "sells": "AI-powered decision intelligence platform for supply chain operations",
+          "to": "enterprises managing inventory, pricing, and logistics",
+          "country": "unknown",
+          "stage": "pre-seed",
+          "amount": "",
+          "date": "2026-09-07",
+          "urls": [
+            "https://vctavern.com/kimaru-ai-secures-pre-seed-funding-to-advance-ai-powered-supply-chain-decision-intelligence-platform/"
+          ],
+          "leads": [
+            "Alchemist Accelerator"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "accelerator",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "High-Tech Gründerfonds",
+      "score": 64.3,
+      "deals": [
+        {
+          "company": "Finches",
+          "sells": "Risk-monitoring platform spotting agricultural supply risks",
+          "to": "manufacturers purchasing agricultural raw materials",
+          "country": "Germany",
+          "stage": "pre-seed",
+          "amount": "€2M",
+          "date": "2026-10-06",
+          "urls": [
+            "https://pomegra.io/startups/finches-raises-2m-pre-seed-to-flag-food-supply-risks-early-2026-10-06",
+            "https://startupreader.com/news/finches-raises-euro2m-to-flag-food-supply-risks-for-producers",
+            "https://credx.media/articles/finches-funding-2m-presseed-crop-failure-supply-chain-ai"
+          ],
+          "leads": [
+            "High-Tech Gründerfonds",
+            "Vanagon Ventures"
+          ],
+          "others": [
+            "Bayern Kapital",
+            "UnternehmerTUM Funding for Innovators"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Vanagon Ventures",
+      "score": 64.3,
+      "deals": [
+        {
+          "company": "Finches",
+          "sells": "Risk-monitoring platform spotting agricultural supply risks",
+          "to": "manufacturers purchasing agricultural raw materials",
+          "country": "Germany",
+          "stage": "pre-seed",
+          "amount": "€2M",
+          "date": "2026-10-06",
+          "urls": [
+            "https://pomegra.io/startups/finches-raises-2m-pre-seed-to-flag-food-supply-risks-early-2026-10-06",
+            "https://startupreader.com/news/finches-raises-euro2m-to-flag-food-supply-risks-for-producers",
+            "https://credx.media/articles/finches-funding-2m-presseed-crop-failure-supply-chain-ai"
+          ],
+          "leads": [
+            "High-Tech Gründerfonds",
+            "Vanagon Ventures"
+          ],
+          "others": [
+            "Bayern Kapital",
+            "UnternehmerTUM Funding for Innovators"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Susa Ventures",
+      "score": 64,
+      "deals": [
+        {
+          "company": "Cavela",
+          "sells": "AI agents that automate supplier sourcing and negotiation",
+          "to": "brands, small and midsize companies",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$6.6 million",
+          "date": "2025-11-19",
+          "urls": [
+            "https://techcrunch.com/2025/11/19/cavela-lands-6-6m-to-help-brands-beat-pre-tariff-manufacturing-costs/"
+          ],
+          "leads": [
+            "XYZ Venture Capital",
+            "Susa Ventures"
+          ],
+          "others": [
+            "Crossover Capital"
+          ],
+          "role": "co-led"
+        },
+        {
+          "company": "Haladir",
+          "sells": "operational decision-making software for logistics and supply chain organizations",
+          "to": "logistics and supply chain organizations",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$4.3 million",
+          "date": "2026-09-02",
+          "urls": [
+            "https://vctavern.com/haladir-raises-4-3-million-seed-round-to-advance-ai-powered-operational-intelligence-for-logistics/"
+          ],
+          "leads": [
+            "BoxGroup",
+            "Susa Ventures"
+          ],
+          "others": [
+            "Sunflower Capital",
+            "Valkyrie Ventures",
+            "XPRESS Ventures"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": "Susa Ventures"
+    },
+    {
+      "name": "Base10 Partners Management",
+      "score": 61.8,
+      "deals": [
+        {
+          "company": "Destro AI Inc.",
+          "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
+          "to": "enterprise warehouse operators",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$8 million",
+          "date": "2026-09-29",
+          "urls": [
+            "https://aventure.vc/news/2026-09-30-destro-ai-raises-8m-to-coordinate-mixed-robot-fleets-in-enterprise-warehouses",
+            "https://www.vcaonline.com/news/2026092902/destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind/",
+            "https://theaiinsider.tech/2026/09/30/destro-ai-raises-8m-in-seed-funding-to-coordinate-warehouse-robot-fleets/",
+            "https://www.bonfirevc.com/news/why-we-invested-in-destro-ai",
+            "https://unshackledvc.substack.com/p/he-built-robots-out-of-scrap-metal",
+            "https://autonainews.com/how-to-coordinate-warehouse-robot-fleets-with-destro-ais-8m-platform/",
+            "https://ground.news/article/destro-ai-raises-8-million-to-coordinate-mixed-warehouse-robot-fleets",
+            "https://bipsiq.com/destro-ai-raises-8-million-in-seed-funding-led-by-base10-partners-and-bonfire-ventures/",
+            "https://devcuration.com/articles/company-spotlight-destroai-com",
+            "https://www.warehousearc.com/destro-ai-warehouse-robotics-shared-intelligence/",
+            "http://money.mymotherlode.com/clarkebroadcasting.mymotherlode/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+            "https://digestai.news/story/destro-raises-8m-seed-to-link-robots-and-humans-in-logistics",
+            "https://digg.com/tech/33cdp5o1",
+            "https://hannibal.marketminute.com/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+            "https://digitalmarketreports.com/news/93152/destro-emerges-from-stealth-with-8-million-to-coordinate-warehouse-robots-and-workers/",
+            "https://vcup.date/2026/10/01/base10-and-bonfire-co-lead-destro-ais-8-million-seed-for-a-robot-agnostic-brain-for-warehouses/"
+          ],
+          "leads": [
+            "Base10 Partners Management",
+            "Bonfire V",
+            "Bonfire Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Bonfire V",
+      "score": 61.8,
+      "deals": [
+        {
+          "company": "Destro AI Inc.",
+          "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
+          "to": "enterprise warehouse operators",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$8 million",
+          "date": "2026-09-29",
+          "urls": [
+            "https://aventure.vc/news/2026-09-30-destro-ai-raises-8m-to-coordinate-mixed-robot-fleets-in-enterprise-warehouses",
+            "https://www.vcaonline.com/news/2026092902/destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind/",
+            "https://theaiinsider.tech/2026/09/30/destro-ai-raises-8m-in-seed-funding-to-coordinate-warehouse-robot-fleets/",
+            "https://www.bonfirevc.com/news/why-we-invested-in-destro-ai",
+            "https://unshackledvc.substack.com/p/he-built-robots-out-of-scrap-metal",
+            "https://autonainews.com/how-to-coordinate-warehouse-robot-fleets-with-destro-ais-8m-platform/",
+            "https://ground.news/article/destro-ai-raises-8-million-to-coordinate-mixed-warehouse-robot-fleets",
+            "https://bipsiq.com/destro-ai-raises-8-million-in-seed-funding-led-by-base10-partners-and-bonfire-ventures/",
+            "https://devcuration.com/articles/company-spotlight-destroai-com",
+            "https://www.warehousearc.com/destro-ai-warehouse-robotics-shared-intelligence/",
+            "http://money.mymotherlode.com/clarkebroadcasting.mymotherlode/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+            "https://digestai.news/story/destro-raises-8m-seed-to-link-robots-and-humans-in-logistics",
+            "https://digg.com/tech/33cdp5o1",
+            "https://hannibal.marketminute.com/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+            "https://digitalmarketreports.com/news/93152/destro-emerges-from-stealth-with-8-million-to-coordinate-warehouse-robots-and-workers/",
+            "https://vcup.date/2026/10/01/base10-and-bonfire-co-lead-destro-ais-8-million-seed-for-a-robot-agnostic-brain-for-warehouses/"
+          ],
+          "leads": [
+            "Base10 Partners Management",
+            "Bonfire V",
+            "Bonfire Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Bonfire Ventures",
+      "score": 61.8,
+      "deals": [
+        {
+          "company": "Destro AI Inc.",
+          "sells": "Warehouse robotics software platform coordinating mixed robot fleets",
+          "to": "enterprise warehouse operators",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$8 million",
+          "date": "2026-09-29",
+          "urls": [
+            "https://aventure.vc/news/2026-09-30-destro-ai-raises-8m-to-coordinate-mixed-robot-fleets-in-enterprise-warehouses",
+            "https://www.vcaonline.com/news/2026092902/destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind/",
+            "https://theaiinsider.tech/2026/09/30/destro-ai-raises-8m-in-seed-funding-to-coordinate-warehouse-robot-fleets/",
+            "https://www.bonfirevc.com/news/why-we-invested-in-destro-ai",
+            "https://unshackledvc.substack.com/p/he-built-robots-out-of-scrap-metal",
+            "https://autonainews.com/how-to-coordinate-warehouse-robot-fleets-with-destro-ais-8m-platform/",
+            "https://ground.news/article/destro-ai-raises-8-million-to-coordinate-mixed-warehouse-robot-fleets",
+            "https://bipsiq.com/destro-ai-raises-8-million-in-seed-funding-led-by-base10-partners-and-bonfire-ventures/",
+            "https://devcuration.com/articles/company-spotlight-destroai-com",
+            "https://www.warehousearc.com/destro-ai-warehouse-robotics-shared-intelligence/",
+            "http://money.mymotherlode.com/clarkebroadcasting.mymotherlode/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+            "https://digestai.news/story/destro-raises-8m-seed-to-link-robots-and-humans-in-logistics",
+            "https://digg.com/tech/33cdp5o1",
+            "https://hannibal.marketminute.com/article/bizwire-2026-9-29-destro-ai-raises-8m-to-give-warehouse-robots-a-shared-mind",
+            "https://digitalmarketreports.com/news/93152/destro-emerges-from-stealth-with-8-million-to-coordinate-warehouse-robots-and-workers/",
+            "https://vcup.date/2026/10/01/base10-and-bonfire-co-lead-destro-ais-8-million-seed-for-a-robot-agnostic-brain-for-warehouses/"
+          ],
+          "leads": [
+            "Base10 Partners Management",
+            "Bonfire V",
+            "Bonfire Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "HighLeaf",
+      "score": 55.4,
+      "deals": [
+        {
+          "company": "FreightFox",
+          "sells": "Transportation management system and control tower platform",
+          "to": "Large manufacturing enterprises",
+          "country": "India",
+          "stage": "seed-extension",
+          "amount": "Rs 5 Crore",
+          "date": "2026-08-11",
+          "urls": [
+            "https://www.indianstartuptimes.com/investment/freightfox-raises-rs-5-crore-in-pre-series-a-round-to-expand-enterprise-and-global-operations/",
+            "https://scoopearth.com/freightfox-secured-5-crore-in-a-pre-series-a-funding-round-led-by-highleaf/"
+          ],
+          "leads": [
+            "HighLeaf"
+          ],
+          "others": [
+            "Vijender Yadav",
+            "Puru Gupta",
+            "Aeravti Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "4impact capital",
+      "score": 55.3,
+      "deals": [
+        {
+          "company": "FRYTE Mobility",
+          "sells": "software coordination layer connecting fleet management systems with charge point operators",
+          "to": "eTruck logistics fleets and charge point operators",
+          "country": "Germany",
+          "stage": "seed",
+          "amount": "€3.5 million",
+          "date": "2026-09-09",
+          "urls": [
+            "https://proyarn.app/en/deals/fryte-mobility",
+            "https://graftandgrit.com/news/fryte-mobility-raises-million-scale/",
+            "https://tech.eu/2026/09/09/fryte-mobility-lands-eur35m-to-build-the-coordination-layer-for-etruck-charging/",
+            "https://logistra.de/en/news/fryte-mobility-raises-3-5-million-euros-e-truck-charging-platform-512797.html"
+          ],
+          "leads": [
+            "4impact capital",
+            "Rethink Ventures"
+          ],
+          "others": [
+            "Revent",
+            "F-LOG",
+            "accilium ventures"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Rethink Ventures",
+      "score": 55.3,
+      "deals": [
+        {
+          "company": "FRYTE Mobility",
+          "sells": "software coordination layer connecting fleet management systems with charge point operators",
+          "to": "eTruck logistics fleets and charge point operators",
+          "country": "Germany",
+          "stage": "seed",
+          "amount": "€3.5 million",
+          "date": "2026-09-09",
+          "urls": [
+            "https://proyarn.app/en/deals/fryte-mobility",
+            "https://graftandgrit.com/news/fryte-mobility-raises-million-scale/",
+            "https://tech.eu/2026/09/09/fryte-mobility-lands-eur35m-to-build-the-coordination-layer-for-etruck-charging/",
+            "https://logistra.de/en/news/fryte-mobility-raises-3-5-million-euros-e-truck-charging-platform-512797.html"
+          ],
+          "leads": [
+            "4impact capital",
+            "Rethink Ventures"
+          ],
+          "others": [
+            "Revent",
+            "F-LOG",
+            "accilium ventures"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "BoxGroup",
+      "score": 53.2,
+      "deals": [
+        {
+          "company": "Haladir",
+          "sells": "operational decision-making software for logistics and supply chain organizations",
+          "to": "logistics and supply chain organizations",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$4.3 million",
+          "date": "2026-09-02",
+          "urls": [
+            "https://vctavern.com/haladir-raises-4-3-million-seed-round-to-advance-ai-powered-operational-intelligence-for-logistics/"
+          ],
+          "leads": [
+            "BoxGroup",
+            "Susa Ventures"
+          ],
+          "others": [
+            "Sunflower Capital",
+            "Valkyrie Ventures",
+            "XPRESS Ventures"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Parceiro Ventures",
+      "score": 53,
+      "deals": [
+        {
+          "company": "Einship",
+          "sells": "AI native platform combining market intelligence with operational management",
+          "to": "importers and exporters",
+          "country": "Brazil",
+          "stage": "seed",
+          "amount": "$1M",
+          "date": "2026-08-03",
+          "urls": [
+            "https://technologytangle.com/2026/08/04/einship-raises-1m-seed-round-led-by-parceiro-ventures",
+            "https://www.isvworld.com/search/news/2202583",
+            "https://www.thesaasnews.com/news/einship-raises-1m-seed/",
+            "https://gentyrecruitment.io/news/einship-raises-us-1-million-seed-funding-brazil"
+          ],
+          "leads": [
+            "Parceiro Ventures"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Felix Capital",
+      "score": 51.8,
+      "deals": [
+        {
+          "company": "Intropy",
+          "sells": "AI-native operating system for spare parts inventory, purchasing, and pricing decisions",
+          "to": "Spare parts distributors",
+          "country": "United Kingdom",
+          "stage": "seed",
+          "amount": "$11m",
+          "date": "2026-07-30",
+          "urls": [
+            "https://felixcapital.medium.com/transforming-the-billion-dollar-parts-industry-our-investment-in-intropy-69774e7ffd76",
+            "https://venturebeat.com/business/intropy-announces-11-million-in-funding-to-build-the-ai-native-operating-system-for-the-spare-parts-supply-chain",
+            "https://fundraiseinsider.com/blog/intropy-raises-11m-seed-for-ai-spare-parts-platform/",
+            "https://worknation.buzz/news/intropy-raises-11-million-seed-ai-spare-parts-supply-chain"
+          ],
+          "leads": [
+            "Felix Capital"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Field Ventures",
+      "score": 51,
+      "deals": [
+        {
+          "company": "Freight Hero",
+          "sells": "AI-powered back-office operations management combining AI agents with human operational support",
+          "to": "freight brokers",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$5M",
+          "date": "2026-07-27",
+          "urls": [
+            "https://www.finsmes.com/2026/07/freight-hero-raises-5m-in-seed-funding.html",
+            "https://www.thesaasnews.com/news/freight-hero-raises-5m-seed/"
+          ],
+          "leads": [
+            "Field Ventures"
+          ],
+          "others": [
+            "Flybridge Capital",
+            "Tip Top VC",
+            "Front Porch Venture Partners"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Project A Ventures",
+      "score": 47.1,
+      "deals": [
+        {
+          "company": "Nexcade",
+          "sells": "AI agents that automate back-office operations for freight forwarding",
+          "to": "freight forwarders",
+          "country": "United Kingdom",
+          "stage": "seed",
+          "amount": "$6M",
+          "date": "2026-07-13",
+          "urls": [
+            "https://www.theconveyor.co/p/nexcade-6m-seed-freight-forwarder-ai-agents",
+            "https://www.theconveyor.co/p/nexcade-seed-freight-forwarder-ai"
+          ],
+          "leads": [
+            "Project A Ventures"
+          ],
+          "others": [
+            "Connect Ventures",
+            "MMC Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "IW Capital",
+      "score": 45.9,
+      "deals": [
+        {
+          "company": "Gonini",
+          "sells": "Fulfilment operating system connecting sellers to a fulfilment network",
+          "to": "Direct-to-consumer brands and ecommerce sellers",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "£3.3m",
+          "date": "2026-07-08",
+          "urls": [
+            "https://www.startupmag.co.uk/funding/gonini-2026-seed-funding/"
+          ],
+          "leads": [
+            "IW Capital"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Shine Capital",
+      "score": 44,
+      "deals": [
+        {
+          "company": "Octup",
+          "sells": "AI-powered operating system for 3PL fulfillment operations",
+          "to": "third-party logistics providers",
+          "country": "Israel",
+          "stage": "seed",
+          "amount": "$12 million",
+          "date": "2026-07-30",
+          "urls": [
+            "https://racklify.com/news/octup-raises-12m-build-ai-powered/"
+          ],
+          "leads": [
+            "Shine Capital",
+            "JAL Ventures"
+          ],
+          "others": [
+            "Stone Capital",
+            "Tal Ventures",
+            "HCS Capital"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "JAL Ventures",
+      "score": 44,
+      "deals": [
+        {
+          "company": "Octup",
+          "sells": "AI-powered operating system for 3PL fulfillment operations",
+          "to": "third-party logistics providers",
+          "country": "Israel",
+          "stage": "seed",
+          "amount": "$12 million",
+          "date": "2026-07-30",
+          "urls": [
+            "https://racklify.com/news/octup-raises-12m-build-ai-powered/"
+          ],
+          "leads": [
+            "Shine Capital",
+            "JAL Ventures"
+          ],
+          "others": [
+            "Stone Capital",
+            "Tal Ventures",
+            "HCS Capital"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Founderful",
+      "score": 43.4,
+      "deals": [
+        {
+          "company": "Arqh",
+          "sells": "Agentic optimization engine automating and re-planning daily dispatch and logistics operations",
+          "to": "logistics companies and dispatchers",
+          "country": "unknown",
+          "stage": "pre-seed",
+          "amount": "$3.8M",
+          "date": "2026-06-28",
+          "urls": [
+            "https://kkina.com/arqh-raises-3-8m-pre-seed-to-bring-ai-to-the-logistics-industry/"
+          ],
+          "leads": [
+            "Founderful"
+          ],
+          "others": [
+            "Merantix Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "YourNest Venture Capital",
+      "score": 42.4,
+      "deals": [
+        {
+          "company": "CargoFL",
+          "sells": "logistics technology platform to optimize freight and supply chain operations",
+          "to": "shippers and transporters",
+          "country": "India",
+          "stage": "seed",
+          "amount": "Rs 6.75 crore",
+          "date": "2026-06-24",
+          "urls": [
+            "https://vctavern.com/cargofl-secures-rs-6-75-cr-in-seed-funding-round-led-by-yournest-venture-capital/"
+          ],
+          "leads": [
+            "YourNest Venture Capital"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "Picus Capital",
+      "score": 42.4,
+      "deals": [
+        {
+          "company": "Compri",
+          "sells": "AI-powered procurement software for industrial companies",
+          "to": "industrial companies",
+          "country": "Italy",
+          "stage": "seed",
+          "amount": "€3.2 million",
+          "date": "2026-06-24",
+          "urls": [
+            "https://seedtable.com/companies/compri/funding-rounds/seed-2026-06",
+            "https://dealroom.co/news/135833-compri-raises-3-2m-seed-to-build-ai-powered-procurement-teams/"
+          ],
+          "leads": [
+            "Picus Capital"
+          ],
+          "others": [
+            "Shapers",
+            "Italian Founders Fund",
+            "DFF Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Speedinvest",
+      "score": 42.2,
+      "deals": [
+        {
+          "company": "Kyrok",
+          "sells": "AI operating system for supply chain management in pharma and chemicals",
+          "to": "pharmaceutical and chemical SMEs",
+          "country": "Germany",
+          "stage": "pre-seed",
+          "amount": "€3.1 million",
+          "date": "2026-06-23",
+          "urls": [
+            "https://kyrok.com/en/press/2026/06/kyrok-announces-3-1m-seed-round-ai-operating-system-pharma-chemical-smes"
+          ],
+          "leads": [
+            "Speedinvest"
+          ],
+          "others": [
+            "Arve Capital",
+            "Dr. Marcell Vollmer",
+            "Dr André Heeg",
+            "Dr Stephan Rohr",
+            "Jonas Beisswenger",
+            "Tobias Kemkes",
+            "Lennard Schmidt",
+            "Rodrigo Martinez",
+            "HelloWorld"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Inflection Point Ventures",
+      "score": 40.9,
+      "deals": [
+        {
+          "company": "OneARVO",
+          "sells": "tamper-proof and copy-proof supply chain labelling system",
+          "to": "brands in pharmaceuticals, automotive aftermarket, and industrial manufacturing",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "Rs 1.23 crore",
+          "date": "2026-01-29",
+          "urls": [
+            "https://entrackr.com/snippets/deep-tech-startup-onearvo-raises-pre-seed-round-led-by-ipv-11039524",
+            "https://b2b.economictimes.indiatimes.com/news/entrepreneur/onearvo-secures-123-million-in-pre-seed-funding-to-enhance-supply-chain-integrity-solutions/127775456",
+            "https://www.machineinsider.com/deep-tech-startup-onearvo-raises-%E2%82%B9-12-3-million-in-pre-seed-led-by-inflection-point-ventures/"
+          ],
+          "leads": [
+            "Inflection Point Ventures"
+          ],
+          "others": [],
+          "role": "led"
+        },
+        {
+          "company": "Reneonix",
+          "sells": "AI-led circular materials platform for glass recycling, processing, and traceability",
+          "to": "brands and manufacturers",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "₹1.7 crore",
+          "date": "2026-02-26",
+          "urls": [
+            "https://b2b.economictimes.indiatimes.com/news/entrepreneur/reneonix-raises-17-crore-pre-seed-funding-led-by-inflection-point-ventures-to-build-ai-driven-circular-materials-platform/128804162"
+          ],
+          "leads": [
+            "Inflection Point Ventures"
+          ],
+          "others": [
+            "Department of Science and Technology",
+            "NSRCEL at IIM Bangalore",
+            "SustainTN",
+            "ITEL Foundation"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": "Inflection Point Ventures"
+    },
+    {
+      "name": "Chiratae Ventures",
+      "score": 40.6,
+      "deals": [
+        {
+          "company": "ContraVault AI",
+          "sells": "AI-powered procurement intelligence and tender bidding software",
+          "to": "businesses across construction, energy, power, defence and aerospace",
+          "country": "India",
+          "stage": "seed-extension",
+          "amount": "$3.1 Mn",
+          "date": "2026-06-16",
+          "urls": [
+            "https://inc42.com/buzz/exclusive-ai-startup-contravault-raises-3-1-mn-to-expand-in-the-us/",
+            "https://startupbydoc.com/contravault-ai-raises-3-1-million-to-transform-procurement-intelligence/"
+          ],
+          "leads": [
+            "Chiratae Ventures"
+          ],
+          "others": [
+            "Titan Capital Winners Fund"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "Nama Ventures",
+      "score": 38.4,
+      "deals": [
+        {
+          "company": "Cargoz",
+          "sells": "digital freight forwarding and cargo management platform",
+          "to": "shippers and carriers",
+          "country": "United Arab Emirates",
+          "stage": "seed",
+          "amount": "",
+          "date": "2026-06-06",
+          "urls": [
+            "https://inforcapital.com/news/uae-based-cargoz-secures-seed-funding-led-by-nama-ventures/"
+          ],
+          "leads": [
+            "Nama Ventures"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Launch Africa",
+      "score": 37.5,
+      "deals": [
+        {
+          "company": "Fincart",
+          "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
+          "to": "e-commerce merchants",
+          "country": "Egypt",
+          "stage": "seed",
+          "amount": "$2.8 million",
+          "date": "2026-07-01",
+          "urls": [
+            "https://www.wamda.com/index.php/2026/07/fincart-lands-2-8-million-accelerate-regional-expansion",
+            "https://en.sharikatmubasher.com/news/article/21564516/egypts-fincart-raises-28mn-seed-round-backed-by-yango-ventures?companyNews=0",
+            "https://www.tekedia.com/egypts-fincart-secures-2-8-million-seed-funding-to-expand-ai-powered-e-commerce-platform-across-mea/",
+            "https://techinsider.africa/egypts-fincart-raises-2-8-million-to-expand-its-ai-powered-commerce-platform/"
+          ],
+          "leads": [
+            "Launch Africa",
+            "Antler MENAP",
+            "Yango Ventures",
+            "Antler"
+          ],
+          "others": [
+            "Yango Ventures",
+            "Five35 Ventures",
+            "Bluestream Capital",
+            "Hi2 Global",
+            "Kalahari Venture Labs"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Antler MENAP",
+      "score": 37.5,
+      "deals": [
+        {
+          "company": "Fincart",
+          "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
+          "to": "e-commerce merchants",
+          "country": "Egypt",
+          "stage": "seed",
+          "amount": "$2.8 million",
+          "date": "2026-07-01",
+          "urls": [
+            "https://www.wamda.com/index.php/2026/07/fincart-lands-2-8-million-accelerate-regional-expansion",
+            "https://en.sharikatmubasher.com/news/article/21564516/egypts-fincart-raises-28mn-seed-round-backed-by-yango-ventures?companyNews=0",
+            "https://www.tekedia.com/egypts-fincart-secures-2-8-million-seed-funding-to-expand-ai-powered-e-commerce-platform-across-mea/",
+            "https://techinsider.africa/egypts-fincart-raises-2-8-million-to-expand-its-ai-powered-commerce-platform/"
+          ],
+          "leads": [
+            "Launch Africa",
+            "Antler MENAP",
+            "Yango Ventures",
+            "Antler"
+          ],
+          "others": [
+            "Yango Ventures",
+            "Five35 Ventures",
+            "Bluestream Capital",
+            "Hi2 Global",
+            "Kalahari Venture Labs"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "accelerator",
+      "india": false,
+      "onList": "Antler India"
+    },
+    {
+      "name": "Yango Ventures",
+      "score": 37.5,
+      "deals": [
+        {
+          "company": "Fincart",
+          "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
+          "to": "e-commerce merchants",
+          "country": "Egypt",
+          "stage": "seed",
+          "amount": "$2.8 million",
+          "date": "2026-07-01",
+          "urls": [
+            "https://www.wamda.com/index.php/2026/07/fincart-lands-2-8-million-accelerate-regional-expansion",
+            "https://en.sharikatmubasher.com/news/article/21564516/egypts-fincart-raises-28mn-seed-round-backed-by-yango-ventures?companyNews=0",
+            "https://www.tekedia.com/egypts-fincart-secures-2-8-million-seed-funding-to-expand-ai-powered-e-commerce-platform-across-mea/",
+            "https://techinsider.africa/egypts-fincart-raises-2-8-million-to-expand-its-ai-powered-commerce-platform/"
+          ],
+          "leads": [
+            "Launch Africa",
+            "Antler MENAP",
+            "Yango Ventures",
+            "Antler"
+          ],
+          "others": [
+            "Yango Ventures",
+            "Five35 Ventures",
+            "Bluestream Capital",
+            "Hi2 Global",
+            "Kalahari Venture Labs"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "corporate",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Antler",
+      "score": 37.5,
+      "deals": [
+        {
+          "company": "Fincart",
+          "sells": "AI-powered operating platform to manage shipping, customer engagement, and cash advances",
+          "to": "e-commerce merchants",
+          "country": "Egypt",
+          "stage": "seed",
+          "amount": "$2.8 million",
+          "date": "2026-07-01",
+          "urls": [
+            "https://www.wamda.com/index.php/2026/07/fincart-lands-2-8-million-accelerate-regional-expansion",
+            "https://en.sharikatmubasher.com/news/article/21564516/egypts-fincart-raises-28mn-seed-round-backed-by-yango-ventures?companyNews=0",
+            "https://www.tekedia.com/egypts-fincart-secures-2-8-million-seed-funding-to-expand-ai-powered-e-commerce-platform-across-mea/",
+            "https://techinsider.africa/egypts-fincart-raises-2-8-million-to-expand-its-ai-powered-commerce-platform/"
+          ],
+          "leads": [
+            "Launch Africa",
+            "Antler MENAP",
+            "Yango Ventures",
+            "Antler"
+          ],
+          "others": [
+            "Yango Ventures",
+            "Five35 Ventures",
+            "Bluestream Capital",
+            "Hi2 Global",
+            "Kalahari Venture Labs"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "accelerator",
+      "india": false,
+      "onList": "Antler India"
+    },
+    {
+      "name": "APY Ventures",
+      "score": 35.3,
+      "deals": [
+        {
+          "company": "Nuvolog",
+          "sells": "Modular platform managing end-to-end logistics operations from a single dashboard",
+          "to": "Manufacturers, exporters, and e-commerce companies",
+          "country": "Turkey",
+          "stage": "seed",
+          "amount": "",
+          "date": "2026-05-22",
+          "urls": [
+            "https://dealroom.co/news/129357-nuvolog-raises-seed-round-led-by-apy-ventures-with-backing-from-turkish/"
+          ],
+          "leads": [
+            "APY Ventures"
+          ],
+          "others": [
+            "THY GSYF",
+            "Start-Up GSYF",
+            "Fuat Pamukçu",
+            "Ahmet Arslan"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Sitara Capital",
+      "score": 33.4,
+      "deals": [
+        {
+          "company": "Rivvun AI",
+          "sells": "Autonomous AI execution layer recovering leaked revenue and procurement spend",
+          "to": "Fortune 1000 enterprises",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$7.55 million",
+          "date": "2026-06-10",
+          "urls": [
+            "https://startuppoint.in/rivvun-ai-secures-7-55-million-to-build/",
+            "https://fundingtimes.in/former-icertis-executives-startup-rivvun-ai-raises-7-55-million-in-seed-funding/",
+            "https://newsx.io/2026/06/11/former-icertis-executives-startup-rivvun-ai-raises-7-55-mn-in-seed-funding/",
+            "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/"
+          ],
+          "leads": [
+            "Sitara Capital",
+            "3one4 Capital"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "3one4 Capital",
+      "score": 33.4,
+      "deals": [
+        {
+          "company": "Rivvun AI",
+          "sells": "Autonomous AI execution layer recovering leaked revenue and procurement spend",
+          "to": "Fortune 1000 enterprises",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$7.55 million",
+          "date": "2026-06-10",
+          "urls": [
+            "https://startuppoint.in/rivvun-ai-secures-7-55-million-to-build/",
+            "https://fundingtimes.in/former-icertis-executives-startup-rivvun-ai-raises-7-55-million-in-seed-funding/",
+            "https://newsx.io/2026/06/11/former-icertis-executives-startup-rivvun-ai-raises-7-55-mn-in-seed-funding/",
+            "https://www.vcaonline.com/news/2026061006/-2-trillion-a-year-never-makes-it-from-obligation-to-settlement-rivvun-ai-is-built-to-recover-it/"
+          ],
+          "leads": [
+            "Sitara Capital",
+            "3one4 Capital"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": "3one4 Capital"
+    },
+    {
+      "name": "SHARE Investment",
+      "score": 32.8,
+      "deals": [
+        {
+          "company": "Viero",
+          "sells": "Platform to unify fleet operations and vehicle payments",
+          "to": "fleet operators",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$1.2M",
+          "date": "2026-02-02",
+          "urls": [
+            "https://startupintros.com/news/2026-02-02-viero-seed",
+            "https://arabfounders.net/en/viero-raises-1-2m-seed-saudi-logistics/",
+            "https://menastartupdigest.com/saudis-viero-raises-1-2-million-seed-to-unify-fleet-management/",
+            "https://en.arageek.com/viero-secures-1-2m-to-propel-regional-logistics-expansion-in-mena",
+            "https://lucidityinsights.com/news/viero-secures-12m-seed",
+            "https://www.blocknewsint.com/articles/saudi-startup-viero-raises-1-2-m-to-integrate-fintech-into-mena-logistics"
+          ],
+          "leads": [
+            "SHARE Investment",
+            "Watheeq Capital",
+            "share ventures",
+            "Share Investment Co"
+          ],
+          "others": [
+            "Black Iris Angel Network",
+            "numu Angels Investment Community",
+            "lunment"
+          ],
+          "role": "co-led"
+        },
+        {
+          "company": "Viero",
+          "sells": "Platform to unify fleet operations and vehicle payments",
+          "to": "fleet operators",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$1.2M",
+          "date": "2026-02-02",
+          "urls": [
+            "https://startupintros.com/news/2026-02-02-viero-seed",
+            "https://arabfounders.net/en/viero-raises-1-2m-seed-saudi-logistics/",
+            "https://menastartupdigest.com/saudis-viero-raises-1-2-million-seed-to-unify-fleet-management/",
+            "https://en.arageek.com/viero-secures-1-2m-to-propel-regional-logistics-expansion-in-mena",
+            "https://lucidityinsights.com/news/viero-secures-12m-seed",
+            "https://www.blocknewsint.com/articles/saudi-startup-viero-raises-1-2-m-to-integrate-fintech-into-mena-logistics"
+          ],
+          "leads": [
+            "SHARE Investment",
+            "Watheeq Capital",
+            "share ventures",
+            "Share Investment Co"
+          ],
+          "others": [
+            "Black Iris Angel Network",
+            "numu Angels Investment Community",
+            "lunment"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "6 Degrees Capital",
+      "score": 32.1,
+      "deals": [
+        {
+          "company": "Corvera",
+          "sells": "Agentic AI supply chain management platform automating back-office operational workflows",
+          "to": "Consumer packaged goods brands",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$4.2M",
+          "date": "2026-05-05",
+          "urls": [
+            "https://tech.eu/2026/05/05/london-founded-corvera-raises-42m-to-bring-agentic-ai-to-cpg-supply-chains/",
+            "https://eu-hot-news.com/london-founded-corvera-raises-4-2m-to-bring-agentic-ai-to-cpg-supply-chains.html"
+          ],
+          "leads": [
+            "6 Degrees Capital"
+          ],
+          "others": [
+            "20VC",
+            "Rebel Fund",
+            "Duke Capital Partners",
+            "Multimodal Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Seedcamp",
+      "score": 32.1,
+      "deals": [
+        {
+          "company": "Opereit",
+          "sells": "AI-driven platform for logistics management and supply chain automation",
+          "to": "Businesses across e-commerce, manufacturing, and other industries",
+          "country": "Spain",
+          "stage": "seed",
+          "amount": "€2.2M",
+          "date": "2026-06-03",
+          "urls": [
+            "https://inforcapital.com/news/opereit-capta-22-millones-de-euros-para-automatizar-la-gesti%C3%B3n-log%C3%ADstica-con-inteligencia-artificial/",
+            "https://techfundingnews.com/barcelona-startup-opereit-raises-2-5m-to-tackle-logistics-trillion-euro-problem-with-ai-agents/",
+            "https://seedcamp.com/views/opereit-raises-2-5m-to-fix-logistics-e1-billion-blind-spot/"
+          ],
+          "leads": [
+            "Seedcamp",
+            "Yellow"
+          ],
+          "others": [
+            "Baobab Ventures",
+            "Kima Ventures",
+            "Enzo Ventures",
+            "Oprtrs",
+            "Oscar Pierre",
+            "Sacha Michaud"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Yellow",
+      "score": 32.1,
+      "deals": [
+        {
+          "company": "Opereit",
+          "sells": "AI-driven platform for logistics management and supply chain automation",
+          "to": "Businesses across e-commerce, manufacturing, and other industries",
+          "country": "Spain",
+          "stage": "seed",
+          "amount": "€2.2M",
+          "date": "2026-06-03",
+          "urls": [
+            "https://inforcapital.com/news/opereit-capta-22-millones-de-euros-para-automatizar-la-gesti%C3%B3n-log%C3%ADstica-con-inteligencia-artificial/",
+            "https://techfundingnews.com/barcelona-startup-opereit-raises-2-5m-to-tackle-logistics-trillion-euro-problem-with-ai-agents/",
+            "https://seedcamp.com/views/opereit-raises-2-5m-to-fix-logistics-e1-billion-blind-spot/"
+          ],
+          "leads": [
+            "Seedcamp",
+            "Yellow"
+          ],
+          "others": [
+            "Baobab Ventures",
+            "Kima Ventures",
+            "Enzo Ventures",
+            "Oprtrs",
+            "Oscar Pierre",
+            "Sacha Michaud"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Backed VC",
+      "score": 32,
+      "deals": [
+        {
+          "company": "GingerControl",
+          "sells": "AI software automating global trade compliance and customs workflows",
+          "to": "importers, customs brokers, manufacturers, and trade professionals",
+          "country": "",
+          "stage": "pre-seed",
+          "amount": "$2.1 million",
+          "date": "2026-05-04",
+          "urls": [
+            "https://vctavern.com/gingercontrol-raises-2-1-million-pre-seed-round-to-modernize-ai-powered-global-trade-compliance/",
+            "https://gingercontrol.com/news/gingercontrol-2-1m-pre-seed-raise"
+          ],
+          "leads": [
+            "Backed VC"
+          ],
+          "others": [
+            "Velocity Capital Advisors"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Vertical Venture Partners",
+      "score": 30.7,
+      "deals": [
+        {
+          "company": "Implentio",
+          "sells": "AI-powered shipper-side reconciliation platform for logistics invoices",
+          "to": "ecommerce brands",
+          "country": "unknown",
+          "stage": "seed-extension",
+          "amount": "$2M",
+          "date": "2026-04-27",
+          "urls": [
+            "https://muditavp.com/implentio-ai-powered-logistics-intelligence-for-ecommerce-brands-that-helps-recover-margin-and-enforce-accountability-across-third-party-logistics-3pls-and-carriers/"
+          ],
+          "leads": [
+            "Vertical Venture Partners"
+          ],
+          "others": [
+            "Mudita Venture Partners"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Las Olas Venture Capital (LOVC)",
+      "score": 26,
+      "deals": [
+        {
+          "company": "BITE Data",
+          "sells": "AI-native SaaS platform automating global trade compliance workflows",
+          "to": "companies navigating import and export regulations",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$2.5 million",
+          "date": "2026-03-28",
+          "urls": [
+            "https://vctavern.com/bite-data-raises-2-5-million-series-seed-to-expand-ai-powered-global-trade-compliance-platform/"
+          ],
+          "leads": [
+            "Las Olas Venture Capital (LOVC)"
+          ],
+          "others": [
+            "New Dominion Angels",
+            "Blue Impact Venture Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Innovation Endeavors",
+      "score": 25.4,
+      "deals": [
+        {
+          "company": "Conduit",
+          "sells": "dock and yard management system",
+          "to": "warehouses",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$6M",
+          "date": "2026-03-24",
+          "urls": [
+            "https://www.prnewswire.com/news-releases/conduit-raises-6m-to-build-the-ai-operating-system-for-dock-and-yard-operations-302723320.html",
+            "https://www.wfxg.com/online_features/press_releases/conduit-raises-6m-to-build-the-ai-operating-system-for-dock-and-yard-operations/article_3c6b5c8c-45ac-56ba-aa4f-975a4295598b.html",
+            "https://briefglance.com/articles/conduit-raises-6m-to-build-an-ai-operating-system-for-warehouse-yards"
+          ],
+          "leads": [
+            "Innovation Endeavors"
+          ],
+          "others": [
+            "Y Combinator"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Rainmatter by Zerodha",
+      "score": 25.3,
+      "deals": [
+        {
+          "company": "Lawyered",
+          "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
+          "to": "vehicle owners, drivers, and fleet operators",
+          "country": "India",
+          "stage": "seed-extension",
+          "amount": "$2.5 million",
+          "date": "2026-04-21",
+          "urls": [
+            "https://entrepreneur.economictimes.indiatimes.com/amp/news/funding/lawyered-secures-25-million-pre-series-a-funding-to-revolutionize-legal-solutions-for-indias-mobility-sector/130410540"
+          ],
+          "leads": [
+            "Rainmatter by Zerodha",
+            "Turbostart"
+          ],
+          "others": [
+            "Finvolve"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "Turbostart",
+      "score": 25.3,
+      "deals": [
+        {
+          "company": "Lawyered",
+          "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
+          "to": "vehicle owners, drivers, and fleet operators",
+          "country": "India",
+          "stage": "seed-extension",
+          "amount": "$2.5 million",
+          "date": "2026-04-21",
+          "urls": [
+            "https://entrepreneur.economictimes.indiatimes.com/amp/news/funding/lawyered-secures-25-million-pre-series-a-funding-to-revolutionize-legal-solutions-for-indias-mobility-sector/130410540"
+          ],
+          "leads": [
+            "Rainmatter by Zerodha",
+            "Turbostart"
+          ],
+          "others": [
+            "Finvolve"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "Wavemaker Partners",
+      "score": 23.7,
+      "deals": [
+        {
+          "company": "Confluxe",
+          "sells": "Platform providing market entry strategy, digital commerce, merchandising, and supply chain operations",
+          "to": "international fashion and lifestyle brands",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "$1.6 million",
+          "date": "2026-03-11",
+          "urls": [
+            "https://yourstory.com/2026/03/former-myntra-hm-executives-launch-retail-tech-platform-confluxe-16-mln-pre-seed-funding",
+            "https://entrepreneur.economictimes.indiatimes.com/news/funding/confluxe-secures-16-million-in-pre-seed-funding-from-wavemaker-partners-and-kriscore-capital/129501041"
+          ],
+          "leads": [
+            "Wavemaker Partners"
+          ],
+          "others": [
+            "Kriscore Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "RDY Ventures",
+      "score": 22.9,
+      "deals": [
+        {
+          "company": "Vectrix",
+          "sells": "AI pre-TMS software automating manual transport order entry",
+          "to": "logistics and transport operators",
+          "country": "Belgium",
+          "stage": "seed",
+          "amount": "€1.15 million",
+          "date": "2026-03-05",
+          "urls": [
+            "https://www.eu-startups.com/2026/03/antwerp-based-vectrix-raises-e1-15-million-to-build-the-automation-layer-for-transport-operations/",
+            "https://tech.eu/2026/03/05/belgian-logistics-startup-vectrix-raises-eur115m-seed-funding/",
+            "https://pulse2.com/vectrix-e1-15-million-raised-for-ai-transport-order-automation-platform/"
+          ],
+          "leads": [
+            "RDY Ventures"
+          ],
+          "others": [
+            "Seeder Fund",
+            "PMV",
+            "Prequel Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Bessemer Venture Partners",
+      "score": 22,
+      "deals": [
+        {
+          "company": "MeltPlan",
+          "sells": "AI-driven logistics transformation",
+          "to": "",
+          "country": "",
+          "stage": "seed",
+          "amount": "$10 Mn",
+          "date": "2026-02-26",
+          "urls": [
+            "https://www.voiceofentrepreneur.com/meltplan-raises-10-mn-seed-round-led-by-bessemer-venture-partners-to-power-ai-driven-logistics-transformation/"
+          ],
+          "leads": [
+            "Bessemer Venture Partners"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Pentathlon Ventures",
+      "score": 21.9,
+      "deals": [
+        {
+          "company": "SuperProcure",
+          "sells": "Unified TMS and freight lifecycle management software",
+          "to": "enterprises",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "₹140 Million",
+          "date": "2026-02-25",
+          "urls": [
+            "https://app.fundz.net/fundings/superprocure-funding-round-85ffce"
+          ],
+          "leads": [
+            "Pentathlon Ventures"
+          ],
+          "others": [
+            "IndiaMART",
+            "Caret Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "Maveron",
+      "score": 21.8,
+      "deals": [
+        {
+          "company": "Jampack AI",
+          "sells": "agentic platform automating wholesale operations and supply chain processes",
+          "to": "CPG brands",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$3.2M",
+          "date": "2026-02-24",
+          "urls": [
+            "https://www.nombase.com/newswire/2026/02/24/jampack-ai-raises-32m-seed-round-to-automate-wholesale-operations-for-cpg-brands",
+            "https://startuprise.io/jampack-ai-raises-3-2m-in-seed-funding/",
+            "https://www.prnewswire.com/news-releases/jampack-ai-raises-3-2m-seed-round-to-automate-wholesale-operations-for-cpg-brands-302695762.html",
+            "https://www.nosh.com/pr/2026/02/24/jampack-ai-raises-32m-seed-round-to-automate-wholesale-operations-for-cpg-brands",
+            "https://www.jampack.ai/blog/announcing-our-seed-round",
+            "https://maveronvc.substack.com/p/maveron-leads-32m-seed-round-in-jampack"
+          ],
+          "leads": [
+            "Maveron"
+          ],
+          "others": [
+            "Timber Grove Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Suffolk Technologies",
+      "score": 21,
+      "deals": [
+        {
+          "company": "Certivo",
+          "sells": "AI-native compliance system of record for global supply chains",
+          "to": "manufacturing and construction enterprises",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$4M",
+          "date": "2026-02-17",
+          "urls": [
+            "https://techstartups.com/2026/02/17/certivo-raises-4m-seed-funding-to-bring-ai-native-compliance-automation-to-global-supply-chains/"
+          ],
+          "leads": [
+            "Suffolk Technologies"
+          ],
+          "others": [
+            "Pioneer Square Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "corporate",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Finvolve",
+      "score": 20.1,
+      "deals": [
+        {
+          "company": "Constems-AI",
+          "sells": "retail and supply chain automation platform using vision AI",
+          "to": "consumer brands and CPG companies",
+          "country": "unknown",
+          "stage": "seed-extension",
+          "amount": "$2 million",
+          "date": "2026-03-11",
+          "urls": [
+            "https://entrepreneur.economictimes.indiatimes.com/news/constems-ai-secures-2-million-in-pre-series-a-funding-to-revolutionize-retail-intelligence/129456779",
+            "https://inc42.com/buzz/constems-ai-raises-2-mn-to-scale-vision-ai-saas-platform/"
+          ],
+          "leads": [
+            "Finvolve",
+            "India Accelerator"
+          ],
+          "others": [
+            "Cognify",
+            "AIF",
+            "Inflection Point Ventures",
+            "IIM Lucknow Enterprise Incubation Centre"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "India Accelerator",
+      "score": 20.1,
+      "deals": [
+        {
+          "company": "Constems-AI",
+          "sells": "retail and supply chain automation platform using vision AI",
+          "to": "consumer brands and CPG companies",
+          "country": "unknown",
+          "stage": "seed-extension",
+          "amount": "$2 million",
+          "date": "2026-03-11",
+          "urls": [
+            "https://entrepreneur.economictimes.indiatimes.com/news/constems-ai-secures-2-million-in-pre-series-a-funding-to-revolutionize-retail-intelligence/129456779",
+            "https://inc42.com/buzz/constems-ai-raises-2-mn-to-scale-vision-ai-saas-platform/"
+          ],
+          "leads": [
+            "Finvolve",
+            "India Accelerator"
+          ],
+          "others": [
+            "Cognify",
+            "AIF",
+            "Inflection Point Ventures",
+            "IIM Lucknow Enterprise Incubation Centre"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "accelerator",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "a16z Speedrun",
+      "score": 20,
+      "deals": [
+        {
+          "company": "Anchr",
+          "sells": "AI-native operating system automating ERP workflows and supply chain operations",
+          "to": "food distributors",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$5.8M",
+          "date": "2026-03-10",
+          "urls": [
+            "https://www.finsmes.com/2026/03/anchr-raises-5-8m-in-seed-funding.html",
+            "https://siliconangle.com/2026/03/10/anchr-brings-ai-americas-food-supply-distribution-chain-5-8m-raise/",
+            "https://inforcapital.com/news/anchr-raises-58m-to-automate-americas-food-supply-chain-with-ai/"
+          ],
+          "leads": [
+            "a16z Speedrun",
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "OpenAI"
+          ],
+          "others": [
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "leadership from OpenAI"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Anterra Capital",
+      "score": 20,
+      "deals": [
+        {
+          "company": "Anchr",
+          "sells": "AI-native operating system automating ERP workflows and supply chain operations",
+          "to": "food distributors",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$5.8M",
+          "date": "2026-03-10",
+          "urls": [
+            "https://www.finsmes.com/2026/03/anchr-raises-5-8m-in-seed-funding.html",
+            "https://siliconangle.com/2026/03/10/anchr-brings-ai-americas-food-supply-distribution-chain-5-8m-raise/",
+            "https://inforcapital.com/news/anchr-raises-58m-to-automate-americas-food-supply-chain-with-ai/"
+          ],
+          "leads": [
+            "a16z Speedrun",
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "OpenAI"
+          ],
+          "others": [
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "leadership from OpenAI"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Offline Ventures",
+      "score": 20,
+      "deals": [
+        {
+          "company": "Anchr",
+          "sells": "AI-native operating system automating ERP workflows and supply chain operations",
+          "to": "food distributors",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$5.8M",
+          "date": "2026-03-10",
+          "urls": [
+            "https://www.finsmes.com/2026/03/anchr-raises-5-8m-in-seed-funding.html",
+            "https://siliconangle.com/2026/03/10/anchr-brings-ai-americas-food-supply-distribution-chain-5-8m-raise/",
+            "https://inforcapital.com/news/anchr-raises-58m-to-automate-americas-food-supply-chain-with-ai/"
+          ],
+          "leads": [
+            "a16z Speedrun",
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "OpenAI"
+          ],
+          "others": [
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "leadership from OpenAI"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Long Journey Ventures",
+      "score": 20,
+      "deals": [
+        {
+          "company": "Anchr",
+          "sells": "AI-native operating system automating ERP workflows and supply chain operations",
+          "to": "food distributors",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$5.8M",
+          "date": "2026-03-10",
+          "urls": [
+            "https://www.finsmes.com/2026/03/anchr-raises-5-8m-in-seed-funding.html",
+            "https://siliconangle.com/2026/03/10/anchr-brings-ai-americas-food-supply-distribution-chain-5-8m-raise/",
+            "https://inforcapital.com/news/anchr-raises-58m-to-automate-americas-food-supply-chain-with-ai/"
+          ],
+          "leads": [
+            "a16z Speedrun",
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "OpenAI"
+          ],
+          "others": [
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "leadership from OpenAI"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "OpenAI",
+      "score": 20,
+      "deals": [
+        {
+          "company": "Anchr",
+          "sells": "AI-native operating system automating ERP workflows and supply chain operations",
+          "to": "food distributors",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$5.8M",
+          "date": "2026-03-10",
+          "urls": [
+            "https://www.finsmes.com/2026/03/anchr-raises-5-8m-in-seed-funding.html",
+            "https://siliconangle.com/2026/03/10/anchr-brings-ai-americas-food-supply-distribution-chain-5-8m-raise/",
+            "https://inforcapital.com/news/anchr-raises-58m-to-automate-americas-food-supply-chain-with-ai/"
+          ],
+          "leads": [
+            "a16z Speedrun",
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "OpenAI"
+          ],
+          "others": [
+            "Anterra Capital",
+            "Offline Ventures",
+            "Long Journey Ventures",
+            "leadership from OpenAI"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "corporate",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Luge Capital",
+      "score": 19.4,
+      "deals": [
+        {
+          "company": "Velix",
+          "sells": "AI-powered financial operations and invoice reconciliation platform",
+          "to": "third-party logistics providers",
+          "country": "Canada",
+          "stage": "pre-seed",
+          "amount": "$2M",
+          "date": "2026-02-03",
+          "urls": [
+            "https://standupventures.substack.com/p/our-investment-in-velix-bringing-modern-finops-to-logistics-0dd002129066",
+            "https://medium.com/standup-ventures/our-investment-in-velix-bringing-modern-finops-to-logistics-0dd002129066",
+            "https://www.publicnow.com/view/AACE81D660FC718EC260B2630BBC305B55B90BFE",
+            "https://accelia.vc/en/news_post/velix-raises-2m-pre-seed-to-build-a-finops-platform-for-logistics/",
+            "https://accelia.vc/news_post/velix-raises-2m-pre-seed-to-build-a-finops-platform-for-logistics/"
+          ],
+          "leads": [
+            "Luge Capital"
+          ],
+          "others": [
+            "StandUp",
+            "Accelia Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "New Build Venture Capital",
+      "score": 18.1,
+      "deals": [
+        {
+          "company": "Pull Logic",
+          "sells": "AI-powered availability intelligence platform for supply chain inventory and replenishment",
+          "to": "manufacturers, distributors, and retailers",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$3.3M",
+          "date": "2026-01-22",
+          "urls": [
+            "https://edisonreport.com/2026/01/22/pull-logic-raises-3-3m-to-build-a-new-availability-intelligence-category-for-enterprise-supply-chains/",
+            "https://www.smartsbusinesswire.com/article/885331660-pull-logic-raises-3-3m-to-launch-a-new-availability-intelligence-category-for-enterprise-supply-chains",
+            "https://www.hypepotamus.com/pull-logic-raises-3-3m-seed-atlanta-2026/"
+          ],
+          "leads": [
+            "New Build Venture Capital"
+          ],
+          "others": [
+            "Foster Ventures",
+            "Silicon Road Ventures",
+            "YANMAR VENTURES",
+            "DNX Ventures",
+            "IDEA"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "First Round Capital",
+      "score": 18,
+      "deals": [
+        {
+          "company": "Amari AI",
+          "sells": "AI agents automating customs paperwork and monitoring trade rules",
+          "to": "Customs brokers",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "US$4.5 million",
+          "date": "2026-02-19",
+          "urls": [
+            "https://newsgab.com/former-big-tech-engineers-use-ai-navigate-trump-trade-chaos/",
+            "https://ubos.tech/news/ai-powered-customs-software-amari-ai-leads-trade-policy-automation-with-logistics-ai-agents/"
+          ],
+          "leads": [
+            "First Round Capital",
+            "Pear VC"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Pear VC",
+      "score": 18,
+      "deals": [
+        {
+          "company": "Amari AI",
+          "sells": "AI agents automating customs paperwork and monitoring trade rules",
+          "to": "Customs brokers",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "US$4.5 million",
+          "date": "2026-02-19",
+          "urls": [
+            "https://newsgab.com/former-big-tech-engineers-use-ai-navigate-trump-trade-chaos/",
+            "https://ubos.tech/news/ai-powered-customs-software-amari-ai-leads-trade-policy-automation-with-logistics-ai-agents/"
+          ],
+          "leads": [
+            "First Round Capital",
+            "Pear VC"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Ventures.eu",
+      "score": 17.3,
+      "deals": [
+        {
+          "company": "Spot Ship",
+          "sells": "AI-powered software for ship chartering workflows",
+          "to": "brokers, charterers, owners and operators",
+          "country": "unknown",
+          "stage": "pre-seed",
+          "amount": "£1m",
+          "date": "2026-01-14",
+          "urls": [
+            "https://www.startupmag.co.uk/funding/spot-ship-2026-pre-seed-funding/"
+          ],
+          "leads": [
+            "Ventures.eu"
+          ],
+          "others": [
+            "Tradeworks.vc",
+            "Herman Narula",
+            "Marcel Kind"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "ENRISSION INDIA CAPITAL",
+      "score": 17.2,
+      "deals": [
+        {
+          "company": "Hexalog",
+          "sells": "AI-driven orchestration layer for cross-border logistics",
+          "to": "supply chain participants operating across borders",
+          "country": "India",
+          "stage": "seed",
+          "amount": "$4 million",
+          "date": "2026-01-12",
+          "urls": [
+            "https://entrackr.com/snippets/hexalog-bags-4-mn-in-seed-round-led-by-enrission-india-capital-10994708",
+            "https://inc42.com/buzz/hexalog-secures-4-mn-funding-to-digitise-cross-border-supply-chains/",
+            "https://stopdown.in/news/hexalog-funding-2026-01-12",
+            "https://entrepreneurnewsnetwork.com/2026/01/13/logistics-startup-hexalog-raises-4-million-in-seed-funding-to-scale-global-operations/",
+            "https://www.indianstartuptimes.com/investment/hexalog-raises-4-million-in-seed-funding-to-build-ai-led-orchestration-for-cross-border-logistics/",
+            "https://ascendants.in/funding-feed/hexalog-raises-4m/",
+            "https://startupsuccessstories.in/hexalog-secures-4-million-seed-funding-led-by-enrission-india-capital-to-advance-ai-powered-cross-border-supply-chains/",
+            "https://bharatfast.com/english/start-up/hexalog-raises-4-mn-to-digitise-cross-border-supply-chains-and-simplify-global-trade-for-indian-businesses/30893/"
+          ],
+          "leads": [
+            "ENRISSION INDIA CAPITAL"
+          ],
+          "others": [
+            "Mount Judi Ventures",
+            "Action Tesa Family Office",
+            "Rohan Bajaj's Syndicate",
+            "Nandan Growth Fund",
+            "Saurabh Deep Singla",
+            "Sumit Jalan",
+            "Amit Tyagi",
+            "Nitin Sethi"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": "Enrission India Capital"
+    },
+    {
+      "name": "Watheeq Capital",
+      "score": 16.4,
+      "deals": [
+        {
+          "company": "Viero",
+          "sells": "Platform to unify fleet operations and vehicle payments",
+          "to": "fleet operators",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$1.2M",
+          "date": "2026-02-02",
+          "urls": [
+            "https://startupintros.com/news/2026-02-02-viero-seed",
+            "https://arabfounders.net/en/viero-raises-1-2m-seed-saudi-logistics/",
+            "https://menastartupdigest.com/saudis-viero-raises-1-2-million-seed-to-unify-fleet-management/",
+            "https://en.arageek.com/viero-secures-1-2m-to-propel-regional-logistics-expansion-in-mena",
+            "https://lucidityinsights.com/news/viero-secures-12m-seed",
+            "https://www.blocknewsint.com/articles/saudi-startup-viero-raises-1-2-m-to-integrate-fintech-into-mena-logistics"
+          ],
+          "leads": [
+            "SHARE Investment",
+            "Watheeq Capital",
+            "share ventures",
+            "Share Investment Co"
+          ],
+          "others": [
+            "Black Iris Angel Network",
+            "numu Angels Investment Community",
+            "lunment"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Share Investment Co",
+      "score": 16.4,
+      "deals": [
+        {
+          "company": "Viero",
+          "sells": "Platform to unify fleet operations and vehicle payments",
+          "to": "fleet operators",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$1.2M",
+          "date": "2026-02-02",
+          "urls": [
+            "https://startupintros.com/news/2026-02-02-viero-seed",
+            "https://arabfounders.net/en/viero-raises-1-2m-seed-saudi-logistics/",
+            "https://menastartupdigest.com/saudis-viero-raises-1-2-million-seed-to-unify-fleet-management/",
+            "https://en.arageek.com/viero-secures-1-2m-to-propel-regional-logistics-expansion-in-mena",
+            "https://lucidityinsights.com/news/viero-secures-12m-seed",
+            "https://www.blocknewsint.com/articles/saudi-startup-viero-raises-1-2-m-to-integrate-fintech-into-mena-logistics"
+          ],
+          "leads": [
+            "SHARE Investment",
+            "Watheeq Capital",
+            "share ventures",
+            "Share Investment Co"
+          ],
+          "others": [
+            "Black Iris Angel Network",
+            "numu Angels Investment Community",
+            "lunment"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "corporate",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "100 Unicorns",
+      "score": 16,
+      "deals": [
+        {
+          "company": "1Buy.AI",
+          "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
+          "to": "enterprises and electronics players",
+          "country": "India",
+          "stage": "seed",
+          "amount": "INR 32.5 Cr ($3.5 Mn)",
+          "date": "2026-01-29",
+          "urls": [
+            "https://inc42.com/buzz/1buy-ai-nets-inr-33-cr-to-help-enterprises-procure-electronics-components/",
+            "https://india.entrepreneur.com/news-and-trends/procurement-platform-1buyai-secures-inr-325-cr-seed/502280",
+            "https://www.businesswire.com/news/home/20260129944622/en/Serial-Entrepreneurs-Behind-Multiple-Unicorns-Raise-%243.9M-to-Build-AI-Operating-System-for-Electronics-Procurement",
+            "https://startuptalky.com/news/midas-touch-founders-raise-rs-32-5-cr-for-their-ai-first-startup-1buy-ai-seed-round-led-by-100-unicorns/",
+            "https://www.entrepreneurindia.com/blog/en/news/procurement-platform-1buyai-secures-inr-325-cr-seed-funding.59027",
+            "https://pulse2.com/1buy-ai-3-9-million-seed-funding-closed-to-build-ai-operating-system-for-electronics-procurement/",
+            "https://globalindianalpha.com/1buy-ai-raises-rs-32-5-cr-in-seed-round-led-by-100unicorns/",
+            "https://www.cxodigitalpulse.com/1buy-ai-secures-rs-32-5-crore-seed-funding-led-by-100unicorns/",
+            "https://scoopearth.com/1buy-ai-secured-32-5-crore-in-a-seed-funding-round-led-by-100unicorns/",
+            "https://briefglance.com/articles/unicorn-builders-raise-39m-for-1buyais-procurement-platform"
+          ],
+          "leads": [
+            "100 Unicorns",
+            "100Unicorns"
+          ],
+          "others": [
+            "Gruhas",
+            "FJ Labs",
+            "Ashish Kacholia"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "100Unicorns",
+      "score": 16,
+      "deals": [
+        {
+          "company": "1Buy.AI",
+          "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
+          "to": "enterprises and electronics players",
+          "country": "India",
+          "stage": "seed",
+          "amount": "INR 32.5 Cr ($3.5 Mn)",
+          "date": "2026-01-29",
+          "urls": [
+            "https://inc42.com/buzz/1buy-ai-nets-inr-33-cr-to-help-enterprises-procure-electronics-components/",
+            "https://india.entrepreneur.com/news-and-trends/procurement-platform-1buyai-secures-inr-325-cr-seed/502280",
+            "https://www.businesswire.com/news/home/20260129944622/en/Serial-Entrepreneurs-Behind-Multiple-Unicorns-Raise-%243.9M-to-Build-AI-Operating-System-for-Electronics-Procurement",
+            "https://startuptalky.com/news/midas-touch-founders-raise-rs-32-5-cr-for-their-ai-first-startup-1buy-ai-seed-round-led-by-100-unicorns/",
+            "https://www.entrepreneurindia.com/blog/en/news/procurement-platform-1buyai-secures-inr-325-cr-seed-funding.59027",
+            "https://pulse2.com/1buy-ai-3-9-million-seed-funding-closed-to-build-ai-operating-system-for-electronics-procurement/",
+            "https://globalindianalpha.com/1buy-ai-raises-rs-32-5-cr-in-seed-round-led-by-100unicorns/",
+            "https://www.cxodigitalpulse.com/1buy-ai-secures-rs-32-5-crore-seed-funding-led-by-100unicorns/",
+            "https://scoopearth.com/1buy-ai-secured-32-5-crore-in-a-seed-funding-round-led-by-100unicorns/",
+            "https://briefglance.com/articles/unicorn-builders-raise-39m-for-1buyais-procurement-platform"
+          ],
+          "leads": [
+            "100 Unicorns",
+            "100Unicorns"
+          ],
+          "others": [
+            "Gruhas",
+            "FJ Labs",
+            "Ashish Kacholia"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": true,
+      "onList": null
+    },
+    {
+      "name": "Anthemis FIL",
+      "score": 15.2,
+      "deals": [
+        {
+          "company": "Another",
+          "sells": "Software to manage, track, and sell off-channel or excess retail inventory",
+          "to": "Retail brands and businesses",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$2.5 million",
+          "date": "2026-01-20",
+          "urls": [
+            "https://techcrunch.com/2026/01/20/retail-startup-another-raises-a-2-5m-seed-to-help-sell-excess-inventory/"
+          ],
+          "leads": [
+            "Anthemis FIL",
+            "Westbound"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Westbound",
+      "score": 15.2,
+      "deals": [
+        {
+          "company": "Another",
+          "sells": "Software to manage, track, and sell off-channel or excess retail inventory",
+          "to": "Retail brands and businesses",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$2.5 million",
+          "date": "2026-01-20",
+          "urls": [
+            "https://techcrunch.com/2026/01/20/retail-startup-another-raises-a-2-5m-seed-to-help-sell-excess-inventory/"
+          ],
+          "leads": [
+            "Anthemis FIL",
+            "Westbound"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Sorenson Capital",
+      "score": 15.2,
+      "deals": [
+        {
+          "company": "DiversiFi",
+          "sells": "AI billing and profitability software for logistics providers",
+          "to": "third-party logistics providers",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$8 million",
+          "date": "2026-01-20",
+          "urls": [
+            "https://www.diversifi.ai/blog/diversifi-secures-8m-to-stand-with-3pls-and-fix-one-of-the-most-broken-parts-of-logistics"
+          ],
+          "leads": [
+            "Sorenson Capital",
+            "Kickstart",
+            "Peterson Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Kickstart",
+      "score": 15.2,
+      "deals": [
+        {
+          "company": "DiversiFi",
+          "sells": "AI billing and profitability software for logistics providers",
+          "to": "third-party logistics providers",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$8 million",
+          "date": "2026-01-20",
+          "urls": [
+            "https://www.diversifi.ai/blog/diversifi-secures-8m-to-stand-with-3pls-and-fix-one-of-the-most-broken-parts-of-logistics"
+          ],
+          "leads": [
+            "Sorenson Capital",
+            "Kickstart",
+            "Peterson Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Peterson Ventures",
+      "score": 15.2,
+      "deals": [
+        {
+          "company": "DiversiFi",
+          "sells": "AI billing and profitability software for logistics providers",
+          "to": "third-party logistics providers",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$8 million",
+          "date": "2026-01-20",
+          "urls": [
+            "https://www.diversifi.ai/blog/diversifi-secures-8m-to-stand-with-3pls-and-fix-one-of-the-most-broken-parts-of-logistics"
+          ],
+          "leads": [
+            "Sorenson Capital",
+            "Kickstart",
+            "Peterson Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Jet Investment",
+      "score": 14.9,
+      "deals": [
+        {
+          "company": "Digicust",
+          "sells": "AI-driven customs automation platform",
+          "to": "logistics providers, customs brokers, and exporters",
+          "country": "Austria",
+          "stage": "seed-extension",
+          "amount": "€2.3 million",
+          "date": "2025-12-18",
+          "urls": [
+            "https://seedtable.com/companies/digicust/funding-rounds/seed-2025-12"
+          ],
+          "leads": [
+            "Jet Investment"
+          ],
+          "others": [
+            "Look AI Ventures",
+            "Austria Wirtschaftsservice"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Dynamo Ventures",
+      "score": 14.9,
+      "deals": [
+        {
+          "company": "Pinch AI",
+          "sells": "AI pricing engine and tools for freight and transportation rates",
+          "to": "shippers, carriers, and brokers",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$5M",
+          "date": "2026-01-16",
+          "urls": [
+            "https://dailyza.com/pinch-ai-secures-5m-seed-round-to-reinvent-freight-pricing/"
+          ],
+          "leads": [
+            "Dynamo Ventures",
+            "Infinity Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": "Dynamo Ventures"
+    },
+    {
+      "name": "Infinity Ventures",
+      "score": 14.9,
+      "deals": [
+        {
+          "company": "Pinch AI",
+          "sells": "AI pricing engine and tools for freight and transportation rates",
+          "to": "shippers, carriers, and brokers",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$5M",
+          "date": "2026-01-16",
+          "urls": [
+            "https://dailyza.com/pinch-ai-secures-5m-seed-round-to-reinvent-freight-pricing/"
+          ],
+          "leads": [
+            "Dynamo Ventures",
+            "Infinity Ventures"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "mads jensen",
+      "score": 13.8,
+      "deals": [
+        {
+          "company": "FreightSuite",
+          "sells": "TMS software for the freight market",
+          "to": "freight and logistics companies",
+          "country": "unknown",
+          "stage": "seed-extension",
+          "amount": "$4.5M",
+          "date": "2025-12-04",
+          "urls": [
+            "https://startupintros.com/news/2025-12-04-freightsuite-pre-series-a"
+          ],
+          "leads": [
+            "mads jensen"
+          ],
+          "others": [
+            "Mark White",
+            "Ascension Ventures",
+            "redbus group",
+            "Venrex"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "angel",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Headline",
+      "score": 13.2,
+      "deals": [
+        {
+          "company": "Procure AI",
+          "sells": "procurement automation software",
+          "to": "enterprises",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$13 million",
+          "date": "2025-11-26",
+          "urls": [
+            "https://www.axios.com/pro/enterprise-software-deals/2025/11/26/procure-ai-supply-chain-procurement-seed",
+            "https://c4v.com/news/procure-ai-secures-13m-seed-funding-to-transform-procurement-through-ai-native-autonomous-agents/",
+            "https://siliconangle.com/2025/11/27/procure-ai-lands-13m-funding-automate-business-procurement-tasks/",
+            "https://futurycapital.vc/procure-ai-secures-13m-seed-funding-to-transform-procurement-through-ai-native-autonomous-agents/",
+            "https://www.uktech.news/ai/procure-ai-9-8m-seed-round-20251127",
+            "https://www.eu-startups.com/2025/11/amid-new-tariffs-and-volatile-delivery-timelines-procure-ai-lands-e11-million-to-help-enterprises-stabilise-procurement-and-supply-chains/",
+            "https://aicurator.io/procure-ai-funding/",
+            "https://theaiinsider.tech/2025/12/08/procure-ai-secures-13m-seed-round-to-scale-ai-native-procurement-automation-across-europe/"
+          ],
+          "leads": [
+            "Headline"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "AltaIR Capital",
+      "score": 13.1,
+      "deals": [
+        {
+          "company": "Zinit",
+          "sells": "AI-native sourcing and procurement platform",
+          "to": "Enterprises and businesses",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$8 million",
+          "date": "2025-11-25",
+          "urls": [
+            "https://yourstory.com/2025/11/zinit-raises-8m-as-it-scales-ai-driven-procurement-platform-in-india",
+            "https://www.entrepreneurindia.com/blog/en/news/ai-procurement-platform-zinit-secures-usd-8-mn-seed-funding.57957",
+            "https://india.entrepreneur.com/news-and-trends/ai-procurement-platform-zinit-secures-usd-8-mn-seed-funding/500093",
+            "https://www.indianstartuptimes.com/investment/ai-procurement-platform-zinit-raises-8m-seed-round-at-48m-valuation-led-by-altair-capital/",
+            "https://marketingmoves.in/startups/global-procurement-push-accelerates-after-zinit-seed-funding-led-by-altair-capital",
+            "https://techfundingnews.com/zinit-ai-procurement-funding-2025/",
+            "https://startupnews360.com/zinit-secures-8-million-to-reinvent-how-companies-buy-everything-big-bet-on-indias-digital-procurement-boom/",
+            "https://www.latamrepublic.com/zinit-raises-us-8m-in-a-seed-round-led-by-altair-capital-to-scale-ai-driven-b2b-procurement-in-brazil/",
+            "https://ceosofbharat.com/this-ai-startup-just-raised-8-million-to-disrupt-a-trillion-dollar-industry-and-its-next-big-move-targets-india/"
+          ],
+          "leads": [
+            "AltaIR Capital"
+          ],
+          "others": [
+            "DVC"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "NAP",
+      "score": 12.8,
+      "deals": [
+        {
+          "company": "Logistica OS",
+          "sells": "AI agents to automate repetitive workflows in supply chain operations",
+          "to": "Supply chain and logistics companies",
+          "country": "Germany",
+          "stage": "pre-seed",
+          "amount": "€1.5 million",
+          "date": "2025-11-20",
+          "urls": [
+            "https://techfundingnews.com/ogistica-os-raises-1-5m-to-automate-european-logistics-ai/",
+            "https://vctavern.com/logistica-os-raises-e1-5m-pre-seed-to-automate-supply-chain-workflows-with-ai/"
+          ],
+          "leads": [
+            "NAP"
+          ],
+          "others": [
+            "Daphni",
+            "Javier de la Fuente",
+            "Nono Konopka",
+            "Daniel Khachab",
+            "Andrew Shaw",
+            "Jonas Meynert",
+            "Tony Kula",
+            "Hermann Ude"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "XYZ Venture Capital",
+      "score": 10.8,
+      "deals": [
+        {
+          "company": "Cavela",
+          "sells": "AI agents that automate supplier sourcing and negotiation",
+          "to": "brands, small and midsize companies",
+          "country": "unknown",
+          "stage": "seed",
+          "amount": "$6.6 million",
+          "date": "2025-11-19",
+          "urls": [
+            "https://techcrunch.com/2025/11/19/cavela-lands-6-6m-to-help-brands-beat-pre-tariff-manufacturing-costs/"
+          ],
+          "leads": [
+            "XYZ Venture Capital",
+            "Susa Ventures"
+          ],
+          "others": [
+            "Crossover Capital"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Access Capital Management",
+      "score": 10.4,
+      "deals": [
+        {
+          "company": "CoRun.ai",
+          "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
+          "to": "fleet carriers and operators",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$3.5 million",
+          "date": "2025-11-12",
+          "urls": [
+            "https://www.businesswire.com/news/home/20251112094813/en/German-Efficiency-Meets-Silicon-Valley-AI-CoRun.ai-Raises-%243.5-Million-to-Power-Intelligent-Profitable-Fleets"
+          ],
+          "leads": [
+            "Access Capital Management",
+            "Silicon Valley angel investors",
+            "logistics industry veterans"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Silicon Valley angel investors",
+      "score": 10.4,
+      "deals": [
+        {
+          "company": "CoRun.ai",
+          "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
+          "to": "fleet carriers and operators",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$3.5 million",
+          "date": "2025-11-12",
+          "urls": [
+            "https://www.businesswire.com/news/home/20251112094813/en/German-Efficiency-Meets-Silicon-Valley-AI-CoRun.ai-Raises-%243.5-Million-to-Power-Intelligent-Profitable-Fleets"
+          ],
+          "leads": [
+            "Access Capital Management",
+            "Silicon Valley angel investors",
+            "logistics industry veterans"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "angel",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "logistics industry veterans",
+      "score": 10.4,
+      "deals": [
+        {
+          "company": "CoRun.ai",
+          "sells": "AI fleet intelligence platform unifying operations, safety, finance, and captive insurance",
+          "to": "fleet carriers and operators",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$3.5 million",
+          "date": "2025-11-12",
+          "urls": [
+            "https://www.businesswire.com/news/home/20251112094813/en/German-Efficiency-Meets-Silicon-Valley-AI-CoRun.ai-Raises-%243.5-Million-to-Power-Intelligent-Profitable-Fleets"
+          ],
+          "leads": [
+            "Access Capital Management",
+            "Silicon Valley angel investors",
+            "logistics industry veterans"
+          ],
+          "others": [],
+          "role": "co-led"
+        }
+      ],
+      "kind": "angel",
+      "india": false,
+      "onList": null
+    },
+    {
+      "name": "Lerer Hippeau",
+      "score": 10.3,
+      "deals": [
+        {
+          "company": "Mentium",
+          "sells": "no-code AI agents for logistics workflows",
+          "to": "freight brokerages",
+          "country": "United States",
+          "stage": "seed",
+          "amount": "$3.2 million",
+          "date": "2025-10-13",
+          "urls": [
+            "https://www.techcompanynews.com/mentium-raises-3-2m-in-seed-funding-round-led-by-lerer-hippeau/",
+            "https://www.nextinthenorth.com/p/austin-ai-startup-mentium-raises-3-2m-seed-round-with-participation-from-matchstick-ventures"
+          ],
+          "leads": [
+            "Lerer Hippeau"
+          ],
+          "others": [
+            "Matchstick Ventures",
+            "Tower Research Capital",
+            "Antler",
+            "MBA Ventures",
+            "Michael Witte"
+          ],
+          "role": "led"
+        }
+      ],
+      "kind": "fund",
+      "india": false,
+      "onList": null
+    }
+  ]
+}

@@ -31,9 +31,10 @@ export function parseFormD(json: unknown, firmName: string): RawItem[] {
     .hits.hits.filter((h) => h._source.display_names.some((n) => n.toLowerCase().includes(want)))
     .map((h) => {
       const cik = h._source.ciks[0]!.replace(/^0+/, "");
-      const adsh = (h._source.adsh ?? h._id.split(":")[0]!).replace(/-/g, "");
+      const adsh = h._source.adsh ?? h._id.split(":")[0]!; // e.g. 0001234567-26-000001
       return {
-        url: `https://www.sec.gov/Archives/edgar/data/${cik}/${adsh}/`,
+        // The filing index page names the filer (the bare folder listing doesn't, so it failed the entity check).
+        url: `https://www.sec.gov/Archives/edgar/data/${cik}/${adsh.replace(/-/g, "")}/${adsh}-index.htm`,
         title: `Form D filed: ${h._source.display_names[0]}`,
         snippet: `SEC Form D (notice of exempt offering) filed ${h._source.file_date} by ${h._source.display_names.join("; ")}`,
         publishedAt: h._source.file_date,

@@ -14,10 +14,11 @@ describe("csv", () => {
     const rows = parseCsv('a,b\n"x, y","say ""hi"""\r\n1,2\n');
     expect(rows).toEqual([{ a: "x, y", b: 'say "hi"' }, { a: "1", b: "2" }]);
   });
-  it("parses the real seed list into 50 rows", () => {
+  it("parses the real seed list: 50 active rows, archived rows kept, unique ids", () => {
     const rows = toSeedRows(parseCsv(readFileSync("data/vc-seed-list.csv", "utf8")));
-    expect(rows).toHaveLength(50);
-    expect(new Set(rows.map((r) => r.id)).size).toBe(50);
+    expect(rows.filter((r) => r.archived !== "yes")).toHaveLength(50);
+    expect(new Set(rows.map((r) => r.id)).size).toBe(rows.length);
+    for (const r of rows.filter((x) => x.archived === "yes")) expect(r.archived_reason).toBeTruthy();
   });
 });
 
@@ -72,7 +73,7 @@ describe("robots.txt", () => {
 });
 
 describe("demo manual columns", () => {
-  const rows = toSeedRows(parseCsv(readFileSync("data/vc-seed-list.csv", "utf8")));
+  const rows = toSeedRows(parseCsv(readFileSync("data/vc-seed-list.csv", "utf8"))).filter((r) => r.archived !== "yes");
   const today = new Date("2026-10-11T00:00:00Z");
   it("labels everything [DEMO] and is deterministic", () => {
     for (const r of rows) {

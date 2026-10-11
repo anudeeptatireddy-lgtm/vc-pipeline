@@ -15,7 +15,11 @@
     "check:manual": "tsx --env-file=.env.local scripts/check-manual-columns.ts",
     "keepalive": "tsx --env-file=.env.local scripts/keepalive.ts",
     "db:migrate": "tsx --env-file=.env.local scripts/migrate.ts",
-    "diagnose": "tsx --env-file=.env.local scripts/diagnose.ts"
+    "diagnose": "tsx --env-file=.env.local scripts/diagnose.ts",
+    "reverse-lookup": "tsx --env-file=.env.local scripts/reverse-lookup.ts",
+    "swap:apply": "tsx --env-file=.env.local scripts/apply-swap.ts",
+    "swap:undo": "tsx --env-file=.env.local scripts/apply-swap.ts --undo",
+    "export:list": "tsx --env-file=.env.local scripts/export-list.ts"
   },
   "engines": {
     "node": "22.x"
@@ -39,6 +43,7 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.0",
+    "exceljs": "^4.4.0",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
     "vitest": "^5.0.3"

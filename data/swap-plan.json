@@ -1,0 +1,428 @@
+{
+  "createdAt": "2026-10-11T15:21:21.238Z",
+  "rule": "n = min(rows that can't produce reach-out rows by design, qualifying candidates, 15)",
+  "out": [
+    {
+      "key": "vc09",
+      "firm": "Stride Ventures",
+      "reason": "venture debt",
+      "rank": 1
+    },
+    {
+      "key": "vc41",
+      "firm": "A91 Partners",
+      "reason": "Series A+ only (profile)",
+      "rank": 10
+    },
+    {
+      "key": "vc45",
+      "firm": "India Quotient",
+      "reason": "no verified website",
+      "rank": 20
+    },
+    {
+      "key": "vc50",
+      "firm": "Maersk Growth",
+      "reason": "no verified website",
+      "rank": 20
+    },
+    {
+      "key": "vc25",
+      "firm": "Moving Capital",
+      "reason": "no verified website",
+      "rank": 20
+    },
+    {
+      "key": "vc34",
+      "firm": "Venture Highway",
+      "reason": "no verified website",
+      "rank": 21
+    },
+    {
+      "key": "vc06",
+      "firm": "Enrission India Capital",
+      "reason": "no verified website",
+      "rank": 22
+    }
+  ],
+  "notSwappedOutButFlagged": [
+    {
+      "key": "vc27",
+      "firm": "LDV Capital",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 30
+    },
+    {
+      "key": "vc49",
+      "firm": "Prologis Ventures",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 30
+    },
+    {
+      "key": "vc46",
+      "firm": "pi Ventures",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 30
+    },
+    {
+      "key": "vc36",
+      "firm": "Better Capital",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc40",
+      "firm": "Elevation Capital",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc24",
+      "firm": "Fuel Ventures",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc33",
+      "firm": "Kalaari Capital",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc21",
+      "firm": "Mu Ventures",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc20",
+      "firm": "Overlay Capital",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc31",
+      "firm": "Prime Venture Partners",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc22",
+      "firm": "Tech Square Ventures",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 31
+    },
+    {
+      "key": "vc11",
+      "firm": "Info Edge Ventures",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 32
+    },
+    {
+      "key": "vc16",
+      "firm": "Ironspring Ventures",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 32
+    },
+    {
+      "key": "vc08",
+      "firm": "LetsVenture",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 32
+    },
+    {
+      "key": "vc07",
+      "firm": "Navyug Global",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 32
+    },
+    {
+      "key": "vc10",
+      "firm": "Peak XV Partners (Surge)",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 32
+    },
+    {
+      "key": "vc12",
+      "firm": "Stellaris Venture Partners",
+      "reason": "no logistics activity found in 12 months",
+      "rank": 32
+    }
+  ],
+  "in": [
+    {
+      "name": "YourNest Venture Capital",
+      "score": 42.4,
+      "website": "https://yournest.in",
+      "hq": "India",
+      "investorType": "seed_fund",
+      "partner": "Girish Shivani",
+      "indiaEvidence": "India deal in corpus",
+      "deals": [
+        {
+          "company": "CargoFL",
+          "sells": "logistics technology platform to optimize freight and supply chain operations",
+          "to": "shippers and transporters",
+          "country": "India",
+          "stage": "seed",
+          "amount": "Rs 6.75 crore",
+          "date": "2026-06-24",
+          "urls": [
+            "https://vctavern.com/cargofl-secures-rs-6-75-cr-in-seed-funding-round-led-by-yournest-venture-capital/"
+          ],
+          "leads": [
+            "YourNest Venture Capital"
+          ],
+          "others": [],
+          "role": "led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": []
+    },
+    {
+      "name": "Picus Capital",
+      "score": 42.4,
+      "website": "https://www.picuscap.com",
+      "hq": "Germany",
+      "investorType": "multi_stage",
+      "partner": null,
+      "indiaEvidence": "https://www.picuscap.com/team/",
+      "deals": [
+        {
+          "company": "Compri",
+          "sells": "AI-powered procurement software for industrial companies",
+          "to": "industrial companies",
+          "country": "Italy",
+          "stage": "seed",
+          "amount": "€3.2 million",
+          "date": "2026-06-24",
+          "urls": [
+            "https://seedtable.com/companies/compri/funding-rounds/seed-2026-06",
+            "https://dealroom.co/news/135833-compri-raises-3-2m-seed-to-build-ai-powered-procurement-teams/"
+          ],
+          "leads": [
+            "Picus Capital"
+          ],
+          "others": [
+            "Shapers",
+            "Italian Founders Fund",
+            "DFF Ventures"
+          ],
+          "role": "led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": []
+    },
+    {
+      "name": "Chiratae Ventures",
+      "score": 40.6,
+      "website": "https://www.chiratae.com",
+      "hq": "India",
+      "investorType": "multi_stage",
+      "partner": "TC Meenakshisundaram",
+      "indiaEvidence": "India deal in corpus",
+      "deals": [
+        {
+          "company": "ContraVault AI",
+          "sells": "AI-powered procurement intelligence and tender bidding software",
+          "to": "businesses across construction, energy, power, defence and aerospace",
+          "country": "India",
+          "stage": "seed-extension",
+          "amount": "$3.1 Mn",
+          "date": "2026-06-16",
+          "urls": [
+            "https://inc42.com/buzz/exclusive-ai-startup-contravault-raises-3-1-mn-to-expand-in-the-us/",
+            "https://startupbydoc.com/contravault-ai-raises-3-1-million-to-transform-procurement-intelligence/"
+          ],
+          "leads": [
+            "Chiratae Ventures"
+          ],
+          "others": [
+            "Titan Capital Winners Fund"
+          ],
+          "role": "led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": []
+    },
+    {
+      "name": "Turbostart",
+      "score": 25.3,
+      "website": "https://turbostart.co",
+      "hq": "India",
+      "investorType": "seed_fund",
+      "partner": null,
+      "indiaEvidence": "India deal in corpus",
+      "deals": [
+        {
+          "company": "Lawyered",
+          "sells": "legal infrastructure and proactive compliance platform for mobility and logistics",
+          "to": "vehicle owners, drivers, and fleet operators",
+          "country": "India",
+          "stage": "seed-extension",
+          "amount": "$2.5 million",
+          "date": "2026-04-21",
+          "urls": [
+            "https://entrepreneur.economictimes.indiatimes.com/amp/news/funding/lawyered-secures-25-million-pre-series-a-funding-to-revolutionize-legal-solutions-for-indias-mobility-sector/130410540"
+          ],
+          "leads": [
+            "Rainmatter by Zerodha",
+            "Turbostart"
+          ],
+          "others": [
+            "Finvolve"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": []
+    },
+    {
+      "name": "Wavemaker Partners",
+      "score": 23.7,
+      "website": "https://wavemaker.vc",
+      "hq": "Singapore",
+      "investorType": "multi_stage",
+      "partner": null,
+      "indiaEvidence": "India deal in corpus",
+      "deals": [
+        {
+          "company": "Confluxe",
+          "sells": "Platform providing market entry strategy, digital commerce, merchandising, and supply chain operations",
+          "to": "international fashion and lifestyle brands",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "$1.6 million",
+          "date": "2026-03-11",
+          "urls": [
+            "https://yourstory.com/2026/03/former-myntra-hm-executives-launch-retail-tech-platform-confluxe-16-mln-pre-seed-funding",
+            "https://entrepreneur.economictimes.indiatimes.com/news/funding/confluxe-secures-16-million-in-pre-seed-funding-from-wavemaker-partners-and-kriscore-capital/129501041"
+          ],
+          "leads": [
+            "Wavemaker Partners"
+          ],
+          "others": [
+            "Kriscore Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": []
+    },
+    {
+      "name": "Pentathlon Ventures",
+      "score": 21.9,
+      "website": "https://pentathlon.vc",
+      "hq": "India",
+      "investorType": "seed_fund",
+      "partner": "Madhukar Bhatia",
+      "indiaEvidence": "India deal in corpus",
+      "deals": [
+        {
+          "company": "SuperProcure",
+          "sells": "Unified TMS and freight lifecycle management software",
+          "to": "enterprises",
+          "country": "India",
+          "stage": "pre-seed",
+          "amount": "₹140 Million",
+          "date": "2026-02-25",
+          "urls": [
+            "https://app.fundz.net/fundings/superprocure-funding-round-85ffce"
+          ],
+          "leads": [
+            "Pentathlon Ventures"
+          ],
+          "others": [
+            "IndiaMART",
+            "Caret Capital"
+          ],
+          "role": "led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": []
+    },
+    {
+      "name": "100Unicorns",
+      "score": 16,
+      "website": "https://100unicorns.in",
+      "hq": "India",
+      "investorType": "accelerator",
+      "partner": null,
+      "indiaEvidence": "India deal in corpus",
+      "deals": [
+        {
+          "company": "1Buy.AI",
+          "sells": "AI-powered electronics component procurement, bill of materials optimisation, and inventory liquidation",
+          "to": "enterprises and electronics players",
+          "country": "India",
+          "stage": "seed",
+          "amount": "INR 32.5 Cr ($3.5 Mn)",
+          "date": "2026-01-29",
+          "urls": [
+            "https://inc42.com/buzz/1buy-ai-nets-inr-33-cr-to-help-enterprises-procure-electronics-components/",
+            "https://india.entrepreneur.com/news-and-trends/procurement-platform-1buyai-secures-inr-325-cr-seed/502280",
+            "https://www.businesswire.com/news/home/20260129944622/en/Serial-Entrepreneurs-Behind-Multiple-Unicorns-Raise-%243.9M-to-Build-AI-Operating-System-for-Electronics-Procurement",
+            "https://startuptalky.com/news/midas-touch-founders-raise-rs-32-5-cr-for-their-ai-first-startup-1buy-ai-seed-round-led-by-100-unicorns/",
+            "https://www.entrepreneurindia.com/blog/en/news/procurement-platform-1buyai-secures-inr-325-cr-seed-funding.59027",
+            "https://pulse2.com/1buy-ai-3-9-million-seed-funding-closed-to-build-ai-operating-system-for-electronics-procurement/",
+            "https://globalindianalpha.com/1buy-ai-raises-rs-32-5-cr-in-seed-round-led-by-100unicorns/",
+            "https://www.cxodigitalpulse.com/1buy-ai-secures-rs-32-5-crore-seed-funding-led-by-100unicorns/",
+            "https://scoopearth.com/1buy-ai-secured-32-5-crore-in-a-seed-funding-round-led-by-100unicorns/",
+            "https://briefglance.com/articles/unicorn-builders-raise-39m-for-1buyais-procurement-platform"
+          ],
+          "leads": [
+            "100 Unicorns",
+            "100Unicorns"
+          ],
+          "others": [
+            "Gruhas",
+            "FJ Labs",
+            "Ashish Kacholia"
+          ],
+          "role": "co-led"
+        }
+      ],
+      "qualifies": true,
+      "reasons": [],
+      "note": "website verified by direct fetch on retry (isFirmSite true); Gemini lookup had missed it"
+    }
+  ],
+  "quietKept": [
+    {
+      "key": "vc13",
+      "firm": "Orios Venture Partners",
+      "why": "Real logistics investor (latest: Xindus 2026-08-04; NowPurchase 2026-04-02) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc04",
+      "firm": "Mela Ventures",
+      "why": "Real logistics investor (latest: Tessol 2025-10-27) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc05",
+      "firm": "NB Ventures",
+      "why": "Real logistics investor (latest: Edgistify 2026-01-12) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc15",
+      "firm": "Nexus Venture Partners",
+      "why": "Real logistics investor (latest: Freehand 2026-07-29) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc14",
+      "firm": "Z47 (Matrix Partners India)",
+      "why": "Real logistics investor (latest: Wootzwork 2026-02-26) but no B2B-logistics signal in the last 30 days"
+    },
+    {
+      "key": "vc42",
+      "firm": "Inflection Point Ventures",
+      "why": "Real logistics investor (latest: DAAKit 2026-04-09; OORJAA 2026-08-27) but no B2B-logistics signal in the last 30 days"
+    }
+  ]
+}

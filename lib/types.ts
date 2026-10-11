@@ -35,6 +35,9 @@ export interface Vc {
   seed_key: string | null;
   website: string | null;
   partner_confidence: "high" | "low" | null;
+  // Archive instead of delete (db/migrations/0003_archive.sql)
+  archived: boolean;
+  archived_reason: string | null;
   updated_by_system_at: string | null;
 }
 
