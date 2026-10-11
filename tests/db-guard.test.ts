@@ -26,9 +26,13 @@ function files(dir: string): string[] {
 const src = (f: string) => readFileSync(f, "utf8");
 
 describe("manual columns guard", () => {
+  // scripts/proofs.ts deliberately ATTEMPTS these writes inside rolled-back
+  // transactions to prove the database refuses them (R8), so it's exempt.
+  const PROVES_DENIAL = new Set([join("scripts", "proofs.ts")]);
+
   it("no direct UPDATE or DELETE on vcs anywhere", () => {
     const re = /\b(update\s+(public\.)?vcs\b|delete\s+from\s+(public\.)?vcs\b)/i;
-    expect(ROOTS.flatMap(files).filter((f) => re.test(src(f)))).toEqual([]);
+    expect(ROOTS.flatMap(files).filter((f) => !PROVES_DENIAL.has(f) && re.test(src(f)))).toEqual([]);
   });
 
   it("INSERT INTO vcs only in lib/db.ts (seeding new rows)", () => {

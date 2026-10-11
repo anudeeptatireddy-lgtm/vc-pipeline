@@ -16,7 +16,7 @@ export interface SearchHit {
 export interface SearchQuery {
   query: string;
   kind: "news" | "general";
-  days?: number; // look-back window
+  days?: number; // look-back window; 0 = no date filter (e.g. profiles)
   includeDomains?: string[];
   maxResults?: number;
 }
@@ -63,8 +63,8 @@ async function tavily(s: SearchQuery): Promise<SearchHit[]> {
     max_results: s.maxResults ?? 10,
     search_depth: "basic", // 1 credit
   };
-  if (s.kind === "news") body.days = s.days ?? 30;
-  else body.time_range = (s.days ?? 30) <= 7 ? "week" : (s.days ?? 30) <= 31 ? "month" : "year";
+  if (s.kind === "news") body.days = s.days || 30;
+  else if (s.days !== 0) body.time_range = (s.days ?? 30) <= 7 ? "week" : (s.days ?? 30) <= 31 ? "month" : "year";
   if (s.includeDomains) body.include_domains = s.includeDomains;
   const res = await fetch("https://api.tavily.com/search", {
     method: "POST",
@@ -92,7 +92,7 @@ async function exaSmall(s: SearchQuery): Promise<SearchHit[]> {
   const results = await exaSearch({
     query: s.query,
     numResults: Math.min(s.maxResults ?? 5, 5),
-    startPublishedDate: new Date(Date.now() - (s.days ?? 30) * 86_400_000).toISOString(),
+    startPublishedDate: s.days === 0 ? undefined : new Date(Date.now() - (s.days ?? 30) * 86_400_000).toISOString(),
     includeDomains: s.includeDomains,
     textChars: 300,
   });
