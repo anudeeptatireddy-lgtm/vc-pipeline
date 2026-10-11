@@ -57,9 +57,9 @@ Work top to bottom. Don't start a phase until the previous phase's acceptance cr
 **Accept:** unit test with two fixture HTML snapshots detects exactly the added company; nothing alerts after only one run.
 
 ## Phase 6 — Full run, cron, safety
-- [ ] Batch 50 VCs at concurrency 6 within 300 s; per-source and per-VC error isolation
-- [ ] `CRON_SECRET` check on `/api/run-pipeline`; `/api/run-now` behind the same secret (or Supabase auth)
-- [ ] Triangulation rules (§8.2)
+- [x] Batch 50 VCs within 300 s; per-source and per-VC error isolation (concurrency 25, Gemini capped at 110 s, no new VCs after 150 s; measured 214 s for 50)
+- [x] `CRON_SECRET` check on `/api/run-pipeline`; `/api/run-now` behind the same secret (or Supabase auth)
+- [x] Triangulation rules (§8.2)
 
 **Accept:** full run finishes < 280 s on Vercel; a forced failure in one source still completes the run; the manual-columns test passes.
 

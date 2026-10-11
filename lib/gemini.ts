@@ -22,6 +22,8 @@ export interface GeminiJsonOptions {
   search?: boolean;
   /** Let the model read URLs mentioned in the prompt. */
   urlContext?: boolean;
+  /** Abort after this long (grounded calls have a long tail). */
+  timeoutMs?: number;
 }
 
 export interface GeminiJsonResult<T> {
@@ -50,6 +52,7 @@ export async function geminiJson<S extends z.ZodType>(
           tools: tools.length ? tools : undefined,
           responseMimeType: "application/json",
           responseJsonSchema: z.toJSONSchema(schema),
+          abortSignal: opts.timeoutMs ? AbortSignal.timeout(opts.timeoutMs) : undefined,
         },
       });
       geminiUsage.calls++;
@@ -70,6 +73,7 @@ export async function geminiJson<S extends z.ZodType>(
       lastError = e;
       const msg = String((e as Error).message ?? e);
       // Retry once on transient errors and malformed JSON; fail fast otherwise.
+      if (/abort|timeout/i.test(msg)) break; // a timed-out call won't be faster the second time
       if (!/429|500|503|UNAVAILABLE|RESOURCE_EXHAUSTED|JSON|ZodError|invalid_/i.test(msg)) break;
       await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
     }

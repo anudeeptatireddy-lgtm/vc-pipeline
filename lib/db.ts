@@ -177,6 +177,19 @@ export interface RunError {
   message: string;
 }
 
+/** True if another run started in the last 10 minutes and hasn't finished. */
+export async function isRunActive(): Promise<boolean> {
+  const since = new Date(Date.now() - 10 * 60_000).toISOString();
+  const { data, error } = await db()
+    .from("pipeline_runs")
+    .select("id")
+    .is("finished_at", null)
+    .gte("started_at", since)
+    .limit(1);
+  if (error) throw new Error(`isRunActive: ${error.message}`);
+  return (data ?? []).length > 0;
+}
+
 export async function startRun(trigger: "cron" | "manual" | "script"): Promise<number> {
   const { data, error } = await db().from("pipeline_runs").insert({ trigger }).select("id").single();
   if (error) throw new Error(`startRun: ${error.message}`);

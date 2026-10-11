@@ -1,8 +1,20 @@
-// Manual demo trigger (Phase 6). Same auth as the cron route.
+// Manual trigger for demos (same pipeline, same secret). The dashboard's Run
+// now button uses the passcode-protected server action in app/actions.ts.
+import { isCronAuthorized } from "@/lib/auth";
+import { RunLockedError, runPipeline } from "@/lib/run";
+
+export const dynamic = "force-dynamic";
+export const maxDuration = 300;
+
 export async function POST(request: Request) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
-    return new Response("Unauthorized", { status: 401 });
+  if (!isCronAuthorized(request)) return new Response("Unauthorized", { status: 401 });
+  try {
+    const s = await runPipeline({ trigger: "manual" });
+    return Response.json({
+      ok: true, runId: s.runId, processed: s.processed, skipped: s.skipped, errors: s.errors.length, durationMs: s.durationMs,
+    });
+  } catch (e) {
+    if (e instanceof RunLockedError) return Response.json({ ok: false, error: e.message }, { status: 409 });
+    return Response.json({ ok: false, error: (e as Error).message }, { status: 500 });
   }
-  return Response.json({ ok: false, error: "pipeline not implemented yet" }, { status: 501 });
 }

@@ -60,11 +60,15 @@ round_stage: the round in which ${vc.firm} invested, if any public source says s
   return data;
 }
 
-export async function detectPortfolioAdditions(vc: Vc, today: Date): Promise<{ signals: VerifiedSignal[]; entries: number }> {
-  if (!vc.portfolio_url) return { signals: [], entries: 0 };
+export async function detectPortfolioAdditions(
+  vc: Vc,
+  today: Date,
+): Promise<{ signals: VerifiedSignal[]; current: Entry[]; runs: number; skipped?: string }> {
+  if (!vc.portfolio_url) return { signals: [], current: [], runs: 0 };
   const entries = await currentEntries(vc.portfolio_url);
-  // Don't snapshot a broken render or a page of nav links: diffs on it would be noise.
-  if (entries.length < MIN_ENTRIES) throw new Error(`only ${entries.length} portfolio entries extracted`);
+  // Don't snapshot a broken render or a page of nav links: diffs on it would be
+  // noise. A known state, not an error, so it isn't logged as one each run.
+  if (entries.length < MIN_ENTRIES) return { signals: [], current: [], runs: 0, skipped: `${entries.length} entries` };
   await insertSnapshot(vc.id, "portfolio", entries, hashEntries(entries));
 
   const history = await loadSnapshots(vc.id, "portfolio", 3);
@@ -95,5 +99,5 @@ export async function detectPortfolioAdditions(vc: Vc, today: Date): Promise<{ s
       corroborated_by: null,
     });
   }
-  return { signals, entries: entries.length };
+  return { signals, current: entries, runs: history.length };
 }

@@ -1,0 +1,198 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "firm": "Kestrel Ventures",
+    "partnerName": "Mara Osei",
+    "priority": "P1",
+    "region": "India",
+    "status": "yet_to_reach_out",
+    "lastContactDate": null,
+    "action": "Reach out this week",
+    "bucket": "reach_out",
+    "score": 78,
+    "scoreDelta": null,
+    "lastSignalDate": "2026-10-05",
+    "top": {
+      "summary": "Led the seed round in Routely, a dispatch SaaS for mid-size Indian shippers",
+      "publishedDate": "2026-10-05",
+      "relevance": "direct",
+      "sources": [
+        {
+          "name": "inc42",
+          "url": "https://example.com/routely-seed",
+          "tier": "C"
+        },
+        {
+          "name": "firm-rss",
+          "url": "https://example.com/kestrel-blog",
+          "tier": "B"
+        }
+      ],
+      "corroborated": true,
+      "tier": "C",
+      "fit": {
+        "sector": "fit",
+        "customer": "b2b",
+        "offering": "software",
+        "stage": "seed"
+      },
+      "openingLine": "I saw you led Routely's seed round. We build carrier onboarding software for the same mid-size shippers, at seed now.",
+      "nudgeLine": null
+    },
+    "tapeDaysAgo": [
+      6,
+      9,
+      21
+    ]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "firm": "Harbor Seed Partners",
+    "partnerName": "Dev Raman",
+    "priority": "P1",
+    "region": "India",
+    "status": "yet_to_reach_out",
+    "lastContactDate": null,
+    "action": "Reach out this week",
+    "bucket": "reach_out",
+    "score": 64,
+    "scoreDelta": null,
+    "lastSignalDate": "2026-10-08",
+    "top": {
+      "summary": "Wrote about why freight brokers need AI back offices",
+      "publishedDate": "2026-10-08",
+      "relevance": "thematic",
+      "sources": [
+        {
+          "name": "inc42",
+          "url": "https://example.com/routely-seed",
+          "tier": "B"
+        },
+        {
+          "name": "firm-rss",
+          "url": "https://example.com/kestrel-blog",
+          "tier": "B"
+        }
+      ],
+      "corroborated": false,
+      "tier": "B",
+      "fit": {
+        "sector": "fit",
+        "customer": "b2b",
+        "offering": "software",
+        "stage": "seed"
+      },
+      "openingLine": null,
+      "nudgeLine": null
+    },
+    "tapeDaysAgo": [
+      3,
+      15
+    ]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000003",
+    "firm": "Lakeshore Capital",
+    "partnerName": null,
+    "priority": "P1",
+    "region": "India",
+    "status": "yet_to_reach_out",
+    "lastContactDate": null,
+    "action": "Reach out if capacity allows",
+    "bucket": "reach_out",
+    "score": 41,
+    "scoreDelta": null,
+    "lastSignalDate": "2026-09-27",
+    "top": {
+      "summary": "Partner spoke on a supply chain panel in Bengaluru",
+      "publishedDate": "2026-09-27",
+      "relevance": "thematic",
+      "sources": [
+        {
+          "name": "inc42",
+          "url": "https://example.com/routely-seed",
+          "tier": "C"
+        },
+        {
+          "name": "firm-rss",
+          "url": "https://example.com/kestrel-blog",
+          "tier": "B"
+        }
+      ],
+      "corroborated": false,
+      "tier": "C",
+      "fit": {
+        "sector": "fit",
+        "customer": "b2b",
+        "offering": "software",
+        "stage": "seed"
+      },
+      "openingLine": null,
+      "nudgeLine": null
+    },
+    "tapeDaysAgo": [
+      14
+    ]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000004",
+    "firm": "Northgate Ventures",
+    "partnerName": "Asha Iyer",
+    "priority": "P1",
+    "region": "India",
+    "status": "waiting_for_response",
+    "lastContactDate": "2026-09-20",
+    "action": "Nudge now",
+    "bucket": "nudge",
+    "score": 66,
+    "scoreDelta": null,
+    "lastSignalDate": "2026-10-09",
+    "top": {
+      "summary": "Announced a new ₹200 Cr seed fund with a logistics focus",
+      "publishedDate": "2026-10-09",
+      "relevance": "direct",
+      "sources": [
+        {
+          "name": "inc42",
+          "url": "https://example.com/routely-seed",
+          "tier": "C"
+        },
+        {
+          "name": "firm-rss",
+          "url": "https://example.com/kestrel-blog",
+          "tier": "B"
+        }
+      ],
+      "corroborated": false,
+      "tier": "C",
+      "fit": {
+        "sector": "fit",
+        "customer": "b2b",
+        "offering": "software",
+        "stage": "seed"
+      },
+      "openingLine": null,
+      "nudgeLine": "Following up on my note from last month. Congrats on the new fund; our seed round is open."
+    },
+    "tapeDaysAgo": [
+      2,
+      18
+    ]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000005",
+    "firm": "Quiet Pine Capital",
+    "partnerName": null,
+    "priority": "P1",
+    "region": "India",
+    "status": "yet_to_reach_out",
+    "lastContactDate": null,
+    "action": "Quiet: deprioritize this week",
+    "bucket": "parked",
+    "score": 4,
+    "scoreDelta": null,
+    "lastSignalDate": null,
+    "top": null,
+    "tapeDaysAgo": []
+  }
+]

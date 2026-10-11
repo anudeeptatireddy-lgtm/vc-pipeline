@@ -110,10 +110,11 @@ RULES
 - Output JSON only, matching the schema.`;
 }
 
-export async function extractSignals(vc: Vc, profile: VcProfile | null, items: RawItem[], today: Date) {
+export async function extractSignals(vc: Vc, profile: VcProfile | null, items: RawItem[], today: Date, timeoutMs = 110_000) {
   const { data } = await geminiJson(buildPrompt(vc, profile, preFilter(items, vc), today), Extraction, {
     search: true,
     urlContext: true,
+    timeoutMs,
   });
   return data;
 }

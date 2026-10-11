@@ -30,7 +30,27 @@ export interface ExaUsage {
 }
 export const exaUsage: ExaUsage = { calls: 0, dollars: 0 };
 
-export async function exaSearch(s: ExaSearch): Promise<ExaResult[]> {
+// Exa's rate limit is per key; a full run has 25 VCs in flight, so queue calls.
+const MAX_IN_FLIGHT = 5;
+let inFlight = 0;
+const waiting: (() => void)[] = [];
+
+async function slot<T>(fn: () => Promise<T>): Promise<T> {
+  if (inFlight >= MAX_IN_FLIGHT) await new Promise<void>((r) => waiting.push(r));
+  inFlight++;
+  try {
+    return await fn();
+  } finally {
+    inFlight--;
+    waiting.shift()?.();
+  }
+}
+
+export function exaSearch(s: ExaSearch): Promise<ExaResult[]> {
+  return slot(() => exaSearchNow(s));
+}
+
+async function exaSearchNow(s: ExaSearch): Promise<ExaResult[]> {
   const key = process.env.EXA_API_KEY;
   if (!key) throw new Error("EXA_API_KEY is not set");
   const body: Record<string, unknown> = {

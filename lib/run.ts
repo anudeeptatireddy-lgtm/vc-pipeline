@@ -1,6 +1,6 @@
 // Pipeline orchestrator: batch sources once, then each VC isolated, with a
 // time budget so the run ends inside Vercel's maxDuration (CLAUDE.md rule 6).
-import { finishRun, loadVcProfiles, loadVcs, startRun, type RunError } from "./db";
+import { finishRun, isRunActive, loadVcProfiles, loadVcs, startRun, type RunError } from "./db";
 import { exaUsage } from "./exa";
 import { geminiUsage } from "./gemini";
 import { mapLimit } from "./http";
@@ -17,6 +17,14 @@ export interface RunOptions {
   sources?: SignalSource[];
   batchSources?: SignalSource[];
   today?: Date;
+  /** Refuse to start while another run is in flight (default true). */
+  lock?: boolean;
+}
+
+export class RunLockedError extends Error {
+  constructor() {
+    super("A pipeline run is already in progress");
+  }
 }
 
 export interface RunSummary {
@@ -34,7 +42,10 @@ export async function runPipeline(opts: RunOptions): Promise<RunSummary> {
   const exa0 = { ...exaUsage };
   const gem0 = { ...geminiUsage };
   const today = opts.today ?? new Date();
-  const budget = opts.budgetMs ?? 270_000;
+  // Stop starting VCs after 150 s: with Gemini capped at 110 s per call, the
+  // last ones still finish inside Vercel's 300 s limit.
+  const budget = opts.budgetMs ?? 150_000;
+  if (opts.lock !== false && (await isRunActive())) throw new RunLockedError();
   const runId = await startRun(opts.trigger);
   const errors: RunError[] = [];
   const results: VcRunResult[] = [];
@@ -57,7 +68,7 @@ export async function runPipeline(opts: RunOptions): Promise<RunSummary> {
       }
     }
 
-    await mapLimit(vcs, opts.concurrency ?? 6, async (vc: Vc) => {
+    await mapLimit(vcs, opts.concurrency ?? 25, async (vc: Vc) => {
       if (Date.now() - started > budget) {
         skipped++;
         return;

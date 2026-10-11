@@ -6,10 +6,13 @@ import {
   type RunError, type SignalRow, type VcProfile,
 } from "./db";
 import { firmFit, followUpScore, logisticsRelevance, recommendedAction, signalSummary, signalValue } from "./score";
+import { mapLimit } from "./http";
+import type { Entry } from "./portfolio";
 import { extractSignals, type ModelSignal } from "./sources/gemini-grounding";
 import { detectPortfolioAdditions } from "./sources/portfolio-diff";
 import { TIER_CONFIDENCE, tierForUrl } from "./sources/tiers";
 import type { RawItem, RecommendedAction, SignalSource, Vc, VerifiedSignal } from "./types";
+import { triangulate } from "./triangulate";
 import { canonicalUrl, dedupe, toDay, verifyCandidate, WINDOW_DAYS } from "./verify";
 
 export interface VcRunResult {
@@ -24,6 +27,7 @@ export interface VcRunResult {
   summary: string;
   errors: RunError[];
   perSource: Record<string, number>;
+  timings: Record<string, number>;
 }
 
 const words = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
@@ -54,21 +58,38 @@ export async function processVc(opts: {
   const perSource: Record<string, number> = {};
   const rejected: Record<string, number> = {};
 
-  // 1. Collect raw items, one source at a time, each isolated.
+  const timings: Record<string, number> = {};
+  const t0 = Date.now();
+
+  // 3b (started early). Portfolio page diff runs alongside everything else.
+  const portfolioTask =
+    opts.portfolioDiff !== false && vc.portfolio_url
+      ? detectPortfolioAdditions(vc, today).then(
+          (p) => ({ ok: true as const, ...p, ms: Date.now() - t0 }),
+          (e: Error) => ({ ok: false as const, error: e.message, ms: Date.now() - t0 }),
+        )
+      : null;
+
+  // 1. Collect raw items: all sources in parallel, each isolated; fallbacks only if nothing came back.
   const raw: RawItem[] = [...(opts.batchItems ?? [])];
   for (const b of opts.batchItems ?? []) perSource[b.source] = (perSource[b.source] ?? 0) + 1;
-  const ordered = [...sources.filter((s) => !s.fallbackOnly), ...sources.filter((s) => s.fallbackOnly)];
-  for (const src of ordered) {
-    if (!src.fetchForVc || !src.enabled(vc)) continue;
-    if (src.fallbackOnly && raw.length > 0) continue;
-    try {
-      const items = await src.fetchForVc(vc, since);
-      perSource[src.name] = (perSource[src.name] ?? 0) + items.length;
-      raw.push(...items);
-    } catch (e) {
-      errors.push({ vcId: vc.id, source: src.name, message: (e as Error).message.slice(0, 300) });
-    }
-  }
+  const runSources = async (list: SignalSource[]) => {
+    const active = list.filter((src) => src.fetchForVc && src.enabled(vc));
+    const settled = await Promise.allSettled(active.map((src) => src.fetchForVc!(vc, since)));
+    settled.forEach((r, i) => {
+      const name = active[i]!.name;
+      if (r.status === "fulfilled") {
+        perSource[name] = (perSource[name] ?? 0) + r.value.length;
+        raw.push(...r.value);
+      } else {
+        errors.push({ vcId: vc.id, source: name, message: String(r.reason?.message ?? r.reason).slice(0, 300) });
+      }
+    });
+  };
+  await runSources(sources.filter((src) => !src.fallbackOnly));
+  if (raw.length === 0) await runSources(sources.filter((src) => src.fallbackOnly));
+  timings.sources = Date.now() - t0;
+
   const byUrl = new Map<string, RawItem>();
   for (const r of raw) {
     try {
@@ -86,10 +107,12 @@ export async function processVc(opts: {
     errors.push({ vcId: vc.id, source: "gemini-grounding", message: (e as Error).message.slice(0, 300) });
   }
   perSource["gemini-grounding"] = modelSignals.length;
+  timings.gemini = Date.now() - t0 - timings.sources;
 
-  // 3. Verify each in code.
+  // 3. Verify each in code, a few at a time.
   const verified: VerifiedSignal[] = [];
-  for (const m of modelSignals) {
+  const tv = Date.now();
+  await mapLimit(modelSignals, 5, async (m) => {
     let rawItem: RawItem | undefined;
     try {
       rawItem = byUrl.get(canonicalUrl(m.source_url));
@@ -109,7 +132,7 @@ export async function processVc(opts: {
     if ("reject" in v) {
       const key = v.reject.replace(/\s*\(.*\)$/, "");
       rejected[key] = (rejected[key] ?? 0) + 1;
-      continue;
+      return;
     }
     const relevance = logisticsRelevance(m.sector_fit, m.customer_type, m.offering_type);
     const tier = rawItem && canonicalUrl(rawItem.url) === canonicalUrl(v.url) ? rawItem.sourceTier : tierForUrl(v.url, vc);
@@ -135,16 +158,20 @@ export async function processVc(opts: {
       nudge_line: copyLine(m.nudge_line, onThesis),
       corroborated_by: null,
     });
-  }
+  });
+  timings.verify = Date.now() - tv;
 
-  // 3b. Portfolio page diff: tier-A signals we verified ourselves.
-  if (opts.portfolioDiff !== false && vc.portfolio_url) {
-    try {
-      const p = await detectPortfolioAdditions(vc, today);
+  // 3b. Collect the portfolio diff started at the top.
+  let portfolio: { runs: number; entries: Entry[] } | null = null;
+  if (portfolioTask) {
+    const p = await portfolioTask;
+    timings.portfolio = p.ms;
+    if (p.ok) {
       perSource["portfolio-diff"] = p.signals.length;
       verified.push(...p.signals);
-    } catch (e) {
-      errors.push({ vcId: vc.id, source: "portfolio-diff", message: (e as Error).message.slice(0, 300) });
+      if (!p.skipped) portfolio = { runs: p.runs, entries: p.current };
+    } else {
+      errors.push({ vcId: vc.id, source: "portfolio-diff", message: p.error.slice(0, 300) });
     }
   }
 
@@ -164,6 +191,13 @@ export async function processVc(opts: {
   } catch (e) {
     errors.push({ vcId: vc.id, source: "db", message: (e as Error).message.slice(0, 300) });
   }
+  // §8.2 corroboration; persist what changed so the dashboard shows it.
+  const changed = triangulate(window, portfolio);
+  if (changed.length) {
+    await insertSignals(changed.map((s) => ({ ...s, signal_value: Number(signalValue(s, today).toFixed(3)) }))).catch((e) =>
+      errors.push({ vcId: vc.id, source: "db", message: (e as Error).message.slice(0, 300) }),
+    );
+  }
   const score = followUpScore(window, firmFit(profile), today);
   const action = recommendedAction(score, vc.status, vc.last_contact_date, today);
   const summary = signalSummary(window, today);
@@ -174,8 +208,9 @@ export async function processVc(opts: {
     errors.push({ vcId: vc.id, source: "db", message: (e as Error).message.slice(0, 300) }),
   );
 
+  timings.total = Date.now() - t0;
   return {
     vcId: vc.id, firm: vc.firm, rawItems: raw.length, modelSignals: modelSignals.length, newSignals: fresh.length,
-    rejected, score, action, summary, errors, perSource,
+    rejected, score, action, summary, errors, perSource, timings,
   };
 }
