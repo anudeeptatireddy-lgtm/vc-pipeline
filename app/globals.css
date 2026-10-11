@@ -185,3 +185,18 @@ pre.errors { white-space: pre-wrap; margin: 0; font-size: 12px; line-height: 16p
   .rail-mobile { display: none; }
   .rail-desktop { display: block; }
 }
+
+/* Whole signal box is clickable ("stretched link"): the firm link covers the row,
+   so there's still one real link for keyboard and screen readers. Chips and
+   buttons inside sit above it and keep their own clicks. */
+.clickable { position: relative; cursor: pointer; transition: background-color 120ms ease; }
+.clickable .firm::after, .clickable .firm-link::after { content: ""; position: absolute; inset: 0; z-index: 0; }
+.clickable a:not(.firm):not(.firm-link), .clickable button { position: relative; z-index: 1; }
+/* Non-interactive bits (tape, date and "Yours" labels) let clicks through to the row link. */
+.clickable .tape, .clickable .chip:not(a) { pointer-events: none; }
+.clickable:hover { background: var(--fog); }
+.row.top.clickable:hover { background: #FBE6A8; }
+.clickable .firm:focus-visible { outline: none; }
+.clickable:has(.firm:focus-visible), .clickable:has(.firm-link:focus-visible) { outline: 2px solid var(--ink); outline-offset: -2px; }
+.clickable .firm:hover, .clickable .firm-link:hover { text-decoration: none; }
+.clickable:hover .firm, .clickable:hover .firm-link { text-decoration: underline; }

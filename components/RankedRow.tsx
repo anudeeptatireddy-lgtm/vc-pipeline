@@ -24,7 +24,7 @@ export function RankedRow({
   const line = kind === "nudge" ? (t?.nudgeLine ?? null) : (t?.openingLine ?? null);
   const top = variant === "top";
   return (
-    <li id={`row-${row.id}`} className={`row ${top ? "top" : "compact"}`}>
+    <li id={`row-${row.id}`} className={`row clickable ${top ? "top" : "compact"}`}>
       <div className="row-head">
         {rank !== undefined && <span className="rank" aria-label={`Rank ${rank}`}>{rank}</span>}
         <Link className="firm display" href={`/vc/${row.id}`}>

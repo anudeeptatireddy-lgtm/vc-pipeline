@@ -28,8 +28,8 @@ export function ParkedList({ items, defaultOpen = false }: { items: ParkedItem[]
       {open && (
         <ul className="list" id="parked-list" style={{ marginTop: 12 }}>
           {items.map((p) => (
-            <li key={p.id} id={`row-${p.id}`} className="parked-row">
-              <Link href={`/vc/${p.id}`}>{p.firm}</Link>
+            <li key={p.id} id={`row-${p.id}`} className="parked-row clickable">
+              <Link className="firm-link" href={`/vc/${p.id}`}>{p.firm}</Link>
               <span className="chip chip-quiet">Quiet</span>
               <span className="meta">{p.lastSignalDate ? `Last signal ${p.lastSignalDate}` : "No signal on record"}</span>
             </li>
