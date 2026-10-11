@@ -1,7 +1,7 @@
 -- The app's runtime login is vc_runtime, created in SQL by the owner so it is
 -- NOT a member of neon_superuser. (Roles made through the Neon API/console,
 -- like vc_app, join neon_superuser and inherit full table privileges, which
--- would let the app UPDATE/DELETE vcs directly. vc_app is unused.)
+-- would let the app UPDATE/DELETE vcs directly. vc_app was deleted on 11 Oct 2026.)
 do $$ begin
   if not exists (select 1 from pg_roles where rolname = 'vc_runtime') then
     raise exception 'create role vc_runtime first (it needs a password, so it is not created here)';
