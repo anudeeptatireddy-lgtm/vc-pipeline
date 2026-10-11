@@ -1,24 +1,12 @@
-// Server-only Supabase access. The only path that writes to `vcs` is the two
-// RPCs below; never call .insert/.update/.upsert on "vcs" anywhere else
-// (tests/db-guard.test.ts enforces this).
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+// Server-only database access (Neon, as vc_runtime). The only paths that
+// change `vcs` are the two security-definer functions called below; the
+// runtime role has no UPDATE or DELETE on vcs, so a direct write would fail
+// (tests/db-guard.test.ts also rejects one in code).
+import { q } from "./sql";
 import type { RecommendedAction, Vc, VerifiedSignal } from "./types";
 
-let client: SupabaseClient | undefined;
-
-export function db(): SupabaseClient {
-  if (client) return client;
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set");
-  client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
-  return client;
-}
-
 export async function loadVcs(): Promise<Vc[]> {
-  const { data, error } = await db().from("vcs").select("*").order("firm");
-  if (error) throw new Error(`loadVcs: ${error.message}`);
-  return data as Vc[];
+  return q<Vc>("select * from vcs order by firm");
 }
 
 export interface VcSignalUpdate {
@@ -30,14 +18,13 @@ export interface VcSignalUpdate {
 
 /** The ONLY function that writes signal columns on `vcs`. */
 export async function writeVcSignals(vcId: string, u: VcSignalUpdate): Promise<void> {
-  const { error } = await db().rpc("update_vc_signals", {
-    p_id: vcId,
-    p_last_signal_date: u.lastSignalDate,
-    p_signal_summary: u.signalSummary,
-    p_follow_up_score: u.followUpScore,
-    p_recommended_action: u.recommendedAction,
-  });
-  if (error) throw new Error(`update_vc_signals(${vcId}): ${error.message}`);
+  try {
+    await q("select update_vc_signals($1, $2, $3, $4, $5)", [
+      vcId, u.lastSignalDate, u.signalSummary, u.followUpScore, u.recommendedAction,
+    ]);
+  } catch (e) {
+    throw new Error(`update_vc_signals(${vcId}): ${(e as Error).message}`);
+  }
 }
 
 export interface VcIdentifiers {
@@ -57,12 +44,20 @@ export interface VcIdentifiers {
   needs_review?: boolean;
 }
 
+const IDENTIFIER_KEYS: (keyof VcIdentifiers)[] = [
+  "linkedin_url", "x_user_id", "bluesky_handle", "youtube_channel_id", "rss_url", "portfolio_url", "team_url",
+  "sec_cik", "website", "partner_name", "partner_confidence", "priority", "region", "needs_review",
+];
+
 /** Seeding only (scripts/seed-vcs.ts). Omitted fields keep their current value. */
 export async function writeVcIdentifiers(vcId: string, ids: VcIdentifiers): Promise<void> {
-  const params: Record<string, string | boolean> = { p_id: vcId };
-  for (const [k, v] of Object.entries(ids)) if (v !== undefined && v !== "") params[`p_${k}`] = v;
-  const { error } = await db().rpc("update_vc_identifiers", params);
-  if (error) throw new Error(`update_vc_identifiers(${vcId}): ${error.message}`);
+  const keys = IDENTIFIER_KEYS.filter((k) => ids[k] !== undefined && ids[k] !== "");
+  const args = keys.map((k, i) => `p_${k} => $${i + 2}`); // keys come from the whitelist above
+  try {
+    await q(`select update_vc_identifiers(${["p_id => $1", ...args].join(", ")})`, [vcId, ...keys.map((k) => ids[k])]);
+  } catch (e) {
+    throw new Error(`update_vc_identifiers(${vcId}): ${(e as Error).message}`);
+  }
 }
 
 export interface NewVcRow {
@@ -78,17 +73,19 @@ export interface NewVcRow {
 
 /**
  * Seeding only: creates rows that don't exist yet. Existing rows are never
- * touched, so Vikram's columns are written exactly once.
+ * touched (on conflict do nothing), so Vikram's columns are written exactly once.
  */
 export async function insertNewVcs(rows: NewVcRow[]): Promise<number> {
-  const { data: existing, error: readErr } = await db().from("vcs").select("seed_key");
-  if (readErr) throw new Error(`insertNewVcs read: ${readErr.message}`);
-  const have = new Set((existing ?? []).map((r) => r.seed_key as string));
-  const fresh = rows.filter((r) => !have.has(r.seed_key));
-  if (fresh.length === 0) return 0;
-  const { error } = await db().from("vcs").insert(fresh);
-  if (error) throw new Error(`insertNewVcs: ${error.message}`);
-  return fresh.length;
+  if (rows.length === 0) return 0;
+  const inserted = await q(
+    `insert into vcs (seed_key, name, firm, thesis, status, last_contact_date, contact_history, personal_notes)
+     select seed_key, name, firm, thesis, status, last_contact_date, contact_history, personal_notes
+     from jsonb_populate_recordset(null::vcs, $1::jsonb)
+     on conflict (seed_key) do nothing
+     returning id`,
+    [JSON.stringify(rows)],
+  );
+  return inserted.length;
 }
 
 export interface VcProfile {
@@ -102,37 +99,51 @@ export interface VcProfile {
 }
 
 export async function loadVcProfiles(): Promise<VcProfile[]> {
-  const { data, error } = await db().from("vc_profiles").select("*");
-  if (error) throw new Error(`loadVcProfiles: ${error.message}`);
-  return data as VcProfile[];
+  return q<VcProfile>("select * from vc_profiles");
 }
 
 /** vc_profiles is system-owned; upsert per VC. */
 export async function upsertVcProfile(p: VcProfile): Promise<void> {
-  const { error } = await db()
-    .from("vc_profiles")
-    .upsert({ ...p, profiled_at: new Date().toISOString() }, { onConflict: "vc_id" });
-  if (error) throw new Error(`upsertVcProfile(${p.vc_id}): ${error.message}`);
+  await q(
+    `insert into vc_profiles (vc_id, does_seed, b2b_logistics_thesis, investor_type, typical_check, geo_focus, evidence_urls, profiled_at)
+     values ($1, $2, $3, $4, $5, $6, $7, now())
+     on conflict (vc_id) do update set
+       does_seed = excluded.does_seed, b2b_logistics_thesis = excluded.b2b_logistics_thesis,
+       investor_type = excluded.investor_type, typical_check = excluded.typical_check,
+       geo_focus = excluded.geo_focus, evidence_urls = excluded.evidence_urls, profiled_at = now()`,
+    [p.vc_id, p.does_seed, p.b2b_logistics_thesis, p.investor_type, p.typical_check, p.geo_focus, p.evidence_urls],
+  );
 }
 
-export type SignalRow =VerifiedSignal & { signal_value: number };
+export type SignalRow = VerifiedSignal & { signal_value: number };
+
+const SIGNAL_COLS = [
+  "vc_id", "signal_type", "summary", "source_url", "source_name", "source_tier", "published_date", "evidence_quote",
+  "company_name", "round_stage", "sector_fit", "customer_type", "offering_type", "logistics_relevance", "confidence",
+  "corroborated_by", "opening_line", "nudge_line", "signal_value",
+] as const;
 
 /** Upsert on (vc_id, source_url) so re-runs don't duplicate evidence. */
 export async function insertSignals(rows: SignalRow[]): Promise<void> {
   if (rows.length === 0) return;
-  const { error } = await db().from("signals").upsert(rows, { onConflict: "vc_id,source_url" });
-  if (error) throw new Error(`insertSignals: ${error.message}`);
+  const cols = SIGNAL_COLS.join(", ");
+  const updates = SIGNAL_COLS.filter((c) => c !== "vc_id" && c !== "source_url").map((c) => `${c} = excluded.${c}`).join(", ");
+  const payload = rows.map((r) => Object.fromEntries(SIGNAL_COLS.map((c) => [c, r[c]])));
+  try {
+    await q(
+      `insert into signals (${cols})
+       select ${cols} from jsonb_populate_recordset(null::signals, $1::jsonb)
+       on conflict (vc_id, source_url) do update set ${updates}`,
+      [JSON.stringify(payload)],
+    );
+  } catch (e) {
+    throw new Error(`insertSignals: ${(e as Error).message}`);
+  }
 }
 
 /** All stored signals for a VC published on or after `since` (YYYY-MM-DD). */
 export async function loadRecentSignals(vcId: string, since: string): Promise<SignalRow[]> {
-  const { data, error } = await db()
-    .from("signals")
-    .select("*")
-    .eq("vc_id", vcId)
-    .gte("published_date", since);
-  if (error) throw new Error(`loadRecentSignals(${vcId}): ${error.message}`);
-  return data as SignalRow[];
+  return q<SignalRow>("select * from signals where vc_id = $1 and published_date >= $2", [vcId, since]);
 }
 
 export interface Snapshot {
@@ -143,32 +154,24 @@ export interface Snapshot {
 
 /** Most recent snapshots for a VC, oldest → newest. */
 export async function loadSnapshots(vcId: string, kind: "portfolio" | "team", limit = 3): Promise<Snapshot[]> {
-  const { data, error } = await db()
-    .from("portfolio_snapshots")
-    .select("entries, entries_hash, captured_at")
-    .eq("vc_id", vcId)
-    .eq("kind", kind)
-    .order("captured_at", { ascending: false })
-    .limit(limit);
-  if (error) throw new Error(`loadSnapshots(${vcId}): ${error.message}`);
-  return (data as Snapshot[]).reverse();
+  const rows = await q<Snapshot>(
+    `select entries, entries_hash, captured_at from portfolio_snapshots
+     where vc_id = $1 and kind = $2 order by captured_at desc limit $3`,
+    [vcId, kind, limit],
+  );
+  return rows.reverse();
 }
 
 export async function insertSnapshot(vcId: string, kind: "portfolio" | "team", entries: Snapshot["entries"], hash: string) {
-  const { error } = await db().from("portfolio_snapshots").insert({ vc_id: vcId, kind, entries, entries_hash: hash });
-  if (error) throw new Error(`insertSnapshot(${vcId}): ${error.message}`);
+  await q("insert into portfolio_snapshots (vc_id, kind, entries, entries_hash) values ($1, $2, $3::jsonb, $4)", [
+    vcId, kind, JSON.stringify(entries), hash,
+  ]);
 }
 
-export async function recordScoreHistory(
-  vcId: string,
-  runId: number,
-  score: number,
-  action: RecommendedAction,
-): Promise<void> {
-  const { error } = await db()
-    .from("vc_score_history")
-    .insert({ vc_id: vcId, run_id: runId, follow_up_score: score, recommended_action: action });
-  if (error) throw new Error(`recordScoreHistory(${vcId}): ${error.message}`);
+export async function recordScoreHistory(vcId: string, runId: number, score: number, action: RecommendedAction): Promise<void> {
+  await q("insert into vc_score_history (vc_id, run_id, follow_up_score, recommended_action) values ($1, $2, $3, $4)", [
+    vcId, runId, score, action,
+  ]);
 }
 
 export interface RunError {
@@ -179,35 +182,23 @@ export interface RunError {
 
 /** True if another run started in the last 10 minutes and hasn't finished. */
 export async function isRunActive(): Promise<boolean> {
-  const since = new Date(Date.now() - 10 * 60_000).toISOString();
-  const { data, error } = await db()
-    .from("pipeline_runs")
-    .select("id")
-    .is("finished_at", null)
-    .gte("started_at", since)
-    .limit(1);
-  if (error) throw new Error(`isRunActive: ${error.message}`);
-  return (data ?? []).length > 0;
+  const rows = await q(
+    "select 1 from pipeline_runs where finished_at is null and started_at >= now() - interval '10 minutes' limit 1",
+  );
+  return rows.length > 0;
 }
 
 export async function startRun(trigger: "cron" | "manual" | "script"): Promise<number> {
-  const { data, error } = await db().from("pipeline_runs").insert({ trigger }).select("id").single();
-  if (error) throw new Error(`startRun: ${error.message}`);
-  return data.id as number;
+  const [row] = await q<{ id: number }>("insert into pipeline_runs (trigger) values ($1) returning id", [trigger]);
+  return row!.id;
 }
 
 export async function finishRun(
   runId: number,
   result: { vcsProcessed: number; errors: RunError[]; usage: Record<string, unknown> },
 ): Promise<void> {
-  const { error } = await db()
-    .from("pipeline_runs")
-    .update({
-      finished_at: new Date().toISOString(),
-      vcs_processed: result.vcsProcessed,
-      errors: result.errors,
-      usage: result.usage,
-    })
-    .eq("id", runId);
-  if (error) throw new Error(`finishRun(${runId}): ${error.message}`);
+  await q(
+    "update pipeline_runs set finished_at = now(), vcs_processed = $2, errors = $3::jsonb, usage = $4::jsonb where id = $1",
+    [runId, result.vcsProcessed, JSON.stringify(result.errors), JSON.stringify(result.usage)],
+  );
 }

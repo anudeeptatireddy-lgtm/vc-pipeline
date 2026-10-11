@@ -1,11 +1,6 @@
-// Manual / backup keep-alive for the Supabase project (same query as
-// /api/keepalive). Run it from any machine with .env.local:
-//   npm run keepalive
-import { db } from "../lib/db";
+// Manual keep-alive (same as /api/keepalive):  npm run keepalive
+import { pingDatabases } from "../lib/keepalive";
 
-const { count, error } = await db().from("vcs").select("id", { count: "exact", head: true });
-if (error) {
-  console.error(`keepalive failed: ${error.message}`);
-  process.exit(1);
-}
-console.log(`Supabase awake: ${count} VCs at ${new Date().toISOString()}`);
+const r = await pingDatabases();
+console.log(JSON.stringify(r));
+if (!r.neon.ok) process.exit(1);

@@ -1,15 +1,12 @@
-// Keeps the free-tier Supabase project from pausing after 7 idle days.
-// Vercel Cron calls this daily (vercel.json), independent of the pipeline
-// cron, so the database stays awake even if a pipeline run fails or is off.
+// Daily keep-alive (vercel.json cron). Pings Neon and the fallback Supabase
+// project so neither sits idle long enough to pause.
 import { isCronAuthorized } from "@/lib/auth";
-import { db } from "@/lib/db";
+import { pingDatabases } from "@/lib/keepalive";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   if (!isCronAuthorized(request)) return new Response("Unauthorized", { status: 401 });
-  // One cheap read through the API; this counts as project activity.
-  const { count, error } = await db().from("vcs").select("id", { count: "exact", head: true });
-  if (error) return Response.json({ ok: false, error: error.message }, { status: 500 });
-  return Response.json({ ok: true, vcs: count, at: new Date().toISOString() });
+  const r = await pingDatabases();
+  return Response.json({ ok: r.neon.ok, ...r, at: new Date().toISOString() }, { status: r.neon.ok ? 200 : 500 });
 }

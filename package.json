@@ -13,14 +13,17 @@
     "profile": "tsx --env-file=.env.local scripts/profile-vcs.ts",
     "run-one": "tsx --env-file=.env.local scripts/run-one.ts",
     "check:manual": "tsx --env-file=.env.local scripts/check-manual-columns.ts",
-    "keepalive": "tsx --env-file=.env.local scripts/keepalive.ts"
+    "keepalive": "tsx --env-file=.env.local scripts/keepalive.ts",
+    "db:migrate": "tsx --env-file=.env.local scripts/migrate.ts"
   },
   "engines": {
     "node": "22.x"
   },
   "dependencies": {
     "@google/genai": "^2.28.0",
-    "@supabase/supabase-js": "^2.117.3",
+    "@neon/config": "^1.8.6",
+    "@neon/env": "^1.5.3",
+    "@neondatabase/serverless": "^1.2.0",
     "cheerio": "^1.2.0",
     "lucide-react": "^1.55.0",
     "next": "^16.4.0",

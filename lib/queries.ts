@@ -2,7 +2,7 @@
 // (CLAUDE.md rule 8). Nothing here writes; server-side only.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { db } from "./db";
+import { q } from "./sql";
 import { ACTION_BUCKET, RECOMMENDED_ACTIONS, type Bucket, type RecommendedAction, type SourceTier, type VcStatus } from "./types";
 
 export interface DashboardRow {
@@ -61,11 +61,6 @@ export interface Dashboard {
   fixtures: boolean;
 }
 
-function check<T>(r: { data: T | null; error: { message: string } | null }, what: string): T {
-  if (r.error) throw new Error(`${what}: ${r.error.message}`);
-  return (r.data ?? []) as T;
-}
-
 const ORDER: Record<Bucket, number> = { reach_out: 0, nudge: 1, parked: 2 };
 
 export function sortRows(rows: DashboardRow[]): DashboardRow[] {
@@ -96,29 +91,28 @@ export async function getDashboard(): Promise<Dashboard> {
     const rows = JSON.parse(readFileSync(join(process.cwd(), "fixtures/dashboard.sample.json"), "utf8")) as DashboardRow[];
     return { rows: sortRows(rows), latestRun: null, lastGoodRun: null, previousRun: null, runState: "none", suggested: [], fixtures: true };
   }
-  const c = db();
   const [vcs, tops, sources, tape, changes, runs, suggested] = await Promise.all([
-    c.from("v_dashboard_vcs").select("id, firm, partner_name, priority, region, status, last_contact_date, last_signal_date, follow_up_score, recommended_action"),
-    c.from("v_top_signal").select("*"),
-    c.from("v_vc_sources").select("*").order("published_date", { ascending: false }),
-    c.from("v_signal_tape").select("*"),
-    c.from("v_score_changes").select("vc_id, delta, action_before"),
-    c.from("pipeline_runs").select("*").order("started_at", { ascending: false }).limit(10),
-    c.from("suggested_vcs").select("id, firm, partner_name, reason, evidence_urls").order("created_at", { ascending: false }).limit(3),
+    q("select id, firm, partner_name, priority, region, status, last_contact_date, last_signal_date, follow_up_score, recommended_action from v_dashboard_vcs"),
+    q("select * from v_top_signal"),
+    q("select * from v_vc_sources order by published_date desc"),
+    q("select * from v_signal_tape"),
+    q("select vc_id, delta, action_before from v_score_changes"),
+    q("select * from pipeline_runs order by started_at desc limit 10"),
+    q("select id, firm, partner_name, reason, evidence_urls from suggested_vcs order by created_at desc limit 3"),
   ]);
 
   type V = { id: string; firm: string; partner_name: string | null; priority: string | null; region: string | null; status: VcStatus | null; last_contact_date: string | null; last_signal_date: string | null; follow_up_score: number | null; recommended_action: string | null };
   type T = { vc_id: string; summary: string; published_date: string; source_url: string; source_name: string; source_tier: SourceTier; sector_fit: string; customer_type: string; offering_type: string; round_stage: string; logistics_relevance: string; corroborated_by: string | null; opening_line: string | null; nudge_line: string | null };
   type S = { vc_id: string; source_name: string; source_url: string; source_tier: SourceTier };
 
-  const topBy = new Map(check<T[]>(tops, "v_top_signal").map((t) => [t.vc_id, t]));
+  const topBy = new Map((tops as T[]).map((t) => [t.vc_id, t]));
   const srcBy = new Map<string, S[]>();
-  for (const s of check<S[]>(sources, "v_vc_sources")) srcBy.set(s.vc_id, [...(srcBy.get(s.vc_id) ?? []), s]);
+  for (const s of sources as S[]) srcBy.set(s.vc_id, [...(srcBy.get(s.vc_id) ?? []), s]);
   const tapeBy = new Map<string, number[]>();
-  for (const t of check<{ vc_id: string; days_ago: number }[]>(tape, "v_signal_tape")) tapeBy.set(t.vc_id, [...(tapeBy.get(t.vc_id) ?? []), t.days_ago]);
-  const deltaBy = new Map(check<{ vc_id: string; delta: number | null }[]>(changes, "v_score_changes").map((d) => [d.vc_id, d.delta]));
+  for (const t of tape as { vc_id: string; days_ago: number }[]) tapeBy.set(t.vc_id, [...(tapeBy.get(t.vc_id) ?? []), t.days_ago]);
+  const deltaBy = new Map((changes as { vc_id: string; delta: number | null }[]).map((d) => [d.vc_id, d.delta]));
 
-  const rows: DashboardRow[] = check<V[]>(vcs, "v_dashboard_vcs").map((v) => {
+  const rows: DashboardRow[] = (vcs as V[]).map((v) => {
     const action = isAction(v.recommended_action) ? v.recommended_action : RECOMMENDED_ACTIONS.quiet;
     const t = topBy.get(v.id);
     const all = srcBy.get(v.id) ?? [];
@@ -156,7 +150,7 @@ export async function getDashboard(): Promise<Dashboard> {
     };
   });
 
-  const runList = check<RunRow[]>(runs, "pipeline_runs");
+  const runList = runs as unknown as RunRow[];
   const latestRun = runList[0] ?? null;
   const good = runList.filter((r) => runState(r) === "ok");
   return {
@@ -165,7 +159,7 @@ export async function getDashboard(): Promise<Dashboard> {
     lastGoodRun: good[0] ?? null,
     previousRun: good[1] ?? null,
     runState: runState(latestRun),
-    suggested: check(suggested, "suggested_vcs"),
+    suggested: suggested as Dashboard["suggested"],
     fixtures: false,
   };
 }
@@ -202,19 +196,14 @@ export interface VcDetail {
 
 export async function getVcDetail(id: string): Promise<VcDetail | null> {
   if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
-  const c = db();
   const [vc, feed] = await Promise.all([
-    c.from("v_dashboard_vcs").select("*").eq("id", id).maybeSingle(),
-    c.from("v_signal_feed").select("*").eq("vc_id", id).order("published_date", { ascending: false }).limit(50),
+    q<VcDetail["vc"]>("select * from v_dashboard_vcs where id = $1", [id]),
+    q<SignalFeedRow>("select * from v_signal_feed where vc_id = $1 order by published_date desc limit 50", [id]),
   ]);
-  if (vc.error) throw new Error(`v_dashboard_vcs: ${vc.error.message}`);
-  if (!vc.data) return null;
-  return { vc: vc.data as VcDetail["vc"], signals: check<SignalFeedRow[]>(feed, "v_signal_feed") };
+  if (!vc[0]) return null;
+  return { vc: vc[0], signals: feed };
 }
 
 export async function getRuns(limit = 30): Promise<RunRow[]> {
-  return check<RunRow[]>(
-    await db().from("pipeline_runs").select("*").order("started_at", { ascending: false }).limit(limit),
-    "pipeline_runs",
-  );
+  return q<RunRow>("select * from pipeline_runs order by started_at desc limit $1", [limit]);
 }

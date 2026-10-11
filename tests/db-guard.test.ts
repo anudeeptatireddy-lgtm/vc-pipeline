@@ -1,12 +1,11 @@
-// CLAUDE.md rule 2: nothing outside the RPCs may write to `vcs`.
-// Static check over app code; the DB-level guarantee is the column grants
-// tested in the §DB acceptance SQL.
+// CLAUDE.md rule 2: nothing outside the two security-definer functions may
+// change `vcs`. Static check over app code; the database-level guarantee is
+// vc_runtime's grants (no UPDATE/DELETE on vcs), tested against Neon.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const ROOTS = ["app", "components", "lib", "scripts"];
-const WRITE_ON_VCS = /from\(\s*["']vcs["']\s*\)[\s\S]{0,200}?\.(update|upsert|delete)\s*\(/;
 
 function files(dir: string): string[] {
   let out: string[] = [];
@@ -24,21 +23,27 @@ function files(dir: string): string[] {
   return out;
 }
 
+const src = (f: string) => readFileSync(f, "utf8");
+
 describe("manual columns guard", () => {
-  it("no direct update/upsert/delete on vcs", () => {
-    const offenders = ROOTS.flatMap(files).filter((f) => WRITE_ON_VCS.test(readFileSync(f, "utf8")));
-    expect(offenders).toEqual([]);
+  it("no direct UPDATE or DELETE on vcs anywhere", () => {
+    const re = /\b(update\s+(public\.)?vcs\b|delete\s+from\s+(public\.)?vcs\b)/i;
+    expect(ROOTS.flatMap(files).filter((f) => re.test(src(f)))).toEqual([]);
   });
 
-  it("dashboard code has no write calls (dashboard-design.md §13)", () => {
+  it("INSERT INTO vcs only in lib/db.ts (seeding new rows)", () => {
+    const re = /insert\s+into\s+(public\.)?vcs\b/i;
+    expect(ROOTS.flatMap(files).filter((f) => re.test(src(f)) && f !== join("lib", "db.ts"))).toEqual([]);
+  });
+
+  it("dashboard code has no write SQL (dashboard-design.md §13)", () => {
     const ui = ["app", "components"].flatMap(files).filter((f) => !f.startsWith(join("app", "api")) && !f.endsWith("actions.ts"));
-    const offenders = ui.filter((f) => /\.(insert|update|upsert|delete|rpc)\(/.test(readFileSync(f, "utf8")));
-    expect(offenders).toEqual([]);
+    const re = /\b(insert\s+into|update\s+\w+\s+set|delete\s+from)\b|\.rpc\(/i;
+    expect(ui.filter((f) => re.test(src(f)))).toEqual([]);
   });
 
-  it("app/ and components/ never import write helpers", () => {
-    const ui = ["app", "components"].flatMap(files).filter((f) => !f.startsWith(join("app", "api")));
-    const offenders = ui.filter((f) => /from\s+["'](@\/lib\/db|\.\.?\/.*lib\/db)["']/.test(readFileSync(f, "utf8")));
-    expect(offenders).toEqual([]);
+  it("pages and components never import the write layer or the raw client", () => {
+    const ui = ["app", "components"].flatMap(files).filter((f) => !f.startsWith(join("app", "api")) && !f.endsWith("actions.ts"));
+    expect(ui.filter((f) => /from\s+["'](@\/lib\/(db|sql)|\.\.?\/.*lib\/(db|sql))["']/.test(src(f)))).toEqual([]);
   });
 });
