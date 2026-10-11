@@ -1,5 +1,4 @@
-// Daily keep-alive (vercel.json cron). Pings Neon and the fallback Supabase
-// project so neither sits idle long enough to pause.
+// Daily keep-alive (vercel.json cron): one cheap Neon query.
 import { isCronAuthorized } from "@/lib/auth";
 import { pingDatabases } from "@/lib/keepalive";
 

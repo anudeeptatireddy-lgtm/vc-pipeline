@@ -124,19 +124,18 @@ export async function upsertVcProfile(p: VcProfile): Promise<void> {
   );
 }
 
-export type SignalRow = VerifiedSignal & { signal_value: number };
+export type SignalRow = VerifiedSignal & { signal_value: number; classification_votes?: Record<string, number> };
 
 const SIGNAL_COLS = [
   "vc_id", "signal_type", "summary", "source_url", "source_name", "source_tier", "published_date", "evidence_quote",
   "company_name", "round_stage", "sector_fit", "customer_type", "offering_type", "logistics_relevance", "confidence",
-  "corroborated_by", "opening_line", "nudge_line", "signal_value",
+  "corroborated_by", "opening_line", "nudge_line", "signal_value", "classification_votes",
 ] as const;
 
 /**
- * Insert new signals; a URL already stored for this VC is left as it is.
- * The first verified classification sticks: Gemini 3 has no temperature
- * control, so re-classifying the same page each run made scores swing
- * (e.g. 64 → 41 on identical evidence).
+ * Insert new signals; a URL already stored for this VC is left as it is here.
+ * Re-classifications of stored pages go through majority voting instead
+ * (lib/classify.ts + updateClassification), so one random flip can't swing a score.
  */
 export async function insertSignals(rows: SignalRow[]): Promise<void> {
   if (rows.length === 0) return;
@@ -151,6 +150,45 @@ export async function insertSignals(rows: SignalRow[]): Promise<void> {
     );
   } catch (e) {
     throw new Error(`insertSignals: ${(e as Error).message}`);
+  }
+}
+
+export interface StoredClassification {
+  source_url: string;
+  sector_fit: string;
+  customer_type: string;
+  offering_type: string;
+  round_stage: string;
+  classification_votes: Record<string, number>;
+}
+
+/** Existing classifications for these URLs (for majority voting). */
+export async function loadClassifications(vcId: string, urls: string[]): Promise<StoredClassification[]> {
+  if (urls.length === 0) return [];
+  return q<StoredClassification>(
+    `select source_url, sector_fit, customer_type, offering_type, round_stage, classification_votes
+     from signals where vc_id = $1 and source_url = any($2::text[])`,
+    [vcId, urls],
+  );
+}
+
+/** Record a new vote and, if the majority changed, the new classification. */
+export async function updateClassification(
+  vcId: string,
+  sourceUrl: string,
+  c: { sector_fit: string; customer_type: string; offering_type: string; round_stage: string; logistics_relevance: string; signal_value: number },
+  votes: Record<string, number>,
+  changed: boolean,
+): Promise<void> {
+  if (changed) {
+    await q(
+      `update signals set sector_fit = $3, customer_type = $4, offering_type = $5, round_stage = $6,
+         logistics_relevance = $7, signal_value = $8, classification_votes = $9::jsonb
+       where vc_id = $1 and source_url = $2`,
+      [vcId, sourceUrl, c.sector_fit, c.customer_type, c.offering_type, c.round_stage, c.logistics_relevance, c.signal_value, JSON.stringify(votes)],
+    );
+  } else {
+    await q("update signals set classification_votes = $3::jsonb where vc_id = $1 and source_url = $2", [vcId, sourceUrl, JSON.stringify(votes)]);
   }
 }
 

@@ -53,3 +53,13 @@ describe("internal profile pages", () => {
     ]);
   });
 });
+
+describe("logo walls", () => {
+  it("reads company names from image alt text, skipping generic alts and the firm itself", async () => {
+    const { extractLogoEntries } = await import("@/lib/portfolio");
+    const html = `<header><img alt="Peak XV logo"></header><main>
+      <img alt="Zepto logo"><img alt="Pine Labs"><img alt="arrow"><img alt="company-logo.png"><img alt="Peak XV Partners">
+      <img alt="A very long alternative text describing a photo of people"></main>`;
+    expect(extractLogoEntries(html, "Peak XV Partners").map((e) => e.name)).toEqual(["Zepto", "Pine Labs"]);
+  });
+});

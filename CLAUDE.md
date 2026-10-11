@@ -1,6 +1,6 @@
 # VC Pipeline Intelligence
 
-Twice a week, this app checks ~50 VCs on a founder's list for public activity in the last 30 days, scores how worth contacting each one is **this week**, and writes the result into his Neon Postgres table (moved from Supabase on 11 Oct 2026; the Supabase project is kept, unused, as a fallback). The founder (Vikram) is raising a **Seed round for a B2B logistics SaaS**, so relevance is judged through a strict fit lens: **B2B customers + logistics/supply-chain sector + software offering + pre-seed/seed stage**. Consumer logistics, hardware/robotics, and late-stage deals are tracked but down-weighted (`docs/signal-sources.md` §4).
+Twice a week, this app checks ~50 VCs on a founder's list for public activity in the last 30 days, scores how worth contacting each one is **this week**, and writes the result into his Neon Postgres table (moved from Supabase on 11 Oct 2026; Supabase is no longer used). The founder (Vikram) is raising a **Seed round for a B2B logistics SaaS**, so relevance is judged through a strict fit lens: **B2B customers + logistics/supply-chain sector + software offering + pre-seed/seed stage**. Consumer logistics, hardware/robotics, and late-stage deals are tracked but down-weighted (`docs/signal-sources.md` §4).
 
 This is a graded exam project. Grading checks: live external data, Gemini Flash for all AI tasks, deployed on Vercel, Supabase updated each run, and the founder's manual columns never overwritten.
 
@@ -15,7 +15,7 @@ Read `docs/assumptions.md` once at the start of a session; treat it as settled s
 5. **Secrets stay server-side.** No API key ever gets a `NEXT_PUBLIC_` prefix. `APP_DATABASE_URL` is used only in server code; the Neon owner URLs (`DATABASE_URL*`) are for migrations and never go to Vercel.
 6. **Fail per source, not per run.** Every source call is wrapped; one source or one VC failing must never abort the run. Record errors in `pipeline_runs`.
 7. **Fit is computed, not guessed.** Gemini returns `sector_fit`, `customer_type`, `offering_type`, `round_stage`; `lib/score.ts` derives `logistics_relevance` and applies stage + firm-fit multipliers (§4.3–§4.5, §8.3). Keep those rules in one place with unit tests.
-8. **Dashboard is read-only and uses views.** Before any UI work read `docs/dashboard-design.md`; its copy deck and tokens are binding. Pages read through `lib/queries.ts` over the SQL views in `docs/components-map.md` §3.6; they never write. `recommended_action` strings and bucket mapping live in `lib/types.ts` (§3.4) and are shared by `score.ts` and the UI. `DEMO_PASSCODE` guards Run now; `CRON_SECRET` never reaches the browser.
+8. **Dashboard is read-only and uses views.** Before any UI work read `docs/dashboard-design.md`; its copy deck and tokens are binding. Pages read through `lib/queries.ts` over the SQL views in `docs/components-map.md` §3.6; they never write. `recommended_action` strings and bucket mapping live in `lib/types.ts` (§3.4) and are shared by `score.ts` and the UI. Run now has no passcode (owner's decision, 11 Oct 2026) and is guarded by the single-run lock and a 3-hour cooldown; `CRON_SECRET` never reaches the browser.
 9. **Don't add paid services or new data sources** that aren't in `docs/signal-sources.md` without asking first.
 
 ## Stack
@@ -85,7 +85,7 @@ export interface SignalSource {
 
 ## Environment variables
 
-`GEMINI_API_KEY`, `GEMINI_MODEL`, `APP_DATABASE_URL` (Neon, vc_runtime role), `DATABASE_URL_UNPOOLED` (Neon owner, migrations only), `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` (fallback keep-alive only), `CRON_SECRET`, `DEMO_PASSCODE`, `EXA_API_KEY`, `TAVILY_API_KEY`, `PODCASTINDEX_API_KEY`, `PODCASTINDEX_API_SECRET`, `YOUTUBE_API_KEY`, `SEC_USER_AGENT` (format: `AppName contact@email`). Optional v2: `X_BEARER_TOKEN`, `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, `JINA_API_KEY`.
+`GEMINI_API_KEY`, `GEMINI_MODEL`, `APP_DATABASE_URL` (Neon, vc_runtime role), `DATABASE_URL_UNPOOLED` (Neon owner, migrations only) `CRON_SECRET`, `TAVILY_API_KEY` (primary web search), `EXA_API_KEY` (fallback only, and seeding/discovery scripts), `PODCASTINDEX_API_KEY`, `PODCASTINDEX_API_SECRET`, `YOUTUBE_API_KEY`, `SEC_USER_AGENT` (format: `AppName contact@email`). Optional v2: `X_BEARER_TOKEN`, `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`, `JINA_API_KEY`.
 
 Keep `.env.example` in sync whenever you add one.
 

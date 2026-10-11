@@ -4,7 +4,6 @@ import { matchBatch, mentionsVc, vcAliases } from "@/lib/sources/batch-feeds";
 import { parseFeed } from "@/lib/sources/feeds";
 import { parseEpisodes, podcastAuthHeaders } from "@/lib/sources/podcast-index";
 import { parseFormD } from "@/lib/sources/sec-form-d";
-import { parseTavily } from "@/lib/sources/tavily";
 import { tierForUrl } from "@/lib/sources/tiers";
 import { parseSearch } from "@/lib/sources/youtube";
 import type { Vc } from "@/lib/types";
@@ -82,13 +81,6 @@ describe("sec form d", () => {
   });
 });
 
-describe("tavily", () => {
-  it("parses results", () => {
-    expect(parseTavily({ results: [{ url: "https://a.com", title: "T", content: "C", published_date: "2026-10-01" }] })).toEqual([
-      { url: "https://a.com", title: "T", snippet: "C", publishedAt: "2026-10-01", source: "tavily" },
-    ]);
-  });
-});
 
 describe("tiers", () => {
   it("rates first-party, social and press", () => {
@@ -100,32 +92,20 @@ describe("tiers", () => {
   });
 });
 
-describe("exa source", () => {
-  it("maps results into RawItems with tiers", async () => {
+describe("web-search source", () => {
+  it("maps dated, in-window hits into RawItems with tiers", async () => {
     vi.resetModules();
-    vi.doMock("@/lib/exa", () => ({
-      exaSearch: vi.fn(async () => [
-        { url: "https://dynamo.vc/blog/a", title: "A", text: "t", publishedDate: "2026-10-01" },
-        { url: "https://directory.example/dynamo", title: "Dynamo profile", text: "t", publishedDate: null }, // undated: dropped
-        { url: "https://old.example/x", title: "Old", text: "t", publishedDate: "2026-06-01" }, // before window: dropped
+    vi.doMock("@/lib/search", () => ({
+      webSearch: vi.fn(async () => [
+        { url: "https://dynamo.vc/blog/a", title: "A", snippet: "t", publishedAt: "2026-10-01T00:00:00.000Z", provider: "tavily" },
+        { url: "https://directory.example/dynamo", title: "Profile", snippet: "t", provider: "tavily" }, // undated: dropped
+        { url: "https://old.example/x", title: "Old", snippet: "t", publishedAt: "2026-06-01T00:00:00.000Z", provider: "tavily" },
       ]),
     }));
     const { exaSource } = await import("@/lib/sources/exa");
     const items = await exaSource.fetchForVc!(vc({ firm: "Dynamo Ventures", partner_name: "Santosh Sankar", website: "https://dynamo.vc" }), since);
-    expect(items).toHaveLength(4); // one dated in-window item per query (3 general + 1 news-site search)
-    expect(items[0]).toMatchObject({ url: "https://dynamo.vc/blog/a", source: "exa", sourceTier: "B", publishedAt: "2026-10-01" });
-    vi.doUnmock("@/lib/exa");
-  });
-});
-
-describe("youtube uploads", () => {
-  it("parses a channel's uploads playlist inside the window", async () => {
-    const { parseUploads } = await import("@/lib/sources/youtube");
-    const items = parseUploads({ items: [
-      { snippet: { title: "Fund IV", description: "d", publishedAt: "2026-10-01T00:00:00Z", channelTitle: "Dynamo", resourceId: { videoId: "v1" } } },
-      { snippet: { title: "Old", description: "d", publishedAt: "2026-01-01T00:00:00Z", channelTitle: "Dynamo", resourceId: { videoId: "v0" } } },
-    ] }, since);
-    expect(items.map((i) => i.url)).toEqual(["https://www.youtube.com/watch?v=v1"]);
+    expect(items).toEqual([expect.objectContaining({ url: "https://dynamo.vc/blog/a", source: "web-search", sourceTier: "B" })]);
+    vi.doUnmock("@/lib/search");
   });
 });
 
@@ -138,5 +118,16 @@ describe("gemini pre-filter", () => {
       { url: "https://x.example/1", title: "Unrelated cooking news", source: "exa", sourceTier: "C" as const },
     ];
     expect(preFilter(items, v).map((i) => i.url)).toEqual(["https://dynamo.substack.com/p/1"]);
+  });
+});
+
+describe("news rss (Bing)", () => {
+  it("unwraps Bing click-tracking links and picks the India edition", async () => {
+    const { publisherUrl, newsRssUrl } = await import("@/lib/sources/news-rss");
+    expect(publisherUrl("http://www.bing.com/news/apiclick.aspx?ref=FexRss&url=https%3a%2f%2ftimesofindia.indiatimes.com%2fx%2farticleshow%2f1.cms&c=1"))
+      .toBe("https://timesofindia.indiatimes.com/x/articleshow/1.cms");
+    expect(publisherUrl("https://example.com/a")).toBe("https://example.com/a");
+    expect(newsRssUrl({ firm: "Blume Ventures", partner_name: "Sanjay Nath", region: "India" })).toContain("mkt=en-IN");
+    expect(decodeURIComponent(newsRssUrl({ firm: "Blume Ventures", partner_name: "Sanjay Nath", region: "India" }))).toContain('q="Blume Ventures"&');
   });
 });

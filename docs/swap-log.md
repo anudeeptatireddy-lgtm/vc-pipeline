@@ -8,7 +8,7 @@ Rubric-driven swap, applied without an approval gate per the owner's rules. Noth
 npm run swap:undo
 ```
 
-That un-archives the rows below, archives the swapped-in rows, and restores `data/vc-seed-list.csv` from the git tag `pre-swap`. A full database copy from before the swap is the Neon branch `pre-swap-backup` (`br-broad-moon-b4l6qz64`).
+That un-archives the rows below, archives the swapped-in rows, and restores `data/vc-seed-list.csv` from the git tag `pre-swap`. (The Neon backup branch `pre-swap-backup` was deleted at the owner's request once the swap was accepted.)
 
 ## The rubric used
 

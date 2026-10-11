@@ -5,7 +5,7 @@ import { z } from "zod";
 import { insertSnapshot, loadSnapshots } from "../db";
 import { geminiJson } from "../gemini";
 import { politeFetch } from "../http";
-import { confirmedAdditions, extractEntries, extractEntriesFromMarkdown, hashEntries, type Entry } from "../portfolio";
+import { confirmedAdditions, extractEntries, extractEntriesFromMarkdown, extractLogoEntries, hashEntries, type Entry } from "../portfolio";
 import { logisticsRelevance } from "../score";
 import { CUSTOMER_TYPES, OFFERING_TYPES, ROUND_STAGES, SECTOR_FITS, type Vc, type VerifiedSignal } from "../types";
 import { toDay } from "../verify";
@@ -22,10 +22,15 @@ async function jinaReader(url: string): Promise<string | null> {
   return res.ok ? res.text() : null;
 }
 
-export async function currentEntries(portfolioUrl: string): Promise<Entry[]> {
+export async function currentEntries(portfolioUrl: string, firm = ""): Promise<Entry[]> {
   const page = await politeFetch(portfolioUrl);
   if (!page.ok) throw new Error(`portfolio fetch ${page.status || page.error}`);
   let entries = extractEntries(page.text, page.finalUrl);
+  // Logo walls: names only in image alt text.
+  if (entries.length < MIN_ENTRIES) {
+    const logos = extractLogoEntries(page.text, firm.replace(/\(.*?\)/g, "").trim());
+    if (logos.length > entries.length) entries = logos;
+  }
   // Only for pages we were allowed to fetch but that render client-side.
   if (entries.length < MIN_ENTRIES) {
     const md = await jinaReader(page.finalUrl).catch(() => null);
@@ -65,7 +70,7 @@ export async function detectPortfolioAdditions(
   today: Date,
 ): Promise<{ signals: VerifiedSignal[]; current: Entry[]; runs: number; skipped?: string }> {
   if (!vc.portfolio_url) return { signals: [], current: [], runs: 0 };
-  const entries = await currentEntries(vc.portfolio_url);
+  const entries = await currentEntries(vc.portfolio_url, vc.firm);
   // Don't snapshot a broken render or a page of nav links: diffs on it would be
   // noise. A known state, not an error, so it isn't logged as one each run.
   if (entries.length < MIN_ENTRIES) return { signals: [], current: [], runs: 0, skipped: `${entries.length} entries` };

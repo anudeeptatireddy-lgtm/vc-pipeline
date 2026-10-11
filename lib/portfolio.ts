@@ -58,6 +58,28 @@ export function extractEntries(html: string, pageUrl: string): Entry[] {
   return [...out.values()];
 }
 
+const GENERIC_ALT = /\b(icon|arrow|menu|banner|background|image|photo|picture|avatar|hero|close|search|play|button|placeholder|team|founder|partner|linkedin|twitter|facebook|instagram|youtube)\b/i;
+
+/**
+ * Logo walls: company names only in <img alt>. Used when a page has too few
+ * company links. Keys are canonical names (no domain available).
+ */
+export function extractLogoEntries(html: string, ownFirm = ""): Entry[] {
+  const $ = cheerio.load(html);
+  $("script, style, noscript, nav, footer, header").remove();
+  const own = ownFirm.toLowerCase();
+  const out = new Map<string, Entry>();
+  $("img[alt]").each((_, el) => {
+    // "Zepto logo" / "Logo of Zepto" -> "Zepto"
+    const alt = ($(el).attr("alt") ?? "").replace(/\b(company\s+)?logo(\s+of)?\b/gi, " ").replace(/[-_|]+$/g, "").replace(/\s+/g, " ").trim();
+    if (alt.length < 2 || alt.length > 40 || alt.split(" ").length > 4) return;
+    if (GENERIC_ALT.test(alt) || /\.(png|jpe?g|svg|webp)$/i.test(alt) || (own && alt.toLowerCase().includes(own))) return;
+    const key = canonical({ name: alt });
+    if (key.length >= 2 && !out.has(key)) out.set(key, { name: alt });
+  });
+  return [...out.values()];
+}
+
 /** Same, for Jina Reader markdown: [text](url). */
 export function extractEntriesFromMarkdown(md: string, pageUrl: string): Entry[] {
   const own = host(new URL(pageUrl));

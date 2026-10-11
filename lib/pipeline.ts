@@ -2,10 +2,11 @@
 // Every source call is isolated (CLAUDE.md rule 6): a failure is recorded and
 // the VC still gets scored from whatever else is available.
 import {
-  insertSignals, loadRecentSignals, recordScoreHistory, updateCorroboration, writeVcSignals,
+  insertSignals, loadClassifications, loadRecentSignals, recordScoreHistory, updateClassification, updateCorroboration, writeVcSignals,
   type RunError, type SignalRow, type VcProfile,
 } from "./db";
 import { firmFit, followUpScore, logisticsRelevance, recommendedAction, signalSummary, signalValue } from "./score";
+import { parseVerdict, verdictKey, vote } from "./classify";
 import { mapLimit } from "./http";
 import type { Entry } from "./portfolio";
 import { extractSignals, type ModelSignal } from "./sources/gemini-grounding";
@@ -36,6 +37,7 @@ export interface VcDiagnostics {
   modelBySource: Record<string, number>; // Gemini signals, attributed to the source whose URL they matched
   verifiedBySource: Record<string, number>; // stored this run, after verification + dedupe
   rejectedBySource: Record<string, Record<string, number>>;
+  rejectedSamples: { url: string; reason: string; title: string }[];
   geminiFailed: boolean;
   window: { total: number; onThesis: number; latest: string | null; bestOnThesisValue: number };
 }
@@ -68,7 +70,7 @@ export async function processVc(opts: {
   const perSource: Record<string, number> = {};
   const rejected: Record<string, number> = {};
   const diag: VcDiagnostics = {
-    modelBySource: {}, verifiedBySource: {}, rejectedBySource: {}, geminiFailed: false,
+    modelBySource: {}, verifiedBySource: {}, rejectedBySource: {}, rejectedSamples: [], geminiFailed: false,
     window: { total: 0, onThesis: 0, latest: null, bestOnThesisValue: 0 },
   };
   const bump = (o: Record<string, number>, k: string) => (o[k] = (o[k] ?? 0) + 1);
@@ -151,6 +153,7 @@ export async function processVc(opts: {
       const key = v.reject.replace(/\s*\(.*\)$/, "");
       rejected[key] = (rejected[key] ?? 0) + 1;
       bump((diag.rejectedBySource[srcName] ??= {}), key);
+      if (diag.rejectedSamples.length < 6) diag.rejectedSamples.push({ url: m.source_url, reason: v.reject, title: (m.title ?? m.summary_one_line).slice(0, 120) });
       return;
     }
     const relevance = logisticsRelevance(m.sector_fit, m.customer_type, m.offering_type);
@@ -194,10 +197,27 @@ export async function processVc(opts: {
     }
   }
 
-  // 4. Dedupe and store.
-  const fresh: SignalRow[] = dedupe(verified).map((s) => ({ ...s, signal_value: Number(signalValue(s, today).toFixed(3)) }));
+  // 4. Dedupe and store. Pages already stored get a classification vote
+  //    (majority wins, lib/classify.ts); new pages are inserted with their first vote.
+  const fresh: SignalRow[] = dedupe(verified).map((s) => ({
+    ...s,
+    signal_value: Number(signalValue(s, today).toFixed(3)),
+    classification_votes: { [verdictKey(s)]: 1 },
+  }));
   try {
-    await insertSignals(fresh);
+    const stored = new Map((await loadClassifications(vc.id, fresh.map((f) => f.source_url))).map((c) => [c.source_url, c]));
+    await insertSignals(fresh.filter((f) => !stored.has(f.source_url)));
+    for (const f of fresh) {
+      const prev = stored.get(f.source_url);
+      if (!prev) continue;
+      const { votes, winner } = vote(prev, prev.classification_votes ?? {}, f);
+      const changed = winner !== verdictKey(prev);
+      const w = parseVerdict(winner);
+      const relevance = logisticsRelevance(w.sector_fit as never, w.customer_type as never, w.offering_type as never);
+      const value = signalValue({ ...f, ...w, round_stage: w.round_stage as never, logistics_relevance: relevance }, today);
+      await updateClassification(vc.id, f.source_url, { ...w, logistics_relevance: relevance, signal_value: Number(value.toFixed(3)) }, votes, changed);
+      if (changed) bump(diag.verifiedBySource, "reclassified");
+    }
   } catch (e) {
     errors.push({ vcId: vc.id, source: "db", message: (e as Error).message.slice(0, 300) });
   }

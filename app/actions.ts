@@ -1,18 +1,23 @@
 "use server";
-// Run now (dashboard-design.md §4, §9): passcode-protected, single-run lock.
-// Starts the pipeline; it doesn't write rows itself.
+// Run now (dashboard-design.md §4, §9). No passcode (owner's decision: the
+// professor must be able to use it). Guarded instead by the single-run lock
+// and a cooldown, so a public page can't burn search credits.
 import { revalidatePath } from "next/cache";
-import { safeEqual } from "@/lib/auth";
+import { q } from "@/lib/sql";
 import { RunLockedError, runPipeline } from "@/lib/run";
+
+const COOLDOWN_MIN = 180;
 
 export type RunNowResult =
   | { ok: true; newSignals: number; failedSources: string[]; changedIds: string[] }
-  | { ok: false; reason: "passcode" | "locked" | "error"; message: string };
+  | { ok: false; reason: "cooldown" | "locked" | "error"; message: string };
 
-export async function runNow(passcode: string): Promise<RunNowResult> {
-  const expected = process.env.DEMO_PASSCODE;
-  if (!expected || !safeEqual(passcode, expected)) {
-    return { ok: false, reason: "passcode", message: "That passcode didn't match" };
+export async function runNow(): Promise<RunNowResult> {
+  const [last] = await q<{ mins: number }>(
+    "select floor(extract(epoch from now() - max(finished_at)) / 60)::int as mins from pipeline_runs where finished_at is not null",
+  );
+  if (last?.mins != null && last.mins < COOLDOWN_MIN) {
+    return { ok: false, reason: "cooldown", message: `Data was refreshed ${last.mins} minutes ago. Try again in ${COOLDOWN_MIN - last.mins} minutes.` };
   }
   try {
     const s = await runPipeline({ trigger: "manual" });

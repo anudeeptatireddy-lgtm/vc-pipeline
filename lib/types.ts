@@ -1,4 +1,4 @@
-// Shared types. Column names match supabase/migrations (docs/signal-sources.md §DB).
+// Shared types. Column names match db/migrations (docs/signal-sources.md §DB).
 
 export type VcStatus = "waiting_for_response" | "yet_to_reach_out";
 

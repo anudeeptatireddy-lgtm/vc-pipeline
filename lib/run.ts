@@ -2,6 +2,7 @@
 // time budget so the run ends inside Vercel's maxDuration (CLAUDE.md rule 6).
 import { finishRun, isRunActive, loadVcProfiles, loadVcs, startRun, type RunError } from "./db";
 import { exaUsage } from "./exa";
+import { searchUsage } from "./search";
 import { geminiUsage } from "./gemini";
 import { mapLimit } from "./http";
 import { processVc, windowStart, type VcRunResult } from "./pipeline";
@@ -40,6 +41,7 @@ export async function runPipeline(opts: RunOptions): Promise<RunSummary> {
   const started = Date.now();
   // Usage counters are module-level (warm serverless instances reuse them), so log deltas.
   const exa0 = { ...exaUsage };
+  const search0 = { ...searchUsage };
   const gem0 = { ...geminiUsage };
   const today = opts.today ?? new Date();
   // Stop starting VCs after 150 s: with Gemini capped at 110 s per call, the
@@ -110,6 +112,11 @@ export async function runPipeline(opts: RunOptions): Promise<RunSummary> {
         errors: r.errors.map((e) => `${e.source ?? ""}: ${e.message.slice(0, 120)}`),
       })),
       exa: { calls: exaUsage.calls - exa0.calls, dollars: Number((exaUsage.dollars - exa0.dollars).toFixed(4)) },
+      search: {
+        tavily: searchUsage.tavily - search0.tavily,
+        exa: searchUsage.exa - search0.exa,
+        exaFallbacks: searchUsage.exaFallbacks - search0.exaFallbacks,
+      },
       gemini: {
         calls: geminiUsage.calls - gem0.calls,
         inputTokens: geminiUsage.inputTokens - gem0.inputTokens,

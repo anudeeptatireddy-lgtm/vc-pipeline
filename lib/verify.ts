@@ -2,7 +2,7 @@
 // docs/signal-sources.md §7.3). A signal survives only with a resolved
 // non-redirect URL and a publish date within the window.
 import * as cheerio from "cheerio";
-import { exaSearch } from "./exa";
+import { webSearch } from "./search";
 import { politeFetch, USER_AGENT } from "./http";
 import { linkedinUrlDate } from "./linkedin-date";
 import { firmTokens } from "./seed/site";
@@ -65,7 +65,7 @@ export async function resolveGoogleNews(title: string, publisherUrl?: string): P
     return null;
   }
   const headline = title.replace(/\s+-\s+[^-]+$/, "").trim(); // drop " - Publisher"
-  const results = await exaSearch({ query: headline, includeDomains: [host], numResults: 3, textChars: 0 });
+  const results = await webSearch({ query: headline, kind: "general", days: 365, includeDomains: [host], maxResults: 3 });
   const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const want = norm(headline);
   const hit = results.find((r) => {
@@ -178,7 +178,16 @@ export async function verifyCandidate(
 
   // Entity match: the fetched page (or, if we couldn't read it, the title and
   // evidence) must name the firm or the partner.
-  const hay = (html ? cheerio.load(html)("body").text() : `${c.title ?? ""} ${c.evidence ?? ""}`).toLowerCase();
+  // JS-rendered pages have almost no text in the raw HTML; then also use the
+  // page's title/description and the headline + evidence quote.
+  const fallback = `${c.title ?? ""} ${c.evidence ?? ""}`;
+  let hay = fallback.toLowerCase();
+  if (html) {
+    const $ = cheerio.load(html);
+    const body = $("body").text().replace(/\s+/g, " ");
+    const meta = `${$("title").text()} ${$('meta[property="og:title"]').attr("content") ?? ""} ${$('meta[name="description"]').attr("content") ?? ""}`;
+    hay = (body.length < 800 ? `${body} ${meta} ${fallback}` : `${body} ${meta}`).toLowerCase();
+  }
   const firmHit = firmTokens(who.firm).every((t) => hay.includes(t));
   const surname = who.partnerName?.trim().split(/\s+/).pop()?.toLowerCase();
   const partnerHit = !!surname && surname.length > 2 && hay.includes(surname);
