@@ -2,7 +2,7 @@
 
 ![Components Map](components-map.png)
 
-*Submission image: `docs/components-map.png`. Regenerate after any change with `python3 docs/tools/make-components-map.py` (needs Pillow). The tables and diagrams below are the detailed version.*
+*Submission image: `docs/components-map.png` (updated 11 Oct 2026: Neon, Tavily-first search, Bing News RSS, no-passcode Run now). Regenerate after any change with `python3 docs/tools/make-components-map.py` (needs Pillow). The tables and diagrams below are the detailed version.*
 
 The submission deliverable. Every component has one responsibility, a file path, and a clear input and output. The **dashboard** is one of the system's three outputs and is mapped in §3.
 
@@ -10,7 +10,7 @@ The submission deliverable. Every component has one responsibility, a file path,
 
 | # | Output | Who uses it | Where it lives |
 |---|---|---|---|
-| O1 | **Supabase `vcs` table** with the four signal columns refreshed each run (system of record; Vikram's notes untouched) | Vikram, any tool he connects | Supabase |
+| O1 | **Neon Postgres `vcs` table** with the four signal columns refreshed each run (system of record; Vikram's notes untouched) | Vikram, any tool he connects | Neon (project `vc-pipline`) |
 | O2 | **Dashboard**: ranked "who to contact this week and why", quiet list, evidence links, run status | Vikram (and graders) | Vercel public URL |
 | O3 | **Run log**: per-source counts, errors, usage, trigger type | Vikram, graders, debugging | `pipeline_runs` + `/runs` page |
 | O4 (v2) | Email/Telegram digest before he starts work | Vikram | Scheduled job |
@@ -20,17 +20,18 @@ The submission deliverable. Every component has one responsibility, a file path,
 ```mermaid
 flowchart TD
   CRON["Vercel Cron: Mon and Thu 08:00 IST"] --> RUN["/api/run-pipeline"]
-  BTN["Dashboard: Run now (server action + passcode)"] --> RUN
+  BTN["Dashboard: Run now (server action, 3-hour cooldown)"] --> RUN
+  KEEP["Vercel Cron daily: /api/keepalive"] --> NEON[("Neon")]
 
   RUN --> LOAD["Load VCs and identifiers (db.ts)"]
   LOAD --> SRC["Source adapters (lib/sources/*)"]
 
   subgraph Sources
-    S1["Gemini grounding, Google News RSS, Exa, Tavily"]
-    S2["Podcast Index, YouTube RSS, trade and newsletter RSS"]
-    S3["Inc42 and YourStory RSS"]
-    S4["Portfolio and team page diff (fetch, cheerio, Jina fallback)"]
-    S5["SEC Form D, SEBI AIF (v2)"]
+    S1["Gemini grounding (Google Search), Bing News RSS, Tavily web search (Exa fallback)"]
+    S2["LinkedIn via search index, Podcast Index, YouTube Data API, firm blog / Substack RSS"]
+    S3["Inc42, YourStory and trade-press RSS (batch)"]
+    S4["Portfolio page diff (links, logo walls, Jina fallback; 2-run debounce)"]
+    S5["SEC Form D (US funds); SEBI AIF (v2)"]
   end
 
   SRC --> S1
@@ -49,7 +50,8 @@ flowchart TD
   LLM --> VER["Code verification: URL, date, entity (verify.ts)"]
   VER --> SIG[("signals")]
   SIG --> SCORE["Triangulation and scoring (score.ts)"]
-  SCORE --> RPC["update_vc_signals RPC (4 columns only)"]
+  SIG --> VOTE["Classification majority vote (classify.ts)"]
+  SCORE --> RPC["update_vc_signals() (4 columns only; app role vc_runtime has no UPDATE on vcs)"]
   RPC --> VCS[("vcs: O1")]
   RUN --> LOG[("pipeline_runs: O3")]
 
@@ -132,7 +134,7 @@ flowchart LR
 - **Never blank.** If the latest run failed, show the last successful run's data with a warning.
 - **Every row shows evidence.** A "reach out" row without at least one source link is a bug.
 - **Demo data labelled.** Notes and contact history display with their `[DEMO]` prefix.
-- **Public URL caveat.** The assignment requires a public URL, so the page has no login in v1. Because notes are demo data this is acceptable; for the SaaS version, add Supabase Auth and row-level security per founder.
+- **Public URL caveat.** The assignment requires a public URL, so the page has no login in v1. Because notes are demo data this is acceptable; for the SaaS version, add authentication and row-level security per founder.
 
 ### 3.6 Read-model SQL (add as a migration)
 
@@ -182,19 +184,22 @@ order by started_at desc limit 1;
 |---|---|---|---|---|---|---|
 | C1 | Scheduler | Triggers twice-weekly run | Vercel Cron | Cron expression | HTTP call with `CRON_SECRET` | `vercel.json` |
 | C2 | Pipeline orchestrator | Loads VCs, batches work, isolates errors, logs the run | Next.js route handler | Trigger | Calls C3–C9; writes `pipeline_runs` | `app/api/run-pipeline/route.ts` |
-| C3 | Source adapters | Fetch live items from each channel | `fetch`, `rss-parser`, `cheerio` | VC identifiers, time window | `RawItem[]` | `lib/sources/*` |
+| C3 | Source adapters | Fetch live items from each channel (Bing News RSS, firm RSS, LinkedIn index, YouTube, SEC, batch feeds) | `fetch`, `rss-parser`, `cheerio` | VC identifiers, time window | `RawItem[]` | `lib/sources/*` |
+| C3b | Web search | Tavily first (free, capped 950/month), Exa only as small fallback | Tavily API, Exa API | Query | Dated hits | `lib/search.ts` |
 | C4 | Normalizer and verifier | Resolve redirects, check dates ≤ 30 days, dedupe, entity match | TypeScript | `RawItem[]` | Verified items | `lib/verify.ts` |
 | C5 | Gemini client | Google Search + URL context + structured JSON; only AI entry point | `@google/genai` (Gemini 3.7 Flash) | Items + VC context | Classified signals (zod-validated) | `lib/gemini.ts` |
-| C6 | Portfolio differ | Snapshot, hash, diff, debounce | `cheerio`, Jina Reader | Firm portfolio page | Added/removed companies | `lib/sources/portfolio-diff.ts` |
+| C6 | Portfolio differ | Snapshot, hash, diff, debounce (links or logo walls) | `cheerio`, Jina Reader | Firm portfolio page | Added/removed companies | `lib/sources/portfolio-diff.ts` |
+| C6b | Classification vote | Majority vote over repeated Gemini verdicts per page | TypeScript | Stored + new verdict | Stable classification | `lib/classify.ts` |
 | C7 | Scoring engine | Fit axes → relevance, stage and firm multipliers, triangulation, action | TypeScript | Signals + `vc_profiles` + status | Score, summary, action | `lib/score.ts` |
-| C8 | Data access layer | Typed DB helpers; only writer to `vcs` is the RPC | `supabase-js` | Scores | 4 columns updated | `lib/db.ts` |
-| C9 | Protected write function | Column-restricted update that cannot touch Vikram's notes | Postgres role + `security definer` function | Score fields | Updated `vcs` row | `supabase/migrations/*` |
-| C10 | Read model | Read-only views for the UI | Postgres views | Tables | Dashboard rows | `supabase/migrations/*` |
-| C11 | Query layer | Typed read-only queries used by pages | `supabase-js` | Views | Typed rows | `lib/queries.ts` |
+| C8 | Data access layer | Typed DB helpers; only writer to `vcs` is the protected function | `@neondatabase/serverless` as `vc_runtime` | Scores | 4 columns updated | `lib/db.ts`, `lib/sql.ts` |
+| C9 | Protected write function | Column-restricted update that cannot touch Vikram's notes; app role has no UPDATE/DELETE on `vcs` | Postgres roles + `security definer` functions | Score fields | Updated `vcs` row | `db/migrations/*` |
+| C10 | Read model | Read-only views for the UI (archived rows excluded) | Postgres views | Tables | Dashboard rows | `db/migrations/*` |
+| C11 | Query layer | Typed read-only queries used by pages | `@neondatabase/serverless` | Views | Typed rows | `lib/queries.ts` |
 | C12 | Dashboard | Pages and components in §3 | Next.js App Router, React server components | Views | Ranked, explained pipeline | `app/*`, `components/*` |
-| C13 | Run-now action | Passcode-protected manual trigger | Next.js server action | Passcode | Starts C2 | `app/actions.ts` |
-| C14 | Seed and profile scripts | Load the 50-VC list, resolve identifiers, profile funds | `tsx` scripts + Exa + Gemini | `data/vc-seed-list.csv` | Populated `vcs`, `vc_profiles` | `scripts/*` |
-| C15 | Data store | System of record | Supabase Postgres | — | — | Supabase |
+| C13 | Run-now action | Manual trigger, no passcode; single-run lock + 3-hour cooldown | Next.js server action | Click | Starts C2 | `app/actions.ts` |
+| C14 | Seed, profile and swap scripts | Load the VC list, resolve identifiers, profile funds; reverse lookup, rubric swap (archive, undo), export | `tsx` scripts + Exa + Gemini | `data/vc-seed-list.csv` | Populated `vcs`, `vc_profiles`, `suggested_vcs` | `scripts/*` |
+| C15 | Data store | System of record | Neon Postgres (AWS us-east-2) | — | — | Neon |
+| C16 | Keep-alive | Daily query so the database is always in use | Vercel Cron + route | — | Ping result | `app/api/keepalive/route.ts` |
 
 ## 5. Trust boundaries
 
@@ -212,7 +217,7 @@ order by started_at desc limit 1;
 | Live external data | C3, C5 |
 | Gemini Flash only | C5 (sole AI entry point) |
 | Twice-weekly refresh | C1, C2 |
-| Supabase reflects current state | C7, C8, C9, C15 |
+| Database (Neon) reflects current state | C7, C8, C9, C15, C16 |
 | Manual notes untouched | C9, C8 (no direct writes), C12 (read-only) |
 | Quiet VCs reported | C7 (quiet bucket), C12 (`BucketTabs`) |
 | Observable signal with why | C4, C5, C12 (`SourceChips`, `SignalTimeline`) |

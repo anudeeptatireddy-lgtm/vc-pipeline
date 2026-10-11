@@ -17,10 +17,9 @@ type VcUsage = {
 
 const SOURCES: [string, string[]][] = [
   ["Gemini grounding (own finds)", ["gemini-grounding"]],
-  ["Google News RSS", ["google-news-rss"]],
-  ["Exa", ["exa"]],
-  ["LinkedIn via index (Exa)", ["linkedin-index"]],
-  ["Tavily (fallback)", ["tavily"]],
+  ["News RSS (Bing; Google is robots-blocked)", ["news-rss"]],
+  ["Web search (Tavily, Exa fallback)", ["web-search", "exa"]],
+  ["LinkedIn via search index", ["linkedin-index"]],
   ["Podcast Index", ["podcast-index"]],
   ["YouTube", ["youtube"]],
   ["Firm / Substack RSS", ["firm-rss"]],

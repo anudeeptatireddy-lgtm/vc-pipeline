@@ -50,6 +50,13 @@ function copyLine(line: string | undefined, onThesis: boolean): string | null {
   return words(line) <= 40 ? line.trim() : null;
 }
 
+/**
+ * Per-run circuit breaker: once a source answers 401/403/429 (bad key, blocked,
+ * quota), skip it for the rest of the run instead of logging the same error 50 times.
+ */
+export const trippedSources = new Map<number, Set<string>>();
+const AUTH_OR_QUOTA = /\b(401|403|429|432)\b/;
+
 export function windowStart(today: Date): Date {
   return new Date(today.getTime() - WINDOW_DAYS * 86_400_000);
 }
@@ -90,8 +97,10 @@ export async function processVc(opts: {
   // 1. Collect raw items: all sources in parallel, each isolated; fallbacks only if nothing came back.
   const raw: RawItem[] = [...(opts.batchItems ?? [])];
   for (const b of opts.batchItems ?? []) perSource[b.source] = (perSource[b.source] ?? 0) + 1;
+  const tripped = trippedSources.get(runId) ?? new Set<string>();
+  trippedSources.set(runId, tripped);
   const runSources = async (list: SignalSource[]) => {
-    const active = list.filter((src) => src.fetchForVc && src.enabled(vc));
+    const active = list.filter((src) => src.fetchForVc && src.enabled(vc) && !tripped.has(src.name));
     const settled = await Promise.allSettled(active.map((src) => src.fetchForVc!(vc, since)));
     settled.forEach((r, i) => {
       const name = active[i]!.name;
@@ -99,7 +108,14 @@ export async function processVc(opts: {
         perSource[name] = (perSource[name] ?? 0) + r.value.length;
         raw.push(...r.value);
       } else {
-        errors.push({ vcId: vc.id, source: name, message: String(r.reason?.message ?? r.reason).slice(0, 300) });
+        const message = String(r.reason?.message ?? r.reason).slice(0, 300);
+        if (AUTH_OR_QUOTA.test(message)) {
+          if (tripped.has(name)) return; // another VC already reported it this run
+          tripped.add(name);
+          errors.push({ vcId: vc.id, source: name, message: `${message} (skipped for the rest of this run)` });
+        } else {
+          errors.push({ vcId: vc.id, source: name, message });
+        }
       }
     });
   };
@@ -118,6 +134,7 @@ export async function processVc(opts: {
   let modelSignals: ModelSignal[] = [];
   try {
     const out = await extractSignals(vc, profile, raw, today);
+    if (out.mode === "items-only") errors.push({ vcId: vc.id, source: "gemini-grounding", message: "grounded call timed out; classified collected items only" });
     modelSignals = out.is_same_person_or_firm || out.signals.length === 0 ? out.signals : [];
     if (!out.is_same_person_or_firm && out.signals.length) rejected["namesake"] = out.signals.length;
   } catch (e) {

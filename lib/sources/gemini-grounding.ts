@@ -117,11 +117,26 @@ RULES
 - Output JSON only, matching the schema.`;
 }
 
-export async function extractSignals(vc: Vc, profile: VcProfile | null, items: RawItem[], today: Date, timeoutMs = 110_000) {
-  const { data } = await geminiJson(buildPrompt(vc, profile, preFilter(items, vc), today), Extraction, {
-    search: true,
-    urlContext: true,
-    timeoutMs,
-  });
-  return data;
+/**
+ * Grounded call (Google Search + URL context) first. If it times out, a quick
+ * second call classifies just the collected items (no search, at most 15), so
+ * a slow Gemini response doesn't throw away what the sources found.
+ */
+export async function extractSignals(vc: Vc, profile: VcProfile | null, items: RawItem[], today: Date, timeoutMs = 90_000) {
+  try {
+    const { data } = await geminiJson(buildPrompt(vc, profile, preFilter(items, vc), today), Extraction, {
+      search: true,
+      urlContext: true,
+      timeoutMs,
+    });
+    return { ...data, mode: "grounded" as const };
+  } catch (e) {
+    if (!/abort|timeout/i.test(String((e as Error).message)) || items.length === 0) throw e;
+    const prompt = buildPrompt(vc, profile, preFilter(items, vc, 15), today).replace(
+      /1\. Use Google Search and URL context[\s\S]*?\n2\./,
+      "1. Classify ONLY the candidate items listed above; do not search.\n2.",
+    );
+    const { data } = await geminiJson(prompt, Extraction, { timeoutMs: 40_000 });
+    return { ...data, mode: "items-only" as const };
+  }
 }

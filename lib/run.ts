@@ -5,7 +5,7 @@ import { exaUsage } from "./exa";
 import { searchUsage } from "./search";
 import { geminiUsage } from "./gemini";
 import { mapLimit } from "./http";
-import { processVc, windowStart, type VcRunResult } from "./pipeline";
+import { processVc, trippedSources, windowStart, type VcRunResult } from "./pipeline";
 import { matchBatch } from "./sources/batch-feeds";
 import { BATCH_SOURCES, PER_VC_SOURCES } from "./sources/index";
 import type { RawItem, SignalSource, Vc } from "./types";
@@ -44,9 +44,9 @@ export async function runPipeline(opts: RunOptions): Promise<RunSummary> {
   const search0 = { ...searchUsage };
   const gem0 = { ...geminiUsage };
   const today = opts.today ?? new Date();
-  // Stop starting VCs after 150 s: with Gemini capped at 110 s per call, the
-  // last ones still finish inside Vercel's 300 s limit.
-  const budget = opts.budgetMs ?? 150_000;
+  // Stop starting VCs after 140 s: sources (~15 s) + grounded Gemini (90 s cap)
+  // + items-only fallback (40 s cap) still finishes inside Vercel's 300 s limit.
+  const budget = opts.budgetMs ?? 140_000;
   if (opts.lock !== false && (await isRunActive())) throw new RunLockedError();
   const runId = await startRun(opts.trigger);
   const errors: RunError[] = [];
@@ -93,6 +93,7 @@ export async function runPipeline(opts: RunOptions): Promise<RunSummary> {
   } catch (e) {
     errors.push({ message: `run failed: ${(e as Error).message.slice(0, 300)}` });
   }
+  trippedSources.delete(runId);
 
   const perSource: Record<string, number> = {};
   for (const r of results) for (const [k, n] of Object.entries(r.perSource)) perSource[k] = (perSource[k] ?? 0) + n;

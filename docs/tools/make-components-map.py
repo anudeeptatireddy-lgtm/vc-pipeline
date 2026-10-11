@@ -14,16 +14,20 @@ WHITE = (240, 240, 242)
 GREY = (170, 170, 178)
 ARROW = (140, 140, 150)
 
-F = "/usr/share/fonts/truetype/liberation/LiberationSans-%s.ttf"
+import os
+# Linux (Liberation) or macOS (Arial)
+FONTS = [("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"),
+         ("/System/Library/Fonts/Supplemental/Arial.ttf", "/System/Library/Fonts/Supplemental/Arial Bold.ttf")]
+REG, BOLD = next(f for f in FONTS if os.path.exists(f[0]))
 def font(sz, bold=False):
-    return ImageFont.truetype(F % ("Bold" if bold else "Regular"), int(sz * S))
+    return ImageFont.truetype(BOLD if bold else REG, int(sz * S))
 
 ROWS = [
     ("Scheduler", "(Vercel Cron)", (110, 155, 255)),
     ("System", "(Vercel + Next.js)", (79, 209, 122)),
     ("Live sources", "(public web)", (63, 208, 192)),
     ("AI", "(Gemini 3.7 Flash)", (255, 154, 77)),
-    ("Data store", "(Supabase)", (165, 139, 255)),
+    ("Data store", "(Neon Postgres)", (165, 139, 255)),
     ("Dashboard", "(Next.js, read-only)", (255, 111, 156)),
     ("Founder", "(Vikram)", (242, 201, 76)),
 ]
@@ -125,13 +129,13 @@ def label(x, y, text, r, anchor="lm"):
 def xb(i): return LW + CW * i
 
 # boxes
-draw_box(0, 0, "Run starts", "Cron Mon & Thu 08:00 IST, or Run now (passcode) from the dashboard")
+draw_box(0, 0, "Run starts", "Cron Mon & Thu 08:00 IST, or Run now from the dashboard (3-hour cooldown)")
 draw_box(1, 1, "Loads context", "50 VCs, identifiers, fit profiles, status. Vikram's columns are read-only")
 draw_box(1, 4, "Verify + score", "URL resolves, date within 30 days, dedupe; fit rules, stage, triangulation, 0-100")
-draw_box(1, 5, "Protected write", "update_vc_signals RPC: 4 columns only, notes untouched")
-draw_box(2, 2, "Fetches live data", "Google News RSS, Exa, Podcast Index, YouTube, Inc42 / YourStory, SEC Form D, portfolio diff")
+draw_box(1, 5, "Protected write", "update_vc_signals(): 4 columns only; app role can't UPDATE vcs")
+draw_box(2, 2, "Fetches live data", "Bing News RSS, Tavily (Exa fallback), LinkedIn index, YouTube, blogs, Inc42, SEC Form D, portfolio diff")
 draw_box(3, 3, "Gemini 3.7 Flash", "Google Search + URL context; classifies sector, B2B/B2C, offering, stage as JSON")
-draw_box(4, 5, "Supabase tables", "vcs (O1), signals, run log (O3)")
+draw_box(4, 5, "Neon tables", "vcs (O1), signals, run log (O3); daily keep-alive")
 draw_box(5, 5, "Dashboard (O2)", "Reach out, Nudge, Quiet; evidence links, fit badges, run status")
 draw_box(6, 5, "Acts on the list", "Reaches out, nudges or skips; his notes stay his")
 
