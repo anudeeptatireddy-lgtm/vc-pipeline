@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 S = 2
 W = 1600 * S
 HEADER = 58 * S
-ROW = 150 * S
+ROW = 172 * S
 FOOT = 46 * S
 LW = 180 * S
 COLS = ["Trigger", "Context", "Input", "AI", "Processing", "Output"]
@@ -129,15 +129,15 @@ def label(x, y, text, r, anchor="lm"):
 def xb(i): return LW + CW * i
 
 # boxes
-draw_box(0, 0, "Run starts", "Cron Mon & Thu 08:00 IST, or Run now from the dashboard (3-hour cooldown)")
-draw_box(1, 1, "Loads context", "50 VCs, identifiers, fit profiles, status. Vikram's columns are read-only")
-draw_box(1, 4, "Verify + score", "URL resolves, date within 30 days, dedupe; fit rules, stage, triangulation, 0-100")
-draw_box(1, 5, "Protected write", "update_vc_signals(): 4 columns only; app role can't UPDATE vcs")
-draw_box(2, 2, "Fetches live data", "Bing News RSS, Tavily (Exa fallback), LinkedIn index, YouTube, blogs, Inc42, SEC Form D, portfolio diff")
-draw_box(3, 3, "Gemini 3.7 Flash", "Google Search + URL context; classifies sector, B2B/B2C, offering, stage as JSON")
-draw_box(4, 5, "Neon tables", "vcs (O1), signals, run log (O3); daily keep-alive")
-draw_box(5, 5, "Dashboard (O2)", "Reach out, Nudge, Quiet; evidence links, fit badges, run status")
-draw_box(6, 5, "Acts on the list", "Reaches out, nudges or skips; his notes stay his")
+draw_box(0, 0, "Run starts", "Cron Mon & Thu 08:00 IST, or Run now (no passcode, 3-hour cooldown, one run at a time). Daily cron: keep-alive + contacts refresh")
+draw_box(1, 1, "Loads context", "50 active VCs (archived skipped), identifiers, fit profiles, status. Vikram's columns are read-only")
+draw_box(1, 4, "Verify + score", "URL resolves, date within 30 days, entity match, dedupe; majority vote; fit, stage, triangulation, 0-100; lanes")
+draw_box(1, 5, "Protected write", "update_vc_signals(): 4 columns only; app role vc_runtime can't UPDATE or DELETE vcs")
+draw_box(2, 2, "Fetches live data", "Bing News RSS, Tavily (Exa fallback), LinkedIn index, YouTube, Podcast Index, blogs, Inc42, SEC Form D, portfolio diff, firm team pages")
+draw_box(3, 3, "Gemini 3.7 Flash", "Google Search + URL context; classifies sector, B2B/B2C, offering, stage; reads team pages; drafts outreach (all JSON, checked in code)")
+draw_box(4, 5, "Neon tables", "vcs (O1), signals, run log (O3), contacts + drafts, suggestions; read via views")
+draw_box(5, 5, "Dashboard (O2)", "Focus, Board, Table, Discover: yard map, lanes, why now, fit tags, evidence, who to contact + drafts")
+draw_box(6, 5, "Acts on the list", "Messages the right person with a tailored draft, nudges or skips; his notes stay his")
 
 # arrows
 def mid_right(r, c): b = box_rect(r, c); return (b[2], (b[1] + b[3]) / 2)
@@ -169,7 +169,7 @@ label(cx + 8 * S, HEADER + 5 * ROW - 2 * S, "read-only views", 4)
 # footer
 d.text((LW, H - FOOT / 2),
        "Gemini is the only AI in the app. The dashboard never writes. Public pages and APIs only, no logged-in scraping. "
-       "A failed source is logged and the run continues.",
+       "A failed source is logged and the run continues. Nothing is sent automatically.",
        font=font(11.5), fill=GREY, anchor="lm")
 
 img.save("docs/components-map.png", optimize=True)

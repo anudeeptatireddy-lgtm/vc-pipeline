@@ -2,223 +2,210 @@
 
 ![Components Map](components-map.png)
 
-*Submission image: `docs/components-map.png` (updated 11 Oct 2026: Neon, Tavily-first search, Bing News RSS, no-passcode Run now). Regenerate after any change with `python3 docs/tools/make-components-map.py` (needs Pillow). The tables and diagrams below are the detailed version.*
+*Submission image: `docs/components-map.png` (updated 12 Oct 2026: triage dashboard with Focus/Board/Table/Discover, who to contact and drafted messages, daily contacts upkeep, Discover with rubric scores). Regenerate after any change with `python3 docs/tools/make-components-map.py` (needs Pillow). The tables and diagrams below are the detailed version.*
 
-The submission deliverable. Every component has one responsibility, a file path, and a clear input and output. The **dashboard** is one of the system's three outputs and is mapped in §3.
+Every component has one responsibility, a file path, and a clear input and output. The **dashboard** is one of the system's outputs and is mapped in §3. Live site: https://vc-pipeline-lovat.vercel.app
 
 ## 1. System outputs
 
 | # | Output | Who uses it | Where it lives |
 |---|---|---|---|
-| O1 | **Neon Postgres `vcs` table** with the four signal columns refreshed each run (system of record; Vikram's notes untouched) | Vikram, any tool he connects | Neon (project `vc-pipline`) |
-| O2 | **Dashboard**: ranked "who to contact this week and why", quiet list, evidence links, run status | Vikram (and graders) | Vercel public URL |
-| O3 | **Run log**: per-source counts, errors, usage, trigger type | Vikram, graders, debugging | `pipeline_runs` + `/runs` page |
-| O4 (v2) | Email/Telegram digest before he starts work | Vikram | Scheduled job |
+| O1 | **Neon Postgres `vcs` table** with the four signal columns (`last_signal_date`, `signal_summary`, `follow_up_score`, `recommended_action`) refreshed each run. System of record; Vikram's columns untouched | Vikram, any tool he connects | Neon project `vc-pipline` (`noisy-surf-05848493`), AWS us-east-2 |
+| O2 | **Dashboard**: who to message today and why, follow-ups, maybes, parked; evidence; who to contact at each firm with drafted messages; suggested investors not on the list | Vikram (and graders) | Vercel public URL, no login |
+| O3 | **Run log**: per-source counts, errors, usage, trigger type, duration | Vikram, graders, debugging | `pipeline_runs` + `/runs` page |
+| O4 | **Who to contact + drafts**: people from each firm's team page with POC level and published links, plus an email, LinkedIn note and follow-up per top contact | Vikram | `vc_contacts`, `vc_channels`, `vc_messages`; shown in the dashboard workspace |
+| O5 | **Suggestions**: active B2B-logistics seed investors not on the list, ranked by the swap rubric | Vikram | `suggested_vcs`; Discover tab |
+| O6 (v2) | Email/Telegram digest before he starts work | Vikram | Scheduled job |
 
 ## 2. System architecture
 
 ```mermaid
 flowchart TD
-  CRON["Vercel Cron: Mon and Thu 08:00 IST"] --> RUN["/api/run-pipeline"]
-  BTN["Dashboard: Run now (server action, 3-hour cooldown)"] --> RUN
-  KEEP["Vercel Cron daily: /api/keepalive"] --> NEON[("Neon")]
+  CRON["Vercel Cron: Mon and Thu 08:00 IST (30 2 * * 1,4)"] --> RUN["/api/run-pipeline (CRON_SECRET)"]
+  BTN["Dashboard: Run now (server action; no passcode; single-run lock, 3-hour cooldown)"] --> RUN
+  DAILY["Vercel Cron daily 11:30 IST: /api/keepalive"] --> PING["Neon ping (lib/keepalive.ts)"]
+  DAILY --> MAINT["Upkeep (lib/maintenance.ts): re-draft stale messages, re-discover contacts older than 30 days"]
 
-  RUN --> LOAD["Load VCs and identifiers (db.ts)"]
-  LOAD --> SRC["Source adapters (lib/sources/*)"]
+  RUN --> LOAD["Load active VCs, identifiers, profiles (lib/db.ts)"]
+  LOAD --> SRC["Source adapters (lib/sources/*), 25 VCs in parallel, 140 s budget"]
 
   subgraph Sources
-    S1["Gemini grounding (Google Search), Bing News RSS, Tavily web search (Exa fallback)"]
-    S2["LinkedIn via search index, Podcast Index, YouTube Data API, firm blog / Substack RSS"]
-    S3["Inc42, YourStory and trade-press RSS (batch)"]
-    S4["Portfolio page diff (links, logo walls, Jina fallback; 2-run debounce)"]
-    S5["SEC Form D (US funds); SEBI AIF (v2)"]
+    S1["Gemini grounding: Google Search + URL context (90 s cap, 40 s items-only fallback)"]
+    S2["Bing News RSS · Tavily web search (Exa only as fallback, capped 950/month)"]
+    S3["LinkedIn via search index · Podcast Index · YouTube Data API · firm blog / Substack RSS"]
+    S4["Inc42, YourStory and trade-press RSS (batch, once per run)"]
+    S5["Portfolio page diff (links, logo walls, Jina fallback; 2-run debounce)"]
+    S6["SEC Form D (US funds)"]
   end
 
-  SRC --> S1
-  SRC --> S2
-  SRC --> S3
-  SRC --> S4
-  SRC --> S5
+  SRC --> S1 & S2 & S3 & S4 & S5 & S6
+  SRC -.->|401/403/429 skips that source for the rest of the run| CB["Circuit breaker (lib/pipeline.ts)"]
 
-  S1 --> NORM["Normalize and dedupe (verify.ts)"]
-  S2 --> NORM
-  S3 --> NORM
-  S4 --> NORM
-  S5 --> NORM
-
-  NORM --> LLM["Gemini 3.7 Flash: classify fit axes (gemini.ts)"]
-  LLM --> VER["Code verification: URL, date, entity (verify.ts)"]
-  VER --> SIG[("signals")]
-  SIG --> SCORE["Triangulation and scoring (score.ts)"]
-  SIG --> VOTE["Classification majority vote (classify.ts)"]
-  SCORE --> RPC["update_vc_signals() (4 columns only; app role vc_runtime has no UPDATE on vcs)"]
+  S1 & S2 & S3 & S4 & S5 & S6 --> VER["Verify (lib/verify.ts): resolve redirects, date precedence, 30-day window, entity match, dedupe + corroborated_by"]
+  VER --> LLM["Gemini 3.7 Flash: classify sector, customer, offering, stage (lib/gemini.ts, zod schemas)"]
+  LLM --> VOTE["Majority vote per page (lib/classify.ts, classification_votes)"]
+  VOTE --> SIG[("signals")]
+  SIG --> TRI["Triangulation (lib/triangulate.ts)"]
+  TRI --> SCORE["Scoring + action (lib/score.ts): type × relevance × stage × confidence × recency, firm fit, off-thesis cap 45"]
+  SCORE --> RPC["update_vc_signals(): security definer, 4 columns only"]
   RPC --> VCS[("vcs: O1")]
+  SCORE --> HIST[("vc_score_history")]
   RUN --> LOG[("pipeline_runs: O3")]
 
-  VCS --> VIEWS["Read-only SQL views"]
-  SIG --> VIEWS
-  LOG --> VIEWS
-  VIEWS --> DASH["Dashboard (Next.js server components): O2"]
+  MAINT --> TEAM["Team and contact pages (direct, Jina for JS pages) + at most 1 Tavily LinkedIn search per firm"]
+  TEAM --> PEOPLE["Gemini: people + titles; names must appear on the page (lib/contacts-refresh.ts)"]
+  PEOPLE --> CT[("vc_contacts, vc_channels: O4")]
+  CT --> DRAFT["Gemini drafts from role + best signal + data/founder.json; checked in code (lib/messages.ts)"]
+  DRAFT --> MSG[("vc_messages: O4")]
+
+  VCS & SIG & LOG & HIST --> VIEWS["Read-only SQL views"]
+  VIEWS --> Q["lib/queries.ts + lib/triage.ts (lanes, fit tags)"]
+  CT & MSG --> API["/api/vc/[id]/contacts (read-only)"]
+  SUG[("suggested_vcs: O5")] --> Q
+  Q --> DASH["Dashboard: O2"]
+  API --> DASH
 ```
 
 ## 3. Dashboard component map (output O2)
 
-> Visual design, layout, copy, tokens and the extra read-model SQL are specified in `docs/dashboard-design.md`. Where the two disagree, the design spec wins.
+> Visual design, layout, copy and tokens are specified in `docs/dashboard-design.md` §3–§5. Where the two disagree, the design spec wins.
 
 ### 3.1 Data flow
 
 ```mermaid
 flowchart LR
-  V1[("v_dashboard_vcs")] --> Q["lib/queries.ts (read-only)"]
-  V2[("v_signal_feed")] --> Q
-  V3[("v_last_run")] --> Q
-  V4[("suggested_vcs")] --> Q
-  Q --> P1["app/page.tsx"]
+  V1[("v_dashboard_vcs")] --> Q["lib/queries.ts getTriage() (read-only)"]
+  V2[("v_signal_feed (30 days)")] --> Q
+  V3[("v_top_signal")] --> Q
+  V4[("v_score_changes")] --> Q
+  V5[("pipeline_runs")] --> Q
+  V6[("suggested_vcs")] --> Q
+  Q --> T["lib/triage.ts: lane, fit tags, deal facts, sources checked"]
+  T --> P1["app/page.tsx"]
   Q --> P2["app/vc/[id]/page.tsx"]
   Q --> P3["app/runs/page.tsx"]
-  P1 --> C["components/*"]
-  P2 --> C
-  P3 --> C
-  C --> ACT["app/actions.ts: runNow (passcode)"]
-  ACT --> RUN["/api/run-pipeline"]
+  P1 --> UI["components/triage/*"]
+  P2 --> UI
+  P3 --> UI
+  C1[("vc_contacts, vc_channels, vc_messages")] --> API["/api/vc/[id]/contacts"] --> UI
+  UI --> ACT["app/actions.ts: runNow (no passcode, lock + cooldown)"] --> RUN["lib/run.ts runPipeline()"]
 ```
 
-### 3.2 Pages
+### 3.2 Pages and routes
 
 | Route | Purpose | Data | Key elements |
 |---|---|---|---|
-| `/` | The answer: who to contact this week | `v_dashboard_vcs`, `v_last_run`, `suggested_vcs` | Status bar · summary tiles · bucket tabs · filter bar · VC rows |
-| `/vc/[id]` | Why this VC is ranked where it is | `v_dashboard_vcs`, `v_signal_feed` | Signal timeline with evidence quotes · fit axes · firm profile · Vikram's notes and contact history (read-only) |
-| `/runs` | Proof the data is live and the system is healthy | `pipeline_runs` | Run list, per-source counts, errors, trigger (cron or manual) |
+| `/` | The answer: who to message today, and why | `getTriage()` | Top bar · briefing band (headline, since-last-run line, yard map) · Focus / Board / Table / Discover views. `?view=` and `?vc=` keep the view and selected investor in the URL |
+| `/vc/[id]` | One investor, full page | `getTriage()` row + `getVcDetail()` | The same workspace at full width, plus every signal on record |
+| `/runs` | Proof the data is live | `pipeline_runs` | Run list: started, trigger, result, investors, new signals, per-source counts, errors |
+| `/api/vc/[id]/contacts` | People, firm routes and drafts for one firm | `vc_contacts`, `vc_channels`, `vc_messages` | JSON, GET only, cached 60 s |
+| `/api/run-pipeline` | Scheduled run | everything | `CRON_SECRET` required |
+| `/api/run-now` | Manual run for scripts | everything | `CRON_SECRET` required |
+| `/api/keepalive` | Daily Neon ping + upkeep | `vcs`, contacts tables | `CRON_SECRET` required |
 
 ### 3.3 Components (`components/`)
 
 | Component | Responsibility | Props / data |
 |---|---|---|
-| `RunStatusBar` | Last successful run time, trigger, VCs processed, error count; a warning if the last run failed (but still shows the last good data) | `v_last_run` |
-| `RunNowButton` | Asks for the demo passcode, calls the `runNow` server action, shows progress and per-source result | server action |
-| `SummaryTiles` | Counts per bucket, signals found this run, sources active | derived |
-| `BucketTabs` | Switches between **Reach out this week**, **Nudge now**, **Quiet**, **Suggested VCs** | bucket enum |
-| `FilterBar` | Filters by priority (P1–P3), region (India/Global), source tier, signal type | URL search params |
-| `VcRow` | One VC: firm and partner, status badge, `ScoreBar`, recommended action, one-line summary, signal date, `SourceChips`, `FitBadges` | row from `v_dashboard_vcs` |
-| `ScoreBar` | 0–100 score with colour bands (≥60, 30–59, <30) | number |
-| `SourceChips` | Clickable links to each evidence URL, labelled by source tier (A/B/C/D) | signals |
-| `FitBadges` | Sector, customer (B2B/B2C), offering, stage; shows why a signal is "direct" or "adjacent" | signal fields |
-| `CorroborationBadge` | "Confirmed by two sources" or "Low confidence: capped" (the triangulation proof) | `corroborated_by` |
-| `SignalTimeline` | All signals for one VC in date order with evidence quote and tier | `v_signal_feed` |
-| `FirmProfileCard` | Seed behaviour, B2B-logistics thesis, typical cheque, geography | `vc_profiles` |
-| `PipelineStrip` | 50 squares colored by bucket; click jumps to the row | `v_dashboard_vcs` |
-| `SignalTape` | 30-day strip of signal days; the dashboard's signature visual | `v_signal_tape` |
-| `ChangesPanel` / `SuggestedPanel` | Right rail: changes since last run; investors not yet on the list | `v_score_changes`, `suggested_vcs` |
-| `CopyLineButton` | Copies the opening or nudge line; no database write | `v_top_signal` |
-| `EmptyState` | Never a blank page: "No new signals this week" with the last known signal date | — |
+| `triage/TopBar` | Logo, view tabs (Focus, Board, Table, Discover), status pill ("Checked N of N sources. Updated …", links to `/runs`), search modal (`/` or Cmd+K; arrows, Enter, Esc), Demo, theme toggle, Run now | `items`, `pill`, `running`, `view`/`onView` on the home page |
+| `triage/Briefing` | Headline sentence (counts only *Message today*), subline (follow-ups, maybes), since-last-run line (new signals, biggest mover, how many went quiet), yard map (50 squares, 10 columns, sorted by lane; click selects, hover/focus names, arrow keys move with one tab stop; load animation), legend chips that filter | rows, `Since` |
+| `triage/Triage` | Client root: view, selection, lane filter, parked toggle, phone sheet, toast, URL sync; keyboard `j`/`k` move, `c` copies, Esc closes the sheet. Holds the `Queue`, `Board`, `Table` (sortable, filterable) and `Discover` views | `getTriage()` result |
+| `triage/Workspace` | One investor: name, partner, region, *Yours* lock chip, lane tag; **Why now** (lead sentence, deal facts: company, round, size, role, date; or type, published, where), lane reason; **Does it fit you?** (Seed, B2B, Logistics, Software: filled, half, hollow, with text); **Activity in the last 30 days** (tape); **Evidence** (date and link checked, deduplicated by link and site, "Confirmed by 2 sources", other activity folded); **What to say** (opening or nudge line, Copy, `c`); **Who to contact**; **The firm**; **How the score works** (folded); **Your notes** (locked, read-only) | `TriageRow` |
+| `triage/WhoToContact` | Firm routes (pitch form, published firm emails, contact page); people ranked by POC level (decision-maker, partner, principal, associate) with title, focus, LinkedIn/X/email/team-page links; drafts (email, LinkedIn note, follow-up) with Copy, Open in email, Open LinkedIn. Loaded when an investor opens | `/api/vc/[id]/contacts` |
+| `triage/InvestorPage` | `/vc/[id]` layout: top bar, back link, workspace (page mode, `h1`), every signal on record | row, signals |
+| `triage/labels.ts` | Copy deck: lane names, queue line ("Co-led Lantern · Seed · $7.0 million"), dates, *Yours* text, lane reasons, plain-English profile values | — |
+| `RunNowButton` | Confirm dialog, runs the pipeline via the server action, shows a per-source checklist and the result; no passcode | server action |
+| `ThemeToggle` | Light/dark switch; follows the system until clicked; stored in `localStorage` and applied before paint | — |
+| `DemoTour` | 19-step guided tour of the real page: the answer, the map, the queue, the workspace (why now, fit, tape, evidence, line, contacts, drafts, notes), Board, Table, Discover, search, run history, theme, Run now. Highlights each element, performs the clicks, restores the theme at the end | — |
 
-### 3.4 Bucket rules (single source of truth in `lib/types.ts`)
+### 3.4 Lanes (single source of truth in `lib/triage.ts`, unit-tested)
 
-`recommended_action` is stored as one of these exact strings; the dashboard groups on them, so `score.ts` and the UI must share the constants.
+The pipeline stores `recommended_action` (rules from `signal-sources.md` §8.4, in `lib/score.ts`). The dashboard adds the fit check and groups rows into four lanes:
 
-| `recommended_action` value | Dashboard bucket | Rule (from `signal-sources.md` §8.4) |
+| Lane | Rule | Shown as |
 |---|---|---|
-| `Reach out this week` | Reach out | score ≥ 60 and status = yet to reach out |
-| `Reach out if capacity allows` | Reach out (lower) | 30–59 and yet to reach out |
-| `Nudge now` | Nudge | score ≥ 60 and waiting for response |
-| `Light nudge` | Nudge (lower) | 30–59, waiting, last contact > 14 days |
-| `Hold` | Parked | 30–59 waiting, contacted recently |
-| `Quiet: deprioritize this week` | Quiet | score < 30 or no signal in 30 days |
+| **Message today** | score ≥ 60, not already waiting, fit confirmed | Amber; ranked; counted in the headline |
+| **Waiting on a reply, with something new to say** | Vikram is waiting, the pipeline says nudge (*Nudge now* or *Light nudge*), fit confirmed | Blue, notched squares |
+| **Maybe, if you have time** | score 30–59; or ≥ 60 without a confirmed fit; or waiting but contacted recently (*Hold*) | Grey |
+| **Parked** | score < 30 or no signal in 30 days | Dark, flat squares; collapsed |
+
+**Fit confirmed** = B2B and Logistics filled, and Seed and Software not hollow. Tags come from the lead signal: Seed (pre-seed/seed/seed-extension = filled; no round stated = half if the firm does seed), B2B (`b2b` filled, `b2b2c`/unknown half, `b2c` hollow), Logistics (`fit` filled, `partial` half), Software (`software` filled; marketplace, fintech, unknown half; hardware, asset-heavy, services hollow).
 
 ### 3.5 Dashboard rules
 
-- **Read-only.** The dashboard never writes to `vcs`, `signals` or any table. It reads only through the views below. (Editing Vikram's notes from the UI is a v2 feature and would use its own separate RPC.)
-- **Server components only.** Queries run on the server with the service-role key; nothing sensitive goes to the browser.
-- **Run now is protected.** The button calls a server action that checks `DEMO_PASSCODE`; `CRON_SECRET` is never exposed to the client. Only one run may be active at a time (reject if a `pipeline_runs` row has `finished_at is null` and started within 10 minutes).
-- **Never blank.** If the latest run failed, show the last successful run's data with a warning.
-- **Every row shows evidence.** A "reach out" row without at least one source link is a bug.
-- **Demo data labelled.** Notes and contact history display with their `[DEMO]` prefix.
-- **Public URL caveat.** The assignment requires a public URL, so the page has no login in v1. Because notes are demo data this is acceptable; for the SaaS version, add authentication and row-level security per founder.
+- **Read-only.** No page, component or route writes to any table. The only write path is the Run now server action, which starts the pipeline.
+- **Server-side data.** Queries run on the server as `vc_runtime`; the browser gets rendered HTML and the contacts JSON only. No keys reach the browser.
+- **Run now has no passcode** (owner's decision, so the professor can use it). Guarded by a single-run lock (a `pipeline_runs` row unfinished and started within 10 minutes) and a 3-hour cooldown.
+- **Never blank.** Calm status wording; if the last full run failed, the pill says so and the last good data stays on screen.
+- **Every message-worthy row shows evidence** with a checked link and date.
+- **Demo data labelled.** Vikram's notes, status and contact history keep their `[DEMO]` prefix and sit in a locked panel.
+- **Contacts are public data only.** Names must appear on the firm's own page; emails only when the firm publishes them on its own domain; Cloudflare-hidden emails are not decoded. Nothing is sent from the page.
+- **Accessibility.** WCAG AA in both themes (axe-core: 0 violations on every view at 390 and 1440 px, light and dark); never color alone; keyboard paths for everything; reduced motion respected.
+- **Public URL caveat.** No login in v1 because the founder data is demo data; the SaaS version needs authentication and per-founder row security.
 
-### 3.6 Read-model SQL (add as a migration)
+### 3.6 Read model (views and tables the dashboard reads)
 
-```sql
-alter table public.vcs
-  add column if not exists partner_name text,
-  add column if not exists priority text,
-  add column if not exists region text,
-  add column if not exists needs_review boolean default false;
-
-alter table public.signals add column if not exists corroborated_by text;
-
-alter table public.vcs enable row level security;
-alter table public.signals enable row level security;
-alter table public.vc_profiles enable row level security;
-alter table public.portfolio_snapshots enable row level security;
-alter table public.pipeline_runs enable row level security;
-alter table public.suggested_vcs enable row level security;
--- No anon/authenticated policies: only the server (service role) reads or writes.
-
-create or replace view public.v_dashboard_vcs as
-select v.id, v.name, v.partner_name, v.firm, v.priority, v.region,
-       v.status, v.last_contact_date, v.contact_history, v.personal_notes,
-       v.last_signal_date, v.signal_summary, v.follow_up_score,
-       v.recommended_action, v.updated_by_system_at,
-       p.does_seed, p.b2b_logistics_thesis, p.investor_type, p.typical_check, p.geo_focus,
-       (select count(*) from public.signals s
-         where s.vc_id = v.id and s.published_date >= current_date - 30) as signals_30d
-from public.vcs v
-left join public.vc_profiles p on p.vc_id = v.id;
-
-create or replace view public.v_signal_feed as
-select s.id, s.vc_id, v.firm, s.signal_type, s.summary, s.source_url, s.source_name,
-       s.source_tier, s.published_date, s.evidence_quote, s.company_name,
-       s.round_stage, s.sector_fit, s.customer_type, s.offering_type,
-       s.logistics_relevance, s.confidence, s.corroborated_by
-from public.signals s join public.vcs v on v.id = s.vc_id;
-
-create or replace view public.v_last_run as
-select * from public.pipeline_runs
-order by started_at desc limit 1;
-```
+| Object | Kind | Used for |
+|---|---|---|
+| `v_dashboard_vcs` | view (archived rows excluded) | Firm, partner, region, Vikram's columns, score, action, firm profile |
+| `v_signal_feed` | view | Signals with fit axes, evidence quotes, corroboration |
+| `v_top_signal` | view | Lead signal per VC (highest `signal_value`), opening and nudge lines |
+| `v_signal_tape` | view | 30-day activity |
+| `v_score_changes` | view | Since-last-run mover and quiet counts |
+| `pipeline_runs` | table | Status pill, since line, `/runs` |
+| `suggested_vcs` | table (`rubric_score`, `deal_count`, `summary`, `caveat`) | Discover |
+| `vc_contacts`, `vc_channels`, `vc_messages` | tables | Who to contact and drafts |
 
 ## 4. Component table (submission format)
 
 | ID | Component | Responsibility | Tech | Input | Output | File |
 |---|---|---|---|---|---|---|
-| C1 | Scheduler | Triggers twice-weekly run | Vercel Cron | Cron expression | HTTP call with `CRON_SECRET` | `vercel.json` |
-| C2 | Pipeline orchestrator | Loads VCs, batches work, isolates errors, logs the run | Next.js route handler | Trigger | Calls C3–C9; writes `pipeline_runs` | `app/api/run-pipeline/route.ts` |
-| C3 | Source adapters | Fetch live items from each channel (Bing News RSS, firm RSS, LinkedIn index, YouTube, SEC, batch feeds) | `fetch`, `rss-parser`, `cheerio` | VC identifiers, time window | `RawItem[]` | `lib/sources/*` |
-| C3b | Web search | Tavily first (free, capped 950/month), Exa only as small fallback | Tavily API, Exa API | Query | Dated hits | `lib/search.ts` |
-| C4 | Normalizer and verifier | Resolve redirects, check dates ≤ 30 days, dedupe, entity match | TypeScript | `RawItem[]` | Verified items | `lib/verify.ts` |
-| C5 | Gemini client | Google Search + URL context + structured JSON; only AI entry point | `@google/genai` (Gemini 3.7 Flash) | Items + VC context | Classified signals (zod-validated) | `lib/gemini.ts` |
-| C6 | Portfolio differ | Snapshot, hash, diff, debounce (links or logo walls) | `cheerio`, Jina Reader | Firm portfolio page | Added/removed companies | `lib/sources/portfolio-diff.ts` |
+| C1 | Scheduler | Twice-weekly run; daily keep-alive and upkeep | Vercel Cron (region `cle1`, 300 s functions) | Cron expressions | HTTP calls with `CRON_SECRET` | `vercel.json` |
+| C2 | Pipeline orchestrator | Loads VCs, runs 25 in parallel within a time budget, isolates errors, circuit breaker, single-run lock, logs the run | Next.js route handler | Trigger | Calls C3–C9; writes `pipeline_runs` | `app/api/run-pipeline/route.ts`, `lib/run.ts`, `lib/pipeline.ts` |
+| C3 | Source adapters | Fetch live items: Bing News RSS, firm RSS, LinkedIn index, YouTube Data API, Podcast Index, SEC Form D, batch feeds | `fetch`, `rss-parser`, `cheerio` | VC identifiers, 30-day window | `RawItem[]` | `lib/sources/*` |
+| C3b | Web search | Tavily first (free, capped 950/month), Exa only as a small fallback | Tavily API, Exa API | Query | Dated hits | `lib/search.ts` |
+| C4 | Verifier | Resolve redirects, date precedence, 30-day window, entity match, dedupe and corroboration | TypeScript | `RawItem[]` | Verified items | `lib/verify.ts` |
+| C5 | Gemini client | Only AI entry point: Google Search + URL context + structured JSON | `@google/genai` (Gemini 3.7 Flash) | Items + VC context | zod-validated output | `lib/gemini.ts`, `lib/sources/gemini-grounding.ts` |
+| C6 | Portfolio differ | Snapshot, hash, diff, 2-run debounce (links or logo walls; Jina fallback) | `cheerio`, Jina Reader | Portfolio page | Added companies | `lib/sources/portfolio-diff.ts`, `lib/portfolio.ts` |
 | C6b | Classification vote | Majority vote over repeated Gemini verdicts per page | TypeScript | Stored + new verdict | Stable classification | `lib/classify.ts` |
-| C7 | Scoring engine | Fit axes → relevance, stage and firm multipliers, triangulation, action | TypeScript | Signals + `vc_profiles` + status | Score, summary, action | `lib/score.ts` |
-| C8 | Data access layer | Typed DB helpers; only writer to `vcs` is the protected function | `@neondatabase/serverless` as `vc_runtime` | Scores | 4 columns updated | `lib/db.ts`, `lib/sql.ts` |
-| C9 | Protected write function | Column-restricted update that cannot touch Vikram's notes; app role has no UPDATE/DELETE on `vcs` | Postgres roles + `security definer` functions | Score fields | Updated `vcs` row | `db/migrations/*` |
-| C10 | Read model | Read-only views for the UI (archived rows excluded) | Postgres views | Tables | Dashboard rows | `db/migrations/*` |
-| C11 | Query layer | Typed read-only queries used by pages | `@neondatabase/serverless` | Views | Typed rows | `lib/queries.ts` |
-| C12 | Dashboard | Pages and components in §3 | Next.js App Router, React server components | Views | Ranked, explained pipeline | `app/*`, `components/*` |
-| C13 | Run-now action | Manual trigger, no passcode; single-run lock + 3-hour cooldown | Next.js server action | Click | Starts C2 | `app/actions.ts` |
-| C14 | Seed, profile and swap scripts | Load the VC list, resolve identifiers, profile funds; reverse lookup, rubric swap (archive, undo), export | `tsx` scripts + Exa + Gemini | `data/vc-seed-list.csv` | Populated `vcs`, `vc_profiles`, `suggested_vcs` | `scripts/*` |
-| C15 | Data store | System of record | Neon Postgres (AWS us-east-2) | — | — | Neon |
-| C16 | Keep-alive | Daily query so the database is always in use | Vercel Cron + route | — | Ping result | `app/api/keepalive/route.ts` |
+| C7 | Scoring engine | Relevance, stage and firm-fit multipliers, triangulation, 0–100 score, action, summary | TypeScript | Signals + profile + status | Score, action, summary | `lib/score.ts`, `lib/triangulate.ts` |
+| C8 | Data access layer | Typed DB helpers as the app role | `@neondatabase/serverless` as `vc_runtime` | Queries | Rows | `lib/db.ts`, `lib/sql.ts` |
+| C9 | Protected write functions | Column-restricted updates that can't touch Vikram's columns; app role has no UPDATE/DELETE on `vcs` | Postgres roles + `security definer` | Score fields / identifiers | Updated `vcs` row | `db/migrations/0001`–`0003` |
+| C10 | Read model | Read-only views for the UI, archived rows excluded | Postgres views | Tables | Dashboard rows | `db/migrations/*` |
+| C11 | Query and triage layer | `getTriage()`: lanes, fit tags, deal facts, deduplicated evidence, score parts; status pill and since line | TypeScript | Views | `TriageRow[]` | `lib/queries.ts`, `lib/triage.ts`, `lib/status.ts` |
+| C12 | Dashboard | Pages and components in §3 | Next.js 16 App Router, React | C11, C20 | Triage UI | `app/*`, `components/triage/*` |
+| C13 | Run-now action | Manual trigger, no passcode; lock + 3-hour cooldown | Next.js server action | Click | Starts C2 | `app/actions.ts` |
+| C14 | Seed, profile and swap scripts | Load the list, resolve identifiers, profile funds; reverse lookup and roundup discovery; rubric swap (archive, undo); export; suggestions with rubric score | `tsx` scripts + Tavily/Exa + Gemini | `data/*.csv`, `data/*.json` | `vcs`, `vc_profiles`, `suggested_vcs`, `docs/swap-log.md` | `scripts/*`, `lib/rubric.ts` |
+| C15 | Data store | System of record | Neon Postgres (AWS us-east-2) | — | — | Neon `vc-pipline` |
+| C16 | Keep-alive | Daily query so the database is always in use | Vercel Cron + route | — | Ping result | `app/api/keepalive/route.ts`, `lib/keepalive.ts` |
+| C17 | Contact discovery | Team and contact pages → people with titles (names verified on the page), POC level, ranking, LinkedIn/X links, firm-domain emails, pitch form, contact page | `cheerio`, Jina, Gemini, ≤ 1 Tavily search per firm | Firm website | `vc_contacts`, `vc_channels` | `lib/contacts.ts`, `lib/contacts-refresh.ts` |
+| C18 | Message drafting | Email, LinkedIn note (≤ 300 chars), follow-up for the top 2 contacts, from role, best signal and `data/founder.json`; rules checked in code, one retry | Gemini + TypeScript | Contact, signal, founder | `vc_messages` | `lib/messages.ts` |
+| C19 | Upkeep | Re-draft messages whose signal changed; re-discover contacts older than 30 days (≤ 10/day) | TypeScript | DB state | Fresh contacts and drafts | `lib/maintenance.ts` |
+| C20 | Contacts API | Read-only JSON for the workspace | Next.js route handler | VC id | Contacts, channels, drafts | `app/api/vc/[id]/contacts/route.ts` |
+| C21 | Theme and demo | Light/dark toggle with no flash; 19-step guided tour | React client components | — | — | `components/ThemeToggle.tsx`, `components/DemoTour.tsx`, `app/layout.tsx` |
+| C22 | Proofs and UI checks | Requirement proofs (R1–R12), screenshots, axe-core, Lighthouse, Playwright | `tsx`, `playwright-core`, `axe-core` | Live DB and site | `docs/proofs/*` | `scripts/proofs.ts`, `scripts/ui-checks.ts`, `scripts/ui-screens.ts` |
 
 ## 5. Trust boundaries
 
 | Boundary | Rule |
 |---|---|
-| Browser ↔ server | Browser gets rendered HTML only. No API keys, no service-role key, no `CRON_SECRET`. |
-| App ↔ `vcs` | Writes only through `update_vc_signals` (C9). Dashboard has no write path at all. |
-| Model ↔ database | Gemini output is validated with zod and re-checked in code (URL, date, entity) before storage. |
-| Scraping | Only public pages and APIs; descriptive User-Agent; no logged-in automation. |
+| Browser ↔ server | Browser gets rendered HTML and the contacts JSON only. No API keys, no database URL, no `CRON_SECRET`. |
+| App ↔ `vcs` | The app connects as `vc_runtime` (no UPDATE/DELETE on `vcs`). Writes go only through `update_vc_signals` and `update_vc_identifiers` (C9). `neondb_owner` is used for migrations only. |
+| Dashboard ↔ database | No write path at all; Run now only starts the pipeline. |
+| Model ↔ database | Gemini output is zod-validated and re-checked in code (URL, date, entity; names on the page; draft rules) before storage. |
+| Scraping | Public pages and APIs only; robots.txt respected (hence Bing News and the YouTube Data API); descriptive User-Agent; no logged-in automation. |
+| Outreach | Nothing is sent automatically. Emails shown only when the firm publishes them on its own domain. |
 
 ## 6. Requirement coverage
 
 | Booklet requirement | Components |
 |---|---|
-| Live external data | C3, C5 |
-| Gemini Flash only | C5 (sole AI entry point) |
+| Live external data | C3, C3b, C5, C6 |
+| Gemini Flash only | C5 (sole AI entry point; ESLint blocks other AI SDKs) |
 | Twice-weekly refresh | C1, C2 |
 | Database (Neon) reflects current state | C7, C8, C9, C15, C16 |
-| Manual notes untouched | C9, C8 (no direct writes), C12 (read-only) |
-| Quiet VCs reported | C7 (quiet bucket), C12 (`BucketTabs`) |
-| Observable signal with why | C4, C5, C12 (`SourceChips`, `SignalTimeline`) |
+| Manual notes untouched | C9, C8 (app role can't update `vcs`), C12 (read-only, locked panel) |
+| Quiet VCs reported | C11 (Parked lane), C12 (collapsed Parked list, Board, Table) |
+| Observable signal with why | C4, C5, C12 (Why now, evidence, fit tags) |
+| Who to contact and what to say | C17, C18, C19, C20, C12 |
 | Deployed on Vercel with public URL | C1, C12 |

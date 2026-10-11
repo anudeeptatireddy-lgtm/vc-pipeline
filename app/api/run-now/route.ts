@@ -1,5 +1,5 @@
 // Manual trigger for demos (same pipeline, same secret). The dashboard's Run
-// now button uses the passcode-protected server action in app/actions.ts.
+// now button uses the server action in app/actions.ts (no passcode; lock + cooldown).
 import { isCronAuthorized } from "@/lib/auth";
 import { RunLockedError, runPipeline } from "@/lib/run";
 
