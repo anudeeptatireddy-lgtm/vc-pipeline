@@ -12,7 +12,8 @@
     "seed": "tsx --env-file=.env.local scripts/seed-vcs.ts",
     "profile": "tsx --env-file=.env.local scripts/profile-vcs.ts",
     "run-one": "tsx --env-file=.env.local scripts/run-one.ts",
-    "check:manual": "tsx --env-file=.env.local scripts/check-manual-columns.ts"
+    "check:manual": "tsx --env-file=.env.local scripts/check-manual-columns.ts",
+    "keepalive": "tsx --env-file=.env.local scripts/keepalive.ts"
   },
   "engines": {
     "node": "22.x"
