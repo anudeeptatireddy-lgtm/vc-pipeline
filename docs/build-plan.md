@@ -21,11 +21,11 @@ Work top to bottom. Don't start a phase until the previous phase's acceptance cr
 **Accept:** both SQL acceptance tests in §DB behave as described (role update → permission denied).
 
 ## Phase 2 — Seed real data (§3, §5)
-- [ ] `scripts/seed-vcs.ts`: load `data/vc-seed-list.csv` (50 VCs) and follow the steps in `docs/vc-list.md`; every website and partner name must be verified by fetching, never assumed
-- [ ] Resolve identifiers per VC: `linkedin_url` (Exa `category:"people"`), `rss_url`, `portfolio_url`, `team_url`, `sec_cik` (US firms), `youtube_channel_id` where they exist
-- [ ] `scripts/profile-vcs.ts`: one Gemini call per VC → `vc_profiles` (does_seed, b2b_logistics_thesis, investor_type, typical_check, geo_focus) with evidence URLs (§4.5)
-- [ ] Drop or flag VCs that come back `series_a_plus_only` or `b2b_logistics_thesis = none`; aim for ≥35 of 50 with seed fit ✅
-- [ ] Fill Vikram-owned columns with realistic placeholder status/notes (clearly marked as demo data)
+- [x] `scripts/seed-vcs.ts`: load `data/vc-seed-list.csv` (50 VCs) and follow the steps in `docs/vc-list.md`; every website and partner name must be verified by fetching, never assumed
+- [x] Resolve identifiers per VC: `linkedin_url` (Exa `category:"people"`), `rss_url`, `portfolio_url`, `team_url`, `sec_cik` (US firms), `youtube_channel_id` where they exist
+- [x] `scripts/profile-vcs.ts`: one Gemini call per VC → `vc_profiles` (does_seed, b2b_logistics_thesis, investor_type, typical_check, geo_focus) with evidence URLs (§4.5)
+- [x] Drop or flag VCs that come back `series_a_plus_only` or `b2b_logistics_thesis = none`; aim for ≥35 of 50 with seed fit ✅
+- [x] Fill Vikram-owned columns with realistic placeholder status/notes (clearly marked as demo data)
 
 **Accept:** 50 rows; ≥30 have at least two identifiers; script is idempotent.
 

@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "seed": "tsx --env-file=.env.local scripts/seed-vcs.ts",
+    "profile": "tsx --env-file=.env.local scripts/profile-vcs.ts",
+    "run-one": "tsx --env-file=.env.local scripts/run-one.ts"
   },
   "engines": {
     "node": "22.x"

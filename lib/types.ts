@@ -31,6 +31,10 @@ export interface Vc {
   priority: string | null;
   region: string | null;
   needs_review: boolean | null;
+  // Seeding (migration seed_identifiers)
+  seed_key: string | null;
+  website: string | null;
+  partner_confidence: "high" | "low" | null;
   updated_by_system_at: string | null;
 }
 
@@ -41,8 +45,9 @@ export interface RawItem {
   title: string;
   snippet?: string;
   publishedAt?: string; // ISO if the source provides it
-  source: string; // e.g. "google-news-rss"
+  source: string; // e.g. "exa"
   sourceTier: SourceTier;
+  publisher?: string; // publisher homepage, when the url is an aggregator link
 }
 
 export interface SignalSource {
