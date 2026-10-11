@@ -21,6 +21,8 @@ Vercel Cron (Mon & Thu 08:00 IST) → /api/run-pipeline (CRON_SECRET)
 Dashboard (read-only, SQL views) → /, /vc/[id], /runs
 ```
 
+Deployed on Vercel (region `bom1`, next to the Supabase project in Mumbai). A daily cron hits `/api/keepalive` so the free-tier database never pauses for inactivity.
+
 Components Map: [`docs/components-map.md`](docs/components-map.md) and [`docs/components-map.png`](docs/components-map.png).
 
 ## Setup
@@ -58,7 +60,7 @@ Migrations live in `supabase/migrations/` and were applied to the Supabase proje
 
 ## Not done yet
 
-- **Deploy to Vercel** and set env vars there (Phase 8). `CRON_SECRET` and `DEMO_PASSCODE` must be set in Vercel.
+- `DEMO_PASSCODE` isn't set in Vercel yet, so Run now refuses every passcode until it is.
 - `SEC_USER_AGENT` needs a real contact email before SEC lookups switch on; `PODCASTINDEX_API_SECRET` is empty, so podcasts are off.
 - Lighthouse scores and Playwright screenshots from the acceptance checklist; axe-core was run by hand (0 violations on `/`, `/vc/[id]`, `/runs`).
 - `suggested_vcs` (reverse lookup) is v2; the panel hides when empty.
