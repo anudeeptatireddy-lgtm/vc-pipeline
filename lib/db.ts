@@ -135,6 +135,30 @@ export async function loadRecentSignals(vcId: string, since: string): Promise<Si
   return data as SignalRow[];
 }
 
+export interface Snapshot {
+  entries: { name: string; domain?: string }[];
+  entries_hash: string;
+  captured_at: string;
+}
+
+/** Most recent snapshots for a VC, oldest → newest. */
+export async function loadSnapshots(vcId: string, kind: "portfolio" | "team", limit = 3): Promise<Snapshot[]> {
+  const { data, error } = await db()
+    .from("portfolio_snapshots")
+    .select("entries, entries_hash, captured_at")
+    .eq("vc_id", vcId)
+    .eq("kind", kind)
+    .order("captured_at", { ascending: false })
+    .limit(limit);
+  if (error) throw new Error(`loadSnapshots(${vcId}): ${error.message}`);
+  return (data as Snapshot[]).reverse();
+}
+
+export async function insertSnapshot(vcId: string, kind: "portfolio" | "team", entries: Snapshot["entries"], hash: string) {
+  const { error } = await db().from("portfolio_snapshots").insert({ vc_id: vcId, kind, entries, entries_hash: hash });
+  if (error) throw new Error(`insertSnapshot(${vcId}): ${error.message}`);
+}
+
 export async function recordScoreHistory(
   vcId: string,
   runId: number,

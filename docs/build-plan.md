@@ -50,9 +50,9 @@ Work top to bottom. Don't start a phase until the previous phase's acceptance cr
 **Accept:** each source has a fixture-based unit test; a full run over 5 VCs completes with per-source counts logged in `pipeline_runs.usage`.
 
 ## Phase 5 — Portfolio diffing (§6)
-- [ ] fetch + cheerio extractor; Jina Reader fallback for JS-rendered pages
-- [ ] canonicalize → hash → diff → 2-run debounce → Gemini enrichment of additions
-- [ ] Snapshots in `portfolio_snapshots`
+- [x] fetch + cheerio extractor; Jina Reader fallback for JS-rendered pages
+- [x] canonicalize → hash → diff → 2-run debounce → Gemini enrichment of additions
+- [x] Snapshots in `portfolio_snapshots`
 
 **Accept:** unit test with two fixture HTML snapshots detects exactly the added company; nothing alerts after only one run.
 

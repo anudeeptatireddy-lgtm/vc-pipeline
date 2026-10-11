@@ -7,6 +7,7 @@ import {
 } from "./db";
 import { firmFit, followUpScore, logisticsRelevance, recommendedAction, signalSummary, signalValue } from "./score";
 import { extractSignals, type ModelSignal } from "./sources/gemini-grounding";
+import { detectPortfolioAdditions } from "./sources/portfolio-diff";
 import { TIER_CONFIDENCE, tierForUrl } from "./sources/tiers";
 import type { RawItem, RecommendedAction, SignalSource, Vc, VerifiedSignal } from "./types";
 import { canonicalUrl, dedupe, toDay, verifyCandidate, WINDOW_DAYS } from "./verify";
@@ -44,6 +45,7 @@ export async function processVc(opts: {
   batchItems?: RawItem[]; // from fetchBatch sources, already matched to this VC
   runId: number;
   today?: Date;
+  portfolioDiff?: boolean; // default true
 }): Promise<VcRunResult> {
   const { vc, profile, sources, runId } = opts;
   const today = opts.today ?? new Date();
@@ -133,6 +135,17 @@ export async function processVc(opts: {
       nudge_line: copyLine(m.nudge_line, onThesis),
       corroborated_by: null,
     });
+  }
+
+  // 3b. Portfolio page diff: tier-A signals we verified ourselves.
+  if (opts.portfolioDiff !== false && vc.portfolio_url) {
+    try {
+      const p = await detectPortfolioAdditions(vc, today);
+      perSource["portfolio-diff"] = p.signals.length;
+      verified.push(...p.signals);
+    } catch (e) {
+      errors.push({ vcId: vc.id, source: "portfolio-diff", message: (e as Error).message.slice(0, 300) });
+    }
   }
 
   // 4. Dedupe and store.
