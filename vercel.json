@@ -1,8 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "crons": [{ "path": "/api/run-pipeline", "schedule": "30 2 * * 1,4" }],
+  "regions": [
+    "bom1"
+  ],
+  "crons": [
+    {
+      "path": "/api/run-pipeline",
+      "schedule": "30 2 * * 1,4"
+    }
+  ],
   "functions": {
-    "app/api/run-pipeline/route.ts": { "maxDuration": 300 },
-    "app/api/run-now/route.ts": { "maxDuration": 300 }
+    "app/api/run-pipeline/route.ts": {
+      "maxDuration": 300
+    },
+    "app/api/run-now/route.ts": {
+      "maxDuration": 300
+    }
   }
 }
