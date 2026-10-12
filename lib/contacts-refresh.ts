@@ -11,7 +11,6 @@ import { politeFetch } from "./http";
 import { draftMessages, loadFounder, type SignalFacts } from "./messages";
 import { webSearch } from "./search";
 import { extractSiteLinks, normaliseLinkedinProfile, pageText } from "./seed/site";
-import { deleteSql, insertFromJsonSql, insertSql, pickColumns, SYSTEM_WRITE_COLUMNS } from "./ownership";
 import { q } from "./sql";
 import type { Vc } from "./types";
 
@@ -163,21 +162,25 @@ export async function discoverContacts(vc: Vc): Promise<{ contacts: Contact[]; c
   };
 }
 
-const CONTACT_COLS = SYSTEM_WRITE_COLUMNS.vc_contacts;
-const CHANNEL_COLS = SYSTEM_WRITE_COLUMNS.vc_channels;
-const MESSAGE_COLS = SYSTEM_WRITE_COLUMNS.vc_messages;
-
 export async function saveContacts(vcId: string, contacts: Contact[], channels: Channels) {
   // Fresh snapshot per firm (messages cascade with their contact).
-  await q(deleteSql("vc_contacts", ["vc_id"]), [vcId]);
+  await q("delete from vc_contacts where vc_id = $1", [vcId]);
   if (contacts.length) {
-    const rows = contacts.map((c) => pickColumns("vc_contacts", { ...c, vc_id: vcId }, CONTACT_COLS));
-    await q(insertFromJsonSql("vc_contacts", CONTACT_COLS), [JSON.stringify(rows)]);
+    await q(
+      `insert into vc_contacts (vc_id, name, title, poc_level, focus, bio, relevant, rank, linkedin_url, x_url, email, email_source_url, source_url)
+       select $1, name, title, poc_level, focus, bio, relevant, rank, linkedin_url, x_url, email, email_source_url, source_url
+       from jsonb_to_recordset($2::jsonb) as x(name text, title text, poc_level text, focus text, bio text, relevant boolean, rank int,
+         linkedin_url text, x_url text, email text, email_source_url text, source_url text)`,
+      [vcId, JSON.stringify(contacts)],
+    );
   }
-  await q(insertSql("vc_channels", CHANNEL_COLS, { conflict: ["vc_id"], update: CHANNEL_COLS.filter((c) => c !== "vc_id") }), [
-    vcId, channels.pitch_url, channels.emails, channels.email_sources, channels.x_url, channels.contact_url, channels.email_hidden_from_bots,
-    new Date().toISOString(),
-  ]);
+  await q(
+    `insert into vc_channels (vc_id, pitch_url, emails, email_sources, x_url, contact_url, email_hidden_from_bots, updated_at)
+     values ($1, $2, $3, $4, $5, $6, $7, now())
+     on conflict (vc_id) do update set pitch_url = excluded.pitch_url, emails = excluded.emails, email_sources = excluded.email_sources,
+       x_url = excluded.x_url, contact_url = excluded.contact_url, email_hidden_from_bots = excluded.email_hidden_from_bots, updated_at = now()`,
+    [vcId, channels.pitch_url, channels.emails, channels.email_sources, channels.x_url, channels.contact_url, channels.email_hidden_from_bots],
+  );
 }
 
 /** (Re)draft messages for the top contacts from the firm's current best signal. */
@@ -199,14 +202,17 @@ export async function refreshMessages(vc: Vc): Promise<number> {
   for (const c of contacts) {
     const d = await draftMessages(c, vc.firm, signal, wantFollowUp, founder).catch(() => null);
     if (!d) continue;
-    await q(deleteSql("vc_messages", ["contact_id"]), [c.id]);
-    const base = { vc_id: vc.id, contact_id: c.id, signal_id: top?.signal_id ?? null };
+    await q("delete from vc_messages where contact_id = $1", [c.id]);
     const rows = [
-      { ...base, kind: "email", subject: d.email_subject, body: d.email_body },
-      { ...base, kind: "linkedin_note", subject: null, body: d.linkedin_note },
-      ...(wantFollowUp ? [{ ...base, kind: "follow_up", subject: `Re: ${d.email_subject}`, body: d.follow_up }] : []),
-    ].map((r) => pickColumns("vc_messages", r, MESSAGE_COLS));
-    await q(insertFromJsonSql("vc_messages", MESSAGE_COLS), [JSON.stringify(rows)]);
+      { kind: "email", subject: d.email_subject, body: d.email_body },
+      { kind: "linkedin_note", subject: null, body: d.linkedin_note },
+      ...(wantFollowUp ? [{ kind: "follow_up", subject: `Re: ${d.email_subject}`, body: d.follow_up }] : []),
+    ];
+    await q(
+      `insert into vc_messages (vc_id, contact_id, signal_id, kind, subject, body)
+       select $1, $2, $3, kind, subject, body from jsonb_to_recordset($4::jsonb) as x(kind text, subject text, body text)`,
+      [vc.id, c.id, top?.signal_id ?? null, JSON.stringify(rows)],
+    );
     n++;
   }
   return n;

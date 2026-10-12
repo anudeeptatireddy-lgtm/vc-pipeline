@@ -1,8 +1,7 @@
 // Server-only database access (Neon, as vc_runtime). The only paths that
-// change `vcs` are the two security-definer functions called below, and new
-// rows come from seed_new_vcs; the runtime role has no INSERT, UPDATE or DELETE
-// on vcs. Every other write is built from the allowlists in lib/ownership.ts.
-import { insertFromJsonSql, insertSql, pickColumns, SYSTEM_WRITE_COLUMNS, updateSql, VCS_SEED_COLUMNS } from "./ownership";
+// change `vcs` are the two security-definer functions called below; the
+// runtime role has no UPDATE or DELETE on vcs, so a direct write would fail
+// (tests/db-guard.test.ts also rejects one in code).
 import { q } from "./sql";
 import type { RecommendedAction, Vc, VerifiedSignal } from "./types";
 
@@ -82,15 +81,20 @@ export interface NewVcRow {
 }
 
 /**
- * Seeding only: creates rows that don't exist yet, through seed_new_vcs (the
- * runtime role has no INSERT on vcs). Existing rows are never touched (on
- * conflict do nothing), so Vikram's columns are written exactly once.
+ * Seeding only: creates rows that don't exist yet. Existing rows are never
+ * touched (on conflict do nothing), so Vikram's columns are written exactly once.
  */
 export async function insertNewVcs(rows: NewVcRow[]): Promise<number> {
   if (rows.length === 0) return 0;
-  const payload = rows.map((r) => Object.fromEntries(VCS_SEED_COLUMNS.map((c) => [c, r[c] ?? null])));
-  const [res] = await q<{ n: number }>("select public.seed_new_vcs($1::jsonb) as n", [JSON.stringify(payload)]);
-  return res?.n ?? 0;
+  const inserted = await q(
+    `insert into vcs (seed_key, name, firm, thesis, status, last_contact_date, contact_history, personal_notes)
+     select seed_key, name, firm, thesis, status, last_contact_date, contact_history, personal_notes
+     from jsonb_populate_recordset(null::vcs, $1::jsonb)
+     on conflict (seed_key) do nothing
+     returning id`,
+    [JSON.stringify(rows)],
+  );
+  return inserted.length;
 }
 
 export interface VcProfile {
@@ -107,18 +111,26 @@ export async function loadVcProfiles(): Promise<VcProfile[]> {
   return q<VcProfile>("select * from vc_profiles");
 }
 
-const PROFILE_COLS = ["vc_id", "does_seed", "b2b_logistics_thesis", "investor_type", "typical_check", "geo_focus", "evidence_urls", "profiled_at"] as const;
-
 /** vc_profiles is system-owned; upsert per VC. */
 export async function upsertVcProfile(p: VcProfile): Promise<void> {
-  await q(insertSql("vc_profiles", PROFILE_COLS, { conflict: ["vc_id"], update: PROFILE_COLS.filter((c) => c !== "vc_id") }), [
-    p.vc_id, p.does_seed, p.b2b_logistics_thesis, p.investor_type, p.typical_check, p.geo_focus, p.evidence_urls, new Date().toISOString(),
-  ]);
+  await q(
+    `insert into vc_profiles (vc_id, does_seed, b2b_logistics_thesis, investor_type, typical_check, geo_focus, evidence_urls, profiled_at)
+     values ($1, $2, $3, $4, $5, $6, $7, now())
+     on conflict (vc_id) do update set
+       does_seed = excluded.does_seed, b2b_logistics_thesis = excluded.b2b_logistics_thesis,
+       investor_type = excluded.investor_type, typical_check = excluded.typical_check,
+       geo_focus = excluded.geo_focus, evidence_urls = excluded.evidence_urls, profiled_at = now()`,
+    [p.vc_id, p.does_seed, p.b2b_logistics_thesis, p.investor_type, p.typical_check, p.geo_focus, p.evidence_urls],
+  );
 }
 
 export type SignalRow = VerifiedSignal & { signal_value: number; classification_votes?: Record<string, number> };
 
-const SIGNAL_COLS = SYSTEM_WRITE_COLUMNS.signals;
+const SIGNAL_COLS = [
+  "vc_id", "signal_type", "summary", "source_url", "source_name", "source_tier", "published_date", "evidence_quote",
+  "company_name", "round_stage", "sector_fit", "customer_type", "offering_type", "logistics_relevance", "confidence",
+  "corroborated_by", "opening_line", "nudge_line", "signal_value", "classification_votes",
+] as const;
 
 /**
  * Insert new signals; a URL already stored for this VC is left as it is here.
@@ -127,9 +139,15 @@ const SIGNAL_COLS = SYSTEM_WRITE_COLUMNS.signals;
  */
 export async function insertSignals(rows: SignalRow[]): Promise<void> {
   if (rows.length === 0) return;
-  const payload = rows.map((r) => pickColumns("signals", r as unknown as Record<string, unknown>, SIGNAL_COLS));
+  const cols = SIGNAL_COLS.join(", ");
+  const payload = rows.map((r) => Object.fromEntries(SIGNAL_COLS.map((c) => [c, r[c]])));
   try {
-    await q(insertFromJsonSql("signals", SIGNAL_COLS, { conflict: ["vc_id", "source_url"], doNothing: true }), [JSON.stringify(payload)]);
+    await q(
+      `insert into signals (${cols})
+       select ${cols} from jsonb_populate_recordset(null::signals, $1::jsonb)
+       on conflict (vc_id, source_url) do nothing`,
+      [JSON.stringify(payload)],
+    );
   } catch (e) {
     throw new Error(`insertSignals: ${(e as Error).message}`);
   }
@@ -164,11 +182,13 @@ export async function updateClassification(
 ): Promise<void> {
   if (changed) {
     await q(
-      updateSql("signals", ["sector_fit", "customer_type", "offering_type", "round_stage", "logistics_relevance", "signal_value", "classification_votes"], ["vc_id", "source_url"]),
-      [c.sector_fit, c.customer_type, c.offering_type, c.round_stage, c.logistics_relevance, c.signal_value, JSON.stringify(votes), vcId, sourceUrl],
+      `update signals set sector_fit = $3, customer_type = $4, offering_type = $5, round_stage = $6,
+         logistics_relevance = $7, signal_value = $8, classification_votes = $9::jsonb
+       where vc_id = $1 and source_url = $2`,
+      [vcId, sourceUrl, c.sector_fit, c.customer_type, c.offering_type, c.round_stage, c.logistics_relevance, c.signal_value, JSON.stringify(votes)],
     );
   } else {
-    await q(updateSql("signals", ["classification_votes"], ["vc_id", "source_url"]), [JSON.stringify(votes), vcId, sourceUrl]);
+    await q("update signals set classification_votes = $3::jsonb where vc_id = $1 and source_url = $2", [vcId, sourceUrl, JSON.stringify(votes)]);
   }
 }
 
@@ -176,8 +196,13 @@ export async function updateClassification(
 export async function updateCorroboration(
   rows: { vc_id: string; source_url: string; corroborated_by: string | null; confidence: number; signal_value: number }[],
 ): Promise<void> {
-  const sql = updateSql("signals", ["corroborated_by", "confidence", "signal_value"], ["vc_id", "source_url"]);
-  for (const r of rows) await q(sql, [r.corroborated_by, r.confidence, r.signal_value, r.vc_id, r.source_url]);
+  if (rows.length === 0) return;
+  await q(
+    `update signals s set corroborated_by = x.corroborated_by, confidence = x.confidence, signal_value = x.signal_value
+     from jsonb_to_recordset($1::jsonb) as x(vc_id uuid, source_url text, corroborated_by text, confidence numeric, signal_value numeric)
+     where s.vc_id = x.vc_id and s.source_url = x.source_url`,
+    [JSON.stringify(rows)],
+  );
 }
 
 /** All stored signals for a VC published on or after `since` (YYYY-MM-DD). */
@@ -202,11 +227,15 @@ export async function loadSnapshots(vcId: string, kind: "portfolio" | "team", li
 }
 
 export async function insertSnapshot(vcId: string, kind: "portfolio" | "team", entries: Snapshot["entries"], hash: string) {
-  await q(insertSql("portfolio_snapshots", ["vc_id", "kind", "entries", "entries_hash"]), [vcId, kind, JSON.stringify(entries), hash]);
+  await q("insert into portfolio_snapshots (vc_id, kind, entries, entries_hash) values ($1, $2, $3::jsonb, $4)", [
+    vcId, kind, JSON.stringify(entries), hash,
+  ]);
 }
 
 export async function recordScoreHistory(vcId: string, runId: number, score: number, action: RecommendedAction): Promise<void> {
-  await q(insertSql("vc_score_history", ["vc_id", "run_id", "follow_up_score", "recommended_action"]), [vcId, runId, score, action]);
+  await q("insert into vc_score_history (vc_id, run_id, follow_up_score, recommended_action) values ($1, $2, $3, $4)", [
+    vcId, runId, score, action,
+  ]);
 }
 
 export interface RunError {
@@ -224,7 +253,7 @@ export async function isRunActive(): Promise<boolean> {
 }
 
 export async function startRun(trigger: "cron" | "manual" | "script"): Promise<number> {
-  const [row] = await q<{ id: number }>(insertSql("pipeline_runs", ["trigger"], { returning: "id" }), [trigger]);
+  const [row] = await q<{ id: number }>("insert into pipeline_runs (trigger) values ($1) returning id", [trigger]);
   return row!.id;
 }
 
@@ -232,7 +261,8 @@ export async function finishRun(
   runId: number,
   result: { vcsProcessed: number; errors: RunError[]; usage: Record<string, unknown> },
 ): Promise<void> {
-  await q(updateSql("pipeline_runs", ["finished_at", "vcs_processed", "errors", "usage"], ["id"]), [
-    new Date().toISOString(), result.vcsProcessed, JSON.stringify(result.errors), JSON.stringify(result.usage), runId,
-  ]);
+  await q(
+    "update pipeline_runs set finished_at = now(), vcs_processed = $2, errors = $3::jsonb, usage = $4::jsonb where id = $1",
+    [runId, result.vcsProcessed, JSON.stringify(result.errors), JSON.stringify(result.usage)],
+  );
 }

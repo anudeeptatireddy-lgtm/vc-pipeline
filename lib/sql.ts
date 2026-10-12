@@ -1,8 +1,7 @@
-// Neon clients. Server-only; never import from client components.
-//   q()      as vc_runtime (APP_DATABASE_URL): the scan, Run now, upkeep and scripts.
-//            Reads everything, writes system tables; no INSERT/UPDATE/DELETE on vcs.
-//   qRead()  as vc_web (APP_READONLY_DATABASE_URL): dashboard pages and read APIs.
-//            SELECT only (db/migrations/0008_data_ownership.sql).
+// Neon client for the app. Connects as vc_runtime (APP_DATABASE_URL): it can
+// read everything and write system tables, but has no UPDATE/DELETE on vcs,
+// so every change to vcs goes through the two security-definer functions.
+// Server-only; never import from client components.
 import { neon, types, type NeonQueryFunction } from "@neondatabase/serverless";
 
 // Keep values in the shapes the rest of the app already uses:
@@ -21,7 +20,6 @@ export const TYPES = {
 };
 
 let client: NeonQueryFunction<false, false> | undefined;
-let readClient: NeonQueryFunction<false, false> | undefined;
 
 export function sql(): NeonQueryFunction<false, false> {
   if (client) return client;
@@ -31,29 +29,12 @@ export function sql(): NeonQueryFunction<false, false> {
   return client;
 }
 
-function readSql(): NeonQueryFunction<false, false> {
-  if (readClient) return readClient;
-  const url = process.env.APP_READONLY_DATABASE_URL;
-  if (!url) throw new Error("APP_READONLY_DATABASE_URL must be set (read-only role for the dashboard)");
-  readClient = neon(url);
-  return readClient;
-}
-
 /**
  * Run a parameterised query and return its rows. Type parsers are passed per
  * query: @neondatabase/serverless 1.2 ignores `types` given to neon() when
  * calling .query(), which left dates as IST-shifted Date objects.
  */
 export async function q<T = Record<string, unknown>>(text: string, params: unknown[] = []): Promise<T[]> {
-  return run<T>(sql(), text, params);
-}
-
-/** Read-only query as vc_web, for dashboard pages and read APIs. */
-export async function qRead<T = Record<string, unknown>>(text: string, params: unknown[] = []): Promise<T[]> {
-  return run<T>(readSql(), text, params);
-}
-
-async function run<T>(fn: NeonQueryFunction<false, false>, text: string, params: unknown[]): Promise<T[]> {
   const opts = { types: TYPES } as unknown as Parameters<NeonQueryFunction<false, false>["query"]>[1];
-  return (await (fn.query as (t: string, p: unknown[], o: unknown) => Promise<unknown>)(text, params, opts)) as T[];
+  return (await (sql().query as (t: string, p: unknown[], o: unknown) => Promise<unknown>)(text, params, opts)) as T[];
 }

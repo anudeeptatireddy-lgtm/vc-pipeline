@@ -1,7 +1,7 @@
 // Read-only queries over the SQL views, used by the dashboard pages
-// (CLAUDE.md rule 8). Runs as vc_web (SELECT only); server-side only.
+// (CLAUDE.md rule 8). Nothing here writes; server-side only.
 import { daysAgo, firmFit, signalValue, sourcesAgree } from "./score";
-import { qRead as q } from "./sql";
+import { q } from "./sql";
 import { dealFacts, fitTags, laneOf, type DealFacts, type FitTags, type Lane } from "./triage";
 import type { RoundStage, SignalType, SourceTier, VcStatus } from "./types";
 

@@ -69,8 +69,6 @@ export async function processVc(opts: {
   runId: number;
   today?: Date;
   portfolioDiff?: boolean; // default true
-  /** Test hook: replaces the Gemini extraction call (tests/ownership.int.test.ts). */
-  extract?: typeof extractSignals;
 }): Promise<VcRunResult> {
   const { vc, profile, sources, runId } = opts;
   const today = opts.today ?? new Date();
@@ -135,7 +133,7 @@ export async function processVc(opts: {
   // 2. Gemini: classify collected items + search for more.
   let modelSignals: ModelSignal[] = [];
   try {
-    const out = await (opts.extract ?? extractSignals)(vc, profile, raw, today);
+    const out = await extractSignals(vc, profile, raw, today);
     if (out.mode === "items-only") errors.push({ vcId: vc.id, source: "gemini-grounding", message: "grounded call timed out; classified collected items only" });
     modelSignals = out.is_same_person_or_firm || out.signals.length === 0 ? out.signals : [];
     if (!out.is_same_person_or_firm && out.signals.length) rejected["namesake"] = out.signals.length;
