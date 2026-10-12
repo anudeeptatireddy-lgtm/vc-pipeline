@@ -5,13 +5,33 @@ Twice a week, this app checks 50 VCs on a founder's list for public activity in 
 **Live:** https://vc-pipeline-lovat.vercel.app · **Proofs for each grading requirement:** [`docs/proofs/README.md`](docs/proofs/README.md)
 
 - **Runtime AI is Gemini only** (`@google/genai`, `GEMINI_MODEL`). Claude Code was used as a development tool; no Anthropic or OpenAI SDK ships in the app (`docs/assumptions.md` A1, enforced by an ESLint rule).
-- **Vikram's columns are never written by the pipeline.** The app connects as `vc_runtime`, which has no UPDATE or DELETE on `vcs`. All changes go through `update_vc_signals` / `update_vc_identifiers`, `security definer` functions owned by a role with column-level UPDATE on system columns only. Verified by `npm run check:manual` and the permission checks in the proofs.
+- **Vikram's columns are never written by the pipeline.** Four independent locks (allowlist, column permissions, a trigger, a read-only dashboard role with RLS); see [Data ownership](#data-ownership).
 - **Every stored signal has a resolved URL and a publish date within 30 days,** both checked in code (`lib/verify.ts`), never taken from the model.
 - **What's real and what's demo:** the investors, their websites and partners, every signal, link, date, score and recommendation are **real, live data** refreshed on each run. Only Vikram's *own* columns (his status, notes and contact history with each VC) are `[DEMO]` sample values, because Vikram is a fictional founder (`docs/assumptions.md` A3).
 
 ## Demo and theme
 
 The **Demo** button (top right on every page) walks a viewer through finding a relevant investor in 21 steps: the weekly answer, the signal behind the top lead, its sources, opening an investor, who to contact and the drafted message, the score, and the run history. It highlights the real page and does the clicks itself; Esc or **End demo** stops it. The moon/sun button switches light and dark (it follows the system setting until clicked).
+
+## Data ownership
+
+Vikram's own columns are never written by the system. The brief's non-negotiable rule, enforced in four independent places:
+
+| | Columns | Who can change them |
+|---|---|---|
+| **Yours** (`vcs`) | `name`, `firm`, `thesis`, `status`, `last_contact_date`, `contact_history`, `personal_notes` | Nobody but the database owner. Set once when a row is created, never updated by the app |
+| **Signal-derived** (`vcs`) | `last_signal_date`, `signal_summary`, `follow_up_score`, `recommended_action` (+ the timestamp `updated_by_system_at`) | Only `update_vc_signals()`, called by the scan |
+| **Identifiers** (`vcs`) | website, partner, LinkedIn, RSS, portfolio URL, archive flag, … | Only `update_vc_identifiers()`, called by setup scripts |
+| **System tables** | `signals`, `vc_score_history`, `pipeline_runs`, `portfolio_snapshots`, `vc_profiles`, `vc_contacts`, `vc_channels`, `vc_messages`, `suggested_vcs` | The scan, column by column from the allowlist |
+
+How it's enforced:
+
+1. **One allowlist in code** (`lib/ownership.ts`). Every write is built from it; there are no full-row upserts, and a test fails if any other file contains write SQL.
+2. **Column permissions.** The scan connects as `vc_runtime`, which has no INSERT, UPDATE or DELETE on `vcs`. The two write functions run as `pipeline_writer`, which can update the signal and identifier columns only. New rows come from `seed_new_vcs()`, which never overwrites an existing row.
+3. **A trigger** (`guard_vcs_user_columns`) rejects any change to your columns, or any deletion, unless the database owner makes it, even if a permission is granted by mistake.
+4. **A read-only dashboard.** Pages and read APIs connect as `vc_web` (SELECT only). Row-level security is on for every table.
+
+Proof: `npm run test:ownership` runs against a Neon test branch. It seeds an investor with `personal_notes = "AUDIT NOTE 123"` and a contact history, runs the real scan code, and asserts both are byte-for-byte unchanged while the signal columns updated. It also asserts that direct writes by the scan role and the dashboard role are refused, and that the database guards match `lib/ownership.ts`. Migration: `db/migrations/0008_data_ownership.sql` (rollback in `db/rollback/`).
 
 ## Who to contact and what to send
 
@@ -61,6 +81,7 @@ npm run dev                  # dashboard on http://localhost:3000
 | Command | What it does |
 |---|---|
 | `npm run typecheck` / `npm test` / `npm run lint` / `npm run build` | Checks. Tests use saved fixtures, no live calls |
+| `npm run test:ownership` | Data-ownership tests against the Neon test branch (`TEST_*_DATABASE_URL`) |
 | `npm run run-one -- vc01 vc12` / `-- --all` | Pipeline run; `--break=<source>` forces a source to fail |
 | `npm run diagnose [-- <runId>]` | Per-source funnel and a per-VC "why not 60" table |
 | `npm run check:manual [-- vc01]` | Runs the pipeline and proves Vikram's columns are unchanged on all rows |

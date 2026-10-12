@@ -23,7 +23,8 @@
     "ui:check": "tsx scripts/ui-checks.ts",
     "proofs": "tsx --env-file=.env.local scripts/proofs.ts",
     "roundup-lookup": "tsx --env-file=.env.local scripts/roundup-lookup.ts",
-    "contacts": "tsx --env-file=.env.local scripts/contacts.ts"
+    "contacts": "tsx --env-file=.env.local scripts/contacts.ts",
+    "test:ownership": "vitest run --config vitest.int.config.ts"
   },
   "engines": {
     "node": "22.x"

@@ -1,6 +1,7 @@
 // CLAUDE.md rule 2: nothing outside the two security-definer functions may
-// change `vcs`. Static check over app code; the database-level guarantee is
-// vc_runtime's grants (no UPDATE/DELETE on vcs), tested against Neon.
+// change `vcs`. Static check over app code; the database-level guarantees
+// (grants, trigger, RLS) are tested against a Neon branch in
+// tests/ownership.int.test.ts.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -35,9 +36,16 @@ describe("manual columns guard", () => {
     expect(ROOTS.flatMap(files).filter((f) => !PROVES_DENIAL.has(f) && re.test(src(f)))).toEqual([]);
   });
 
-  it("INSERT INTO vcs only in lib/db.ts (seeding new rows)", () => {
+  it("no INSERT INTO vcs anywhere (new rows go through seed_new_vcs)", () => {
     const re = /insert\s+into\s+(public\.)?vcs\b/i;
-    expect(ROOTS.flatMap(files).filter((f) => re.test(src(f)) && f !== join("lib", "db.ts"))).toEqual([]);
+    expect(ROOTS.flatMap(files).filter((f) => re.test(src(f)))).toEqual([]);
+  });
+
+  it("write SQL is only built by lib/ownership.ts (explicit allowlists)", () => {
+    // migrate.ts runs as the owner and only records applied migration files.
+    const EXEMPT = new Set([join("lib", "ownership.ts"), join("scripts", "migrate.ts"), ...PROVES_DENIAL]);
+    const re = /\b(insert\s+into|update\s+[\w.]+\s+set|delete\s+from)\b/i;
+    expect(ROOTS.flatMap(files).filter((f) => !EXEMPT.has(f) && re.test(src(f)))).toEqual([]);
   });
 
   it("dashboard code has no write SQL (dashboard-design.md §13)", () => {
